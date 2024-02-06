@@ -1,0 +1,217 @@
+<template>
+  <div class="app-container">
+    <el-row>
+      <!-- 左侧设备选择 -->
+      <el-col :span="5">
+        <el-card class="box-card">
+          <h3 slot="header" class="header_card el-icon-coordinate">操作栏</h3>
+          <!--          选择设备栏 -->
+          <span class="span_info">设备列表</span>
+          <el-select v-model="selectedDevice" placeholder="请选择设备" @click="handleDeviceSelection"
+                     style="padding-top:10px;padding-bottom:10px" size="small"
+          >
+            <el-option
+              v-for="device in devices"
+              :key="device.id"
+              :label="device.name"
+              :value="device.id"
+            />
+          </el-select>
+          <br>
+          <span class="span_info">窗口分割数</span>
+          <el-select v-model="selectedWindowCount" placeholder="请选择窗口分割数"
+                     style="padding-top:10px;padding-bottom:10px"
+                     size="small"
+          >
+            <el-option
+              v-for="windowCount in windowCounts"
+              :key="windowCount.id"
+              :label="windowCount.count"
+              :value="windowCount.id"
+            />
+          </el-select>
+          <br>
+          <span class="span_info">云台操作</span>
+          <br>
+          <!--          云台操作按钮组-->
+          <div class="el-button-group" style="border: 1px;padding-top:10px;">
+            <div class="el-button primary el-icon-top-left"></div>
+            <div class="el-button primary el-icon-top"></div>
+            <div class="el-button primary el-icon-top-right"></div>
+          </div>
+          <div class="el-button-group ">
+            <div class="el-button primary el-icon-back"></div>
+            <div class="el-button primary el-icon-mouse"></div>
+            <div class="el-button primary el-icon-right"></div>
+          </div>
+          <div class="el-button-group ">
+            <div class="el-button primary el-icon-bottom-left"></div>
+            <div class="el-button primary el-icon-bottom"></div>
+            <div class="el-button primary el-icon-bottom-right"></div>
+          </div>
+          <!--          高级显示设置-->
+          <br>
+          <span class="span_info">高级显示设置</span>
+          <br>
+          <!--          调焦按钮-->
+          <div class="button-row">
+            <el-button class="primary el-icon-circle-plus-outline">调焦+
+            </el-button>
+            <el-button class="primary el-icon-remove-outline">调焦-
+            </el-button>
+          </div>
+          <!--          聚焦按钮-->
+          <div class="button-row">
+            <el-button class="primary el-icon-circle-plus-outline">聚焦+
+            </el-button>
+            <el-button class="primary el-icon-remove-outline">聚焦-
+            </el-button>
+          </div>
+          <!--          调光圈按钮-->
+          <div class="button-row">
+            <el-button class="primary el-icon-circle-plus-outline">光圈+
+            </el-button>
+            <el-button class="primary el-icon-remove-outline">光圈-
+            </el-button>
+          </div>
+        </el-card>
+      </el-col>
+
+      <!-- 中间主体部分海康威视摄像头预览 -->
+      <el-col :span="14">
+        <el-card class="box-card">
+          <h3 slot="header" class="header_card el-icon-video-camera">摄像头预览</h3>
+          <div ref="cameraContainer" class="camera-container"></div>
+        </el-card>
+      </el-col>
+      <!-- 右侧操作日志记录 -->
+      <el-col :span="5">
+        <el-card class="box-card">
+          <h3 slot="header" class="header_card el-icon-data-line">操作记录</h3>
+          <div class="content" style="height: 420px;">
+            <el-scrollbar style="height: 420px; overflow-y: auto;">
+              <el-timeline style="padding-left: 5px;" reverse>
+                <el-timeline-item
+                  v-for="(event, index) in eventCallbacks"
+                  :key="index"
+                  :timestamp="event.timestamp"
+                  :placement="index % 2 === 0 ? 'left' : 'right'"
+                >
+                  <el-card>
+                    <div class="event-title">{{ event.title }}</div>
+                    <div class="event-timestamp">{{ event.timestamp }}</div>
+                    <div class="event-description">{{ event.description }}</div>
+                  </el-card>
+                </el-timeline-item>
+              </el-timeline>
+            </el-scrollbar>
+          </div>
+          <!--          <div ref="cameraContainer" class="camera-container"></div>-->
+        </el-card>
+      </el-col>
+    </el-row>
+    <!--    底部音量-->
+    <div class="block" style=" display: flex">
+      <div class="bottom_left" style="padding-left: 35px;padding-top: 15px;">
+        <el-button type="warning">停止预览</el-button>
+        <el-button type="success">开始预览</el-button>
+      </div>
+
+      <div style="padding-left: 60px;"></div>
+      <span class="demonstration">音量<span class="el-icon-s-operation"></span></span>
+      <el-slider style="width: 10%;padding-left: 10px;padding-right: 10px" v-model="voice"></el-slider>
+      <!--      <span class="demonstration">抓图</span>-->
+      <el-button class="demonstration" size="small">抓图</el-button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedDevice: null,
+      selectedWindowCount: null,
+      devices: [
+        { id: 1, name: '摄像头1' },
+        { id: 2, name: '摄像头2' }
+        // 添加更多设备
+      ],
+      windowCounts: [
+        {
+          id: 1, count: '1×1'
+        }, {
+          id: 2, count: '2×2'
+        }, {
+          id: 3, count: '3×3'
+        }, {
+          id: 4, count: '4×4'
+        }
+      ],
+      voice: 50,
+      eventCallbacks: [
+        { timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: '' },
+        { timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport' },
+        { timestamp: '2023-01-01 10:00:00', title: '停止云台失败', description: '403,notSupport' },
+        { timestamp: '2023-01-01 11:30:00', title: '开启云台失败', description: '403,notSupport' },
+        { timestamp: '2023-01-01 13:45:00', title: '停止云台失败', description: '403,notSupport' }
+      ]
+    }
+  },
+  mounted() {
+    // 在组件挂载后初始化海康威视摄像头预览
+    this.initCameraPreview()
+  },
+  created() {
+    // this.getList()
+  },
+  methods: {
+    initCameraPreview() {
+      // 使用海康威视SDK初始化摄像头预览
+      // 这里假设你有一个叫做initCamera的方法来初始化摄像头
+      // 并且该方法接受设备ID作为参数
+      if (this.selectedDevice) {
+        this.$refs.cameraContainer.innerHTML = '' // 清空容器，以便重新初始化
+        initCamera(this.selectedDevice, this.$refs.cameraContainer)
+      }
+    },
+    // 当用户选择设备时触发
+    handleDeviceSelection(device) {
+      // 使用 EventBus 触发设备选择事件
+      console.log('哈哈哈我选择了设备')
+      // this.$parent.eventBus.$emit('deviceSelected', device)
+    }
+  }, watch: {
+    selectedDevice() {
+      // 当选中的设备发生变化时，重新初始化摄像头预览
+      this.initCameraPreview()
+    }
+  }
+}
+</script>
+<style>
+.camera-container {
+  height: 420px; /* 调整预览区域的高度 */
+}
+
+.header_card {
+  height: 10px;
+}
+
+.span_info {
+  font-size: 15px;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.event-description {
+  margin-top: 10px;
+}
+
+.demonstration {
+  padding-top: 6px;
+}
+</style>
