@@ -1,0 +1,4 @@
+[2024-02-06 14:37:19.702][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/haikang3.2/ruoyi/RuoYi-Vue/lib/zlib1.dll], hHandleRet[1362690048]
+[2024-02-06 14:37:19.702][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
+[2024-02-06 14:37:19.702][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
+[2024-02-06 14:37:19.702][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.

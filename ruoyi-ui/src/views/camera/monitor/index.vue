@@ -4,21 +4,21 @@
       <!-- 左侧设备选择 -->
       <el-col :span="5">
         <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-coordinate">操作栏</h3>
+          <h3 slot="header" class="header_card el-icon-coordinate"> 操作栏</h3>
           <!--          选择设备栏 -->
-          <span class="span_info">设备列表</span>
-          <el-select v-model="selectedDevice" placeholder="请选择设备" @click="handleDeviceSelection"
+          <span class="span_info">设备列表 </span >
+          <el-select v-model="selectedItem" placeholder="请选择设备" @click="handleDeviceSelection"
                      style="padding-top:10px;padding-bottom:10px" size="small"
           >
             <el-option
               v-for="device in devices"
-              :key="device.id"
-              :label="device.name"
-              :value="device.id"
+              :key="device.deviceId"
+              :label="device.deviceName"
+              :value="device.deviceId"
             />
           </el-select>
           <br>
-          <span class="span_info">窗口分割数</span>
+          <span class="span_info">窗口分割数 </span>
           <el-select v-model="selectedWindowCount" placeholder="请选择窗口分割数"
                      style="padding-top:10px;padding-bottom:10px"
                      size="small"
@@ -34,7 +34,7 @@
           <span class="span_info">云台操作</span>
           <br>
           <!--          云台操作按钮组-->
-          <div class="el-button-group" style="border: 1px;padding-top:10px;">
+          <div class="el-button-group" style="border: 1px;padding-top:5px;">
             <div class="el-button primary el-icon-top-left"></div>
             <div class="el-button primary el-icon-top"></div>
             <div class="el-button primary el-icon-top-right"></div>
@@ -55,39 +55,38 @@
           <br>
           <!--          调焦按钮-->
           <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">调焦+
+            <el-button class="primary el-icon-circle-plus-outline">调焦
             </el-button>
-            <el-button class="primary el-icon-remove-outline">调焦-
+            <el-button class="primary el-icon-remove-outline">调焦
             </el-button>
           </div>
           <!--          聚焦按钮-->
           <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">聚焦+
+            <el-button class="primary el-icon-circle-plus-outline">聚焦
             </el-button>
-            <el-button class="primary el-icon-remove-outline">聚焦-
+            <el-button class="primary el-icon-remove-outline">聚焦
             </el-button>
           </div>
           <!--          调光圈按钮-->
           <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">光圈+
+            <el-button class="primary el-icon-circle-plus-outline">光圈
             </el-button>
-            <el-button class="primary el-icon-remove-outline">光圈-
+            <el-button class="primary el-icon-remove-outline">光圈
             </el-button>
           </div>
         </el-card>
       </el-col>
-
       <!-- 中间主体部分海康威视摄像头预览 -->
       <el-col :span="14">
         <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-video-camera">摄像头预览</h3>
+          <h3 slot="header" class="header_card el-icon-video-camera"> 摄像头预览</h3>
           <div ref="cameraContainer" class="camera-container"></div>
         </el-card>
       </el-col>
       <!-- 右侧操作日志记录 -->
       <el-col :span="5">
         <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-data-line">操作记录</h3>
+          <h3 slot="header" class="header_card el-icon-data-line"> 操作记录</h3>
           <div class="content" style="height: 420px;">
             <el-scrollbar style="height: 420px; overflow-y: auto;">
               <el-timeline style="padding-left: 5px;" reverse>
@@ -127,16 +126,17 @@
 </template>
 
 <script>
+import { listDevice } from '../../../api/camera/device'
+
 export default {
   data() {
     return {
       selectedDevice: null,
       selectedWindowCount: null,
-      devices: [
-        { id: 1, name: '摄像头1' },
-        { id: 2, name: '摄像头2' }
-        // 添加更多设备
-      ],
+      //设备列表，用于下拉框选择
+      devices: [],
+      //设备列表下拉框默认选中的值
+      selectedItem: '',
       windowCounts: [
         {
           id: 1, count: '1×1'
@@ -160,33 +160,44 @@ export default {
   },
   mounted() {
     // 在组件挂载后初始化海康威视摄像头预览
-    this.initCameraPreview()
+    // this.initCameraPreview();
+    // 在组件创建后立即调用接口获取数据
   },
   created() {
-    // this.getList()
+    //调用查询设备信息列表查询所有设备列表并绑定到设备选择下拉框中
+    this.queryDeviceList()
   },
   methods: {
     initCameraPreview() {
       // 使用海康威视SDK初始化摄像头预览
       // 这里假设你有一个叫做initCamera的方法来初始化摄像头
       // 并且该方法接受设备ID作为参数
-      if (this.selectedDevice) {
-        this.$refs.cameraContainer.innerHTML = '' // 清空容器，以便重新初始化
-        initCamera(this.selectedDevice, this.$refs.cameraContainer)
-      }
+      // if (this.selectedDevice) {
+      //   this.$refs.cameraContainer.innerHTML = '' // 清空容器，以便重新初始化
+      //   initCamera(this.selectedDevice, this.$refs.cameraContainer)
+      // }
     },
     // 当用户选择设备时触发
     handleDeviceSelection(device) {
       // 使用 EventBus 触发设备选择事件
       console.log('哈哈哈我选择了设备')
       // this.$parent.eventBus.$emit('deviceSelected', device)
+    },
+    queryDeviceList() {
+      this.loading = true
+      listDevice(this.queryParams).then(response => {
+        this.devices = response.rows
+        this.loading = false
+      })
     }
-  }, watch: {
+  },
+  watch: {
     selectedDevice() {
       // 当选中的设备发生变化时，重新初始化摄像头预览
       this.initCameraPreview()
     }
   }
+
 }
 </script>
 <style>
@@ -196,10 +207,11 @@ export default {
 
 .header_card {
   height: 10px;
+  font-size: 15px;
 }
 
 .span_info {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .event-title {

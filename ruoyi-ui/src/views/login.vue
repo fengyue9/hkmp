@@ -7,7 +7,7 @@
           v-model="loginForm.username"
           type="text"
           auto-complete="off"
-          placeholder="账号"
+          placeholder="请输入账号"
         >
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon"/>
         </el-input>
@@ -17,7 +17,7 @@
           v-model="loginForm.password"
           type="password"
           auto-complete="off"
-          placeholder="密码"
+          placeholder="请输入密码"
           @keyup.enter.native="handleLogin"
         >
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
@@ -56,7 +56,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>By hongrongjian 2023</span>
+      <span>By 洪荣键 2024</span>
     </div>
   </div>
 </template>
