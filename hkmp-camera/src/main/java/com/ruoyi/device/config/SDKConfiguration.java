@@ -62,6 +62,7 @@ public class SDKConfiguration {
         }
         //2.SDK初始化，一个程序只需要调用一次
         boolean initSuc = hCNetSDK.NET_DVR_Init();
+        System.out.println("SDK初始化完成");
         //3.设置异常消息回调
         if (fExceptionCallBack == null) {
             fExceptionCallBack = new FExceptionCallBack_Imp();

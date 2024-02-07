@@ -6,7 +6,7 @@
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-coordinate"> 操作栏</h3>
           <!--          选择设备栏 -->
-          <span class="span_info">设备列表 </span >
+          <span class="span_info">设备列表 </span>
           <el-select v-model="selectedItem" placeholder="请选择设备" @click="handleDeviceSelection"
                      style="padding-top:10px;padding-bottom:10px" size="small"
           >
@@ -80,7 +80,9 @@
       <el-col :span="14">
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-video-camera"> 摄像头预览</h3>
-          <div ref="cameraContainer" class="camera-container"></div>
+          <div ref="cameraContainer" class="camera-container">
+            <video class="video-element" ref="videoElement" controls autoplay></video>
+          </div>
         </el-card>
       </el-col>
       <!-- 右侧操作日志记录 -->
@@ -225,5 +227,18 @@ export default {
 
 .demonstration {
   padding-top: 6px;
+}
+
+.camera-container {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
