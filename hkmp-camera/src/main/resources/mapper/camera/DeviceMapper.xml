@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.device.mapper.DeviceMapper">
-    
+
     <resultMap type="Device" id="DeviceResult">
-        <result property="deviceId"    column="device_id"    />
-        <result property="deviceName"    column="device_name"    />
-        <result property="deviceIp"    column="device_ip"    />
-        <result property="devicePort"    column="device_port"    />
-        <result property="deviceSerialNumber"    column="device_serial_number"    />
-        <result property="deviceStatus"    column="device_status"    />
-        <result property="createBy"    column="create_by"    />
-        <result property="createTime"    column="create_time"    />
-        <result property="updateBy"    column="update_by"    />
-        <result property="updateTime"    column="update_time"    />
-        <result property="remark"    column="remark"    />
-        <result property="deviceUsername"    column="device_username"    />
-        <result property="devicePassword"    column="device_password"    />
+        <result property="deviceId" column="device_id"/>
+        <result property="deviceName" column="device_name"/>
+        <result property="deviceIp" column="device_ip"/>
+        <result property="devicePort" column="device_port"/>
+        <result property="deviceSerialNumber" column="device_serial_number"/>
+        <result property="deviceStatus" column="device_status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+        <result property="deviceUsername" column="device_username"/>
+        <result property="devicePassword" column="device_password"/>
     </resultMap>
 
     <sql id="selectDeviceVo">
-        select device_id, device_name, device_ip, device_port, device_serial_number, device_status, create_by, create_time, update_by, update_time, remark, device_username, device_password from device
+        select device_id,
+               device_name,
+               device_ip,
+               device_port,
+               device_serial_number,
+               device_status,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               remark,
+               device_username,
+               device_password
+        from device
     </sql>
 
     <select id="selectDeviceList" parameterType="Device" resultMap="DeviceResult">
         <include refid="selectDeviceVo"/>
-        <where>  
-            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
-            <if test="deviceStatus != null  and deviceStatus != ''"> and device_status = #{deviceStatus}</if>
+        <where>
+            <if test="deviceName != null  and deviceName != ''">and device_name like concat('%', #{deviceName}, '%')
+            </if>
+            <if test="deviceStatus != null  and deviceStatus != ''">and device_status = #{deviceStatus}</if>
         </where>
     </select>
-    
+
     <select id="selectDeviceByDeviceId" parameterType="Long" resultMap="DeviceResult">
         <include refid="selectDeviceVo"/>
         where device_id = #{deviceId}
     </select>
-        
+
     <insert id="insertDevice" parameterType="Device" useGeneratedKeys="true" keyProperty="deviceId">
         insert into device
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -52,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="remark != null">remark,</if>
             <if test="deviceUsername != null">device_username,</if>
             <if test="devicePassword != null">device_password,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="deviceName != null">#{deviceName},</if>
             <if test="deviceIp != null and deviceIp != ''">#{deviceIp},</if>
@@ -66,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="remark != null">#{remark},</if>
             <if test="deviceUsername != null">#{deviceUsername},</if>
             <if test="devicePassword != null">#{devicePassword},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateDevice" parameterType="Device">
@@ -89,11 +103,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <delete id="deleteDeviceByDeviceId" parameterType="Long">
-        delete from device where device_id = #{deviceId}
+        delete
+        from device
+        where device_id = #{deviceId}
     </delete>
 
     <delete id="deleteDeviceByDeviceIds" parameterType="String">
-        delete from device where device_id in 
+        delete from device where device_id in
         <foreach item="deviceId" collection="array" open="(" separator="," close=")">
             #{deviceId}
         </foreach>

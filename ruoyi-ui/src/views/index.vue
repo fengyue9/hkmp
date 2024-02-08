@@ -1,147 +1,203 @@
 <template>
   <div class="app-container home">
-    <el-row :gutter="20">
-      <el-col :sm="24" :lg="24">
+    <el-row>
+      <el-card>
         <h2><b><i>基于Spring和Vue的实时监控报警系统</i></b></h2>
         <blockquote class="text-warning" style="font-size: 14px">
           支持功能：摄像头实时预览、云台操作、回放下载、报警处理、设备信息管理、系统监控等
         </blockquote>
-
-        <hr/>
-      </el-col>
+      </el-card>
     </el-row>
-    <el-row :gutter="20">
-      <el-col :sm="24" :lg="12" style="padding-left: 20px">
-        <h2>工具系统——功能类似海康iVMS-4200客户端的Web监控系统(hkmp)</h2>
-        <p style="font-size: large">
-          iVMS-4200客户端是海康威视提供的一款免费的、与网络监控设备配套使用的应用软件。它可与
-          DVR、NVR、IPC、IPD、DVS、网络存储设备、报警设备、门禁设备、可视对讲设备等配套使用，提供网络服务（预览、回放、云台等操作），提供灵活、多样的部署方案，满足中、小型项目中各种不同环境的需求，并可广泛应用于金融、公安、部队、电信、交通、电力、教育、水利等领域的安防项目。然而，客户端软件无法集成到自有平台中。除了iVMS-4200客户端，海康威视还提供了Web开发接口供用户集成，支持网页上实现预览、回放、云台控制等功能。因此，基于海康的Web开发接口，实现类似iVMS-4200客户端功能的Web监控系统，能便捷地接入自有平台。 </p>
-        <p>
-          <b>当前版本:</b> <span>v{{ version }}</span>
-        </p>
-
-
-      </el-col>
-
-      <el-col :sm="24" :lg="12" style="padding-left: 50px">
-        <el-calendar v-model="value">
-        </el-calendar>
-        <!--        <el-row>-->
-        <!--          <el-col :span="20">-->
-        <!--            <h2>技术选型————截止至2023年10月22日</h2>-->
-        <!--          </el-col>-->
-        <!--        </el-row>-->
-        <!--        <el-row>-->
-        <!--          <el-col :span="6">-->
-        <!--            <h4>后端技术</h4>-->
-        <!--            <ul>-->
-        <!--              <li>SpringBoot</li>-->
-        <!--              <li>Spring Security</li>-->
-        <!--              <li>JWT</li>-->
-        <!--              <li>MyBatis</li>-->
-        <!--              <li>Redis</li>-->
-        <!--              <li>...</li>-->
-        <!--            </ul>-->
-        <!--          </el-col>-->
-        <!--          <el-col :span="6">-->
-        <!--            <h4>前端技术</h4>-->
-        <!--            <ul>-->
-        <!--              <li>Vue</li>-->
-        <!--              <li>Vuex</li>-->
-        <!--              <li>Element-ui</li>-->
-        <!--              <li>Axios</li>-->
-        <!--              <li>...</li>-->
-        <!--            </ul>-->
-        <!--          </el-col>-->
-        <!--        </el-row>-->
-      </el-col>
+    <el-row>
+      <el-card>
+        <!-- 实时监控图表 -->
+        <div class="real-time-chart">
+          <div ref="realTimeChart" class="chart-container"></div>
+        </div>
+        <!-- 报警处理功能 -->
+        <div class="alert-handling">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <span>报警处理</span>
+            </div>
+            <div class="text item">
+              <span>最新报警：</span>
+              <span v-if="latestAlert">{{ latestAlert }}</span>
+              <span v-else>暂无报警</span>
+            </div>
+            <el-button type="primary" @click="handleAlert">处理报警</el-button>
+          </el-card>
+        </div>
+      </el-card>
     </el-row>
-    <el-divider/>
-
+    <el-row>
+      <el-card> <!--    设备数量展示-->
+        <div class="device-count">
+          <svg class="circle" width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="#409EFF" stroke-width="2" fill="none"></circle>
+            <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" font-size="24" fill="#409EFF">{{
+                deviceCount
+              }}
+            </text>
+          </svg>
+        </div>
+      </el-card>
+    </el-row>
   </div>
 </template>
 
 <script>
+import * as echarts from 'echarts'
+
 export default {
   name: 'Index',
   data() {
     return {
       // 版本号
       version: '1.0.0.0',
-      value: new Date()
+      value: new Date(),
+      latestAlert: null,
+      deviceCount: 50, // 模拟设备数量
+      // 模拟实时监控数据
+      realtimeData: {
+        cpu: [],
+        memory: [],
+        network: []
+      }
     }
+  },
+  mounted() {
+    // 初始化实时监控图表
+    this.initRealtimeChart()
+    // 模拟实时监控数据更新
+    this.simulateRealtimeData()
   },
   methods: {
     goTarget(href) {
       window.open(href, '_blank')
+    },
+    initRealtimeChart() {
+      this.realtimeChart = echarts.init(this.$refs.realTimeChart)
+      const option = {
+        title: {
+          text: '系统资源占用监控'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['CPU', '内存', '网络']
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: []
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: 'CPU',
+            type: 'line',
+            data: this.realtimeData.cpu
+          },
+          {
+            name: '内存',
+            type: 'line',
+            data: this.realtimeData.memory
+          },
+          {
+            name: '网络',
+            type: 'line',
+            data: this.realtimeData.network
+          }
+        ]
+      }
+      this.realtimeChart.setOption(option)
+    },
+    simulateRealtimeData() {
+      setInterval(() => {
+        // 模拟实时监控数据更新
+        const time = new Date().toLocaleTimeString().replace(/^\D*/, '')
+        const cpuUsage = Math.floor(Math.random() * 100)
+        const memoryUsage = Math.floor(Math.random() * 100)
+        const networkTraffic = Math.floor(Math.random() * 100)
+        this.realtimeData.cpu.push({ name: time, value: cpuUsage })
+        this.realtimeData.memory.push({ name: time, value: memoryUsage })
+        this.realtimeData.network.push({ name: time, value: networkTraffic })
+        if (this.realtimeData.cpu.length > 20) {
+          this.realtimeData.cpu.shift()
+          this.realtimeData.memory.shift()
+          this.realtimeData.network.shift()
+        }
+        this.realtimeChart.setOption({
+          xAxis: {
+            data: this.realtimeData.cpu.map(item => item.name)
+          },
+          series: [
+            {
+              name: 'CPU',
+              data: this.realtimeData.cpu
+            },
+            {
+              name: '内存',
+              data: this.realtimeData.memory
+            },
+            {
+              name: '网络',
+              data: this.realtimeData.network
+            }
+          ]
+        })
+        // 模拟报警触发
+        if (cpuUsage > 90 || memoryUsage > 90 || networkTraffic > 90) {
+          this.latestAlert = `系统发生异常！CPU：${cpuUsage}%, 内存：${memoryUsage}%, 网络：${networkTraffic}%`
+        } else {
+          this.latestAlert = null
+        }
+      }, 3000)
+    },
+    handleAlert() {
+      // 处理报警的具体操作，可以根据需求添加
+      this.$message.success('报警已处理！')
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-.home {
-  blockquote {
-    padding: 10px 20px;
-    margin: 0 0 20px;
-    font-size: 17.5px;
-    border-left: 5px solid #eee;
-  }
+<style scoped>
+.real-time-chart {
+  margin-bottom: 20px;
+}
 
-  hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #eee;
-  }
+.chart-container {
+  height: 400px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
-  .col-item {
-    margin-bottom: 20px;
-  }
+.alert-handling {
+  width: 300px;
+  margin-left: auto;
+}
 
-  ul {
-    padding: 0;
-    margin: 0;
-  }
+.text {
+  margin-bottom: 20px;
+}
 
-  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  color: #676a6c;
-  overflow-x: hidden;
+.device-count {
+  text-align: left;
+}
 
-  ul {
-    list-style-type: none;
-  }
+.circle text {
+  font-family: Arial, sans-serif;
+}
 
-  h4 {
-    margin-top: 0px;
-  }
-
-  h2 {
-    margin-top: 10px;
-    font-size: 26px;
-    font-weight: 100;
-  }
-
-  p {
-    margin-top: 10px;
-
-    b {
-      font-weight: 700;
-    }
-  }
-
-  .update-log {
-    ol {
-      display: block;
-      list-style-type: decimal;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0;
-      margin-inline-end: 0;
-      padding-inline-start: 40px;
-    }
-  }
+.chart-container[data-v-a83bd3b0] {
+  height: 290px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 </style>
 

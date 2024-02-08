@@ -7,5 +7,4 @@ package com.ruoyi.device.service;
  */
 public interface IVideoService {
 
-
 }

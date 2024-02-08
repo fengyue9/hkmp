@@ -25,15 +25,11 @@ import static com.ruoyi.device.config.SDKConfiguration.*;
  @date 2023/12/10
  */
 public class VideoUtil {
-    Timer downloadtimer;//下载用定时器
-    Timer Playbacktimer;//回放用定时器
     static FRealDataCallBack fRealDataCallBack;//预览回调函数实现
     static fPlayEScallback fPlayescallback; //裸码流回调函数
     static playDataCallBack playBackCallBack; //回放码流回调
     static int lPlay = -1;  //预览句柄
     static int Count = 0;
-    int m_lLoadHandle;
-    int iPlayBack; //回放句柄
     static File file;
     static boolean palybackFlay = false;
     static FileOutputStream outputStream;
@@ -41,7 +37,10 @@ public class VideoUtil {
     static String resultFileName = "..\\Download" + new String("returnFile" + ".h264");
     static FileOutputStream fileOutputStream = null;
     static int fileLength = 0;
-
+    Timer downloadtimer;//下载用定时器
+    Timer Playbacktimer;//回放用定时器
+    int m_lLoadHandle;
+    int iPlayBack; //回放句柄
     /**
      * 实时预览（支持多码流）
      * @param userID 用户句柄
@@ -158,60 +157,6 @@ public class VideoUtil {
             e.printStackTrace();
         }
         System.out.println("抓图成功!");
-    }
-    /**
-     * 按时间回放获取码流数据
-     * @param userID
-     */
-    public void playBackBytime(int userID, int lChannel) {
-        file = new File(System.getProperty("user.dir") + "\\Download\\Videodatabytime.mp4");  //保存回调函数的音频数据
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            outputStream = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        HCNetSDK.NET_DVR_VOD_PARA net_dvr_vod_para = new HCNetSDK.NET_DVR_VOD_PARA();
-        net_dvr_vod_para.dwSize = net_dvr_vod_para.size();
-        net_dvr_vod_para.struIDInfo.dwChannel = lChannel; //通道号
-        //开始时间
-        net_dvr_vod_para.struBeginTime.dwYear = 2022;
-        net_dvr_vod_para.struBeginTime.dwMonth = 11;
-        net_dvr_vod_para.struBeginTime.dwDay = 18;
-        net_dvr_vod_para.struBeginTime.dwHour = 10;
-        net_dvr_vod_para.struBeginTime.dwMinute = 00;
-        net_dvr_vod_para.struBeginTime.dwSecond = 00;
-        //停止时间
-        net_dvr_vod_para.struEndTime.dwYear = 2022;
-        net_dvr_vod_para.struEndTime.dwMonth = 11;
-        net_dvr_vod_para.struEndTime.dwDay = 18;
-        net_dvr_vod_para.struEndTime.dwHour = 10;
-        net_dvr_vod_para.struEndTime.dwMinute = 10;
-        net_dvr_vod_para.struEndTime.dwSecond = 00;
-        net_dvr_vod_para.hWnd = null; // 回放的窗口句柄，若置为空，SDK仍能收到码流数据，但不解码显示
-        net_dvr_vod_para.write();
-        int iPlayBack = hCNetSDK.NET_DVR_PlayBackByTime_V40(userID, net_dvr_vod_para);
-        if (iPlayBack <= -1) {
-            System.out.println("按时间回放失败，错误码为" + hCNetSDK.NET_DVR_GetLastError());
-            palybackFlay = true;
-            return;
-        }
-        //开启取流
-        boolean bCrtl = hCNetSDK.NET_DVR_PlayBackControl(iPlayBack, HCNetSDK.NET_DVR_PLAYSTART, 0, null);
-        if (playBackCallBack == null) {
-            playBackCallBack = new playDataCallBack();
-        }
-        boolean bRet = hCNetSDK.NET_DVR_SetPlayDataCallBack_V40(iPlayBack, playBackCallBack, Pointer.NULL);
-        //开始计时器
-        Playbacktimer = new Timer();//新建定时器
-        Playbacktimer.schedule(new PlaybackTask(), 0, 5000);//0秒后开始响应函数
     }
     /**
      *
@@ -347,7 +292,6 @@ public class VideoUtil {
         System.out.println("回放成功");
         return;
     }
-
     /**
      * 按文件下载录像(设置转成3GP格式)
      * @param userID
@@ -482,7 +426,93 @@ public class VideoUtil {
         System.out.println("下载成功");
         return;
     }
+    /**
+     * 获取IP通道
+     * @param userID
+     *
+     *
+     * @author hongrongjian
+     * @date 2023/12/10
+     */
+    public static void getIPChannelInfo(int userID) {
+        IntByReference ibrBytesReturned = new IntByReference(0);//获取IP接入配置参数
+        HCNetSDK.NET_DVR_IPPARACFG_V40 m_strIpparaCfg = new HCNetSDK.NET_DVR_IPPARACFG_V40();
+        m_strIpparaCfg.write();
+        //lpIpParaConfig 接收数据的缓冲指针
+        Pointer lpIpParaConfig = m_strIpparaCfg.getPointer();
+        boolean bRet = hCNetSDK.NET_DVR_GetDVRConfig(userID, HCNetSDK.NET_DVR_GET_IPPARACFG_V40, 0, lpIpParaConfig,
+                m_strIpparaCfg.size(), ibrBytesReturned);
+        m_strIpparaCfg.read();
+        System.out.println("起始数字通道号：" + m_strIpparaCfg.dwStartDChan);
 
+        for (int iChannum = 0; iChannum < m_strIpparaCfg.dwDChanNum; iChannum++) {
+            int channum = iChannum + m_strIpparaCfg.dwStartDChan;
+            m_strIpparaCfg.struStreamMode[iChannum].read();
+            if (m_strIpparaCfg.struStreamMode[iChannum].byGetStreamType == 0) {
+                m_strIpparaCfg.struStreamMode[iChannum].uGetStream.setType(HCNetSDK.NET_DVR_IPCHANINFO.class);
+                m_strIpparaCfg.struStreamMode[iChannum].uGetStream.struChanInfo.read();
+                if (m_strIpparaCfg.struStreamMode[iChannum].uGetStream.struChanInfo.byEnable == 1) {
+                    System.out.println("IP通道" + channum + "在线");
+                } else {
+                    System.out.println("IP通道" + channum + "不在线");
+                }
+            }
+        }
+    }
+    /**
+     * 按时间回放获取码流数据
+     * @param userID
+     */
+    public void playBackBytime(int userID, int lChannel) {
+        file = new File(System.getProperty("user.dir") + "\\Download\\Videodatabytime.mp4");  //保存回调函数的音频数据
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            outputStream = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        HCNetSDK.NET_DVR_VOD_PARA net_dvr_vod_para = new HCNetSDK.NET_DVR_VOD_PARA();
+        net_dvr_vod_para.dwSize = net_dvr_vod_para.size();
+        net_dvr_vod_para.struIDInfo.dwChannel = lChannel; //通道号
+        //开始时间
+        net_dvr_vod_para.struBeginTime.dwYear = 2022;
+        net_dvr_vod_para.struBeginTime.dwMonth = 11;
+        net_dvr_vod_para.struBeginTime.dwDay = 18;
+        net_dvr_vod_para.struBeginTime.dwHour = 10;
+        net_dvr_vod_para.struBeginTime.dwMinute = 00;
+        net_dvr_vod_para.struBeginTime.dwSecond = 00;
+        //停止时间
+        net_dvr_vod_para.struEndTime.dwYear = 2022;
+        net_dvr_vod_para.struEndTime.dwMonth = 11;
+        net_dvr_vod_para.struEndTime.dwDay = 18;
+        net_dvr_vod_para.struEndTime.dwHour = 10;
+        net_dvr_vod_para.struEndTime.dwMinute = 10;
+        net_dvr_vod_para.struEndTime.dwSecond = 00;
+        net_dvr_vod_para.hWnd = null; // 回放的窗口句柄，若置为空，SDK仍能收到码流数据，但不解码显示
+        net_dvr_vod_para.write();
+        int iPlayBack = hCNetSDK.NET_DVR_PlayBackByTime_V40(userID, net_dvr_vod_para);
+        if (iPlayBack <= -1) {
+            System.out.println("按时间回放失败，错误码为" + hCNetSDK.NET_DVR_GetLastError());
+            palybackFlay = true;
+            return;
+        }
+        //开启取流
+        boolean bCrtl = hCNetSDK.NET_DVR_PlayBackControl(iPlayBack, HCNetSDK.NET_DVR_PLAYSTART, 0, null);
+        if (playBackCallBack == null) {
+            playBackCallBack = new playDataCallBack();
+        }
+        boolean bRet = hCNetSDK.NET_DVR_SetPlayDataCallBack_V40(iPlayBack, playBackCallBack, Pointer.NULL);
+        //开始计时器
+        Playbacktimer = new Timer();//新建定时器
+        Playbacktimer.schedule(new PlaybackTask(), 0, 5000);//0秒后开始响应函数
+    }
     /**
      * 按时间下载录像(不支持转码3GP格式)
      * @param userID
@@ -533,113 +563,6 @@ public class VideoUtil {
             return;
         }
     }
-
-    /*************************************************
-     类:      DownloadTask
-     类描述:  下载定时器响应函数
-     *************************************************/
-    class downloadTask extends java.util.TimerTask {
-        //定时器函数
-        @Override
-        public void run() {
-            IntByReference nPos = new IntByReference(0);
-            hCNetSDK.NET_DVR_PlayBackControl(m_lLoadHandle, HCNetSDK.NET_DVR_PLAYGETPOS, 0, nPos);
-            if (nPos.getValue() > 100) {
-                m_lLoadHandle = -1;
-                downloadtimer.cancel();
-                System.out.println("由于网络原因或DVR忙,下载异常终止!");
-            }
-            if (nPos.getValue() == 100) {
-                Date nowTime = new Date(System.currentTimeMillis());
-                SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
-                System.out.println("结束下载时间：" + sdFormatter.format(nowTime));
-                m_lLoadHandle = -1;
-                downloadtimer.cancel();
-                System.out.println("按时间下载结束!");
-            }
-        }
-    }
-
-    class PlaybackTask extends java.util.TimerTask {
-        //定时器函数
-        @Override
-        public void run() {
-            System.out.println("定时器触发");
-            IntByReference nPos = new IntByReference(0);
-            System.out.println("iPlayBack " + iPlayBack);
-            boolean bret = hCNetSDK.NET_DVR_PlayBackControl(iPlayBack, HCNetSDK.NET_DVR_PLAYGETPOS, 0, nPos);
-            if (bret) {
-                System.out.println("回放进度" + nPos.getValue());
-            } else {
-                System.out.println("获取回放进度失败");
-            }
-            if (nPos.getValue() > 100) {
-                hCNetSDK.NET_DVR_StopPlayBack(iPlayBack);
-                if (outputStream != null) {
-                    try {
-                        outputStream.close();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-                palybackFlay = true;
-                System.out.println("由于网络原因或DVR忙,回放异常终止!");
-                return;
-            }
-            if (nPos.getValue() == 100) {
-                hCNetSDK.NET_DVR_StopPlayBack(iPlayBack);
-                if (outputStream != null) {
-                    try {
-                        outputStream.close();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-                palybackFlay = true;
-                System.out.println("按时间回放结束");
-                return;
-
-            }
-        }
-
-    }
-
-    /**
-     * 获取IP通道
-     * @param userID
-     *
-     *
-     * @author hongrongjian
-     * @date 2023/12/10
-     */
-    public static void getIPChannelInfo(int userID) {
-        IntByReference ibrBytesReturned = new IntByReference(0);//获取IP接入配置参数
-        HCNetSDK.NET_DVR_IPPARACFG_V40 m_strIpparaCfg = new HCNetSDK.NET_DVR_IPPARACFG_V40();
-        m_strIpparaCfg.write();
-        //lpIpParaConfig 接收数据的缓冲指针
-        Pointer lpIpParaConfig = m_strIpparaCfg.getPointer();
-        boolean bRet = hCNetSDK.NET_DVR_GetDVRConfig(userID, HCNetSDK.NET_DVR_GET_IPPARACFG_V40, 0, lpIpParaConfig,
-                m_strIpparaCfg.size(), ibrBytesReturned);
-        m_strIpparaCfg.read();
-        System.out.println("起始数字通道号：" + m_strIpparaCfg.dwStartDChan);
-
-        for (int iChannum = 0; iChannum < m_strIpparaCfg.dwDChanNum; iChannum++) {
-            int channum = iChannum + m_strIpparaCfg.dwStartDChan;
-            m_strIpparaCfg.struStreamMode[iChannum].read();
-            if (m_strIpparaCfg.struStreamMode[iChannum].byGetStreamType == 0) {
-                m_strIpparaCfg.struStreamMode[iChannum].uGetStream.setType(HCNetSDK.NET_DVR_IPCHANINFO.class);
-                m_strIpparaCfg.struStreamMode[iChannum].uGetStream.struChanInfo.read();
-                if (m_strIpparaCfg.struStreamMode[iChannum].uGetStream.struChanInfo.byEnable == 1) {
-                    System.out.println("IP通道" + channum + "在线");
-                } else {
-                    System.out.println("IP通道" + channum + "不在线");
-                }
-            }
-        }
-    }
-
     static class fPlayEScallback implements HCNetSDK.FPlayESCallBack {
         public void invoke(int lPreviewHandle, HCNetSDK.NET_DVR_PACKET_INFO_EX pstruPackInfo, Pointer pUser) {
             System.out.println("进入码流回调");
@@ -660,7 +583,6 @@ public class VideoUtil {
             //            }
         }
     }
-
     static class playDataCallBack implements HCNetSDK.FPlayDataCallBack {
         public void invoke(int lPlayHandle, int dwDataType, Pointer pBuffer, int dwBufSize, int dwUser) {
             System.out.println("回放码流回调...");
@@ -678,7 +600,6 @@ public class VideoUtil {
         }
 
     }
-
     /**
      * 预览回调函数
      *
@@ -731,6 +652,76 @@ public class VideoUtil {
                     }
             }
         }
+    }
+    /*************************************************
+     类:      DownloadTask
+     类描述:  下载定时器响应函数
+     *************************************************/
+    class downloadTask extends java.util.TimerTask {
+        //定时器函数
+        @Override
+        public void run() {
+            IntByReference nPos = new IntByReference(0);
+            hCNetSDK.NET_DVR_PlayBackControl(m_lLoadHandle, HCNetSDK.NET_DVR_PLAYGETPOS, 0, nPos);
+            if (nPos.getValue() > 100) {
+                m_lLoadHandle = -1;
+                downloadtimer.cancel();
+                System.out.println("由于网络原因或DVR忙,下载异常终止!");
+            }
+            if (nPos.getValue() == 100) {
+                Date nowTime = new Date(System.currentTimeMillis());
+                SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
+                System.out.println("结束下载时间：" + sdFormatter.format(nowTime));
+                m_lLoadHandle = -1;
+                downloadtimer.cancel();
+                System.out.println("按时间下载结束!");
+            }
+        }
+    }
+    class PlaybackTask extends java.util.TimerTask {
+        //定时器函数
+        @Override
+        public void run() {
+            System.out.println("定时器触发");
+            IntByReference nPos = new IntByReference(0);
+            System.out.println("iPlayBack " + iPlayBack);
+            boolean bret = hCNetSDK.NET_DVR_PlayBackControl(iPlayBack, HCNetSDK.NET_DVR_PLAYGETPOS, 0, nPos);
+            if (bret) {
+                System.out.println("回放进度" + nPos.getValue());
+            } else {
+                System.out.println("获取回放进度失败");
+            }
+            if (nPos.getValue() > 100) {
+                hCNetSDK.NET_DVR_StopPlayBack(iPlayBack);
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                palybackFlay = true;
+                System.out.println("由于网络原因或DVR忙,回放异常终止!");
+                return;
+            }
+            if (nPos.getValue() == 100) {
+                hCNetSDK.NET_DVR_StopPlayBack(iPlayBack);
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                palybackFlay = true;
+                System.out.println("按时间回放结束");
+                return;
+
+            }
+        }
+
     }
 
 }

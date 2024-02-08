@@ -25,73 +25,18 @@ public class SDKConfiguration {
     public static PlayCtrl playControl;
     public static FExceptionCallBack_Imp fExceptionCallBack;
     public static int FlowHandle;
-    public int iErr = 0;
     public static int lUserID = -1;//用户句柄
     public static int lPlay = -1;  //预览句柄
     public static int iPlayBack; //回放句柄
     public static int lDChannel;  //预览通道号
     public static boolean bSaveHandle = false;
-    public Timer Playbacktimer;//回放用定时器
-    int m_lLoadHandle;
-
     public static File file;
     public static String resultFileName = "..\\Download" + new String("returnFile" + ".h264");
     public static FileOutputStream fileOutputStream = null;
     public static int fileLength = 0;
-    public static class FExceptionCallBack_Imp implements HCNetSDK.FExceptionCallBack {
-        public void invoke(int dwType, int lUserID, int lHandle, Pointer pUser) {
-            System.out.println("异常事件类型:" + dwType);
-        }
-    }
-    @Bean
-    public HCNetSDK hCNetSDK() {
-        //1.加载sdk和播放库
-        if (hCNetSDK == null && playControl == null) {
-            if (!createSDKInstance()) {
-                System.out.println("Load SDK fail");
-                return null;
-            }
-            if (!createPlayInstance()) {
-                System.out.println("Load PlayCtrl fail");
-                return null;
-            }
-        }
-        if (osSelect.isLinux()) {
-            //Linux下的加载方法
-            loadSDKInLinux();
-        }
-        //2.SDK初始化，一个程序只需要调用一次
-        boolean initSuc = hCNetSDK.NET_DVR_Init();
-        System.out.println("SDK初始化完成");
-        //3.设置异常消息回调
-        if (fExceptionCallBack == null) {
-            fExceptionCallBack = new FExceptionCallBack_Imp();
-        }
-        Pointer pUser = null;
-        if (!hCNetSDK.NET_DVR_SetExceptionCallBack_V30(0, 0, fExceptionCallBack, pUser)) {
-            return null;
-        }
-        System.out.println("设置异常消息回调成功");
-        hCNetSDK.NET_DVR_SetLogToFile(3, "./sdkLog", false);
-        return hCNetSDK;
-    }
-
-    /**
-     *
-     * SDK资源释放，程序退出时调用
-     *
-     *
-     * @author hongrongjian
-     * @date 2023/12/10
-     */
-    @PreDestroy
-    public void cleanup() {
-        if (hCNetSDK != null) {
-            //SDK反初始化，释放资源，只需要退出时调用一次
-            hCNetSDK.NET_DVR_Cleanup();
-            System.out.println("SDK cleanup complete");
-        }
-    }
+    public int iErr = 0;
+    public Timer Playbacktimer;//回放用定时器
+    int m_lLoadHandle;
     /**
      *
      动态库加载
@@ -122,7 +67,6 @@ public class SDKConfiguration {
         }
         return true;
     }
-
     /**
      *
      播放库加载
@@ -182,7 +126,6 @@ public class SDKConfiguration {
         struComPath.write();
         hCNetSDK.NET_DVR_SetSDKInitCfg(2, struComPath.getPointer());
     }
-
     /**
      * 设备登录V40 与V30功能一致
      * @param ip   设备IP
@@ -219,6 +162,59 @@ public class SDKConfiguration {
                 lDChannel = m_strDeviceInfo.struDeviceV30.byStartDChan;
                 System.out.println("预览起始通道号：" + lDChannel);
             }
+        }
+    }
+    @Bean
+    public HCNetSDK hCNetSDK() {
+        //1.加载sdk和播放库
+        if (hCNetSDK == null && playControl == null) {
+            if (!createSDKInstance()) {
+                System.out.println("Load SDK fail");
+                return null;
+            }
+            if (!createPlayInstance()) {
+                System.out.println("Load PlayCtrl fail");
+                return null;
+            }
+        }
+        if (osSelect.isLinux()) {
+            //Linux下的加载方法
+            loadSDKInLinux();
+        }
+        //2.SDK初始化，一个程序只需要调用一次
+        boolean initSuc = hCNetSDK.NET_DVR_Init();
+        System.out.println("SDK初始化完成");
+        //3.设置异常消息回调
+        if (fExceptionCallBack == null) {
+            fExceptionCallBack = new FExceptionCallBack_Imp();
+        }
+        Pointer pUser = null;
+        if (!hCNetSDK.NET_DVR_SetExceptionCallBack_V30(0, 0, fExceptionCallBack, pUser)) {
+            return null;
+        }
+        System.out.println("设置异常消息回调成功");
+        hCNetSDK.NET_DVR_SetLogToFile(3, "./sdkLog", false);
+        return hCNetSDK;
+    }
+    /**
+     *
+     * SDK资源释放，程序退出时调用
+     *
+     *
+     * @author hongrongjian
+     * @date 2023/12/10
+     */
+    @PreDestroy
+    public void cleanup() {
+        if (hCNetSDK != null) {
+            //SDK反初始化，释放资源，只需要退出时调用一次
+            hCNetSDK.NET_DVR_Cleanup();
+            System.out.println("SDK cleanup complete");
+        }
+    }
+    public static class FExceptionCallBack_Imp implements HCNetSDK.FExceptionCallBack {
+        public void invoke(int dwType, int lUserID, int lHandle, Pointer pUser) {
+            System.out.println("异常事件类型:" + dwType);
         }
     }
 

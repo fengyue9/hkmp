@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" id="monitor-container">
     <el-row>
       <!-- 左侧设备选择 -->
       <el-col :span="5">
@@ -111,19 +111,24 @@
         </el-card>
       </el-col>
     </el-row>
-    <!--    底部音量-->
-    <div class="block" style=" display: flex">
-      <div class="bottom_left" style="padding-left: 35px;padding-top: 15px;">
-        <el-button type="warning">停止预览</el-button>
-        <el-button type="success">开始预览</el-button>
-      </div>
+    <el-row>
+      <el-card>
+        <!--    底部音量-->
+        <div class="block" style=" display: flex">
+          <div class="bottom_left" style="padding-left: 20px;padding-top: 15px;">
+            <el-button type="warning">停止预览</el-button>
+            <el-button type="success">开始预览</el-button>
+          </div>
 
-      <div style="padding-left: 60px;"></div>
-      <span class="demonstration">音量<span class="el-icon-s-operation"></span></span>
-      <el-slider style="width: 10%;padding-left: 10px;padding-right: 10px" v-model="voice"></el-slider>
-      <!--      <span class="demonstration">抓图</span>-->
-      <el-button class="demonstration" size="small">抓图</el-button>
-    </div>
+          <div style="padding-left: 80px;"></div>
+          <span class="demonstration">音量<span class="el-icon-s-operation"></span></span>
+          <el-slider style="width: 10%;padding-left: 10px;padding-right: 10px" v-model="voice"></el-slider>
+          <!--      <span class="demonstration">抓图</span>-->
+          <el-button class="demonstration" size="small">抓图</el-button>
+        </div>
+      </el-card>
+    </el-row>
+
   </div>
 </template>
 
@@ -203,6 +208,10 @@ export default {
 }
 </script>
 <style>
+#monitor-container{
+  /*实时预览页面背景色*/
+  background-color: #f2fafa;
+}
 .camera-container {
   height: 420px; /* 调整预览区域的高度 */
 }
@@ -213,7 +222,7 @@ export default {
 }
 
 .span_info {
-  font-size: 13px;
+  font-size: 16.5px;
 }
 
 .event-title {
@@ -226,7 +235,8 @@ export default {
 }
 
 .demonstration {
-  padding-top: 6px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .camera-container {

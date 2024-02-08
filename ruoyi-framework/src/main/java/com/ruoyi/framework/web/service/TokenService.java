@@ -120,6 +120,7 @@ public class TokenService
 
         Map<String, Object> claims = new HashMap<>();
         claims.put(Constants.LOGIN_USER_KEY, token);
+        //从数据声明生成令牌
         return createToken(claims);
     }
 
