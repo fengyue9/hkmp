@@ -195,6 +195,7 @@ public class SDKConfiguration {
         System.out.println("设置异常消息回调成功");
         hCNetSDK.NET_DVR_SetLogToFile(3, "./sdkLog", false);
         return hCNetSDK;
+
     }
     /**
      *

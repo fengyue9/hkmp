@@ -129,3 +129,7 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+# 配置海康威视 sdk 位置
+hik:
+  sdk-path: lib

@@ -7,6 +7,16 @@
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="org.slf4j" />
+      <option name="name" value="org.slf4j" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.slf4j/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="alimaven" />
       <option name="name" value="alimaven" />
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
@@ -17,9 +27,104 @@
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="alimaven" />
+      <option name="name" value="alimaven" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jitpack.io" />
+      <option name="name" value="jitpack.io" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="releases" />
       <option name="name" value="releases" />
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="snapshots" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jitpack.io" />
+      <option name="name" value="jitpack.io" />
+      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="alimaven" />
+      <option name="name" value="alimaven" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.slf4j" />
+      <option name="name" value="org.slf4j" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="public" />
+      <option name="name" value="aliyun nexus" />
+      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.slf4j" />
+      <option name="name" value="org.slf4j" />
+      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="http://10.168.3.120:8081/nexus/content/repositories/thirdparty" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="public" />
+      <option name="name" value="aliyun nexus" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="alfrescomaven" />
+      <option name="name" value="alfrescomaven" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="alfrescomaven" />
+      <option name="name" value="alfrescomaven" />
+      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="alfrescomaven" />
+      <option name="name" value="alfrescomaven" />
+      <option name="url" value="https://artifacts.alfresco.com/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.tmatesoft.svnkit" />
+      <option name="name" value="org.tmatesoft.svnkit" />
+      <option name="url" value="https://jitpack.io" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="org.tmatesoft.svnkit" />
@@ -37,29 +142,44 @@
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="shine-nexus" />
+      <option name="name" value="shine-nexus" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="org.tmatesoft.svnkit" />
+      <option name="name" value="org.tmatesoft.svnkit" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.tmatesoft.svnkit/svnkit/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="shine-nexus" />
+      <option name="name" value="shine-nexus" />
+      <option name="url" value="http://10.168.3.120:8081/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="public" />
       <option name="name" value="aliyun nexus" />
-      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+      <option name="url" value="https://maven.aliyun.com/repository/public" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="org.slf4j" />
-      <option name="name" value="org.slf4j" />
-      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="http://10.168.3.120:8081/nexus/content/repositories/releases" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="jboss.community" />
-      <option name="name" value="JBoss Community repository" />
-      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+      <option name="id" value="GridGain External Repository" />
+      <option name="name" value="GridGain External Repository" />
+      <option name="url" value="https://jitpack.io" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="alfrescomaven" />
-      <option name="name" value="alfrescomaven" />
-      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+      <option name="id" value="snapshots" />
+      <option name="name" value="snapshots" />
+      <option name="url" value="http://10.168.3.120:8081/nexus/content/repositories/snapshots" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="thirdparty" />
-      <option name="name" value="thirdparty" />
-      <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
+      <option name="id" value="GridGain External Repository" />
+      <option name="name" value="GridGain External Repository" />
+      <option name="url" value="http://www.gridgainsystems.com/nexus/content/repositories/external/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="GridGain External Repository" />

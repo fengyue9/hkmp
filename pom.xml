@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
+    <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.ruoyi</groupId>
     <artifactId>ruoyi</artifactId>
     <version>3.8.6</version>
 
-    <name>ruoyi</name>
+    <name>hkmp</name>
     <url>http://www.ruoyi.vip</url>
-    <description>若依管理系统</description>
-    
+    <description>hkmp</description>
+
     <properties>
         <ruoyi.version>3.8.6</ruoyi.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -200,6 +200,7 @@
     </build>
 
     <repositories>
+
         <repository>
             <id>public</id>
             <name>aliyun nexus</name>
@@ -208,6 +209,7 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+
     </repositories>
 
     <pluginRepositories>
