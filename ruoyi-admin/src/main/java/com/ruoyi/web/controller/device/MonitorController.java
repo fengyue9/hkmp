@@ -1,4 +1,7 @@
 package com.ruoyi.web.controller.device;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ruoyi.web.vo.SystemUsageVO;
 
 import cn.nkk.hikvision.utils.HkUtils;
 /**
@@ -17,6 +22,18 @@ import cn.nkk.hikvision.utils.HkUtils;
 @RestController
 @RequestMapping("/camera/monitor")
 public class MonitorController {
+
+    @GetMapping(value = "/system/resource")
+    public SystemUsageVO getSystemResourceUsage() {
+        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
+        double cpuUsage = osBean.getSystemLoadAverage() * 100; // 获取 CPU 使用率
+        long totalMemory = Runtime.getRuntime().totalMemory(); // 总内存
+        long freeMemory = Runtime.getRuntime().freeMemory(); // 空闲内存
+        long usedMemory = totalMemory - freeMemory; // 已使用内存
+        double memoryUsage = ((double) usedMemory / totalMemory) * 100; // 计算内存使用率
+        // 还可以获取其他系统资源的使用情况，比如网络占用情况等
+        return new SystemUsageVO(cpuUsage, memoryUsage);
+    }
     /**
      * rtsp 实时预览
      * @param response

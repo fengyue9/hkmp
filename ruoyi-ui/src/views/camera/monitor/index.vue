@@ -107,24 +107,34 @@
               </el-timeline>
             </el-scrollbar>
           </div>
-          <!--          <div ref="cameraContainer" class="camera-container"></div>-->
         </el-card>
       </el-col>
     </el-row>
-    <el-row>
+    <el-row style="height: 80px">
       <el-card>
-        <!--    底部音量-->
-        <div class="block" style=" display: flex">
-          <div class="bottom_left" style="padding-left: 20px;padding-top: 15px;">
-            <el-button type="warning">停止预览</el-button>
+        <!-- 底部音量 -->
+        <div class="block"
+             style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
+          <div class="bottom_left">
+            <el-button type="warning" style="margin-right: 10px;">停止预览</el-button>
             <el-button type="success">开始预览</el-button>
           </div>
 
-          <div style="padding-left: 80px;"></div>
-          <span class="demonstration">音量<span class="el-icon-s-operation"></span></span>
-          <el-slider style="width: 10%;padding-left: 10px;padding-right: 10px" v-model="voice"></el-slider>
-          <!--      <span class="demonstration">抓图</span>-->
-          <el-button class="demonstration" size="small">抓图</el-button>
+          <div style="flex: 1;"></div>
+
+          <div class="volume-control" style="display: flex; align-items: center;">
+            <el-slider style="width: 100px; margin: 0 10px;" v-model="voice"></el-slider>
+            <el-button class="demonstration">抓图1</el-button>
+            <el-button class="demonstration">抓图2</el-button>
+            <el-button class="demonstration">抓图3</el-button>
+            <el-button class="demonstration">抓图4</el-button>
+            <el-button class="demonstration">抓图5</el-button>
+            <el-button class="demonstration">抓图6</el-button>
+            <el-button class="demonstration">抓图7</el-button>
+            <el-button class="demonstration">抓图8</el-button>
+            <el-button class="demonstration">抓图9</el-button>
+            <el-button class="demonstration">抓图10</el-button>
+          </div>
         </div>
       </el-card>
     </el-row>
@@ -172,7 +182,7 @@ export default {
   },
   created() {
     //调用查询设备信息列表查询所有设备列表并绑定到设备选择下拉框中
-    this.queryDeviceList()
+    this.queryDeviceList();
   },
   methods: {
     initCameraPreview() {
@@ -191,17 +201,15 @@ export default {
       // this.$parent.eventBus.$emit('deviceSelected', device)
     },
     queryDeviceList() {
-      this.loading = true
       listDevice(this.queryParams).then(response => {
         this.devices = response.rows.filter(device => device.deviceStatus === "0");
-        this.loading = false;
       })
     }
   },
   watch: {
     selectedDevice() {
       // 当选中的设备发生变化时，重新初始化摄像头预览
-      this.initCameraPreview()
+      this.initCameraPreview();
     }
   }
 
@@ -235,10 +243,7 @@ export default {
   margin-top: 10px;
 }
 
-.demonstration {
-  padding-top: 20px;
-  padding-left: 20px;
-}
+
 
 .camera-container {
   max-width: 100%;

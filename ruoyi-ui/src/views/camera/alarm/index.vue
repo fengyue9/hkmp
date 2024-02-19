@@ -67,13 +67,13 @@ export default {
     return {
       realTimeAlarms: [
         { alarmType: '移动侦测', location: '大厅', timestamp: '2023-12-01 08:30:00' },
-        { alarmType: '烟雾报警', location: '办公室', timestamp: '2023-12-01 09:15:00' },
-        { alarmType: '入侵报警', location: '仓库', timestamp: '2023-12-01 10:00:00' }
+        { alarmType: '移动侦测', location: '办公室', timestamp: '2023-12-01 09:15:00' },
+        { alarmType: '移动侦测', location: '仓库', timestamp: '2023-12-01 10:00:00' }
       ],
       alarmHistory: [
-        { alarmType: '门禁报警', location: '前门', timestamp: '2023-11-30 15:45:00' },
-        { alarmType: '温度异常', location: '实验室', timestamp: '2023-11-30 16:20:00' },
-        { alarmType: '燃气泄漏', location: '厨房', timestamp: '2023-11-30 17:10:00' }
+        { alarmType: '移动侦测', location: '前门', timestamp: '2023-11-30 15:45:00' },
+        { alarmType: '移动侦测', location: '实验室', timestamp: '2023-11-30 16:20:00' },
+        { alarmType: '移动侦测', location: '厨房', timestamp: '2023-11-30 17:10:00' }
       ],
       detailDialogVisible: false,
       selectedAlarm: null
