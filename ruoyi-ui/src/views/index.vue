@@ -10,6 +10,63 @@
     </el-row>
     <el-row>
       <el-card>
+        <el-col :span="6">
+          <div>
+            <el-statistic
+              group-separator=","
+              :precision="2"
+              :value="value2"
+              :title="title"
+            ></el-statistic>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div>
+            <el-statistic title="男女比">
+              <template slot="formatter">
+                456/2
+              </template>
+            </el-statistic>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div>
+            <el-statistic
+              group-separator=","
+              :precision="2"
+              decimal-separator="."
+              :value="value1"
+              :title="title"
+            >
+              <template slot="prefix">
+                <i class="el-icon-s-flag" style="color: red"></i>
+              </template>
+              <template slot="suffix">
+                <i class="el-icon-s-flag" style="color: blue"></i>
+              </template>
+            </el-statistic>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div>
+            <el-statistic :value="like ? 521 : 520" title="Feedback">
+              <template slot="suffix">
+                  <span @click="like = !like" class="like">
+                    <i
+                      class="el-icon-star-on"
+                      style="color:red"
+                      v-show="!!like"
+                    ></i>
+                    <i class="el-icon-star-off" v-show="!like"></i>
+                  </span>
+              </template>
+            </el-statistic>
+          </div>
+        </el-col>
+      </el-card>
+    </el-row>
+    <el-row>
+      <el-card>
         <!-- 实时监控图表 -->
         <div class="real-time-chart">
           <div ref="realTimeChart" class="chart-container"></div>
@@ -63,7 +120,11 @@ export default {
         cpu: [],
         memory: [],
         network: []
-      }
+      },
+      like: true,
+      value1: 4154.564,
+      value2: 1314,
+      title: "用户人数",
     }
   },
   mounted() {
@@ -123,9 +184,9 @@ export default {
         const cpuUsage = Math.floor(Math.random() * 100)
         const memoryUsage = Math.floor(Math.random() * 100)
         const networkTraffic = Math.floor(Math.random() * 100)
-        this.realtimeData.cpu.push({ name: time, value: cpuUsage })
-        this.realtimeData.memory.push({ name: time, value: memoryUsage })
-        this.realtimeData.network.push({ name: time, value: networkTraffic })
+        this.realtimeData.cpu.push({name: time, value: cpuUsage})
+        this.realtimeData.memory.push({name: time, value: memoryUsage})
+        this.realtimeData.network.push({name: time, value: networkTraffic})
         if (this.realtimeData.cpu.length > 20) {
           this.realtimeData.cpu.shift()
           this.realtimeData.memory.shift()
@@ -198,6 +259,12 @@ export default {
   height: 290px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.like {
+  cursor: pointer;
+  font-size: 25px;
+  display: inline-block;
 }
 </style>
 
