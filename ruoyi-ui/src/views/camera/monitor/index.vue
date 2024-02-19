@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import { listDevice } from '../../../api/camera/device'
+import {listDevice} from '../../../api/camera/device'
 
 export default {
   data() {
@@ -157,11 +157,11 @@ export default {
       ],
       voice: 50,
       eventCallbacks: [
-        { timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: '' },
-        { timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport' },
-        { timestamp: '2023-01-01 10:00:00', title: '停止云台失败', description: '403,notSupport' },
-        { timestamp: '2023-01-01 11:30:00', title: '开启云台失败', description: '403,notSupport' },
-        { timestamp: '2023-01-01 13:45:00', title: '停止云台失败', description: '403,notSupport' }
+        {timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: ''},
+        {timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport'},
+        {timestamp: '2023-01-01 10:00:00', title: '停止云台失败', description: '403,notSupport'},
+        {timestamp: '2023-01-01 11:30:00', title: '开启云台失败', description: '403,notSupport'},
+        {timestamp: '2023-01-01 13:45:00', title: '停止云台失败', description: '403,notSupport'}
       ]
     }
   },
@@ -187,14 +187,14 @@ export default {
     // 当用户选择设备时触发
     handleDeviceSelection(device) {
       // 使用 EventBus 触发设备选择事件
-      console.log('哈哈哈我选择了设备')
+      console.log('哈哈哈我选择了设备');
       // this.$parent.eventBus.$emit('deviceSelected', device)
     },
     queryDeviceList() {
       this.loading = true
       listDevice(this.queryParams).then(response => {
-        this.devices = response.rows
-        this.loading = false
+        this.devices = response.rows.filter(device => device.deviceStatus === "0");
+        this.loading = false;
       })
     }
   },
@@ -208,10 +208,11 @@ export default {
 }
 </script>
 <style>
-#monitor-container{
+#monitor-container {
   /*实时预览页面背景色*/
   background-color: #f2fafa;
 }
+
 .camera-container {
   height: 420px; /* 调整预览区域的高度 */
 }
