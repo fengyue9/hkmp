@@ -102,6 +102,11 @@
       <option name="url" value="https://jitpack.io" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="public" />
+      <option name="name" value="aliyun nexus" />
+      <option name="url" value="https://repo.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="alfrescomaven" />
       <option name="name" value="alfrescomaven" />
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
@@ -142,6 +147,11 @@
       <option name="url" value="https://mirrors.huaweicloud.com/repository/maven/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="jitpack.io" />
+      <option name="name" value="jitpack.io" />
+      <option name="url" value="https://repo.huaweicloud.com/repository/maven/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="shine-nexus" />
       <option name="name" value="shine-nexus" />
       <option name="url" value="https://jitpack.io" />
@@ -152,14 +162,19 @@
       <option name="url" value="https://mvnrepository.com/artifact/org.tmatesoft.svnkit/svnkit/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="public" />
+      <option name="name" value="aliyun nexus" />
+      <option name="url" value="https://maven.aliyun.com/repository/public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="shine-nexus" />
       <option name="name" value="shine-nexus" />
       <option name="url" value="http://10.168.3.120:8081/nexus/content/groups/public" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="public" />
-      <option name="name" value="aliyun nexus" />
-      <option name="url" value="https://maven.aliyun.com/repository/public" />
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.huaweicloud.com/repository/maven/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="releases" />

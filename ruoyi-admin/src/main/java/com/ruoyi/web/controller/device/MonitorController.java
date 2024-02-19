@@ -48,8 +48,8 @@ public class MonitorController {
 
         AsyncContext asyncContext = request.startAsync();
         asyncContext.setTimeout(0);
-
-        String rtspUrl = HkUtils.toRtspUrl("ip", "推流端口", "账号", "密码", 1);
+        //第一个端口是推流端口
+        String rtspUrl = HkUtils.toRtspUrl("192.168.1.64", "9000", "admin", "hrj,2002527", 1);
         try {
             HkUtils.rtspToFlv(rtspUrl, asyncContext);
         } catch (Exception e) {

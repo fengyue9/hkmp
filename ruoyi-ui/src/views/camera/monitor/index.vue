@@ -79,9 +79,9 @@
       <!-- 中间主体部分海康威视摄像头预览 -->
       <el-col :span="14">
         <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-video-camera"> 摄像头预览</h3>
-          <div ref="cameraContainer" class="camera-container">
-            <video class="video-element" ref="videoElement" controls autoplay></video>
+          <h3 slot="header" class="header_card el-icon-vid eo-camera"> 摄像头预览</h3>
+          <div class="camera-container">
+            <video ref="video" class="video-element" autoplay muted></video>
           </div>
         </el-card>
       </el-col>
@@ -117,7 +117,7 @@
              style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
           <div class="bottom_left">
             <el-button type="warning" style="margin-right: 10px;">停止预览</el-button>
-            <el-button type="success">开始预览</el-button>
+            <el-button type="success" @click="startMonitor()">开始预览</el-button>
           </div>
 
           <div style="flex: 1;"></div>
@@ -141,9 +141,9 @@
 
   </div>
 </template>
-
 <script>
 import {listDevice} from '../../../api/camera/device'
+import WebRtcStreamer from './webrtcstreamer.js';
 
 export default {
   data() {
@@ -204,6 +204,25 @@ export default {
       listDevice(this.queryParams).then(response => {
         this.devices = response.rows.filter(device => device.deviceStatus === "0");
       })
+    },
+    startMonitor() {
+      this.initWebRtcStreamer();
+    },
+    //初始化实时预览
+    initWebRtcStreamer() {
+      // 获取 video 元素的引用
+      const videoElement = this.$refs.video;
+      // 初始化 WebRtcStreamer
+      this.webRtcServer = new WebRtcStreamer(videoElement, "http://127.0.0.1:8000");
+      // 连接到 RTSP 流地址
+      this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
+    },
+    //断开实时预览
+    disconnectWebRtcStreamer() {
+      // 断开连接
+      if (this.webRtcServer) {
+        this.webRtcServer.disconnect();
+      }
     }
   },
   watch: {
@@ -211,6 +230,10 @@ export default {
       // 当选中的设备发生变化时，重新初始化摄像头预览
       this.initCameraPreview();
     }
+  },
+  beforeDestroy() {
+    // 在组件销毁前断开连接
+    this.disconnectWebRtcStreamer();
   }
 
 }
@@ -242,7 +265,6 @@ export default {
 .event-description {
   margin-top: 10px;
 }
-
 
 
 .camera-container {
