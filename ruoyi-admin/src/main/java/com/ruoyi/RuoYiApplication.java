@@ -1,9 +1,11 @@
 package com.ruoyi;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-
 /**
  * 启动程序
  *
@@ -12,9 +14,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class RuoYiApplication {
     public static void main(String[] args) {
-        // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(RuoYiApplication.class, args);
-        System.out.println("================项目启动成功================");
+        System.out.println("================ h k m p 启 动 成 功 ================");
     }
 
 }
