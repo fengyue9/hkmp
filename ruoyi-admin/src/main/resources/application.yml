@@ -133,3 +133,10 @@ xss:
 # 配置海康威视 sdk 位置
 hik:
   sdk-path: lib
+# MinIO配置
+minio:
+  host: http://127.0.0.1:9000
+  url: ${minio.host}/${minio.bucket}/
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: hkmp

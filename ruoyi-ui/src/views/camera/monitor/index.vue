@@ -18,19 +18,19 @@
             />
           </el-select>
           <br>
-          <span class="span_info">窗口分割数 </span>
-          <el-select v-model="selectedWindowCount" placeholder="请选择窗口分割数"
-                     style="padding-top:10px;padding-bottom:10px"
-                     size="small"
-          >
-            <el-option
-              v-for="windowCount in windowCounts"
-              :key="windowCount.id"
-              :label="windowCount.count"
-              :value="windowCount.id"
-            />
-          </el-select>
-          <br>
+<!--          <span class="span_info">窗口分割数 </span>-->
+<!--          <el-select v-model="selectedWindowCount" placeholder="请选择窗口分割数"-->
+<!--                     style="padding-top:10px;padding-bottom:10px"-->
+<!--                     size="small"-->
+<!--          >-->
+<!--            <el-option-->
+<!--              v-for="windowCount in windowCounts"-->
+<!--              :key="windowCount.id"-->
+<!--              :label="windowCount.count"-->
+<!--              :value="windowCount.id"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--          <br>-->
           <span class="span_info">云台操作</span>
           <br>
           <!--          云台操作按钮组-->
@@ -116,7 +116,7 @@
         <div class="block"
              style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
           <div class="bottom_left">
-            <el-button type="warning" style="margin-right: 10px;">停止预览</el-button>
+            <el-button type="warning" style="margin-right: 10px;" @click="disconnectWebRtcStreamer">停止预览</el-button>
             <el-button type="success" @click="startMonitor()">开始预览</el-button>
           </div>
 
@@ -142,7 +142,7 @@
   </div>
 </template>
 <script>
-import {listDevice} from '../../../api/camera/device'
+import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from './webrtcstreamer.js';
 
 export default {
