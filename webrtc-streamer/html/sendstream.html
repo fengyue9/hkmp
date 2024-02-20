@@ -1,0 +1,51 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="libs/adapter.min.js" ></script>
+<script src="webrtcstreamer.js" ></script>
+<script src="webrtcstreamer.json" ></script>
+<script>        
+    if (location.search.slice(1)) {
+		var url = { video:location.search.slice(1) };  
+		var options = webrtcConfig.options;
+		if (typeof URLSearchParams != 'undefined') {
+			var params = new URLSearchParams(location.search);
+			if (params.has("video") || params.has("audio")) {
+				url = { video:params.get("video"), audio:params.get("audio") };
+			}
+			if (params.has("options")) {
+				options = params.get("options");
+			}
+		} 	    
+
+		window.onload         = function() { 
+			this.webRtcServer      = new WebRtcStreamer("remotevideo", webrtcConfig.url);
+			navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
+			
+				var videoElement = document.getElementById("localvideo");
+				videoElement.src = URL.createObjectURL(stream);
+				videoElement.play(); 
+		
+				this.webRtcServer.connect(url.video, url.audio, options, stream) 
+			})
+		}
+        window.onbeforeunload = function() { this.webRtcServer.disconnect() }
+    } else {
+	if (typeof URLSearchParams != 'undefined') {
+		alert("WebRTC stream name to connect is missing\n\nUsage :" + window.location + "?video=<WebRTC video stream name>&audio=<WebRTC audio stream name>&options=<WebRTC options>")
+	} else {
+		alert("WebRTC stream name to connect is missing\n\nUsage :" + window.location + "?<WebRTC video stream name>")
+	}
+    }
+</script>
+</head>
+<body> 
+	<div>
+		<video id="localvideo" ></video>
+	</div>
+	<div>	
+		<video id="remotevideo" muted playsinline></video>	
+	</div>
+</body>
+</html>
+

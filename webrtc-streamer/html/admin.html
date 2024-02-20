@@ -1,0 +1,126 @@
+<html>
+<head>
+<script src="libs/ag-grid.min.js"></script>
+<script src="webrtcstreamer.json" ></script>
+<script src="webrtcstreamer.js" ></script>
+<style type="text/css">
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer {
+  text-align: center; 
+}
+</style> 
+</head>
+<body> 
+	<div>
+		log <select id="log" onchange="fetch('api/log?level='+this.value)" >
+			<option>0</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		</select>	
+	</div>
+	<div id="myGrid" style="height: 80%;" class="ag-fresh"></div>
+	<footer id="footer"></footer>
+</body>
+<script>	
+	// columns
+	var columnDefs = [
+	    { headerName: "Peerid" , field: "peerid",  cellClass: "cell" },
+	    { headerName: "Stream", field: "streamid",  cellClass: "cell" },
+	    { headerName: "Size", field: "size",  cellClass: "cell" },
+	    { headerName: "Action" , cellClass: "cell", 
+	      field: "action", 
+	      cellRenderer: function(params) { 
+	        var eDiv = document.createElement('div');
+	        var eButton = document.createElement('button');
+		eButton.innerHTML = params.value;
+		eDiv.appendChild(eButton);
+		eButton.addEventListener('click', function() {
+			fetch( webrtcConfig.url + "/api/hangup?peerid=" + params.data.peerid )
+		});
+
+		return eDiv;
+              } 
+	    }
+	];
+
+	// options
+	var gridOptions = {
+		enableFilter: true,
+		enableSorting: true,
+		enableColResize: true,
+		columnDefs: columnDefs,
+		onGridReady: function($event) { $event.api.sizeColumnsToFit(); }
+	};
+	
+	// fill grid
+	new agGrid.Grid(document.querySelector('#myGrid'), gridOptions);	
+	
+	// ------------------------------------------
+	// init device list 
+	// ------------------------------------------	
+	function onGetPeerConnectionList(peerConnectionList) {
+	
+		var rowData = [];
+		peerConnectionList.forEach(function(item) {
+			var peerConnection = Object.values(item)[0];
+			
+			var streamid = "";
+			var frameHeight = 0;
+			var frameWidth = 0;
+			if (peerConnection && peerConnection.hasOwnProperty("streams")){
+				streamid = Object.keys(peerConnection.streams)[0];
+
+				var stream = Object.values(peerConnection.streams)[0];
+				Object.entries(stream).forEach( ([key, value]) => {
+					if (value.hasOwnProperty("width")) {
+						frameHeight = value.width;
+					}
+					if (value.hasOwnProperty("height")) {
+						frameWidth = value.height;
+					}
+				});
+			}
+			
+			rowData.push({peerid: Object.keys(item)[0] , streamid, size:frameHeight+"x"+frameWidth, action:"hangup" })
+		});
+		gridOptions.api.setRowData(rowData);		
+	}
+	
+	// ------------------------------------------
+	// Fill version
+	// ------------------------------------------	
+	function onVersion(version) {
+		document.getElementById("footer").innerHTML = "<p><a href='https://github.com/mpromonet/webrtc-streamer'>WebRTC-Streamer</a>"
+							+ " " + version.split(" ")[0] + "</p>";
+	}
+	
+	function getPeerConnectionList() {
+		fetch(webrtcConfig.url + "/api/getPeerConnectionList")
+			.then( (response) => response.json() ) 
+			.then( (response) => onGetPeerConnectionList( response ))
+	}
+
+	// load
+	window.onload         = function() { 
+		getPeerConnectionList();
+		window.setInterval(()=> { getPeerConnectionList(); }, 2000);
+		fetch(webrtcConfig.url + "/api/version")
+			.then( (response) => response.json() ) 
+			.then( (response) => onVersion( response ))
+		fetch('api/log')
+			.then( (response) => response.text() ) 
+			.then( (response)=> document.getElementById("log").value = response )
+	} 
+	
+	// unload
+	window.onbeforeunload = function() { 
+	}
+</script>
+</html>
+
