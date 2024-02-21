@@ -5,75 +5,66 @@
       <el-col :span="5">
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-coordinate"> 操作栏</h3>
-          <!--          选择设备栏 -->
-          <span class="span_info">设备列表 </span>
-          <el-select v-model="selectedItem" placeholder="请选择设备" @click="handleDeviceSelection"
-                     style="padding-top:10px;padding-bottom:10px" size="small"
-          >
-            <el-option
-              v-for="device in devices"
-              :key="device.deviceId"
-              :label="device.deviceName"
-              :value="device.deviceId"
-            />
-          </el-select>
-          <br>
-<!--          <span class="span_info">窗口分割数 </span>-->
-<!--          <el-select v-model="selectedWindowCount" placeholder="请选择窗口分割数"-->
-<!--                     style="padding-top:10px;padding-bottom:10px"-->
-<!--                     size="small"-->
-<!--          >-->
-<!--            <el-option-->
-<!--              v-for="windowCount in windowCounts"-->
-<!--              :key="windowCount.id"-->
-<!--              :label="windowCount.count"-->
-<!--              :value="windowCount.id"-->
-<!--            />-->
-<!--          </el-select>-->
-<!--          <br>-->
-          <span class="span_info">云台操作</span>
-          <br>
-          <!--          云台操作按钮组-->
-          <div class="el-button-group" style="border: 1px;padding-top:5px;">
-            <div class="el-button primary el-icon-top-left"></div>
-            <div class="el-button primary el-icon-top"></div>
-            <div class="el-button primary el-icon-top-right"></div>
+          <div class="camera-container">
+            <!--          选择设备栏 -->
+            <span class="span_info">设备列表 </span>
+            <el-select v-model="selectedItem" placeholder="请选择设备" @click="handleDeviceSelection"
+                       style="padding-top:10px;padding-bottom:10px" size="small"
+            >
+              <el-option
+                v-for="device in devices"
+                :key="device.deviceId"
+                :label="device.deviceName"
+                :value="device"
+              />
+            </el-select>
+            <br>
+            <span class="span_info">云台操作</span>
+            <br>
+            <!--          云台操作按钮组-->
+            <div class="el-button-group" style="border: 1px;padding-top:10px;">
+              <div class="el-button primary el-icon-top-left" @click="remoteControlToLeftTop"></div>
+              <div class="el-button primary el-icon-top"></div>
+              <div class="el-button primary el-icon-top-right"></div>
+            </div>
+            <div class="el-button-group ">
+              <div class="el-button primary el-icon-back"></div>
+              <div class="el-button primary el-icon-mouse" @click=""></div>
+              <div class="el-button primary el-icon-right"></div>
+            </div>
+            <div class="el-button-group" style="padding-bottom: 10px">
+              <div class="el-button primary el-icon-bottom-left"></div>
+              <div class="el-button primary el-icon-bottom"></div>
+              <div class="el-button primary el-icon-bottom-right"></div>
+            </div>
+            <!--          高级显示设置-->
+            <br>
+            <span class="span_info">高级显示设置</span>
+            <br>
+            <!--          调整焦焦距按钮-->
+            <div class="button-row" style="padding-top: 10px;">
+              <el-button class="primary el-icon-circle-plus-outline">焦距变大
+              </el-button>
+              <el-button class="primary el-icon-remove-outline">焦距变小
+              </el-button>
+            </div>
+            <!--          调整光圈按钮-->
+            <div class="button-row" style="padding-top: 10px;">
+              <el-button class="primary el-icon-circle-plus-outline">扩大光圈
+              </el-button>
+              <el-button class="primary el-icon-remove-outline">缩小光圈
+              </el-button>
+            </div>
+            <!--          调整焦点按钮-->
+            <div class="button-row" style="padding-top: 10px;">
+              <el-button class="primary el-icon-circle-plus-outline">焦点前调
+              </el-button>
+              <el-button class="primary el-icon-remove-outline">焦点后调
+              </el-button>
+            </div>
+
           </div>
-          <div class="el-button-group ">
-            <div class="el-button primary el-icon-back"></div>
-            <div class="el-button primary el-icon-mouse"></div>
-            <div class="el-button primary el-icon-right"></div>
-          </div>
-          <div class="el-button-group ">
-            <div class="el-button primary el-icon-bottom-left"></div>
-            <div class="el-button primary el-icon-bottom"></div>
-            <div class="el-button primary el-icon-bottom-right"></div>
-          </div>
-          <!--          高级显示设置-->
-          <br>
-          <span class="span_info">高级显示设置</span>
-          <br>
-          <!--          调焦按钮-->
-          <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">调焦
-            </el-button>
-            <el-button class="primary el-icon-remove-outline">调焦
-            </el-button>
-          </div>
-          <!--          聚焦按钮-->
-          <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">聚焦
-            </el-button>
-            <el-button class="primary el-icon-remove-outline">聚焦
-            </el-button>
-          </div>
-          <!--          调光圈按钮-->
-          <div class="button-row">
-            <el-button class="primary el-icon-circle-plus-outline">光圈
-            </el-button>
-            <el-button class="primary el-icon-remove-outline">光圈
-            </el-button>
-          </div>
+
         </el-card>
       </el-col>
       <!-- 中间主体部分海康威视摄像头预览 -->
@@ -81,7 +72,7 @@
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-vid eo-camera"> 摄像头预览</h3>
           <div class="camera-container">
-            <video ref="video" class="video-element" autoplay muted></video>
+            <video ref="video" class="video-element" controls poster="../../../assets/images/poster1.jpg"></video>
           </div>
         </el-card>
       </el-col>
@@ -89,9 +80,9 @@
       <el-col :span="5">
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-data-line"> 操作记录</h3>
-          <div class="content" style="height: 420px;">
-            <el-scrollbar style="height: 420px; overflow-y: auto;">
-              <el-timeline style="padding-left: 5px;" reverse>
+          <div class="camera-container">
+            <el-scrollbar style="height: 100%; overflow-y: auto;">
+              <el-timeline style="padding-left: 5px;height: 100%" reverse>
                 <el-timeline-item
                   v-for="(event, index) in eventCallbacks"
                   :key="index"
@@ -112,7 +103,6 @@
     </el-row>
     <el-row style="height: 80px">
       <el-card>
-        <!-- 底部音量 -->
         <div class="block"
              style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
           <div class="bottom_left">
@@ -123,8 +113,7 @@
           <div style="flex: 1;"></div>
 
           <div class="volume-control" style="display: flex; align-items: center;">
-            <el-slider style="width: 100px; margin: 0 10px;" v-model="voice"></el-slider>
-            <el-button class="demonstration">抓图1</el-button>
+            <el-button class="demonstration" @click="captureImage">抓图1</el-button>
             <el-button class="demonstration">抓图2</el-button>
             <el-button class="demonstration">抓图3</el-button>
             <el-button class="demonstration">抓图4</el-button>
@@ -144,6 +133,7 @@
 <script>
 import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from './webrtcstreamer.js';
+import {saveImage, remoteControl} from "@/api/camera/monitor/monitor";
 
 export default {
   data() {
@@ -153,7 +143,7 @@ export default {
       //设备列表，用于下拉框选择
       devices: [],
       //设备列表下拉框默认选中的值
-      selectedItem: '',
+      selectedItem: null,
       windowCounts: [
         {
           id: 1, count: '1×1'
@@ -165,7 +155,6 @@ export default {
           id: 4, count: '4×4'
         }
       ],
-      voice: 50,
       eventCallbacks: [
         {timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: ''},
         {timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport'},
@@ -195,10 +184,14 @@ export default {
       // }
     },
     // 当用户选择设备时触发
-    handleDeviceSelection(device) {
-      // 使用 EventBus 触发设备选择事件
-      console.log('哈哈哈我选择了设备');
-      // this.$parent.eventBus.$emit('deviceSelected', device)
+    handleDeviceSelection() {
+      if (this.selectedItem) {
+        console.log('用户选择了设备:', this.selectedItem);
+        // 在这里可以添加需要执行的逻辑
+      } else {
+        console.log('用户未选择设备');
+        // 在这里可以添加处理用户未选择设备的逻辑
+      }
     },
     queryDeviceList() {
       listDevice(this.queryParams).then(response => {
@@ -206,31 +199,168 @@ export default {
       })
     },
     startMonitor() {
-      this.initWebRtcStreamer();
+      // 获取选中的设备对象
+      const device = this.selectedItem;
+      // 检查设备对象是否为空
+      if (!device) {
+        this.$message.error('请先选择设备');
+        return;
+      }
+      //开始预览
+      this.$message({
+        message: '开始预览！',
+        type: 'success',
+        center: true
+      });
+      console.log(11111111)
+      console.log(device)
+      this.initWebRtcStreamer(device);
     },
     //初始化实时预览
-    initWebRtcStreamer() {
+    initWebRtcStreamer(device) {
       // 获取 video 元素的引用
       const videoElement = this.$refs.video;
       // 初始化 WebRtcStreamer
       this.webRtcServer = new WebRtcStreamer(videoElement, "http://127.0.0.1:8000");
       // 连接到 RTSP 流地址
-      this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
+      const url = 'rtsp://' + device.deviceUsername + ':' + device.devicePassword + '@' + device.deviceIp + ':554/Streaming/Channels/101';
+      // 如:this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
+      console.log("RTSP流的URL为:" + url);
+      this.webRtcServer.connect(url);
     },
     //断开实时预览
     disconnectWebRtcStreamer() {
+      if (!this.webRtcServer) {
+        this.$message({
+          message: '未开始预览！',
+          type: 'warning',
+          center: true
+        });
+        return;
+      }
+      this.$message({
+        message: '停止预览！',
+        type: 'warning',
+        center: true
+      });
       // 断开连接
       if (this.webRtcServer) {
         this.webRtcServer.disconnect();
       }
+    },
+    //云台控制-左上
+    remoteControlToLeftTop() {
+      // remoteControl(data).then(response => {
+      //   this.$notify({
+      //     title: '操作成功',
+      //     message: '设备云台操作成功',
+      //     type: 'success',
+      //     duration: 3000
+      //   });
+      // })
+    },
+    //云台控制-上
+    remoteControlToTop() {
+
+    },
+    //云台控制-右上
+    remoteControlToRightTop() {
+
+    },
+    //云台控制-左
+    remoteControlToLeft() {
+
+    },
+    //云台控制-左右自动
+    remoteControlAuto() {
+
+    },
+    //云台控制-右
+    remoteControlToRight() {
+
+    },
+    //云台控制-左下
+    remoteControlToLeftDown() {
+
+    },
+    //云台控制-下
+    remoteControlToDown() {
+
+    },
+    //云台控制-右下
+    remoteControlToRightDown() {
+
+    },
+    //高级显示设置-焦距变大
+    remoteControlIncreaseFocalLength() {
+
+    },
+    //高级显示设置-焦距变小
+    remoteControlDecreaseFocalLength() {
+
+    },
+    //高级显示设置-扩大光圈
+    remoteControlExpandAperture() {
+
+    },
+    //高级显示设置-缩小光圈
+    remoteControlNarrowAperture() {
+
+    },
+    //高级显示设置-焦点前调
+    remoteControlFocusTopNote() {
+
+    },
+    //高级显示设置-焦点后调
+    remoteControlFocusBaseNote() {
+
+    },
+    //抓图
+    captureImage() {
+      const video = this.$refs.video;
+      const scale = 0.25;
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = video.videoWidth * scale;
+      canvas.height = video.videoHeight * scale;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const img = document.createElement("img");
+      img.src = canvas.toDataURL("image/png");
+      const outputContainer = document.getElementById("output");
+      outputContainer.prepend(img);
+      // 调用发送图标数据到后端的方法，并传递 deviceId
+      if (this.selectedItem) {
+        this.sendImageData(canvas.toDataURL("image/png"), this.selectedItem.deviceId);
+      } else {
+        console.error('请先选择设备');
+      }
+    },
+    // 发送图片数据
+    sendImageData(imageData, deviceId) {
+      saveImage(imageData, deviceId).then(response => {
+        this.$message({
+          message: '抓图成功！',
+          type: 'success',
+          center: true
+        });
+      }).catch(error => {
+        console.error('抓图失败:', error);
+        this.$message({
+          message: '抓图失败，请重试！',
+          type: 'error',
+          center: true
+        });
+      });
     }
-  },
+  }
+  ,
   watch: {
     selectedDevice() {
       // 当选中的设备发生变化时，重新初始化摄像头预览
       this.initCameraPreview();
     }
-  },
+  }
+  ,
   beforeDestroy() {
     // 在组件销毁前断开连接
     this.disconnectWebRtcStreamer();
@@ -242,10 +372,6 @@ export default {
 #monitor-container {
   /*实时预览页面背景色*/
   background-color: #f2fafa;
-}
-
-.camera-container {
-  height: 420px; /* 调整预览区域的高度 */
 }
 
 .header_card {
@@ -272,6 +398,8 @@ export default {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  height: 440px; /* 调整预览区域的高度 */
+
 }
 
 .video-element {
