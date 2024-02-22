@@ -9,16 +9,16 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="deviceStatus">
-        <el-select v-model="queryParams.deviceStatus" placeholder="请选择状态" clearable>
-          <el-option
-            v-for="dict in dict.type.sys_normal_disable"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
+<!--      <el-form-item label="状态" prop="deviceStatus">-->
+<!--        <el-select v-model="queryParams.deviceStatus" placeholder="请选择状态" clearable>-->
+<!--          <el-option-->
+<!--            v-for="dict in dict.type.sys_normal_disable"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -84,7 +84,8 @@
       <el-table-column label="设备序列号" align="center" prop="deviceSerialNumber"/>
       <el-table-column label="状态" align="center" prop="deviceStatus">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.deviceStatus"/>
+          <el-tag v-if="scope.row.deviceStatus === '0'" type="success">在线</el-tag>
+          <el-tag v-if="scope.row.deviceStatus === '1'" type="danger">离线</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="备注" align="center" prop="remark"/>
@@ -135,16 +136,16 @@
         <el-form-item label="序列号" prop="deviceSerialNumber">
           <el-input v-model="form.deviceSerialNumber" placeholder="请输入设备序列号"/>
         </el-form-item>
-        <el-form-item label="状态" prop="deviceStatus">
-          <el-radio-group v-model="form.deviceStatus">
-            <el-radio
-              v-for="dict in dict.type.sys_normal_disable"
-              :key="dict.value"
-              :label="dict.value"
-            >{{ dict.label }}
-            </el-radio>
-          </el-radio-group>
-        </el-form-item>
+<!--        <el-form-item label="状态" prop="deviceStatus">-->
+<!--          <el-radio-group v-model="form.deviceStatus">-->
+<!--            <el-radio-->
+<!--              v-for="dict in dict.type.sys_normal_disable"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.value"-->
+<!--            >{{ dict.label }}-->
+<!--            </el-radio>-->
+<!--          </el-radio-group>-->
+<!--        </el-form-item>-->
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>
         </el-form-item>
@@ -164,7 +165,7 @@
 </template>
 
 <script>
-import { listDevice, getDevice, delDevice, addDevice, updateDevice } from '@/api/camera/device'
+import {listDevice, getDevice, delDevice, addDevice, updateDevice} from '@/api/camera/device'
 import Vue from 'vue'
 
 export default {
@@ -202,12 +203,16 @@ export default {
       // 表单校验
       rules: {
         deviceIp: [
-          { required: true, message: 'ip地址不能为空', trigger: 'blur' }
+          {required: true, message: 'ip地址不能为空', trigger: 'blur'}
         ],
         devicePort: [
-          { required: true, message: '端口不能为空', trigger: 'blur' }
+          {required: true, message: '端口不能为空', trigger: 'blur'}
         ]
-      }
+      },
+      url: "ws://127.0.0.1:8080/websocket/message",
+      message: "",
+      text_content: "",
+      ws: null,
     }
   },
   created() {
@@ -310,7 +315,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const deviceIds = row.deviceId || this.ids
-      this.$modal.confirm('是否确认删除设备信息管理编号为"' + deviceIds + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除设备信息管理编号为"' + deviceIds + '"的数据项？').then(function () {
         return delDevice(deviceIds)
       }).then(() => {
         this.getList()
@@ -323,7 +328,52 @@ export default {
       this.download('camera/device/export', {
         ...this.queryParams
       }, `device_${new Date().getTime()}.xlsx`)
+    },
+    /** 连接 */
+    join() {
+      const wsUri = this.url;
+      this.ws = new WebSocket(wsUri);
+      const self = this;
+      this.ws.onopen = function (event) {
+        self.text_content = self.text_content + "已经打开连接!" + "\n";
+      };
+      this.ws.onmessage = function (event) {
+        self.text_content = event.data + "\n";
+        //查询列表信息
+        self.getList();
+      };
+      this.ws.onclose = function (event) {
+        self.text_content = self.text_content + "已经关闭连接!" + "\n";
+      };
+    },
+    /** 退出 */
+    exit() {
+      if (this.ws) {
+        this.ws.close();
+        this.ws = null;
+      }
+    },
+    /** 发送消息 */
+    send() {
+      if (this.ws) {
+        this.ws.send(this.message);
+      } else {
+        alert("未连接到服务器");
+      }
+    },
+    dictTypeSysNormalDisable(status) {
+      return status === '0' ? [{label: '在线', value: '0'}] : [{label: '离线', value: '1'}];
     }
+  },
+  //组件加载完成之后
+  mounted() {
+    //连接websocket
+    this.join();
+  }
+  ,
+  beforeDestroy() {
+    //释放websocket
+    this.exit();
   }
 }
 </script>

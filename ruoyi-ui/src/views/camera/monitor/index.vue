@@ -8,14 +8,15 @@
           <div class="camera-container">
             <!--          选择设备栏 -->
             <span class="span_info">设备列表 </span>
-            <el-select v-model="selectedItem" placeholder="请选择设备" @click="handleDeviceSelection"
+            <el-select v-model="selectedItem.deviceName" placeholder="请选择在线设备"
+                       @change="handleDeviceSelection"
                        style="padding-top:10px;padding-bottom:10px" size="small"
             >
               <el-option
                 v-for="device in devices"
                 :key="device.deviceId"
                 :label="device.deviceName"
-                :value="device"
+                :value="device.deviceName"
               />
             </el-select>
             <br>
@@ -117,7 +118,9 @@
           <div class="volume-control" style="display: flex; align-items: center;">
             <el-button class="demonstration" @click="captureImage">抓图</el-button>
             <el-button class="demonstration" @click="toggleAnnotationMode">绘制</el-button>
-            <el-button class="demonstration">抓图3</el-button>
+            <el-button class="demonstration" @click="toggleRecording">
+              {{ isRecording ? '结束录制' : '开始录制' }}
+            </el-button>
             <el-button class="demonstration">抓图4</el-button>
             <el-button class="demonstration">抓图5</el-button>
             <el-button class="demonstration">抓图6</el-button>
@@ -145,7 +148,14 @@ export default {
       //设备列表，用于下拉框选择
       devices: [],
       //设备列表下拉框默认选中的值
-      selectedItem: null,
+      selectedItem: {
+        deviceName: '',
+        deviceId: '',
+        deviceUsername: '',
+        devicePassword: '',
+        deviceIp: '',
+        devicePort: '',
+      },
       //是否开始预览
       isStartMonitor: false,
       eventCallbacks: [
@@ -158,7 +168,10 @@ export default {
       isAnnotationMode: false, // 是否处于标注模式
       drawing: false, // 是否正在绘制
       lastX: 0, // 上一个点的横坐标
-      lastY: 0 // 上一个点的纵坐标
+      lastY: 0, // 上一个点的纵坐标
+      isRecording: false, //是否正在录制，初始为false
+      mediaRecorder: null, //视频路线记录
+      recordedChunks: [],
     }
   },
   mounted() {
@@ -175,13 +188,14 @@ export default {
   },
   methods: {
     // 当用户选择设备时触发
-    handleDeviceSelection() {
+    handleDeviceSelection(selectedDeviceName) {
+      // 根据设备名称从设备列表中找到对应的设备对象
+      const selectedDevice = this.devices.find(device => device.deviceName === selectedDeviceName);
       if (this.selectedItem) {
-        console.log('用户选择了设备:', this.selectedItem);
-        // 在这里可以添加需要执行的逻辑
-      } else {
-        console.log('用户未选择设备');
-        // 在这里可以添加处理用户未选择设备的逻辑
+        // 将选中的设备对象的属性复制到selectedItem中 使用 Vue.set 方法手动通知 Vue.js 对象的属性已经发生了变化 不能使用直接赋值的方式
+        Object.keys(selectedDevice).forEach(key => {
+          this.$set(this.selectedItem, key, selectedDevice[key]);
+        });
       }
     },
     queryDeviceList() {
@@ -214,7 +228,16 @@ export default {
       this.webRtcServer = new WebRtcStreamer(videoElement, "http://127.0.0.1:8000");
       // 连接到 RTSP 流地址 如:this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
       const url = 'rtsp://' + device.deviceUsername + ':' + device.devicePassword + '@' + device.deviceIp + ':554/Streaming/Channels/101';
-      this.webRtcServer.connect(url);
+      try {
+        this.webRtcServer.connect(url);
+      } catch (error) {
+        this.$message({
+          message: '连接到 RTSP 流地址失败，请检查网络连接和摄像头配置\'！',
+          type: 'error',
+          center: true
+        });
+        console.error('连接到 RTSP 流地址失败:', error);
+      }
     },
     //断开实时预览
     disconnectWebRtcStreamer() {
@@ -450,6 +473,66 @@ export default {
       const imageData = context1.getImageData(0, 0, canvas1.width, canvas1.height);
       // 将第一个画布的内容绘制到第二个画布上
       context2.putImageData(imageData, 0, 0);
+    },
+    //触发录制
+    toggleRecording() {
+      if (this.isRecording) {
+        //停止录制
+        this.stopRecording();
+      } else {
+        //开始录制
+        this.startRecording();
+      }
+    },
+    //开始录制
+    startRecording() {
+      // 开始录制逻辑
+      if (!this.isStartMonitor) {
+        this.$message({
+          message: '请先开始预览',
+          type: 'error',
+          center: true
+        });
+        return;
+      }
+      this.$message({
+        message: '开始录制!',
+        type: 'success',
+        center: true
+      });
+      this.isRecording = true;
+      const video = this.$refs.video;
+      // this.recordedChunks = [];
+      this.mediaRecorder = new MediaRecorder(video.captureStream(60));
+      this.mediaRecorder.ondataavailable = event => {
+        if (event.data.size > 0) {
+          this.recordedChunks.push(event.data);
+        }
+      };
+      this.mediaRecorder.start();
+    },
+    //结束录制
+    stopRecording() {
+      // 结束录制逻辑
+      this.$message({
+        message: '结束录制!',
+        type: 'success',
+        center: true
+      });
+      this.isRecording = false;
+      this.mediaRecorder.stop();
+      this.saveRecording();
+    },
+    //保存录像
+    saveRecording() {
+      const blob = new Blob(this.recordedChunks, {type: 'video/webm;codecs=h264'});
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'recording.webm';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
     }
   },
   beforeDestroy() {

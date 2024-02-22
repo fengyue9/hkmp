@@ -78,6 +78,8 @@ public class MinioConfig implements InitializingBean {
 
     /**
      * 文件下载
+     @param fileName 要下载的文件名
+     @param response HTTP响应对象
      */
     public void download(String fileName, HttpServletResponse response) {
         // 从链接中得到文件名

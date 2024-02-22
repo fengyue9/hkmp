@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                D.DEVICE_NAME
           FROM SCREENSHOT_RECORD SR
           LEFT JOIN DEVICE D
-            ON D.DEVICE_ID = SR.DEVICE_ID
+            ON D.DEVICE_ID = SR.DEVICE_ID ORDER BY SR.SCREENSHOT_TIME DESC
     </sql>
 
     <select id="selectScreenshotRecordList" parameterType="ScreenshotRecord" resultMap="ScreenshotRecordResult">

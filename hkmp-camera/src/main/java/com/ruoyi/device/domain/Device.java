@@ -34,7 +34,7 @@ public class Device extends BaseEntity {
     @Excel(name = "设备序列号")
     private String deviceSerialNumber;
 
-    /** 状态 */
+    /** 状态 0:在线 1:离线 */
     @Excel(name = "状态")
     private String deviceStatus;
 
