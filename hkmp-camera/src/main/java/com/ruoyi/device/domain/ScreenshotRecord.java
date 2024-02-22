@@ -31,6 +31,9 @@ public class ScreenshotRecord extends BaseEntity {
     /** 抓图URL  */
     private String screenshotURL;
 
+    /** 设备名称  */
+    private String deviceName;
+
     public void setDeviceId(Long deviceId) {
         this.deviceId = deviceId;
     }
@@ -59,14 +62,10 @@ public class ScreenshotRecord extends BaseEntity {
     public void setScreenshotURL(String screenshotURL) {
         this.screenshotURL = screenshotURL;
     }
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("ScreenshotRecord{");
-        sb.append("deviceId=").append(deviceId);
-        sb.append(", screenshotKey='").append(screenshotKey).append('\'');
-        sb.append(", screenshotTime=").append(screenshotTime);
-        sb.append(", screenshotURL='").append(screenshotURL).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public String getDeviceName() {
+        return deviceName;
+    }
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }

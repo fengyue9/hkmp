@@ -50,7 +50,8 @@
     <el-table v-loading="loading" :data="screenshot_recordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="设备id" width="100" align="center" prop="deviceId"/>
-      <el-table-column label="图片" align="center" prop="screenshotURL" width="400">
+      <el-table-column label="设备名称" width="100" align="center" prop="deviceName"/>
+      <el-table-column label="缩略图" align="center" prop="screenshotURL" width="400">
         <template slot-scope="scope">
           <image-preview :src="scope.row.screenshotURL" :width="80" :height="80"/>
         </template>

@@ -8,10 +8,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="deviceId"    column="device_id"    />
         <result property="screenshotKey"    column="screenshot_key"    />
         <result property="screenshotTime"    column="screenshot_time"    />
+        <result property="deviceName"    column="device_name"    />
     </resultMap>
 
     <sql id="selectScreenshotRecordVo">
-        select device_id, screenshot_key, screenshot_time from screenshot_record
+        SELECT SR.DEVICE_ID,
+               SR.SCREENSHOT_KEY,
+               SR.SCREENSHOT_TIME,
+               D.DEVICE_NAME
+          FROM SCREENSHOT_RECORD SR
+          LEFT JOIN DEVICE D
+            ON D.DEVICE_ID = SR.DEVICE_ID
     </sql>
 
     <select id="selectScreenshotRecordList" parameterType="ScreenshotRecord" resultMap="ScreenshotRecordResult">
