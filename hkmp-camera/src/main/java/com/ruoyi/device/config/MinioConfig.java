@@ -89,7 +89,6 @@ public class MinioConfig implements InitializingBean {
             response.setContentType(stat.contentType());
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
-            response.setContentType("application/octet-stream");
             IOUtils.copy(inputStream, response.getOutputStream());
             inputStream.close();
         } catch (Exception e) {

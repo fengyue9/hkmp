@@ -39,6 +39,11 @@
         >Excel导出
         </el-button>
       </el-col>
+      <el-col :span="1.5">
+        <div>
+          <span style="color: red">注意：每天凌晨1点将自动清理30天以前的抓图</span>
+        </div>
+      </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -191,8 +196,7 @@ export default {
           center: true
         });
         // 处理响应，将二进制数据保存为文件
-        const blob = new Blob([response.data], {type: response.headers['content-type']});
-        const url = window.URL.createObjectURL(blob);
+        const url = window.URL.createObjectURL(response);
         const link = document.createElement('a');
         link.href = url;
         link.download = screenshotKey; // 下载文件名，根据实际情况修改
@@ -200,10 +204,9 @@ export default {
         link.click();
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
-      })
-        .catch(error => {
-          console.error('下载失败:', error);
-        });
+      }).catch(error => {
+        console.error('下载失败:', error);
+      });
     },
     /** 提交按钮 */
     submitForm() {
