@@ -1,4 +1,454 @@
-[2024-02-22 14:09:53.740][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1552023552]
-[2024-02-22 14:09:53.740][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
-[2024-02-22 14:09:53.740][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
-[2024-02-22 14:09:53.740][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-02-22 14:23:12.003][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1552023552]
+[2024-02-22 14:23:12.003][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
+[2024-02-22 14:23:12.003][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
+[2024-02-22 14:23:12.003][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-02-22 14:34:39.917][INF] Login dev 192.168.1.64:8080.
+[2024-02-22 14:34:39.917][INF] dwTotalNum[2048]
+[2024-02-22 14:34:43.427][ERR] Private connect 192.168.1.64:8080 sock=3672 this=0x64ee2934 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-22 14:34:43.431][ERR] [192.168.1.64:8080]LogonDevice Link_CreateLink fail[7].
+[2024-02-22 14:34:43.431][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-22 14:35:50.014][INF] Login dev 192.168.1.64:8080.
+[2024-02-22 14:35:53.523][ERR] Private connect 192.168.1.64:8080 sock=7948 this=0x64ee2934 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-22 14:35:53.523][ERR] [192.168.1.64:8080]LogonDevice Link_CreateLink fail[7].
+[2024-02-22 14:35:53.523][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-22 14:37:05.335][INF] Login dev 192.168.1.64:8080.
+[2024-02-22 14:37:08.846][ERR] Private connect 192.168.1.64:8080 sock=7300 this=0x64ee2934 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-22 14:37:08.846][ERR] [192.168.1.64:8080]LogonDevice Link_CreateLink fail[7].
+[2024-02-22 14:37:08.846][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-22 14:38:53.773][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:38:53.798][INF] Private connect 192.168.1.64:8000 sock=8108 this=0x64ee2934 cmd=0x10000 port=60027
+[2024-02-22 14:38:53.802][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:38:53.802][ERR] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Failed, Path[D:/毕设/源码/hkmp/lib/libeay32.dll] syserror[126]
+[2024-02-22 14:38:53.802][ERR] Load BASE_DLL_LIBEAY failed[syserr: 126]
+[2024-02-22 14:38:54.538][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libcrypto-1_1-x64.dll], hHandleRet[-1427832832]
+[2024-02-22 14:38:54.538][DBG] Load [libcrypto-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libcrypto-1_1-x64.dll]
+[2024-02-22 14:38:54.834][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libssl-1_1-x64.dll], hHandleRet[-595984384]
+[2024-02-22 14:38:54.834][DBG] Load [libssl-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libssl-1_1-x64.dll]
+[2024-02-22 14:38:54.835][INF] SSLTRANSAPI::IsAllAPILoaded, SSL_library_init Unload
+[2024-02-22 14:38:54.835][INF] OpenSSL, Not All Function Loaded!
+[2024-02-22 14:38:54.835][INF] SSLTRANSAPI::PrintVersion, OpenSSL version info [OpenSSL 1.1.1l  24 Aug 2021]
+[2024-02-22 14:38:54.835][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[6], m_fnTLSServerMethod
+[2024-02-22 14:38:56.647][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCPreview.dll] SUCC
+[2024-02-22 14:38:56.647][INF] AbilityAnalyze---Init-- start
+[2024-02-22 14:38:56.661][INF] The COM:Preview ver is 6.1.9.4, 2022_04_12.
+[2024-02-22 14:38:56.662][INF] Private connect 192.168.1.64:8000 sock=8040 this=0x64ee2934 cmd=0x30200 port=60030
+[2024-02-22 14:38:57.594][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:38:57.620][INF] Private connect 192.168.1.64:8000 sock=8132 this=0x64ee2934 cmd=0x10000 port=60032
+[2024-02-22 14:38:57.620][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:38:57.699][INF] Private connect 192.168.1.64:8000 sock=8132 this=0x64ee2934 cmd=0x30200 port=60033
+[2024-02-22 14:38:57.699][INF] Private connect 192.168.1.64:8000 sock=8040 this=0x64ee30a0 cmd=0x30200 port=60034
+[2024-02-22 14:38:57.705][INF] COM_Logout[1][1]
+[2024-02-22 14:38:57.705][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:38:57.709][INF] Private connect 192.168.1.64:8000 sock=8040 this=0x64ee2934 cmd=0x10100 port=60035
+[2024-02-22 14:38:58.727][INF] Private connect 192.168.1.64:8000 sock=8132 this=0x64ee2934 cmd=0x30200 port=60037
+[2024-02-22 14:38:58.732][INF] COM_Logout[0][1]
+[2024-02-22 14:38:58.732][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:38:58.758][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x10100 port=60038
+[2024-02-22 14:39:02.584][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:39:02.607][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x10000 port=60044
+[2024-02-22 14:39:02.607][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:39:02.718][INF] Private connect 192.168.1.64:8000 sock=8144 this=0x64ee2934 cmd=0x30200 port=60046
+[2024-02-22 14:39:03.386][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:39:03.388][INF] Private connect 192.168.1.64:8000 sock=8080 this=0x64ee2934 cmd=0x10000 port=60049
+[2024-02-22 14:39:03.388][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:39:03.480][INF] Private connect 192.168.1.64:8000 sock=8080 this=0x64ee2934 cmd=0x30200 port=60050
+[2024-02-22 14:39:03.730][INF] Private connect 192.168.1.64:8000 sock=8088 this=0x64ee2934 cmd=0x30200 port=60051
+[2024-02-22 14:39:03.736][INF] COM_Logout[1][1]
+[2024-02-22 14:39:03.736][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:39:03.759][INF] Private connect 192.168.1.64:8000 sock=8088 this=0x64ee2934 cmd=0x10100 port=60052
+[2024-02-22 14:39:04.508][INF] Private connect 192.168.1.64:8000 sock=7812 this=0x64ee2934 cmd=0x30200 port=60053
+[2024-02-22 14:39:04.513][INF] COM_Logout[0][1]
+[2024-02-22 14:39:04.513][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:39:04.540][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x10100 port=60054
+[2024-02-22 14:39:05.170][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:39:05.194][INF] Private connect 192.168.1.64:8000 sock=8120 this=0x64ee2934 cmd=0x10000 port=60061
+[2024-02-22 14:39:05.194][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:39:05.287][INF] Private connect 192.168.1.64:8000 sock=8116 this=0x64ee2934 cmd=0x30200 port=60062
+[2024-02-22 14:39:06.320][INF] Private connect 192.168.1.64:8000 sock=8148 this=0x64ee2934 cmd=0x30200 port=60064
+[2024-02-22 14:39:06.328][INF] COM_Logout[1][1]
+[2024-02-22 14:39:06.328][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:39:06.330][INF] Private connect 192.168.1.64:8000 sock=8120 this=0x64ee2934 cmd=0x10100 port=60065
+[2024-02-22 14:39:07.342][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:39:07.343][INF] Private connect 192.168.1.64:8000 sock=8140 this=0x64ee2934 cmd=0x10000 port=60067
+[2024-02-22 14:39:07.344][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:39:07.432][INF] Private connect 192.168.1.64:8000 sock=7948 this=0x64ee2934 cmd=0x30200 port=60068
+[2024-02-22 14:39:08.461][INF] Private connect 192.168.1.64:8000 sock=8088 this=0x64ee2934 cmd=0x30200 port=60070
+[2024-02-22 14:39:08.465][INF] COM_Logout[0][1]
+[2024-02-22 14:39:08.466][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:39:08.469][INF] Private connect 192.168.1.64:8000 sock=8140 this=0x64ee2934 cmd=0x10100 port=60071
+[2024-02-22 14:41:22.602][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:41:22.625][INF] Private connect 192.168.1.64:8000 sock=3056 this=0x64ee2934 cmd=0x10000 port=60234
+[2024-02-22 14:41:22.625][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:41:22.702][INF] Private connect 192.168.1.64:8000 sock=8260 this=0x64ee2934 cmd=0x30200 port=60235
+[2024-02-22 14:41:23.735][INF] Private connect 192.168.1.64:8000 sock=4172 this=0x64ee2934 cmd=0x30200 port=60238
+[2024-02-22 14:41:23.744][INF] COM_Logout[1][1]
+[2024-02-22 14:41:23.744][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:41:23.766][INF] Private connect 192.168.1.64:8000 sock=3056 this=0x64ee2934 cmd=0x10100 port=60239
+[2024-02-22 14:41:55.681][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:41:55.700][INF] Private connect 192.168.1.64:8000 sock=3120 this=0x64ee2934 cmd=0x10000 port=60288
+[2024-02-22 14:41:55.700][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:41:55.793][INF] Private connect 192.168.1.64:8000 sock=8188 this=0x64ee2934 cmd=0x30200 port=60289
+[2024-02-22 14:41:56.819][INF] Private connect 192.168.1.64:8000 sock=3056 this=0x64ee2934 cmd=0x30200 port=60291
+[2024-02-22 14:41:56.828][INF] COM_Logout[0][1]
+[2024-02-22 14:41:56.828][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:41:56.850][INF] Private connect 192.168.1.64:8000 sock=3120 this=0x64ee2934 cmd=0x10100 port=60292
+[2024-02-22 14:41:57.919][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:41:57.942][INF] Private connect 192.168.1.64:8000 sock=3120 this=0x64ee2934 cmd=0x10000 port=60294
+[2024-02-22 14:41:57.942][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:41:58.037][INF] Private connect 192.168.1.64:8000 sock=3056 this=0x64ee2934 cmd=0x30200 port=60295
+[2024-02-22 14:41:59.064][INF] Private connect 192.168.1.64:8000 sock=8208 this=0x64ee2934 cmd=0x30200 port=60296
+[2024-02-22 14:41:59.071][INF] COM_Logout[1][1]
+[2024-02-22 14:41:59.072][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:41:59.075][INF] Private connect 192.168.1.64:8000 sock=3120 this=0x64ee2934 cmd=0x10100 port=60297
+[2024-02-22 14:42:07.061][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:42:07.063][INF] Private connect 192.168.1.64:8000 sock=8272 this=0x64ee2934 cmd=0x10000 port=60311
+[2024-02-22 14:42:07.063][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:42:07.158][INF] Private connect 192.168.1.64:8000 sock=8224 this=0x64ee2934 cmd=0x30200 port=60312
+[2024-02-22 14:42:08.174][INF] Private connect 192.168.1.64:8000 sock=4176 this=0x64ee2934 cmd=0x30200 port=60315
+[2024-02-22 14:42:08.180][INF] COM_Logout[0][1]
+[2024-02-22 14:42:08.180][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:42:08.204][INF] Private connect 192.168.1.64:8000 sock=8272 this=0x64ee2934 cmd=0x10100 port=60316
+[2024-02-22 14:42:10.868][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:42:10.882][INF] Private connect 192.168.1.64:8000 sock=8292 this=0x64ee2934 cmd=0x10000 port=60318
+[2024-02-22 14:42:10.882][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:42:10.960][INF] Private connect 192.168.1.64:8000 sock=8088 this=0x64ee2934 cmd=0x30200 port=60319
+[2024-02-22 14:42:11.974][INF] Private connect 192.168.1.64:8000 sock=8296 this=0x64ee2934 cmd=0x30200 port=60320
+[2024-02-22 14:42:11.978][INF] COM_Logout[1][1]
+[2024-02-22 14:42:11.978][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:42:12.004][INF] Private connect 192.168.1.64:8000 sock=8292 this=0x64ee2934 cmd=0x10100 port=60321
+[2024-02-22 14:42:46.948][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:42:46.969][INF] Private connect 192.168.1.64:8000 sock=8132 this=0x64ee2934 cmd=0x10000 port=60630
+[2024-02-22 14:42:46.969][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:42:47.046][INF] Private connect 192.168.1.64:8000 sock=8268 this=0x64ee2934 cmd=0x30200 port=60631
+[2024-02-22 14:42:48.062][INF] Private connect 192.168.1.64:8000 sock=8056 this=0x64ee2934 cmd=0x30200 port=60632
+[2024-02-22 14:42:48.068][INF] COM_Logout[0][1]
+[2024-02-22 14:42:48.068][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:42:48.091][INF] Private connect 192.168.1.64:8000 sock=8132 this=0x64ee2934 cmd=0x10100 port=60633
+[2024-02-22 14:42:49.466][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:42:49.481][INF] Private connect 192.168.1.64:8000 sock=8100 this=0x64ee2934 cmd=0x10000 port=60635
+[2024-02-22 14:42:49.481][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:42:49.574][INF] Private connect 192.168.1.64:8000 sock=8308 this=0x64ee2934 cmd=0x30200 port=60636
+[2024-02-22 14:42:50.585][INF] Private connect 192.168.1.64:8000 sock=8128 this=0x64ee2934 cmd=0x30200 port=60637
+[2024-02-22 14:42:50.590][INF] COM_Logout[1][1]
+[2024-02-22 14:42:50.590][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:42:50.592][INF] Private connect 192.168.1.64:8000 sock=8100 this=0x64ee2934 cmd=0x10100 port=60638
+[2024-02-22 14:44:55.948][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:44:55.973][INF] Private connect 192.168.1.64:8000 sock=8444 this=0x64ee2934 cmd=0x10000 port=60725
+[2024-02-22 14:44:55.973][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:44:56.065][INF] Private connect 192.168.1.64:8000 sock=8396 this=0x64ee2934 cmd=0x30200 port=60726
+[2024-02-22 14:44:57.089][INF] Private connect 192.168.1.64:8000 sock=8296 this=0x64ee2934 cmd=0x30200 port=60728
+[2024-02-22 14:44:57.097][INF] COM_Logout[0][1]
+[2024-02-22 14:44:57.098][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:44:57.100][INF] Private connect 192.168.1.64:8000 sock=8444 this=0x64ee2934 cmd=0x10100 port=60729
+[2024-02-22 14:44:58.287][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:44:58.306][INF] Private connect 192.168.1.64:8000 sock=8296 this=0x64ee2934 cmd=0x10000 port=60731
+[2024-02-22 14:44:58.306][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:44:58.399][INF] Private connect 192.168.1.64:8000 sock=7420 this=0x64ee2934 cmd=0x30200 port=60732
+[2024-02-22 14:44:59.430][INF] Private connect 192.168.1.64:8000 sock=8356 this=0x64ee2934 cmd=0x30200 port=60733
+[2024-02-22 14:44:59.433][INF] COM_Logout[1][1]
+[2024-02-22 14:44:59.433][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:44:59.461][INF] Private connect 192.168.1.64:8000 sock=8296 this=0x64ee2934 cmd=0x10100 port=60734
+[2024-02-22 14:45:02.737][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:45:02.739][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10000 port=60739
+[2024-02-22 14:45:02.739][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:45:02.823][INF] Private connect 192.168.1.64:8000 sock=8296 this=0x64ee2934 cmd=0x30200 port=60740
+[2024-02-22 14:45:03.850][INF] Private connect 192.168.1.64:8000 sock=8440 this=0x64ee2934 cmd=0x30200 port=60743
+[2024-02-22 14:45:03.859][INF] COM_Logout[0][1]
+[2024-02-22 14:45:03.859][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:45:03.864][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10100 port=60744
+[2024-02-22 14:45:05.141][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:45:05.161][INF] Private connect 192.168.1.64:8000 sock=7948 this=0x64ee2934 cmd=0x10000 port=60746
+[2024-02-22 14:45:05.161][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:45:05.254][INF] Private connect 192.168.1.64:8000 sock=8272 this=0x64ee2934 cmd=0x30200 port=60747
+[2024-02-22 14:45:06.279][INF] Private connect 192.168.1.64:8000 sock=8356 this=0x64ee2934 cmd=0x30200 port=60748
+[2024-02-22 14:45:06.283][INF] COM_Logout[1][1]
+[2024-02-22 14:45:06.283][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:45:06.296][INF] Private connect 192.168.1.64:8000 sock=7948 this=0x64ee2934 cmd=0x10100 port=60749
+[2024-02-22 14:45:09.251][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:45:09.275][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x10000 port=60754
+[2024-02-22 14:45:09.275][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:45:09.352][INF] Private connect 192.168.1.64:8000 sock=8360 this=0x64ee2934 cmd=0x30200 port=60755
+[2024-02-22 14:45:10.363][INF] Private connect 192.168.1.64:8000 sock=8352 this=0x64ee2934 cmd=0x30200 port=60758
+[2024-02-22 14:45:10.368][INF] COM_Logout[0][1]
+[2024-02-22 14:45:10.369][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:45:10.393][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x10100 port=60759
+[2024-02-22 14:45:11.432][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:45:11.453][INF] Private connect 192.168.1.64:8000 sock=8272 this=0x64ee2934 cmd=0x10000 port=60761
+[2024-02-22 14:45:11.453][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:45:11.548][INF] Private connect 192.168.1.64:8000 sock=8408 this=0x64ee2934 cmd=0x30200 port=60762
+[2024-02-22 14:45:12.562][INF] Private connect 192.168.1.64:8000 sock=5220 this=0x64ee2934 cmd=0x30200 port=60763
+[2024-02-22 14:45:12.566][INF] COM_Logout[1][1]
+[2024-02-22 14:45:12.567][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:45:12.591][INF] Private connect 192.168.1.64:8000 sock=8272 this=0x64ee2934 cmd=0x10100 port=60764
+[2024-02-22 14:45:13.281][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:45:13.306][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10000 port=60769
+[2024-02-22 14:45:13.306][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:45:13.399][INF] Private connect 192.168.1.64:8000 sock=3060 this=0x64ee2934 cmd=0x30200 port=60770
+[2024-02-22 14:45:14.428][INF] Private connect 192.168.1.64:8000 sock=3060 this=0x64ee2934 cmd=0x30200 port=60772
+[2024-02-22 14:45:14.433][INF] COM_Logout[0][1]
+[2024-02-22 14:45:14.433][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:45:14.435][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10100 port=60773
+[2024-02-22 14:46:38.935][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:46:38.953][INF] Private connect 192.168.1.64:8000 sock=4172 this=0x64ee2934 cmd=0x10000 port=60823
+[2024-02-22 14:46:38.953][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:46:39.047][INF] Private connect 192.168.1.64:8000 sock=8452 this=0x64ee2934 cmd=0x30200 port=60824
+[2024-02-22 14:46:40.075][INF] Private connect 192.168.1.64:8000 sock=8040 this=0x64ee2934 cmd=0x30200 port=60825
+[2024-02-22 14:46:40.080][INF] COM_Logout[1][1]
+[2024-02-22 14:46:40.081][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:46:40.106][INF] Private connect 192.168.1.64:8000 sock=4172 this=0x64ee2934 cmd=0x10100 port=60826
+[2024-02-22 14:47:25.181][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:47:25.182][INF] Private connect 192.168.1.64:8000 sock=8300 this=0x64ee2934 cmd=0x10000 port=60924
+[2024-02-22 14:47:25.182][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:47:25.262][INF] Private connect 192.168.1.64:8000 sock=8508 this=0x64ee2934 cmd=0x30200 port=60925
+[2024-02-22 14:47:26.291][INF] Private connect 192.168.1.64:8000 sock=8368 this=0x64ee2934 cmd=0x30200 port=60926
+[2024-02-22 14:47:26.295][INF] COM_Logout[0][1]
+[2024-02-22 14:47:26.295][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:47:26.323][INF] Private connect 192.168.1.64:8000 sock=8300 this=0x64ee2934 cmd=0x10100 port=60927
+[2024-02-22 14:47:27.917][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:47:27.934][INF] Private connect 192.168.1.64:8000 sock=8516 this=0x64ee2934 cmd=0x10000 port=61122
+[2024-02-22 14:47:27.934][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:47:28.012][INF] Private connect 192.168.1.64:8000 sock=8392 this=0x64ee2934 cmd=0x30200 port=61127
+[2024-02-22 14:47:29.036][INF] Private connect 192.168.1.64:8000 sock=8520 this=0x64ee2934 cmd=0x30200 port=61221
+[2024-02-22 14:47:29.043][INF] COM_Logout[1][1]
+[2024-02-22 14:47:29.043][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:47:29.067][INF] Private connect 192.168.1.64:8000 sock=8516 this=0x64ee2934 cmd=0x10100 port=61222
+[2024-02-22 14:56:33.613][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:33.616][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10000 port=61701
+[2024-02-22 14:56:33.616][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:33.710][INF] Private connect 192.168.1.64:8000 sock=8040 this=0x64ee2934 cmd=0x30200 port=61702
+[2024-02-22 14:56:34.728][INF] Private connect 192.168.1.64:8000 sock=8584 this=0x64ee2934 cmd=0x30200 port=61703
+[2024-02-22 14:56:34.733][INF] COM_Logout[0][1]
+[2024-02-22 14:56:34.733][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:34.757][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10100 port=61704
+[2024-02-22 14:56:36.291][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:36.292][INF] Private connect 192.168.1.64:8000 sock=8336 this=0x64ee2934 cmd=0x10000 port=61713
+[2024-02-22 14:56:36.292][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:36.362][INF] Private connect 192.168.1.64:8000 sock=8584 this=0x64ee2934 cmd=0x30200 port=61714
+[2024-02-22 14:56:37.394][INF] Private connect 192.168.1.64:8000 sock=8208 this=0x64ee2934 cmd=0x30200 port=61726
+[2024-02-22 14:56:37.399][INF] COM_Logout[1][1]
+[2024-02-22 14:56:37.399][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:56:37.402][INF] Private connect 192.168.1.64:8000 sock=8336 this=0x64ee2934 cmd=0x10100 port=61727
+[2024-02-22 14:56:39.177][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:39.201][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x64ee2934 cmd=0x10000 port=61740
+[2024-02-22 14:56:39.201][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:39.295][INF] Private connect 192.168.1.64:8000 sock=8600 this=0x64ee2934 cmd=0x30200 port=61741
+[2024-02-22 14:56:40.325][INF] Private connect 192.168.1.64:8000 sock=8456 this=0x64ee2934 cmd=0x30200 port=61743
+[2024-02-22 14:56:40.329][INF] COM_Logout[0][1]
+[2024-02-22 14:56:40.331][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:40.356][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x64ee2934 cmd=0x10100 port=61744
+[2024-02-22 14:56:41.307][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:41.322][INF] Private connect 192.168.1.64:8000 sock=7484 this=0x64ee2934 cmd=0x10000 port=61746
+[2024-02-22 14:56:41.322][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:41.415][INF] Private connect 192.168.1.64:8000 sock=2728 this=0x64ee2934 cmd=0x30200 port=61747
+[2024-02-22 14:56:42.444][INF] Private connect 192.168.1.64:8000 sock=8528 this=0x64ee2934 cmd=0x30200 port=61748
+[2024-02-22 14:56:42.451][INF] COM_Logout[1][1]
+[2024-02-22 14:56:42.451][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:56:42.475][INF] Private connect 192.168.1.64:8000 sock=7484 this=0x64ee2934 cmd=0x10100 port=61749
+[2024-02-22 14:56:43.759][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:43.783][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x64ee2934 cmd=0x10000 port=61754
+[2024-02-22 14:56:43.783][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:43.861][INF] Private connect 192.168.1.64:8000 sock=8004 this=0x64ee2934 cmd=0x30200 port=61755
+[2024-02-22 14:56:44.875][INF] Private connect 192.168.1.64:8000 sock=7480 this=0x64ee2934 cmd=0x30200 port=61757
+[2024-02-22 14:56:44.879][INF] COM_Logout[0][1]
+[2024-02-22 14:56:44.879][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:44.882][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x64ee2934 cmd=0x10100 port=61758
+[2024-02-22 14:56:46.303][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:46.324][INF] Private connect 192.168.1.64:8000 sock=7872 this=0x64ee2934 cmd=0x10000 port=61760
+[2024-02-22 14:56:46.324][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:46.418][INF] Private connect 192.168.1.64:8000 sock=7884 this=0x64ee2934 cmd=0x30200 port=61761
+[2024-02-22 14:56:47.449][INF] Private connect 192.168.1.64:8000 sock=7884 this=0x64ee2934 cmd=0x30200 port=61762
+[2024-02-22 14:56:47.455][INF] COM_Logout[1][1]
+[2024-02-22 14:56:47.455][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:56:47.480][INF] Private connect 192.168.1.64:8000 sock=7872 this=0x64ee2934 cmd=0x10100 port=61763
+[2024-02-22 14:56:48.507][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:48.529][INF] Private connect 192.168.1.64:8000 sock=7976 this=0x64ee2934 cmd=0x10000 port=61776
+[2024-02-22 14:56:48.529][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:48.623][INF] Private connect 192.168.1.64:8000 sock=7960 this=0x64ee2934 cmd=0x30200 port=61779
+[2024-02-22 14:56:49.648][INF] Private connect 192.168.1.64:8000 sock=3832 this=0x64ee2934 cmd=0x30200 port=61781
+[2024-02-22 14:56:49.654][INF] COM_Logout[0][1]
+[2024-02-22 14:56:49.654][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:49.680][INF] Private connect 192.168.1.64:8000 sock=7976 this=0x64ee2934 cmd=0x10100 port=61782
+[2024-02-22 14:56:50.818][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:50.831][INF] Private connect 192.168.1.64:8000 sock=7960 this=0x64ee2934 cmd=0x10000 port=61784
+[2024-02-22 14:56:50.831][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:50.909][INF] Private connect 192.168.1.64:8000 sock=2776 this=0x64ee2934 cmd=0x30200 port=61785
+[2024-02-22 14:56:51.938][INF] Private connect 192.168.1.64:8000 sock=8556 this=0x64ee2934 cmd=0x30200 port=61786
+[2024-02-22 14:56:51.942][INF] COM_Logout[1][1]
+[2024-02-22 14:56:51.943][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:56:51.968][INF] Private connect 192.168.1.64:8000 sock=7960 this=0x64ee2934 cmd=0x10100 port=61787
+[2024-02-22 14:56:53.007][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:53.027][INF] Private connect 192.168.1.64:8000 sock=8576 this=0x64ee2934 cmd=0x10000 port=61793
+[2024-02-22 14:56:53.027][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:53.105][INF] Private connect 192.168.1.64:8000 sock=3832 this=0x64ee2934 cmd=0x30200 port=61794
+[2024-02-22 14:56:54.124][INF] Private connect 192.168.1.64:8000 sock=8316 this=0x64ee2934 cmd=0x30200 port=61796
+[2024-02-22 14:56:54.132][INF] COM_Logout[0][1]
+[2024-02-22 14:56:54.132][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:54.154][INF] Private connect 192.168.1.64:8000 sock=8576 this=0x64ee2934 cmd=0x10100 port=61797
+[2024-02-22 14:56:55.099][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:55.115][INF] Private connect 192.168.1.64:8000 sock=8316 this=0x64ee2934 cmd=0x10000 port=61804
+[2024-02-22 14:56:55.115][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:55.209][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x64ee2934 cmd=0x30200 port=61805
+[2024-02-22 14:56:56.236][INF] Private connect 192.168.1.64:8000 sock=8576 this=0x64ee2934 cmd=0x30200 port=61806
+[2024-02-22 14:56:56.240][INF] COM_Logout[1][1]
+[2024-02-22 14:56:56.241][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:56:56.267][INF] Private connect 192.168.1.64:8000 sock=8316 this=0x64ee2934 cmd=0x10100 port=61807
+[2024-02-22 14:56:57.446][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:57.449][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10000 port=61812
+[2024-02-22 14:56:57.449][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:57.544][INF] Private connect 192.168.1.64:8000 sock=5528 this=0x64ee2934 cmd=0x30200 port=61813
+[2024-02-22 14:56:58.561][INF] Private connect 192.168.1.64:8000 sock=5528 this=0x64ee2934 cmd=0x30200 port=61815
+[2024-02-22 14:56:58.571][INF] COM_Logout[0][1]
+[2024-02-22 14:56:58.571][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 14:56:58.575][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10100 port=61816
+[2024-02-22 14:56:59.503][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 14:56:59.526][INF] Private connect 192.168.1.64:8000 sock=4028 this=0x64ee2934 cmd=0x10000 port=61818
+[2024-02-22 14:56:59.526][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 14:56:59.599][INF] Private connect 192.168.1.64:8000 sock=8604 this=0x64ee2934 cmd=0x30200 port=61819
+[2024-02-22 14:57:00.633][INF] Private connect 192.168.1.64:8000 sock=8576 this=0x64ee2934 cmd=0x30200 port=61820
+[2024-02-22 14:57:00.636][INF] COM_Logout[1][1]
+[2024-02-22 14:57:00.637][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 14:57:00.663][INF] Private connect 192.168.1.64:8000 sock=4028 this=0x64ee2934 cmd=0x10100 port=61821
+[2024-02-22 15:03:44.715][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:44.736][INF] Private connect 192.168.1.64:8000 sock=8524 this=0x64ee2934 cmd=0x10000 port=62575
+[2024-02-22 15:03:44.736][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:44.813][INF] Private connect 192.168.1.64:8000 sock=8696 this=0x64ee2934 cmd=0x30200 port=62576
+[2024-02-22 15:03:45.841][INF] Private connect 192.168.1.64:8000 sock=8620 this=0x64ee2934 cmd=0x30200 port=62579
+[2024-02-22 15:03:45.847][INF] COM_Logout[0][1]
+[2024-02-22 15:03:45.847][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:03:45.872][INF] Private connect 192.168.1.64:8000 sock=8524 this=0x64ee2934 cmd=0x10100 port=62580
+[2024-02-22 15:03:46.009][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:46.028][INF] Private connect 192.168.1.64:8000 sock=6568 this=0x64ee2934 cmd=0x10000 port=62582
+[2024-02-22 15:03:46.028][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:46.121][INF] Private connect 192.168.1.64:8000 sock=8524 this=0x64ee2934 cmd=0x30200 port=62583
+[2024-02-22 15:03:47.133][INF] Private connect 192.168.1.64:8000 sock=8524 this=0x64ee2934 cmd=0x30200 port=62584
+[2024-02-22 15:03:47.137][INF] COM_Logout[1][1]
+[2024-02-22 15:03:47.137][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:03:47.161][INF] Private connect 192.168.1.64:8000 sock=6568 this=0x64ee2934 cmd=0x10100 port=62585
+[2024-02-22 15:03:47.667][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:47.691][INF] Private connect 192.168.1.64:8000 sock=6568 this=0x64ee2934 cmd=0x10000 port=62591
+[2024-02-22 15:03:47.691][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:47.766][INF] Private connect 192.168.1.64:8000 sock=8704 this=0x64ee2934 cmd=0x30200 port=62592
+[2024-02-22 15:03:48.797][INF] Private connect 192.168.1.64:8000 sock=8712 this=0x64ee2934 cmd=0x30200 port=62594
+[2024-02-22 15:03:48.802][INF] COM_Logout[0][1]
+[2024-02-22 15:03:48.803][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:03:48.828][INF] Private connect 192.168.1.64:8000 sock=6568 this=0x64ee2934 cmd=0x10100 port=62595
+[2024-02-22 15:03:49.476][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:49.495][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10000 port=62602
+[2024-02-22 15:03:49.495][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:49.573][INF] Private connect 192.168.1.64:8000 sock=8624 this=0x64ee2934 cmd=0x30200 port=62603
+[2024-02-22 15:03:50.599][INF] Private connect 192.168.1.64:8000 sock=8624 this=0x64ee2934 cmd=0x30200 port=62604
+[2024-02-22 15:03:50.603][INF] COM_Logout[1][1]
+[2024-02-22 15:03:50.603][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:03:50.630][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10100 port=62605
+[2024-02-22 15:03:53.946][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:53.948][INF] Private connect 192.168.1.64:8000 sock=8716 this=0x64ee2934 cmd=0x10000 port=62610
+[2024-02-22 15:03:53.948][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:54.062][INF] Private connect 192.168.1.64:8000 sock=8624 this=0x64ee2934 cmd=0x30200 port=62611
+[2024-02-22 15:03:55.110][INF] Private connect 192.168.1.64:8000 sock=8644 this=0x64ee2934 cmd=0x30200 port=62613
+[2024-02-22 15:03:55.118][INF] COM_Logout[0][1]
+[2024-02-22 15:03:55.119][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:03:55.142][INF] Private connect 192.168.1.64:8000 sock=8716 this=0x64ee2934 cmd=0x10100 port=62614
+[2024-02-22 15:03:56.240][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:56.261][INF] Private connect 192.168.1.64:8000 sock=8676 this=0x64ee2934 cmd=0x10000 port=62617
+[2024-02-22 15:03:56.261][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:56.354][INF] Private connect 192.168.1.64:8000 sock=8716 this=0x64ee2934 cmd=0x30200 port=62619
+[2024-02-22 15:03:57.388][INF] Private connect 192.168.1.64:8000 sock=8688 this=0x64ee2934 cmd=0x30200 port=62621
+[2024-02-22 15:03:57.392][INF] COM_Logout[1][1]
+[2024-02-22 15:03:57.392][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:03:57.395][INF] Private connect 192.168.1.64:8000 sock=8676 this=0x64ee2934 cmd=0x10100 port=62622
+[2024-02-22 15:03:57.923][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:57.947][INF] Private connect 192.168.1.64:8000 sock=8644 this=0x64ee2934 cmd=0x10000 port=62627
+[2024-02-22 15:03:57.947][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:58.041][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x30200 port=62628
+[2024-02-22 15:03:59.075][INF] Private connect 192.168.1.64:8000 sock=8688 this=0x64ee2934 cmd=0x30200 port=62630
+[2024-02-22 15:03:59.080][INF] COM_Logout[0][1]
+[2024-02-22 15:03:59.080][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:03:59.105][INF] Private connect 192.168.1.64:8000 sock=8644 this=0x64ee2934 cmd=0x10100 port=62631
+[2024-02-22 15:03:59.521][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:03:59.541][INF] Private connect 192.168.1.64:8000 sock=8564 this=0x64ee2934 cmd=0x10000 port=62633
+[2024-02-22 15:03:59.541][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:03:59.635][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x30200 port=62634
+[2024-02-22 15:04:00.665][INF] Private connect 192.168.1.64:8000 sock=8724 this=0x64ee2934 cmd=0x30200 port=62635
+[2024-02-22 15:04:00.670][INF] COM_Logout[1][1]
+[2024-02-22 15:04:00.670][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:00.696][INF] Private connect 192.168.1.64:8000 sock=8564 this=0x64ee2934 cmd=0x10100 port=62636
+[2024-02-22 15:04:05.668][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:05.670][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10000 port=62641
+[2024-02-22 15:04:05.670][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:05.762][INF] Private connect 192.168.1.64:8000 sock=8552 this=0x64ee2934 cmd=0x30200 port=62642
+[2024-02-22 15:04:06.791][INF] Private connect 192.168.1.64:8000 sock=8720 this=0x64ee2934 cmd=0x30200 port=62644
+[2024-02-22 15:04:06.800][INF] COM_Logout[0][1]
+[2024-02-22 15:04:06.800][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:04:06.821][INF] Private connect 192.168.1.64:8000 sock=8364 this=0x64ee2934 cmd=0x10100 port=62645
+[2024-02-22 15:04:07.657][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:07.658][INF] Private connect 192.168.1.64:8000 sock=8692 this=0x64ee2934 cmd=0x10000 port=62647
+[2024-02-22 15:04:07.658][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:07.729][INF] Private connect 192.168.1.64:8000 sock=8512 this=0x64ee2934 cmd=0x30200 port=62648
+[2024-02-22 15:04:08.743][INF] Private connect 192.168.1.64:8000 sock=8752 this=0x64ee2934 cmd=0x30200 port=62649
+[2024-02-22 15:04:08.749][INF] COM_Logout[1][1]
+[2024-02-22 15:04:08.749][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:08.753][INF] Private connect 192.168.1.64:8000 sock=8692 this=0x64ee2934 cmd=0x10100 port=62650
+[2024-02-22 15:04:09.560][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:09.581][INF] Private connect 192.168.1.64:8000 sock=8756 this=0x64ee2934 cmd=0x10000 port=62655
+[2024-02-22 15:04:09.581][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:09.658][INF] Private connect 192.168.1.64:8000 sock=8572 this=0x64ee2934 cmd=0x30200 port=62656
+[2024-02-22 15:04:10.690][INF] Private connect 192.168.1.64:8000 sock=8512 this=0x64ee2934 cmd=0x30200 port=62658
+[2024-02-22 15:04:10.694][INF] COM_Logout[0][1]
+[2024-02-22 15:04:10.694][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:04:10.721][INF] Private connect 192.168.1.64:8000 sock=8756 this=0x64ee2934 cmd=0x10100 port=62659
+[2024-02-22 15:04:11.372][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:11.389][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10000 port=62661
+[2024-02-22 15:04:11.389][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:11.460][INF] Private connect 192.168.1.64:8000 sock=8512 this=0x64ee2934 cmd=0x30200 port=62662
+[2024-02-22 15:04:12.482][INF] Private connect 192.168.1.64:8000 sock=8504 this=0x64ee2934 cmd=0x30200 port=62663
+[2024-02-22 15:04:12.487][INF] COM_Logout[1][1]
+[2024-02-22 15:04:12.487][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:12.512][INF] Private connect 192.168.1.64:8000 sock=8448 this=0x64ee2934 cmd=0x10100 port=62664
+[2024-02-22 15:04:13.061][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:13.064][INF] Private connect 192.168.1.64:8000 sock=8504 this=0x64ee2934 cmd=0x10000 port=62669
+[2024-02-22 15:04:13.064][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:13.131][INF] Private connect 192.168.1.64:8000 sock=8772 this=0x64ee2934 cmd=0x30200 port=62670
+[2024-02-22 15:04:14.162][INF] Private connect 192.168.1.64:8000 sock=8772 this=0x64ee2934 cmd=0x30200 port=62672
+[2024-02-22 15:04:14.167][INF] COM_Logout[0][1]
+[2024-02-22 15:04:14.168][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:04:14.194][INF] Private connect 192.168.1.64:8000 sock=8504 this=0x64ee2934 cmd=0x10100 port=62673
+[2024-02-22 15:04:14.282][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:14.303][INF] Private connect 192.168.1.64:8000 sock=8632 this=0x64ee2934 cmd=0x10000 port=62675
+[2024-02-22 15:04:14.303][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:14.398][INF] Private connect 192.168.1.64:8000 sock=8360 this=0x64ee2934 cmd=0x30200 port=62676
+[2024-02-22 15:04:15.426][INF] Private connect 192.168.1.64:8000 sock=8676 this=0x64ee2934 cmd=0x30200 port=62677
+[2024-02-22 15:04:15.431][INF] COM_Logout[1][1]
+[2024-02-22 15:04:15.431][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:15.458][INF] Private connect 192.168.1.64:8000 sock=8632 this=0x64ee2934 cmd=0x10100 port=62678
+[2024-02-22 15:04:16.168][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:16.194][INF] Private connect 192.168.1.64:8000 sock=8100 this=0x64ee2934 cmd=0x10000 port=62683
+[2024-02-22 15:04:16.194][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:16.289][INF] Private connect 192.168.1.64:8000 sock=8504 this=0x64ee2934 cmd=0x30200 port=62684
+[2024-02-22 15:04:16.930][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:16.944][INF] Private connect 192.168.1.64:8000 sock=8316 this=0x64ee2934 cmd=0x10000 port=62687
+[2024-02-22 15:04:16.944][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:17.037][INF] Private connect 192.168.1.64:8000 sock=8316 this=0x64ee2934 cmd=0x30200 port=62688
+[2024-02-22 15:04:17.315][INF] Private connect 192.168.1.64:8000 sock=8704 this=0x64ee2934 cmd=0x30200 port=62689
+[2024-02-22 15:04:17.323][INF] COM_Logout[0][1]
+[2024-02-22 15:04:17.323][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:04:17.347][INF] Private connect 192.168.1.64:8000 sock=8704 this=0x64ee2934 cmd=0x10100 port=62690
+[2024-02-22 15:04:18.052][INF] Private connect 192.168.1.64:8000 sock=8748 this=0x64ee2934 cmd=0x30200 port=62691
+[2024-02-22 15:04:18.075][INF] COM_Logout[1][1]
+[2024-02-22 15:04:18.075][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:18.077][INF] Private connect 192.168.1.64:8000 sock=8100 this=0x64ee2934 cmd=0x10100 port=62692
+[2024-02-22 15:04:19.206][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:19.223][INF] Private connect 192.168.1.64:8000 sock=8572 this=0x64ee2934 cmd=0x10000 port=62697
+[2024-02-22 15:04:19.223][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:19.317][INF] Private connect 192.168.1.64:8000 sock=8776 this=0x64ee2934 cmd=0x30200 port=62698
+[2024-02-22 15:04:20.329][INF] Private connect 192.168.1.64:8000 sock=8756 this=0x64ee2934 cmd=0x30200 port=62700
+[2024-02-22 15:04:20.335][INF] COM_Logout[0][1]
+[2024-02-22 15:04:20.335][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-22 15:04:20.339][INF] Private connect 192.168.1.64:8000 sock=8572 this=0x64ee2934 cmd=0x10100 port=62701
+[2024-02-22 15:04:20.934][INF] Login dev 192.168.1.64:8000.
+[2024-02-22 15:04:20.948][INF] Private connect 192.168.1.64:8000 sock=8668 this=0x64ee2934 cmd=0x10000 port=62703
+[2024-02-22 15:04:20.948][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-22 15:04:21.027][INF] Private connect 192.168.1.64:8000 sock=3852 this=0x64ee2934 cmd=0x30200 port=62704
+[2024-02-22 15:04:22.061][INF] Private connect 192.168.1.64:8000 sock=8596 this=0x64ee2934 cmd=0x30200 port=62705
+[2024-02-22 15:04:22.078][INF] COM_Logout[1][1]
+[2024-02-22 15:04:22.078][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-22 15:04:22.093][INF] Private connect 192.168.1.64:8000 sock=8668 this=0x64ee2934 cmd=0x10100 port=62706

@@ -30,7 +30,6 @@ public class VideoSocketHandler extends TextWebSocketHandler {
         // 在这里处理实时视频数据的传输
         // message.getPayload() 包含实时视频数据
         // 将数据发送到前端
-
         try {
             session.sendMessage(new TextMessage("Received: " + message.getPayload()));
         } catch (IOException e) {
