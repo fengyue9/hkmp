@@ -53,9 +53,10 @@ public interface ScreenshotRecordMapper
 
     /**
      * 批量删除抓图记录
-     * 
-     * @param deviceIds 需要删除的数据主键集合
+     *
      * @return 结果
+
+     @param screenshotKey
      */
-    public int deleteScreenshotRecordByDeviceIds(Long[] deviceIds);
+    public int deleteScreenshotRecordByScreenshotKeys(String screenshotKey);
 }

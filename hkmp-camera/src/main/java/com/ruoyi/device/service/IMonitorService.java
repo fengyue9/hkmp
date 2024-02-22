@@ -20,4 +20,6 @@ public interface IMonitorService {
     void remoteControl(Device device, Integer code) throws InterruptedException;
 
     String saveImage(MultipartFile imageFile, String deviceId) throws Exception;
+
+
 }

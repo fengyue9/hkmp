@@ -83,8 +83,6 @@ public class CodeHandler {
     private void handleCode1(int userId) {
         // 处理code为1的情况,左上
         PTZControlHandle(userId, hcNetSDK.UP_LEFT);
-        //        PTZControlHandle(userId, hcNetSDK.TILT_UP);
-        //        PTZControlHandle(userId, hcNetSDK.PAN_LEFT);
     }
 
     private void handleCode2(int userId) {
@@ -95,9 +93,6 @@ public class CodeHandler {
     private void handleCode3(int userId) {
         // 处理code为3的情况,右上
         PTZControlHandle(userId, hcNetSDK.UP_RIGHT);
-        //        PTZControlHandle(userId, hcNetSDK.TILT_UP);
-        //        PTZControlHandle(userId, hcNetSDK.PAN_RIGHT);
-
     }
     private void handleCode4(int userId) {
         // 处理code为4的情况,左转
@@ -115,8 +110,6 @@ public class CodeHandler {
     private void handleCode7(int userId) {
         // 处理code为7的情况,左下
         PTZControlHandle(userId, hcNetSDK.DOWN_LEFT);
-        //        PTZControlHandle(userId, hcNetSDK.PAN_LEFT);
-        //        PTZControlHandle(userId, hcNetSDK.TILT_DOWN);
     }
     private void handleCode8(int userId) {
         // 处理code为8的情况,下
@@ -125,8 +118,6 @@ public class CodeHandler {
     private void handleCode9(int userId) {
         // 处理code为9的情况,右下
         PTZControlHandle(userId, hcNetSDK.DOWN_RIGHT);
-        //        PTZControlHandle(userId, hcNetSDK.PAN_RIGHT);
-        //        PTZControlHandle(userId, hcNetSDK.TILT_DOWN);
     }
 
     private void handleCode10(int userId) {

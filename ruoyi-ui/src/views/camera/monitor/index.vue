@@ -144,17 +144,8 @@ export default {
       devices: [],
       //设备列表下拉框默认选中的值
       selectedItem: null,
-      windowCounts: [
-        {
-          id: 1, count: '1×1'
-        }, {
-          id: 2, count: '2×2'
-        }, {
-          id: 3, count: '3×3'
-        }, {
-          id: 4, count: '4×4'
-        }
-      ],
+      //是否开始预览
+      isStartMonitor: false,
       eventCallbacks: [
         {timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: ''},
         {timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport'},
@@ -212,9 +203,8 @@ export default {
         type: 'success',
         center: true
       });
-      console.log(11111111)
-      console.log(device)
       this.initWebRtcStreamer(device);
+      this.isStartMonitor = true;
     },
     //初始化实时预览
     initWebRtcStreamer(device) {
@@ -222,20 +212,18 @@ export default {
       const videoElement = this.$refs.video;
       // 初始化 WebRtcStreamer
       this.webRtcServer = new WebRtcStreamer(videoElement, "http://127.0.0.1:8000");
-      // 连接到 RTSP 流地址
+      // 连接到 RTSP 流地址 如:this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
       const url = 'rtsp://' + device.deviceUsername + ':' + device.devicePassword + '@' + device.deviceIp + ':554/Streaming/Channels/101';
-      // 如:this.webRtcServer.connect("rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/Channels/101");
-      console.log("RTSP流的URL为:" + url);
       this.webRtcServer.connect(url);
     },
     //断开实时预览
     disconnectWebRtcStreamer() {
       if (!this.webRtcServer) {
-        this.$message({
-          message: '未开始预览！',
-          type: 'warning',
-          center: true
-        });
+        // this.$message({
+        //   message: '未开始预览！',
+        //   type: 'warning',
+        //   center: true
+        // });
         return;
       }
       this.$message({
@@ -246,6 +234,7 @@ export default {
       // 断开连接
       if (this.webRtcServer) {
         this.webRtcServer.disconnect();
+        this.isStartMonitor = false;
       }
     },
     //云台控制-左上
@@ -317,22 +306,56 @@ export default {
     },
     //抓图
     captureImage() {
+      if (!this.isStartMonitor) {
+        this.$message({
+          message: '未开始预览！',
+          type: 'warn',
+          center: true
+        });
+        return;
+      }
+      // //获取一帧的图像
+      // const video = this.$refs.video;
+      // const scale = 0.25;
+      // const canvas = document.createElement("canvas");
+      // const context = canvas.getContext("2d");
+      // canvas.width = video.videoWidth * scale;
+      // canvas.height = video.videoHeight * scale;
+      // context.drawImage(video, 0, 0, canvas.width, canvas.height);
       const video = this.$refs.video;
-      const scale = 0.25;
+      // 获取视频的原始尺寸
+      const width = video.videoWidth;
+      const height = video.videoHeight;
+      // 创建画布，并设置与视频尺寸相同的尺寸
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      canvas.width = video.videoWidth * scale;
-      canvas.height = video.videoHeight * scale;
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const img = document.createElement("img");
-      img.src = canvas.toDataURL("image/png");
-      const outputContainer = document.getElementById("output");
-      outputContainer.prepend(img);
+      canvas.width = width;
+      canvas.height = height;
+
+      // 绘制视频帧到画布
+      context.drawImage(video, 0, 0, width, height);
+
+      // 将画布转换为图像数据
+      const imageData = canvas.toDataURL("image/png");
       // 调用发送图标数据到后端的方法，并传递 deviceId
       if (this.selectedItem) {
-        this.sendImageData(canvas.toDataURL("image/png"), this.selectedItem.deviceId);
+        //获取特定格式的当前时间
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始计算，因此需要加1
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const currentTime = `${year}.${month}.${day}-${hours}.${minutes}.${seconds}`;
+        const file = this.dataURLtoFile(imageData, 'image' + currentTime + '.png');
+        this.sendImageData(file, this.selectedItem.deviceId);
       } else {
-        console.error('请先选择设备');
+        this.$message({
+          message: '请先选择设备！',
+          type: 'warn',
+          center: true
+        });
       }
     },
     // 发送图片数据
@@ -344,13 +367,24 @@ export default {
           center: true
         });
       }).catch(error => {
-        console.error('抓图失败:', error);
         this.$message({
           message: '抓图失败，请重试！',
           type: 'error',
           center: true
         });
       });
+    },
+    // 将 base64 编码的图片数据转换为文件对象
+    dataURLtoFile(dataURL, fileName) {
+      const arr = dataURL.split(',');
+      const mime = arr[0].match(/:(.*?);/)[1];
+      const bstr = atob(arr[1]);
+      let n = bstr.length;
+      const u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], fileName, {type: mime});
     }
   }
   ,

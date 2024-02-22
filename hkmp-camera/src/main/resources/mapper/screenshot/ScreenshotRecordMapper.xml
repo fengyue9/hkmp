@@ -16,9 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectScreenshotRecordList" parameterType="ScreenshotRecord" resultMap="ScreenshotRecordResult">
         <include refid="selectScreenshotRecordVo"/>
-        <where>  
-            <if test="screenshotKey != null  and screenshotKey != ''"> and screenshot_key = #{screenshotKey}</if>
-            <if test="screenshotTime != null "> and screenshot_time = #{screenshotTime}</if>
+        <where>
+            <if test="screenshotKey != null  and screenshotKey != ''">and screenshot_key = #{screenshotKey}</if>
+            <!-- 使用 BETWEEN 条件查询某一天内的所有记录 -->
+            <if test="screenshotTime != null and screenshotKey != ''">
+                and screenshot_time BETWEEN #{screenshotTime} AND DATE_ADD(#{screenshotTime}, INTERVAL 1 DAY)
+            </if>
         </where>
     </select>
     
@@ -54,10 +57,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         delete from screenshot_record where device_id = #{deviceId}
     </delete>
 
-    <delete id="deleteScreenshotRecordByDeviceIds" parameterType="String">
-        delete from screenshot_record where device_id in 
-        <foreach item="deviceId" collection="array" open="(" separator="," close=")">
-            #{deviceId}
-        </foreach>
+    <delete id="deleteScreenshotRecordByScreenshotKeys" parameterType="String">
+        delete
+        from screenshot_record sr
+        where sr.screenshot_key = #{screenshotKey,jdbcType=VARCHAR}
     </delete>
 </mapper>

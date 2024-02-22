@@ -1,6 +1,9 @@
 package com.ruoyi.device.service;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import com.ruoyi.device.domain.ScreenshotRecord;
 
 /**
@@ -45,11 +48,12 @@ public interface IScreenshotRecordService
 
     /**
      * 批量删除抓图记录
-     * 
-     * @param deviceIds 需要删除的抓图记录主键集合
+     *
      * @return 结果
+
+     @param screenshotKey
      */
-    public int deleteScreenshotRecordByDeviceIds(Long[] deviceIds);
+    public int deleteScreenshotRecordByScreenshotKey(String screenshotKey);
 
     /**
      * 删除抓图记录信息
@@ -58,4 +62,6 @@ public interface IScreenshotRecordService
      * @return 结果
      */
     public int deleteScreenshotRecordByDeviceId(Long deviceId);
+
+    void download(String screenshotKey, HttpServletResponse response);
 }

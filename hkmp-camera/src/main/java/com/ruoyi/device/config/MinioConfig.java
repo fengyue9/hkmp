@@ -89,6 +89,7 @@ public class MinioConfig implements InitializingBean {
             response.setContentType(stat.contentType());
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+            response.setContentType("application/octet-stream");
             IOUtils.copy(inputStream, response.getOutputStream());
             inputStream.close();
         } catch (Exception e) {
@@ -228,15 +229,11 @@ public class MinioConfig implements InitializingBean {
     public boolean removeObject(String bucketName, String objectName) throws Exception {
         boolean flag = bucketExists(bucketName);
         if (flag) {
-            List<String> objectList = listObjectNames(bucketName);
-            for (String s : objectList) {
-                if (s.equals(objectName)) {
-                    minioClient.removeObject(bucketName, objectName);
-                    return true;
-                }
-            }
+            minioClient.removeObject(bucketName, objectName);
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
