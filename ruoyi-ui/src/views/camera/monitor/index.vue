@@ -121,6 +121,15 @@
             <el-button class="demonstration" @click="toggleRecording">
               {{ isRecording ? '结束录制' : '开始录制' }}
             </el-button>
+            <!-- 录制状态提示 -->
+            <el-alert
+              :title="alertTitle"
+              type="success"
+              :closable="false"
+              :center="true"
+              v-if="isRecording"
+            >
+            </el-alert>
             <el-button class="demonstration">抓图4</el-button>
             <el-button class="demonstration">抓图5</el-button>
             <el-button class="demonstration">抓图6</el-button>
@@ -172,6 +181,7 @@ export default {
       isRecording: false, //是否正在录制，初始为false
       mediaRecorder: null, //视频路线记录
       recordedChunks: [],
+      alertTitle: '视频录制中', // 录制状态提示标题
     }
   },
   mounted() {
@@ -502,14 +512,17 @@ export default {
       });
       this.isRecording = true;
       const video = this.$refs.video;
-      // this.recordedChunks = [];
-      this.mediaRecorder = new MediaRecorder(video.captureStream(60));
-      this.mediaRecorder.ondataavailable = event => {
-        if (event.data.size > 0) {
-          this.recordedChunks.push(event.data);
-        }
-      };
-      this.mediaRecorder.start();
+      this.recordedChunks = [];
+      const stream = video.captureStream();
+      console.log('捕获的视频流:', stream);
+      this.mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm'});
+      const videoTracks = stream.getVideoTracks();
+      if (videoTracks.length > 0) {
+        this.mediaRecorder.start(100),
+          this.mediaRecorder.ondataavailable = (e) => {
+            this.recordedChunks.push(e.data);
+          };
+      }
     },
     //结束录制
     stopRecording() {
@@ -522,10 +535,11 @@ export default {
       this.isRecording = false;
       this.mediaRecorder.stop();
       this.saveRecording();
+      this.alertTitle = '视频录制中'; // 修改录制状态提示标题
     },
     //保存录像
     saveRecording() {
-      const blob = new Blob(this.recordedChunks, {type: 'video/webm;codecs=h264'});
+      const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

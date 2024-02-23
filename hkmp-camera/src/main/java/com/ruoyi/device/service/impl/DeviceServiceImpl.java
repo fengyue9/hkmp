@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.mapper.DeviceMapper;
@@ -26,12 +27,24 @@ import com.ruoyi.framework.websocket.WebSocketUsers;
 @Service
 public class DeviceServiceImpl implements IDeviceService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DeviceServiceImpl.class);
-
+    public static final String DEVICE_LIST_KEY = "DEVICE_LIST";
     @Resource
     private DeviceMapper deviceMapper;
     @Resource
     private HCNetSDK hcNetSDK;
+    @Resource
+    private RedisCache redisCache;
 
+    //    /**
+    //     * 启动时缓存设备信息
+    //     *
+    //     */
+    //    @PostConstruct
+    //    public void cacheDeviceInfo() {
+    //        List<Device> deviceList = deviceMapper.selectDeviceList(new Device());
+    //        redisCache.setCacheList(DEVICE_LIST_KEY, deviceList);
+    //        redisCache.expire(DEVICE_LIST_KEY, 3, TimeUnit.HOURS);
+    //    }
 
     /**
      * 更新设备在线状态 每5s执行一次
@@ -47,12 +60,16 @@ public class DeviceServiceImpl implements IDeviceService {
                 //登录失败, 将状态设置成离线
                 device.setDeviceStatus("1");
                 deviceMapper.updateDevice(device);
+                LOGGER.info("================================");
                 LOGGER.info("设备id: " + device.getDeviceId() + " 离线!");
+                LOGGER.info("================================");
             } else {
                 //登录成功，将状态设置成在线
                 device.setDeviceStatus("0");
                 deviceMapper.updateDevice(device);
+                LOGGER.info("================================");
                 LOGGER.info("设备id: " + device.getDeviceId() + " 在线!");
+                LOGGER.info("================================");
                 LoginUtils.logout(userId);
             }
         }
