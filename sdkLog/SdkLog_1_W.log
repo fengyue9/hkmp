@@ -378,3 +378,283 @@
 [2024-02-26 23:29:42.132][DBG] CUserMgr::UnRegisterHeartProxy[1]
 [2024-02-26 23:29:42.160][INF] Private connect 192.168.1.64:8000 sock=8308 this=0xedd28354 cmd=0x10100 port=53836
 [2024-02-26 23:29:45.016][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:29:48.527][ERR] Private connect 192.168.124.63:80 sock=8500 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:29:48.527][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:29:48.527][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:29:48.532][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:29:52.044][ERR] Private connect 192.168.12.11:80 sock=8460 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:29:52.044][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:29:52.044][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:29:52.048][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:29:52.076][INF] Private connect 192.168.1.64:8000 sock=8612 this=0xedd28354 cmd=0x10000 port=53848
+[2024-02-26 23:29:52.076][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:29:52.149][INF] COM_Logout[0][1]
+[2024-02-26 23:29:52.149][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:29:52.168][INF] Private connect 192.168.1.64:8000 sock=8612 this=0xedd28354 cmd=0x10100 port=53849
+[2024-02-26 23:29:55.013][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:29:58.519][ERR] Private connect 192.168.124.63:80 sock=8656 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:29:58.519][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:29:58.519][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:29:58.524][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:02.034][ERR] Private connect 192.168.12.11:80 sock=8320 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:02.034][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:02.034][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:02.037][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:02.049][INF] Private connect 192.168.1.64:8000 sock=8652 this=0xedd28354 cmd=0x10000 port=53868
+[2024-02-26 23:30:02.049][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:02.121][INF] COM_Logout[1][1]
+[2024-02-26 23:30:02.122][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:30:02.142][INF] Private connect 192.168.1.64:8000 sock=8652 this=0xedd28354 cmd=0x10100 port=53869
+[2024-02-26 23:30:05.005][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:08.509][ERR] Private connect 192.168.124.63:80 sock=8320 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:08.509][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:08.509][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:08.513][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:12.029][ERR] Private connect 192.168.12.11:80 sock=8600 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:12.029][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:12.029][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:12.043][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:12.046][INF] Private connect 192.168.1.64:8000 sock=8320 this=0xedd28354 cmd=0x10000 port=53888
+[2024-02-26 23:30:12.046][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:12.118][INF] COM_Logout[0][1]
+[2024-02-26 23:30:12.118][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:30:12.138][INF] Private connect 192.168.1.64:8000 sock=8320 this=0xedd28354 cmd=0x10100 port=53889
+[2024-02-26 23:30:15.010][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:18.519][ERR] Private connect 192.168.124.63:80 sock=8704 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:18.519][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:18.519][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:18.524][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:22.029][ERR] Private connect 192.168.12.11:80 sock=8724 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:22.029][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:22.029][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:22.032][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:22.045][INF] Private connect 192.168.1.64:8000 sock=8712 this=0xedd28354 cmd=0x10000 port=53904
+[2024-02-26 23:30:22.045][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:22.112][INF] COM_Logout[1][1]
+[2024-02-26 23:30:22.112][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:30:22.124][INF] Private connect 192.168.1.64:8000 sock=8712 this=0xedd28354 cmd=0x10100 port=53906
+[2024-02-26 23:30:25.017][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:28.521][ERR] Private connect 192.168.124.63:80 sock=8744 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:28.521][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:28.521][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:28.526][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:32.040][ERR] Private connect 192.168.12.11:80 sock=8760 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:32.040][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:32.040][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:32.045][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:32.070][INF] Private connect 192.168.1.64:8000 sock=8772 this=0xedd28354 cmd=0x10000 port=53909
+[2024-02-26 23:30:32.070][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:32.128][INF] COM_Logout[0][1]
+[2024-02-26 23:30:32.128][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:30:32.148][INF] Private connect 192.168.1.64:8000 sock=8772 this=0xedd28354 cmd=0x10100 port=53910
+[2024-02-26 23:30:35.017][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:38.528][ERR] Private connect 192.168.124.63:80 sock=8776 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:38.528][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:38.528][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:38.532][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:42.046][ERR] Private connect 192.168.12.11:80 sock=8760 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:42.046][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:42.046][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:42.053][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:42.076][INF] Private connect 192.168.1.64:8000 sock=8760 this=0xedd28354 cmd=0x10000 port=53926
+[2024-02-26 23:30:42.076][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:42.141][INF] COM_Logout[1][1]
+[2024-02-26 23:30:42.141][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:30:42.153][INF] Private connect 192.168.1.64:8000 sock=8760 this=0xedd28354 cmd=0x10100 port=53927
+[2024-02-26 23:30:45.016][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:48.520][ERR] Private connect 192.168.124.63:80 sock=8764 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:48.520][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:48.520][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:30:48.525][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:30:52.038][ERR] Private connect 192.168.12.11:80 sock=8724 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:52.038][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:52.038][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:52.042][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:30:52.045][INF] Private connect 192.168.1.64:8000 sock=8788 this=0xedd28354 cmd=0x10000 port=53938
+[2024-02-26 23:30:52.045][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:30:52.126][INF] COM_Logout[0][1]
+[2024-02-26 23:30:52.126][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:30:52.129][INF] Private connect 192.168.1.64:8000 sock=8788 this=0xedd28354 cmd=0x10100 port=53939
+[2024-02-26 23:30:55.017][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:30:58.517][ERR] Private connect 192.168.124.63:80 sock=8824 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:30:58.517][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:30:58.517][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:30:58.523][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:02.031][ERR] Private connect 192.168.12.11:80 sock=8828 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:02.031][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:02.031][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:02.036][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:02.062][INF] Private connect 192.168.1.64:8000 sock=8824 this=0xedd28354 cmd=0x10000 port=53957
+[2024-02-26 23:31:02.062][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:02.122][INF] COM_Logout[1][1]
+[2024-02-26 23:31:02.122][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:31:02.141][INF] Private connect 192.168.1.64:8000 sock=8824 this=0xedd28354 cmd=0x10100 port=53958
+[2024-02-26 23:31:05.019][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:08.520][ERR] Private connect 192.168.124.63:80 sock=8884 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:08.520][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:08.520][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:08.523][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:12.028][ERR] Private connect 192.168.12.11:80 sock=8844 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:12.028][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:12.028][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:12.033][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:12.059][INF] Private connect 192.168.1.64:8000 sock=8840 this=0xedd28354 cmd=0x10000 port=53979
+[2024-02-26 23:31:12.059][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:12.134][INF] COM_Logout[0][1]
+[2024-02-26 23:31:12.134][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:31:12.152][INF] Private connect 192.168.1.64:8000 sock=8840 this=0xedd28354 cmd=0x10100 port=53980
+[2024-02-26 23:31:15.016][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:18.529][ERR] Private connect 192.168.124.63:80 sock=8828 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:18.529][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:18.529][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:18.534][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:22.040][ERR] Private connect 192.168.12.11:80 sock=8924 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:22.040][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:22.040][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:22.045][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:22.071][INF] Private connect 192.168.1.64:8000 sock=8896 this=0xedd28354 cmd=0x10000 port=53983
+[2024-02-26 23:31:22.071][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:22.150][INF] COM_Logout[1][1]
+[2024-02-26 23:31:22.150][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:31:22.164][INF] Private connect 192.168.1.64:8000 sock=8896 this=0xedd28354 cmd=0x10100 port=53984
+[2024-02-26 23:31:25.015][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:28.529][ERR] Private connect 192.168.124.63:80 sock=8704 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:28.529][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:28.529][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:28.533][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:32.039][ERR] Private connect 192.168.12.11:80 sock=8704 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:32.039][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:32.039][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:32.042][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:32.054][INF] Private connect 192.168.1.64:8000 sock=8936 this=0xedd28354 cmd=0x10000 port=53989
+[2024-02-26 23:31:32.054][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:32.127][INF] COM_Logout[0][1]
+[2024-02-26 23:31:32.128][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:31:32.148][INF] Private connect 192.168.1.64:8000 sock=8936 this=0xedd28354 cmd=0x10100 port=53990
+[2024-02-26 23:31:35.006][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:38.512][ERR] Private connect 192.168.124.63:80 sock=9000 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:38.512][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:38.512][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:38.516][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:42.031][ERR] Private connect 192.168.12.11:80 sock=9000 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:42.031][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:42.031][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:42.035][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:42.062][INF] Private connect 192.168.1.64:8000 sock=9000 this=0xedd28354 cmd=0x10000 port=53993
+[2024-02-26 23:31:42.062][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:42.137][INF] COM_Logout[1][1]
+[2024-02-26 23:31:42.137][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:31:42.155][INF] Private connect 192.168.1.64:8000 sock=9000 this=0xedd28354 cmd=0x10100 port=53994
+[2024-02-26 23:31:45.015][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:48.528][ERR] Private connect 192.168.124.63:80 sock=9032 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:48.528][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:48.528][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:31:48.530][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:31:52.036][ERR] Private connect 192.168.12.11:80 sock=8884 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:52.036][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:52.036][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:52.041][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:31:52.066][INF] Private connect 192.168.1.64:8000 sock=9056 this=0xedd28354 cmd=0x10000 port=54000
+[2024-02-26 23:31:52.066][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:31:52.141][INF] COM_Logout[0][1]
+[2024-02-26 23:31:52.141][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:31:52.160][INF] Private connect 192.168.1.64:8000 sock=9056 this=0xedd28354 cmd=0x10100 port=54001
+[2024-02-26 23:31:55.018][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:31:58.519][ERR] Private connect 192.168.124.63:80 sock=9004 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:31:58.519][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:31:58.519][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:31:58.521][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:02.035][ERR] Private connect 192.168.12.11:80 sock=8852 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:02.035][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:02.035][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:02.038][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:02.050][INF] Private connect 192.168.1.64:8000 sock=8832 this=0xedd28354 cmd=0x10000 port=54008
+[2024-02-26 23:32:02.050][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:02.116][INF] COM_Logout[1][1]
+[2024-02-26 23:32:02.116][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:32:02.129][INF] Private connect 192.168.1.64:8000 sock=8832 this=0xedd28354 cmd=0x10100 port=54009
+[2024-02-26 23:32:05.010][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:08.524][ERR] Private connect 192.168.124.63:80 sock=9048 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:08.524][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:08.524][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:08.529][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:12.043][ERR] Private connect 192.168.12.11:80 sock=7592 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:12.043][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:12.043][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:12.047][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:12.058][INF] Private connect 192.168.1.64:8000 sock=9048 this=0xedd28354 cmd=0x10000 port=54013
+[2024-02-26 23:32:12.058][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:12.143][INF] COM_Logout[0][1]
+[2024-02-26 23:32:12.143][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:32:12.167][INF] Private connect 192.168.1.64:8000 sock=9048 this=0xedd28354 cmd=0x10100 port=54014
+[2024-02-26 23:32:15.008][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:18.513][ERR] Private connect 192.168.124.63:80 sock=9032 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:18.513][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:18.513][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:18.518][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:22.018][ERR] Private connect 192.168.12.11:80 sock=8848 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:22.018][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:22.018][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:22.024][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:22.050][INF] Private connect 192.168.1.64:8000 sock=8848 this=0xedd28354 cmd=0x10000 port=54019
+[2024-02-26 23:32:22.050][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:22.109][INF] COM_Logout[1][1]
+[2024-02-26 23:32:22.109][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:32:22.128][INF] Private connect 192.168.1.64:8000 sock=8848 this=0xedd28354 cmd=0x10100 port=54020
+[2024-02-26 23:32:25.018][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:28.518][ERR] Private connect 192.168.124.63:80 sock=8928 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:28.518][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:28.518][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:28.523][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:32.030][ERR] Private connect 192.168.12.11:80 sock=9108 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:32.030][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:32.030][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:32.034][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:32.061][INF] Private connect 192.168.1.64:8000 sock=9108 this=0xedd28354 cmd=0x10000 port=54023
+[2024-02-26 23:32:32.061][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:32.133][INF] COM_Logout[0][1]
+[2024-02-26 23:32:32.133][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:32:32.154][INF] Private connect 192.168.1.64:8000 sock=9108 this=0xedd28354 cmd=0x10100 port=54024
+[2024-02-26 23:32:35.020][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:38.533][ERR] Private connect 192.168.124.63:80 sock=9132 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:38.533][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:38.533][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:38.535][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:42.046][ERR] Private connect 192.168.12.11:80 sock=9132 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:42.046][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:42.046][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:42.049][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:42.051][INF] Private connect 192.168.1.64:8000 sock=9144 this=0xedd28354 cmd=0x10000 port=54042
+[2024-02-26 23:32:42.051][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:42.122][INF] COM_Logout[1][1]
+[2024-02-26 23:32:42.123][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:32:42.140][INF] Private connect 192.168.1.64:8000 sock=9144 this=0xedd28354 cmd=0x10100 port=54043
+[2024-02-26 23:32:45.012][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:48.514][ERR] Private connect 192.168.124.63:80 sock=9164 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:48.514][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:48.514][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:32:48.516][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:32:52.022][ERR] Private connect 192.168.12.11:80 sock=9160 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:52.022][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:52.022][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:52.028][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:32:52.053][INF] Private connect 192.168.1.64:8000 sock=7732 this=0xedd28354 cmd=0x10000 port=54051
+[2024-02-26 23:32:52.053][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:32:52.110][INF] COM_Logout[0][1]
+[2024-02-26 23:32:52.111][DBG] CUserMgr::UnRegisterHeartProxy[0]
+[2024-02-26 23:32:52.130][INF] Private connect 192.168.1.64:8000 sock=7732 this=0xedd28354 cmd=0x10100 port=54052
+[2024-02-26 23:32:55.018][INF] Login dev 192.168.124.63:80.
+[2024-02-26 23:32:58.530][ERR] Private connect 192.168.124.63:80 sock=9208 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:32:58.530][ERR] [192.168.124.63:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:32:58.530][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[1]
+[2024-02-26 23:32:58.534][INF] Login dev 192.168.12.11:80.
+[2024-02-26 23:33:02.045][ERR] Private connect 192.168.12.11:80 sock=9220 this=0xedd28354 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
+[2024-02-26 23:33:02.045][ERR] [192.168.12.11:80]LogonDevice Link_CreateLink fail[7].
+[2024-02-26 23:33:02.045][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2024-02-26 23:33:02.049][INF] Login dev 192.168.1.64:8000.
+[2024-02-26 23:33:02.060][INF] Private connect 192.168.1.64:8000 sock=9128 this=0xedd28354 cmd=0x10000 port=54055
+[2024-02-26 23:33:02.060][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-02-26 23:33:02.125][INF] COM_Logout[1][1]
+[2024-02-26 23:33:02.125][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-02-26 23:33:02.139][INF] Private connect 192.168.1.64:8000 sock=9128 this=0xedd28354 cmd=0x10100 port=54056
+[2024-02-26 23:33:05.013][INF] Login dev 192.168.124.63:80.
