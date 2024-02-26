@@ -130,6 +130,14 @@
               v-if="isRecording"
             >
             </el-alert>
+            <el-date-picker
+              v-model="selectedDate"
+              type="datetime"
+              placeholder="选择日期时间">
+            </el-date-picker>
+            <el-button @click="convertToISO">转换为 ISO 8601</el-button>
+            <div>选择的日期时间: {{ selectedDate }}</div>
+            <div>转换后的 ISO 8601 格式: {{ isoString }}</div>
             <el-button class="demonstration">抓图4</el-button>
             <el-button class="demonstration">抓图5</el-button>
             <el-button class="demonstration">抓图6</el-button>
@@ -165,6 +173,8 @@ export default {
         deviceIp: '',
         devicePort: '',
       },
+      selectedDate: '', // 用户选择的日期时间
+      isoString: '', // 转换后的 ISO 8601 格式字符串
       //是否开始预览
       isStartMonitor: false,
       eventCallbacks: [
@@ -197,6 +207,15 @@ export default {
     this.queryDeviceList();
   },
   methods: {
+    // 将选择的日期时间转换为 ISO 8601 格式字符串
+    convertToISO() {
+      if (this.selectedDate) {
+        // 创建日期对象
+        const date = new Date(this.selectedDate);
+        // 转换为 ISO 8601 格式字符串
+        this.isoString = date.toISOString();
+      }
+    },
     // 当用户选择设备时触发
     handleDeviceSelection(selectedDeviceName) {
       // 根据设备名称从设备列表中找到对应的设备对象

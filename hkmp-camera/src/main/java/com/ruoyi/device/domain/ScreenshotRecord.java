@@ -68,4 +68,5 @@ public class ScreenshotRecord extends BaseEntity {
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
     }
+
 }
