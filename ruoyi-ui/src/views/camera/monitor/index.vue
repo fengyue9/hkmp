@@ -2,12 +2,12 @@
   <div class="app-container" id="monitor-container">
     <el-row>
       <!-- 左侧设备选择 -->
-      <el-col :span="5">
+      <el-col :span="6" style="padding-right: 10px;padding-bottom: 10px">
         <el-card class="box-card">
           <h3 slot="header" class="header_card el-icon-coordinate"> 操作栏</h3>
           <div class="camera-container">
             <!--          选择设备栏 -->
-            <span class="span_info">设备列表 </span>
+            <span class="span_info">设备列表 ：</span>
             <el-select v-model="selectedItem.deviceName" placeholder="请选择在线设备"
                        @change="handleDeviceSelection"
                        style="padding-top:10px;padding-bottom:10px" size="small"
@@ -20,47 +20,66 @@
               />
             </el-select>
             <br>
-            <span class="span_info">云台操作</span>
-            <br>
-            <!--          云台操作按钮组-->
-            <div class="el-button-group" style="border: 1px;padding-top:10px;">
-              <div class="el-button primary el-icon-top-left" @click="remoteControlByCode(1)"></div>
-              <div class="el-button primary el-icon-top" @click="remoteControlByCode(2)"></div>
-              <div class="el-button primary el-icon-top-right" @click="remoteControlByCode(3)"></div>
+            <div style="padding-top: 20px;padding-bottom: 20px"><span class="span_info">云台控制区</span>
             </div>
-            <div class="el-button-group ">
-              <div class="el-button primary el-icon-back" @click="remoteControlByCode(4)"></div>
-              <div class="el-button primary el-icon-mouse" @click="remoteControlByCode(5)"></div>
-              <div class="el-button primary el-icon-right" @click="remoteControlByCode(6)"></div>
-            </div>
-            <div class="el-button-group" style="padding-bottom: 10px">
-              <div class="el-button primary el-icon-bottom-left" @click="remoteControlByCode(7)"></div>
-              <div class="el-button primary el-icon-bottom" @click="remoteControlByCode(8)"></div>
-              <div class="el-button primary el-icon-bottom-right" @click="remoteControlByCode(9)"></div>
+            <!-- 云台操作按钮组 -->
+            <div class="button-group-container">
+              <div class="el-button-group" style="border: 1px solid #ebeef5; padding: 10px;">
+                <el-button size="large" type="primary" icon="el-icon-top-left"
+                           @click="remoteControlByCode(1)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-top" @click="remoteControlByCode(2)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-top-right"
+                           @click="remoteControlByCode(3)"></el-button>
+              </div>
+              <div class="el-button-group" style="border: 1px solid #ebeef5; padding: 10px;">
+                <el-button size="large" type="primary" icon="el-icon-back" @click="remoteControlByCode(4)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-mouse" @click="remoteControlByCode(5)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-right" @click="remoteControlByCode(6)"></el-button>
+              </div>
+              <div class="el-button-group" style="border: 1px solid #ebeef5; padding: 10px;">
+                <el-button size="large" type="primary" icon="el-icon-bottom-left"
+                           @click="remoteControlByCode(7)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-bottom"
+                           @click="remoteControlByCode(8)"></el-button>
+                <el-button size="large" type="primary" icon="el-icon-bottom-right"
+                           @click="remoteControlByCode(9)"></el-button>
+              </div>
             </div>
             <!--          高级显示设置-->
             <br>
-            <span class="span_info">高级显示设置</span>
+            <div style="padding-top: 10px;padding-bottom: 10px">
+              <span class="span_info">高级显示设置区</span>
+            </div>
+
             <br>
             <!--          调整焦焦距按钮-->
             <div class="button-row" style="padding-top: 10px;">
-              <el-button class="primary el-icon-circle-plus-outline" @click="remoteControlByCode(10)">焦距变大
+              <el-button style="margin-right: 20px" size="large" type="primary"
+                         class="primary el-icon-circle-plus-outline"
+                         @click="remoteControlByCode(10)">焦距变大
               </el-button>
-              <el-button class="primary el-icon-remove-outline" @click="remoteControlByCode(11)">焦距变小
+              <el-button style="margin-right: 20px" size="large" type="primary" class="primary el-icon-remove-outline"
+                         @click="remoteControlByCode(11)">焦距变小
               </el-button>
             </div>
             <!--          调整光圈按钮-->
             <div class="button-row" style="padding-top: 10px;">
-              <el-button class="primary el-icon-circle-plus-outline" @click="remoteControlByCode(12)">扩大光圈
+              <el-button style="margin-right: 20px" size="large" type="primary"
+                         class="primary el-icon-circle-plus-outline"
+                         @click="remoteControlByCode(12)">扩大光圈
               </el-button>
-              <el-button class="primary el-icon-remove-outline" @click="remoteControlByCode(13)">缩小光圈
+              <el-button style="margin-right: 20px" size="large" type="primary" class="primary el-icon-remove-outline"
+                         @click="remoteControlByCode(13)">缩小光圈
               </el-button>
             </div>
             <!--          调整焦点按钮-->
             <div class="button-row" style="padding-top: 10px;">
-              <el-button class="primary el-icon-circle-plus-outline" @click="remoteControlByCode(15)">焦点前调
+              <el-button style="margin-right: 20px" size="large" type="primary"
+                         class="primary el-icon-circle-plus-outline"
+                         @click="remoteControlByCode(15)">焦点前调
               </el-button>
-              <el-button class="primary el-icon-remove-outline" @click="remoteControlByCode(16)">焦点后调
+              <el-button style="margin-right: 20px" size="large" type="primary" class="primary el-icon-remove-outline"
+                         @click="remoteControlByCode(16)">焦点后调
               </el-button>
             </div>
 
@@ -69,9 +88,9 @@
         </el-card>
       </el-col>
       <!-- 中间主体部分海康威视摄像头预览 -->
-      <el-col :span="14">
+      <el-col :span="18">
         <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-vid eo-camera"> 摄像头预览</h3>
+          <h3 slot="header" class="header_card el-icon-video-camera"> 摄像头预览</h3>
           <div class="camera-container">
             <video ref="video" class="video-element" @click="handleVideoClick" controls
                    poster="../../../assets/images/poster1.jpg"></video>
@@ -81,42 +100,18 @@
           </div>
         </el-card>
       </el-col>
-      <!-- 右侧操作日志记录 -->
-      <el-col :span="5">
-        <el-card class="box-card">
-          <h3 slot="header" class="header_card el-icon-data-line"> 操作记录</h3>
-          <div class="camera-container">
-            <el-scrollbar style="height: 100%; overflow-y: auto;">
-              <el-timeline style="padding-left: 5px;height: 100%" reverse>
-                <el-timeline-item
-                  v-for="(event, index) in eventCallbacks"
-                  :key="index"
-                  :timestamp="event.timestamp"
-                  :placement="index % 2 === 0 ? 'left' : 'right'"
-                >
-                  <el-card>
-                    <div class="event-title">{{ event.title }}</div>
-                    <div class="event-timestamp">{{ event.timestamp }}</div>
-                    <div class="event-description">{{ event.description }}</div>
-                  </el-card>
-                </el-timeline-item>
-              </el-timeline>
-            </el-scrollbar>
-          </div>
-        </el-card>
-      </el-col>
     </el-row>
     <el-row style="height: 80px">
       <el-card>
         <div class="block"
-             style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px;">
+             style="display: flex; align-items: center; justify-content: flex-end; padding: 15px 20px;">
           <div class="bottom_left">
             <el-button type="warning" style="margin-right: 10px;" @click="disconnectWebRtcStreamer">停止预览</el-button>
             <el-button type="success" @click="startMonitor()">开始预览</el-button>
           </div>
           <div style="flex: 1;"></div>
           <div class="volume-control" style="display: flex; align-items: center;">
-            <el-button class="demonstration" @click="captureImage">抓图</el-button>
+            <el-button size="medium" class="demonstration" @click="captureImage">抓图</el-button>
             <el-button class="demonstration" @click="toggleAnnotationMode">绘制</el-button>
             <el-button class="demonstration" @click="toggleRecording">
               {{ isRecording ? '结束录制' : '开始录制' }}
@@ -130,21 +125,6 @@
               v-if="isRecording"
             >
             </el-alert>
-            <el-date-picker
-              v-model="selectedDate"
-              type="datetime"
-              placeholder="选择日期时间">
-            </el-date-picker>
-            <el-button @click="convertToISO">转换为 ISO 8601</el-button>
-            <div>选择的日期时间: {{ selectedDate }}</div>
-            <div>转换后的 ISO 8601 格式: {{ isoString }}</div>
-            <el-button class="demonstration">抓图4</el-button>
-            <el-button class="demonstration">抓图5</el-button>
-            <el-button class="demonstration">抓图6</el-button>
-            <el-button class="demonstration">抓图7</el-button>
-            <el-button class="demonstration">抓图8</el-button>
-            <el-button class="demonstration">抓图9</el-button>
-            <el-button class="demonstration">抓图10</el-button>
           </div>
         </div>
       </el-card>
@@ -155,13 +135,14 @@
 <script>
 import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from './webrtcstreamer.js';
-import {saveImage, remoteControl} from "@/api/camera/monitor/monitor";
+import {remoteControl, saveImage} from "@/api/camera/monitor/monitor";
+import {saveVideo} from "@/api/system/record";
+import moment from 'moment';
+
 
 export default {
   data() {
     return {
-      selectedDevice: null,
-      selectedWindowCount: null,
       //设备列表，用于下拉框选择
       devices: [],
       //设备列表下拉框默认选中的值
@@ -177,13 +158,6 @@ export default {
       isoString: '', // 转换后的 ISO 8601 格式字符串
       //是否开始预览
       isStartMonitor: false,
-      eventCallbacks: [
-        {timestamp: '2023-01-01 08:30:00', title: '开始预览成功', description: ''},
-        {timestamp: '2023-01-01 09:15:00', title: '开启云台失败', description: '403,notSupport'},
-        {timestamp: '2023-01-01 10:00:00', title: '停止云台失败', description: '403,notSupport'},
-        {timestamp: '2023-01-01 11:30:00', title: '开启云台失败', description: '403,notSupport'},
-        {timestamp: '2023-01-01 13:45:00', title: '停止云台失败', description: '403,notSupport'}
-      ],
       isAnnotationMode: false, // 是否处于标注模式
       drawing: false, // 是否正在绘制
       lastX: 0, // 上一个点的横坐标
@@ -192,6 +166,8 @@ export default {
       mediaRecorder: null, //视频路线记录
       recordedChunks: [],
       alertTitle: '视频录制中', // 录制状态提示标题
+      startTime: '',//开始录制时间
+      endTime: '',//结束录制时间
     }
   },
   mounted() {
@@ -451,14 +427,7 @@ export default {
       // 调用发送图标数据到后端的方法，并传递 deviceId
       if (this.selectedItem) {
         //获取特定格式的当前时间
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份从0开始计算，因此需要加1
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const currentTime = `${year}.${month}.${day}-${hours}.${minutes}.${seconds}`;
+        const currentTime = moment().format('YYYY.MM.DD-HH.mm.ss');
         const file = this.dataURLtoFile(imageData, 'image' + currentTime + '.png');
         this.sendImageData(file, this.selectedItem.deviceId);
       } else {
@@ -515,6 +484,9 @@ export default {
     },
     //开始录制
     startRecording() {
+      this.startTime = moment().format('YYYY-MM-DD HH:mm:ss');
+      console.log(9999999999999999999);
+      console.log(this.startTime);
       // 开始录制逻辑
       if (!this.isStartMonitor) {
         this.$message({
@@ -533,7 +505,6 @@ export default {
       const video = this.$refs.video;
       this.recordedChunks = [];
       const stream = video.captureStream();
-      console.log('捕获的视频流:', stream);
       this.mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm'});
       const videoTracks = stream.getVideoTracks();
       if (videoTracks.length > 0) {
@@ -545,6 +516,8 @@ export default {
     },
     //结束录制
     stopRecording() {
+      this.endTime = moment().format('YYYY-MM-DD HH:mm:ss');
+      console.log(this.endTime);
       // 结束录制逻辑
       this.$message({
         message: '结束录制!',
@@ -553,11 +526,21 @@ export default {
       });
       this.isRecording = false;
       this.mediaRecorder.stop();
-      this.saveRecording();
       this.alertTitle = '视频录制中'; // 修改录制状态提示标题
+      this.$confirm('录制已结束，您想要直接下载视频还是保存视频到服务器？', '结束录制', {
+        confirmButtonText: '直接下载',
+        cancelButtonText: '保存到服务器',
+        type: 'warning'
+      }).then(() => {
+        // 用户选择直接下载视频
+        this.downloadRecording();
+      }).catch(() => {
+        // 用户选择保存视频到服务器
+        this.saveVideo();
+      });
     },
-    //保存录像
-    saveRecording() {
+    //下载录像
+    downloadRecording() {
       const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -566,7 +549,25 @@ export default {
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
+    },
+    //保存录像
+    saveVideo() {
+      const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
+      //构造请求表单数据
+      const formData = new FormData();
+      formData.append('file', blob, 'recording_' + moment().format("YYYY.MM.DD-HH.mm.ss") + '.webm');
+      formData.append('deviceId', this.selectedItem.deviceId);
+      formData.append('startTime', this.startTime);
+      formData.append('endTime', this.endTime);
+      saveVideo(formData).then(response => {
+        this.$message({
+          message: '视频保存成功！',
+          type: 'success',
+          center: true
+        });
+      })
     }
+
   },
   beforeDestroy() {
     // 在组件销毁前断开连接
@@ -590,22 +591,12 @@ export default {
   font-size: 16.5px;
 }
 
-.event-title {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.event-description {
-  margin-top: 10px;
-}
-
-
 .camera-container {
   max-width: 100%;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  height: 440px; /* 调整预览区域的高度 */
+  height: 600px; /* 调整预览区域的高度 */
 
 }
 

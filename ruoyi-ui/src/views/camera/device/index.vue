@@ -9,16 +9,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-<!--      <el-form-item label="状态" prop="deviceStatus">-->
-<!--        <el-select v-model="queryParams.deviceStatus" placeholder="请选择状态" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.sys_normal_disable"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -136,16 +126,16 @@
         <el-form-item label="序列号" prop="deviceSerialNumber">
           <el-input v-model="form.deviceSerialNumber" placeholder="请输入设备序列号"/>
         </el-form-item>
-<!--        <el-form-item label="状态" prop="deviceStatus">-->
-<!--          <el-radio-group v-model="form.deviceStatus">-->
-<!--            <el-radio-->
-<!--              v-for="dict in dict.type.sys_normal_disable"-->
-<!--              :key="dict.value"-->
-<!--              :label="dict.value"-->
-<!--            >{{ dict.label }}-->
-<!--            </el-radio>-->
-<!--          </el-radio-group>-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="状态" prop="deviceStatus">-->
+        <!--          <el-radio-group v-model="form.deviceStatus">-->
+        <!--            <el-radio-->
+        <!--              v-for="dict in dict.type.sys_normal_disable"-->
+        <!--              :key="dict.value"-->
+        <!--              :label="dict.value"-->
+        <!--            >{{ dict.label }}-->
+        <!--            </el-radio>-->
+        <!--          </el-radio-group>-->
+        <!--        </el-form-item>-->
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>
         </el-form-item>

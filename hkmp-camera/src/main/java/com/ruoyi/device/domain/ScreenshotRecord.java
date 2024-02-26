@@ -20,7 +20,7 @@ public class ScreenshotRecord extends BaseEntity {
     private Long deviceId;
 
     /** 抓图关键字 */
-    @Excel(name = "抓图关键字")
+    @Excel(name = "图片文件名")
     private String screenshotKey;
 
     /** 抓图时间 */

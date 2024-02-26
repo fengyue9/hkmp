@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.device.mapper.VideoRecordMapper">
+
+    <resultMap type="ScreenshotRecord" id="ScreenshotRecordResult">
+        <result property="deviceId" column="device_id"/>
+        <result property="screenshotKey" column="screenshot_key"/>
+        <result property="screenshotTime" column="screenshot_time"/>
+        <result property="deviceName" column="device_name"/>
+    </resultMap>
+
+
+    <select id="selectScreenshotRecordList" parameterType="ScreenshotRecord" resultMap="ScreenshotRecordResult">
+        SELECT SR.DEVICE_ID,
+        SR.SCREENSHOT_KEY,
+        SR.SCREENSHOT_TIME,
+        D.DEVICE_NAME
+        FROM SCREENSHOT_RECORD SR
+        LEFT JOIN DEVICE D on D.device_id = SR.device_id
+        <where>
+            <!-- 使用 BETWEEN 条件查询某一天内的所有记录 -->
+            <if test="screenshotTime != null">
+                and SR.screenshot_time BETWEEN #{screenshotTime,jdbcType=DATE} AND
+                DATE_ADD(#{screenshotTime,jdbcType=DATE}, INTERVAL 1 DAY)
+            </if>
+        </where>
+        ORDER BY SR.SCREENSHOT_TIME DESC
+    </select>
+
+    <select id="selectScreenshotRecordByDeviceId" parameterType="Long" resultMap="ScreenshotRecordResult">
+        SELECT SR.DEVICE_ID,
+               SR.SCREENSHOT_KEY,
+               SR.SCREENSHOT_TIME,
+               D.DEVICE_NAME
+        FROM SCREENSHOT_RECORD SR
+                 LEFT JOIN DEVICE D on D.device_id = SR.device_id
+        where device_id = #{deviceId}
+    </select>
+
+    <insert id="insertScreenshotRecord" parameterType="ScreenshotRecord">
+        insert into screenshot_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">device_id,</if>
+            <if test="screenshotKey != null">screenshot_key,</if>
+            <if test="screenshotTime != null">screenshot_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="screenshotKey != null">#{screenshotKey},</if>
+            <if test="screenshotTime != null">#{screenshotTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateScreenshotRecord" parameterType="ScreenshotRecord">
+        update screenshot_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="screenshotKey != null">screenshot_key = #{screenshotKey},</if>
+            <if test="screenshotTime != null">screenshot_time = #{screenshotTime},</if>
+        </trim>
+        where device_id = #{deviceId}
+    </update>
+
+    <delete id="deleteScreenshotRecordByDeviceId" parameterType="Long">
+        delete
+        from screenshot_record
+        where device_id = #{deviceId}
+    </delete>
+
+    <delete id="deleteScreenshotRecordByScreenshotKeys" parameterType="String">
+        delete
+        from screenshot_record sr
+        where sr.screenshot_key = #{screenshotKey,jdbcType=VARCHAR}
+    </delete>
+</mapper>

@@ -1,6 +1,6 @@
 package com.ruoyi.device.service;
-import com.ruoyi.device.domain.Device;
+import java.io.IOException;
 public interface IPlaybackService {
 
-    void playback(Device device, String startTime, String endTime);
+    void playback(String url) throws IOException, InterruptedException;
 }

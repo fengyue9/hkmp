@@ -84,6 +84,4 @@ public class MonitorServiceImpl implements IMonitorService {
         return screenshotRecord.getScreenshotKey();
     }
 
-
-
 }
