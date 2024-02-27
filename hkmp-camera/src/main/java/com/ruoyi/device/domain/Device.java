@@ -1,8 +1,5 @@
 package com.ruoyi.device.domain;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
@@ -16,6 +13,7 @@ public class Device extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 设备id */
+    @Excel(name = "设备id")
     private Long deviceId;
 
     /** 设备名称 */
@@ -93,14 +91,5 @@ public class Device extends BaseEntity {
     public void setDevicePassword(String devicePassword) {
         this.devicePassword = devicePassword;
     }
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("deviceId", getDeviceId())
-                .append("deviceName", getDeviceName()).append("deviceIp", getDeviceIp())
-                .append("devicePort", getDevicePort()).append("deviceSerialNumber", getDeviceSerialNumber())
-                .append("deviceStatus", getDeviceStatus()).append("createBy", getCreateBy())
-                .append("createTime", getCreateTime()).append("updateBy", getUpdateBy())
-                .append("updateTime", getUpdateTime()).append("remark", getRemark())
-                .append("deviceUsername", getDeviceUsername()).append("devicePassword", getDevicePassword()).toString();
-    }
+
 }

@@ -88,8 +88,8 @@ webrtc-streamer.exe
 |      光圈扩大      |   12   | 暂时看不出变化  |
 |      光圈缩小      |   13   | 暂时看不出变化  |
 |    接通灯光电源    |   14   | 暂时看不出变化  |
-|      焦点前调      |   15   |                 |
-|      焦点后调      |   16   |                 |
+|      焦点前调      |   15   | 暂时看不出变化  |
+|      焦点后调      |   16   | 暂时看不出变化  |
 |                    |        |                 |
 |                    |        |                 |
 |                    |        |                 |
@@ -175,7 +175,44 @@ rtsp://admin:hrj,2002527@192.168.1.64:554/Streaming/tracks/101?starttime=2024022
 
 
 
-回放业务流程：
+回放业务流程(待结束)：
 
 前端拼接rtsp流url，传给后端，后端根据url使用ffmpeg将rtsp流转换成本地文件(mp4),然后读取这个文件，返回给前端展示
 
+
+
+2024.2.26规划2024.2.27 ：
+
+ToDoList：
+
+1. 完成录像记录页面基础信息查看，新增设备名称列 √
+2. 完成录像记录页面下载功能 √
+3. 完成录像记录页面播放功能，支持调节倍速 √
+4. 设备回放页面新增录制功能 
+5. 思考如何实现回放的倍速播放，进度条拖动，下载
+
+ffmpeg -i recording.webm -vcodec copy -acodec copy new_rebirth-demo.webm
+
+```
+D:\>ffmpeg -i recording.webm -c:v libx264 -preset slow -crf 22 -c:a aac -b:a 128k output2.mp4
+```
+
+
+
+ffmpeg -i D:\毕设\源码\hkmp\recording_2024.02.27-20.52.14.webm -c:v libx264 -preset slow -crf 22 -c:a aac -b:a 128k D:\毕设\源码\hkmp\recording_2024.02.27-20.52.14.mp4
+
+
+
+ffmpeg -i recording_1.webm -vcodec copy -acodec copy new_recording_1.webm
+
+
+
+2024.2.27规划2024.2.28
+
+1.完成首页系统资源占用监控，可能采用websocket？
+
+2.思考录像管理页面播放功能里除了倍速调整还需要哪些功能
+
+3.报警中心页面编写，sdk调用测试 报警、布防、获取报警信息
+
+4.尝试使用DataV构造大屏

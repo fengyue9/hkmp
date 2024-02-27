@@ -350,9 +350,6 @@ export default {
       } else {
         alert("未连接到服务器");
       }
-    },
-    dictTypeSysNormalDisable(status) {
-      return status === '0' ? [{label: '在线', value: '0'}] : [{label: '离线', value: '1'}];
     }
   },
   //组件加载完成之后

@@ -52,3 +52,12 @@ export function saveVideo(data) {
   })
 }
 
+//下载视频
+export function downloadVideo(videoRecordKey) {
+  return request({
+    url: '/system/record/download/' + videoRecordKey,
+    method: 'get',
+    responseType: 'blob'
+  })
+}
+

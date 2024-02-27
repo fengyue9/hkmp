@@ -137,7 +137,7 @@ import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from './webrtcstreamer.js';
 import {remoteControl, saveImage} from "@/api/camera/monitor/monitor";
 import {saveVideo} from "@/api/system/record";
-import moment from 'moment';
+import moment, {duration} from 'moment';
 
 
 export default {
@@ -168,6 +168,9 @@ export default {
       alertTitle: '视频录制中', // 录制状态提示标题
       startTime: '',//开始录制时间
       endTime: '',//结束录制时间
+      duration: '',//录制视频时间
+      startTimeMillisecond: '',
+      endTimeMillisecond: '',
     }
   },
   mounted() {
@@ -485,8 +488,7 @@ export default {
     //开始录制
     startRecording() {
       this.startTime = moment().format('YYYY-MM-DD HH:mm:ss');
-      console.log(9999999999999999999);
-      console.log(this.startTime);
+      this.startTimeMillisecond = new Date();
       // 开始录制逻辑
       if (!this.isStartMonitor) {
         this.$message({
@@ -517,7 +519,9 @@ export default {
     //结束录制
     stopRecording() {
       this.endTime = moment().format('YYYY-MM-DD HH:mm:ss');
-      console.log(this.endTime);
+      this.endTimeMillisecond = new Date();
+      this.duration = this.endTimeMillisecond - this.startTimeMillisecond // 计算录制时长，以毫秒为单位
+      console.log('durations@@@   ' + this.duration);
       // 结束录制逻辑
       this.$message({
         message: '结束录制!',
@@ -542,7 +546,10 @@ export default {
     //下载录像
     downloadRecording() {
       const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
-      const url = window.URL.createObjectURL(blob);
+      // 创建一个新的 Blob 对象，将视频数据与时长信息写入其中
+      const blobWithDuration = new Blob([blob, `\nDuration: ${this.duration} ms`], {type: 'video/webm'});
+     console.log('blobWithDuration@@@   ' + blobWithDuration);
+      const url = window.URL.createObjectURL(blobWithDuration);
       const a = document.createElement('a');
       a.href = url;
       a.download = 'recording.webm';
@@ -553,9 +560,10 @@ export default {
     //保存录像
     saveVideo() {
       const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
+      const blobWithDuration = new Blob([blob, `\nDuration: ${this.duration} ms`], {type: 'video/webm'});
       //构造请求表单数据
       const formData = new FormData();
-      formData.append('file', blob, 'recording_' + moment().format("YYYY.MM.DD-HH.mm.ss") + '.webm');
+      formData.append('file', blobWithDuration, 'recording_' + moment().format("YYYY.MM.DD-HH.mm.ss") + '.webm');
       formData.append('deviceId', this.selectedItem.deviceId);
       formData.append('startTime', this.startTime);
       formData.append('endTime', this.endTime);

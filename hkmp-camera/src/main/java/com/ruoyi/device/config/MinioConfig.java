@@ -1,7 +1,10 @@
 package com.ruoyi.device.config;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +73,30 @@ public class MinioConfig implements InitializingBean {
                     PutObjectOptions.MIN_MULTIPART_SIZE);
             // 文件的ContentType
             putObjectOptions.setContentType(multipartFile.getContentType());
+            minioClient.putObject(this.bucket, fileName, inputStream, putObjectOptions);
+            // 返回访问路径
+            return this.url + UriUtils.encode(fileName, StandardCharsets.UTF_8);
+        }
+    }
+    /**
+     * 上传文件到 MinIO
+     * @param file 要上传的文件
+     * @param fileName 要保存的文件名
+     * @return 文件的访问路径
+     * @throws Exception 如果上传过程中出现异常
+     */
+    public String putObject(File file, String fileName) throws Exception {
+        // bucket 不存在，创建
+        if (!minioClient.bucketExists(this.bucket)) {
+            minioClient.makeBucket(this.bucket);
+        }
+        try (InputStream inputStream = new FileInputStream(file)) {
+            // PutObjectOptions，上传配置(文件大小，内存中文件分片大小)
+            PutObjectOptions putObjectOptions = new PutObjectOptions(file.length(),
+                    PutObjectOptions.MIN_MULTIPART_SIZE);
+            // 文件的ContentType
+            String contentType = Files.probeContentType(file.toPath());
+            putObjectOptions.setContentType(contentType);
             minioClient.putObject(this.bucket, fileName, inputStream, putObjectOptions);
             // 返回访问路径
             return this.url + UriUtils.encode(fileName, StandardCharsets.UTF_8);

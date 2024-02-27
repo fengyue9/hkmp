@@ -121,4 +121,15 @@ public class VideoRecordController extends BaseController {
         }
         return AjaxResult.success();
     }
+
+    /**
+     * 下载视频
+     *
+     * @param videoRecordKey
+     * @param response
+     */
+    @GetMapping(value = "/download/{videoRecordKey}")
+    public void downloadVideo(@PathVariable String videoRecordKey, HttpServletResponse response) {
+        videoRecordService.downloadVideo(videoRecordKey, response);
+    }
 }

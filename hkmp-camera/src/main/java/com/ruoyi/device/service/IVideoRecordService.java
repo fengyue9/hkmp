@@ -3,6 +3,8 @@ package com.ruoyi.device.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ruoyi.device.domain.VideoRecord;
@@ -55,4 +57,6 @@ public interface IVideoRecordService {
     public int deleteVideoRecordByRecordingKey(String recordingKey);
 
     void saveVideo(MultipartFile file, String deviceId, Date startTime, Date endTime) throws Exception;
+
+    void downloadVideo(String videoRecordKey, HttpServletResponse response);
 }

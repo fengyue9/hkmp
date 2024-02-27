@@ -9,20 +9,25 @@
         <result property="recordingKey" column="recording_key"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
+        <result property="deviceName" column="device_name"/>
     </resultMap>
 
     <sql id="selectVideoRecordVo">
-        select device_id, recording_key, start_time, end_time
-        from video_record
+        select vc.device_id, vc.recording_key, vc.start_time, vc.end_time, d.device_name
+        from video_record vc
+        left join device d on vc.device_id = d.device_id
     </sql>
 
     <select id="selectVideoRecordList" parameterType="VideoRecord" resultMap="VideoRecordResult">
-        <include refid="selectVideoRecordVo"/>
+        select vc.device_id, vc.recording_key, vc.start_time, vc.end_time, d.device_name
+        from video_record vc
+        left join device d on vc.device_id = d.device_id
         <where>
             <if test="recordingKey != null  and recordingKey != ''">and recording_key = #{recordingKey}</if>
-            <if test="startTime != null ">and start_time = #{startTime}</if>
-            <if test="endTime != null ">and end_time = #{endTime}</if>
+            <if test="startTime != null ">and start_time >= #{startTime}</if>
+            <if test="endTime != null ">and end_time &lt;= #{endTime}</if>
         </where>
+        order by vc.start_time desc
     </select>
 
     <select id="selectVideoRecordByDeviceId" parameterType="Long" resultMap="VideoRecordResult">

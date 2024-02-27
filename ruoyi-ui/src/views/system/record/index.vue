@@ -1,19 +1,17 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="开始回放时间" prop="startTime">
         <el-date-picker clearable
                         v-model="queryParams.startTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
+                        type="datetime"
                         placeholder="请选择开始回放时间">
         </el-date-picker>
       </el-form-item>
       <el-form-item label="结束回放时间" prop="endTime">
         <el-date-picker clearable
                         v-model="queryParams.endTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
+                        type="datetime"
                         placeholder="请选择结束回放时间">
         </el-date-picker>
       </el-form-item>
@@ -52,8 +50,9 @@
 
     <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="设备id" align="center" prop="deviceId"/>
-      <el-table-column label="回放视频关键字" align="center" prop="recordingKey"/>
+      <el-table-column label="设备id" width="150" align="center" prop="deviceId"/>
+      <el-table-column label="设备名称" width="200" align="center" prop="deviceName"/>
+      <el-table-column label="回放视频关键字" width="400" align="center" prop="recordingKey"/>
       <el-table-column label="开始回放时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
           <span>{{ scope.row.startTime }}</span>
@@ -127,11 +126,37 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
+    <!--视频播放对话框-->
+    <el-dialog
+      title="视频播放"
+      :visible.sync="dialogVisible"
+      width="60%"
+      center
+      :show-close=false
+      :close-on-click-modal=false
+      :closeOnClickModal=false
+      :close="handleClose">
+      <el-card>
+        <div class="camera-container_record">
+          <video ref="video" class="video-element" id="video_record_element" autoplay controls></video>
+        </div>
+      </el-card>
+      <el-card>
+        <!-- 倍速按钮 -->
+        <el-button @click="setPlaybackRate(0.5)">0.5x</el-button>
+        <el-button @click="setPlaybackRate(1)">1x</el-button>
+        <el-button @click="setPlaybackRate(1.5)">1.5x</el-button>
+        <el-button @click="setPlaybackRate(2)">2x</el-button>
+      </el-card>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="handleClose">返回</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import {listRecord, getRecord, delRecord, addRecord, updateRecord} from "@/api/system/record";
+import {listRecord, getRecord, delRecord, addRecord, updateRecord, downloadVideo} from "@/api/system/record";
 
 export default {
   name: "Record",
@@ -166,7 +191,9 @@ export default {
       // 表单参数
       form: {},
       // 表单校验
-      rules: {}
+      rules: {},
+      dialogVisible: false, //视频播放对话框是否可见
+      videoUrl: '',//视频播放的URL
     };
   },
   created() {
@@ -249,7 +276,71 @@ export default {
       this.download('system/record/export', {
         ...this.queryParams
       }, `record_${new Date().getTime()}.xlsx`)
+    },
+    //下载操作
+    handleDownload(row) {
+      this.reset();
+      const recordingKey = row.recordingKey;
+      downloadVideo(recordingKey).then(response => {
+        this.$message({
+          message: '下载视频成功',
+          type: 'success',
+          center: true
+        })
+        //处理响应,将二进制数据保存成文件
+        const url = window.URL.createObjectURL(response);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = recordingKey; // 下载文件名，根据实际情况修改
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }).catch(error => {
+        console.error('下载视频失败:', error);
+      });
+    },
+    //播放视频
+    handlePlay(row) {
+      this.dialogVisible = true;
+      this.reset();
+      const recordingKey = row.recordingKey;
+      downloadVideo(recordingKey).then(response => {
+        // 生成视频的URL
+        const videoUrl = URL.createObjectURL(response);
+        this.$refs.video.src = videoUrl;
+        this.$refs.video.play();
+        //默认播放速度为1x
+        this.$refs.video.playbackRate = 1;
+      }).catch(error => {
+        console.error('播放视频失败:', error);
+      });
+    },
+    handleClose() {
+      // 停止视频播放
+      this.$refs.video.pause();
+      // 释放视频 URL 对应的资源
+      URL.revokeObjectURL(this.videoUrl);
+      this.dialogVisible = false;
+    },
+    // 设置视频播放速率
+    setPlaybackRate(rate) {
+      this.$refs.video.playbackRate = rate;
     }
   }
 };
 </script>
+<style scoped>
+.camera-container_record {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: 500px; /* 调整预览区域的高度 */
+}
+
+#video_record_element {
+  height: 100%;
+  width: 100%;
+}
+</style>
