@@ -2,11 +2,29 @@ package com.ruoyi.web.vo;
 public class SystemUsageVO {
     private double cpuUsage;
     private double memoryUsage;
-    public SystemUsageVO(double cpuUsage, double memoryUsage) {
+
+    private double usedSpacePercentage;
+    private double freeSpacePercentage;
+
+    public SystemUsageVO() {
+    }
+    public SystemUsageVO(double cpuUsage, double memoryUsage, double usedSpacePercentage, double freeSpacePercentage) {
         this.cpuUsage = cpuUsage;
         this.memoryUsage = memoryUsage;
+        this.usedSpacePercentage = usedSpacePercentage;
+        this.freeSpacePercentage = freeSpacePercentage;
     }
-    public SystemUsageVO() {
+    public double getFreeSpacePercentage() {
+        return freeSpacePercentage;
+    }
+    public void setFreeSpacePercentage(double freeSpacePercentage) {
+        this.freeSpacePercentage = freeSpacePercentage;
+    }
+    public double getUsedSpacePercentage() {
+        return usedSpacePercentage;
+    }
+    public void setUsedSpacePercentage(double usedSpacePercentage) {
+        this.usedSpacePercentage = usedSpacePercentage;
     }
     public double getCpuUsage() {
         return cpuUsage;

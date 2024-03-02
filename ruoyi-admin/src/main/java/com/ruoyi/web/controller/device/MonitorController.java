@@ -1,4 +1,5 @@
 package com.ruoyi.web.controller.device;
+import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ruoyi.common.annotation.Anonymous;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.service.IMonitorService;
@@ -32,16 +34,37 @@ public class MonitorController {
     @Resource
     private IMonitorService monitorService;
 
-    @GetMapping(value = "/system/resource")
+    @GetMapping("/getSystemResourceUsage")
+    @Anonymous
     public SystemUsageVO getSystemResourceUsage() {
+        return getSystemUsageVO();
+    }
+    /**
+     * 获取系统资源，Cpu使用率，内存使用率，磁盘使用率
+     *
+     * @return {@link SystemUsageVO}
+     */
+    @NotNull
+    private static SystemUsageVO getSystemUsageVO() {
         OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
-        double cpuUsage = osBean.getSystemLoadAverage() * 100; // 获取 CPU 使用率
+        double cpuUsage = 0;
+        if (osBean instanceof com.sun.management.OperatingSystemMXBean) {
+            com.sun.management.OperatingSystemMXBean sunOsBean = (com.sun.management.OperatingSystemMXBean) osBean;
+            cpuUsage = sunOsBean.getProcessCpuLoad() * 100; // 获取当前进程的 CPU 使用率
+        } else {
+            System.out.println("不支持获取 CPU 使用率");
+        }
         long totalMemory = Runtime.getRuntime().totalMemory(); // 总内存
         long freeMemory = Runtime.getRuntime().freeMemory(); // 空闲内存
         long usedMemory = totalMemory - freeMemory; // 已使用内存
         double memoryUsage = ((double) usedMemory / totalMemory) * 100; // 计算内存使用率
-        // 还可以获取其他系统资源的使用情况，比如网络占用情况等
-        return new SystemUsageVO(cpuUsage, memoryUsage);
+        File file = new File("/"); // 获取根目录磁盘空间使用情况
+        long totalSpace = file.getTotalSpace();
+        long freeSpace = file.getFreeSpace();
+        long usedSpace = totalSpace - freeSpace;
+        double usedSpacePercentage = (double) usedSpace / totalSpace * 100;
+        double freeSpacePercentage = (double) freeSpace / totalSpace * 100;
+        return new SystemUsageVO(cpuUsage, memoryUsage, usedSpacePercentage, freeSpacePercentage);
     }
 
     /**

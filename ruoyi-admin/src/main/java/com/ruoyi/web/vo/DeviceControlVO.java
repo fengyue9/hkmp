@@ -1,6 +1,4 @@
 package com.ruoyi.web.vo;
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.device.domain.Device;
 /**
  * 设备控制类
  *
@@ -32,6 +30,7 @@ public class DeviceControlVO {
     /** 密码 */
     private String devicePassword;
 
+    /** 操作代码 */
     private Integer code;
     public Long getDeviceId() {
         return deviceId;

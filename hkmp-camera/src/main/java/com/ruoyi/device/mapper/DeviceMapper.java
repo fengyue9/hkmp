@@ -2,6 +2,8 @@ package com.ruoyi.device.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ruoyi.device.domain.Device;
 
 /**
@@ -58,4 +60,6 @@ public interface DeviceMapper {
      * @return 结果
      */
     int deleteDeviceByDeviceIds(Long[] deviceIds);
+
+    int updateDeviceStatus(@Param("deviceId") String deviceId, @Param("number")String number);
 }

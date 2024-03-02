@@ -24,8 +24,8 @@
         left join device d on vc.device_id = d.device_id
         <where>
             <if test="recordingKey != null  and recordingKey != ''">and recording_key = #{recordingKey}</if>
-            <if test="startTime != null ">and start_time >= #{startTime}</if>
-            <if test="endTime != null ">and end_time &lt;= #{endTime}</if>
+            <if test="startTime != null ">and start_time >= #{startTime,jdbcType=DATE}</if>
+            <if test="endTime != null ">and end_time &lt;= #{endTime,jdbcType=DATE}</if>
         </where>
         order by vc.start_time desc
     </select>

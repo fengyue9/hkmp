@@ -36,6 +36,8 @@ public class DeviceController extends BaseController {
     @Autowired
     private IDeviceService deviceService;
 
+
+
     /**
      * 查询设备信息管理列表
      */

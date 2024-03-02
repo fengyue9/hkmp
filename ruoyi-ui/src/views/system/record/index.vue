@@ -142,6 +142,7 @@
         </div>
       </el-card>
       <el-card>
+        <span>倍速选择：</span>
         <!-- 倍速按钮 -->
         <el-button @click="setPlaybackRate(0.5)">0.5x</el-button>
         <el-button @click="setPlaybackRate(1)">1x</el-button>
@@ -157,6 +158,7 @@
 
 <script>
 import {listRecord, getRecord, delRecord, addRecord, updateRecord, downloadVideo} from "@/api/system/record";
+import moment from "moment";
 
 export default {
   name: "Record",
@@ -184,9 +186,8 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        recordingKey: null,
-        startTime: null,
-        endTime: null
+        startTime: '',
+        endTime: '',
       },
       // 表单参数
       form: {},
@@ -203,6 +204,14 @@ export default {
     /** 查询回放列表 */
     getList() {
       this.loading = true;
+      // 格式化开始时间和结束时间
+      if (this.queryParams.startTime !== '' && this.queryParams.endTime !== '') {
+        let formattedStartTime = moment(this.queryParams.startTime).format('YYYY-MM-DD HH:mm:ss');
+        let formattedEndTime = moment(this.queryParams.endTime).format('YYYY-MM-DD HH:mm:ss');
+        // 将格式化后的时间设置回查询参数对象
+        this.queryParams.startTime = formattedStartTime;
+        this.queryParams.endTime = formattedEndTime;
+      }
       listRecord(this.queryParams).then(response => {
         this.recordList = response.rows;
         this.total = response.total;

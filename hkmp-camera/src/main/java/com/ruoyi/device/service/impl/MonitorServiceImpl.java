@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.device.config.MinioConfig;
 import com.ruoyi.device.domain.Device;
@@ -34,6 +35,9 @@ public class MonitorServiceImpl implements IMonitorService {
     private MinioConfig minioConfig;
     @Resource
     private ScreenshotRecordMapper screenshotRecordMapper;
+
+    @Resource
+    private RedisCache redisCache;
     /**
      * 云台控制
      *
@@ -44,16 +48,10 @@ public class MonitorServiceImpl implements IMonitorService {
     public void remoteControl(Device device, Integer code) {
         //登录
         int userId = LoginUtils.login(device);
-        LOGGER.info("登录成功，用户句柄为：" + userId);
-        if (userId == -1) {
-            int errorCode = hcNetSDK.NET_DVR_GetLastError();
-            throw new IllegalStateException("登录失败,错误码为：" + errorCode);
-        }
         //根据传入的code调用不同的code处理方法
         CodeHandler.handleCode(code, userId);
         //退出
         LoginUtils.logout(userId);
-        LOGGER.info("退出成功，用户句柄为：" + userId);
     }
 
     /**

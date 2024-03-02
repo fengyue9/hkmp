@@ -189,7 +189,7 @@ ToDoList：
 2. 完成录像记录页面下载功能 √
 3. 完成录像记录页面播放功能，支持调节倍速 √
 4. 设备回放页面新增录制功能 
-5. 思考如何实现回放的倍速播放，进度条拖动，下载
+5. 思考如何实现回放的倍速播放，进度条拖动，下载√
 
 ffmpeg -i recording.webm -vcodec copy -acodec copy new_rebirth-demo.webm
 
@@ -207,7 +207,7 @@ ffmpeg -i recording_1.webm -vcodec copy -acodec copy new_recording_1.webm
 
 
 
-2024.2.27规划2024.2.28
+2024.2.27规划
 
 1.完成首页系统资源占用监控，可能采用websocket？
 
@@ -216,3 +216,24 @@ ffmpeg -i recording_1.webm -vcodec copy -acodec copy new_recording_1.webm
 3.报警中心页面编写，sdk调用测试 报警、布防、获取报警信息
 
 4.尝试使用DataV构造大屏
+
+回放：PTZ相机仅支持同时一个用户登录回放，因此不能采取之前的方式获取登录状态，
+解决方案：每5s检查一次：逐个ping设备ip，能ping通的说明在线，不能ping通的说明离线；
+
+
+
+
+
+
+维护一个Map 放到Redis中，项目启动时遍历设备表，逐个登录，加个缓存，在有设备新增或者编辑或者删除时缓存失效，
+
+设备id与登录=》userId
+
+<6 ,List<userId>>
+
+定时任务5s查询缓存中List<userId>是否有值，如果为空则状态更新成离线，如果不为空则更新成在线；如果没有缓存，则调用启用时的那个方法，缓存并遍历更新状态
+
+回放的日期选择似乎还是有问题
+
+
+

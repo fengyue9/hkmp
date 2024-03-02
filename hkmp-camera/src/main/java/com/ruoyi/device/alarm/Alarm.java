@@ -6,14 +6,19 @@
 //
 //import com.ruoyi.device.NetSDKDemo.FMSGCallBack_V31;
 //import com.ruoyi.device.NetSDKDemo.HCNetSDK;
+//import com.ruoyi.device.sdk.HCNetSDK;
 //import com.sun.jna.Native;
 //import com.sun.jna.Pointer;
 //
 //import java.util.Scanner;
 //
+//import javax.annotation.Resource;
+//
+//import org.springframework.stereotype.Component;
+//@Component
 //public class Alarm {
-//    //
-//    static HCNetSDK hCNetSDK = null;
+//    @Resource
+//    private HCNetSDK hcNetSDK;
 //    static int[] lUserID = new int[]{0, 0, 0, 0, 0};//用户句柄 实现对设备登录
 //    static int[] lAlarmHandle = new int[]{-1, -1, -1, -1, -1};//报警布防句柄
 //    static int[] lAlarmHandle_V50 = new int[]{-1, -1, -1, -1, -1}; //v50报警布防句柄
@@ -25,39 +30,6 @@
 //     */
 //    public static void main(String[] args) throws InterruptedException {
 //
-//        if (hCNetSDK == null) {
-//            if (!CreateSDKInstance()) {
-//                System.out.println("Load SDK fail");
-//                return;
-//            }
-//        }
-//        //linux系统建议调用以下接口加载组件库
-//        if (osSelect.isLinux()) {
-//            HCNetSDK.BYTE_ARRAY ptrByteArray1 = new HCNetSDK.BYTE_ARRAY(256);
-//            HCNetSDK.BYTE_ARRAY ptrByteArray2 = new HCNetSDK.BYTE_ARRAY(256);
-//            //这里是库的绝对路径，请根据实际情况修改，注意改路径必须有访问权限
-//            String strPath1 = System.getProperty("user.dir") + "/lib/libcrypto.so.1.1";
-//            String strPath2 = System.getProperty("user.dir") + "/lib/libssl.so.1.1";
-//
-//            System.arraycopy(strPath1.getBytes(), 0, ptrByteArray1.byValue, 0, strPath1.length());
-//            ptrByteArray1.write();
-//            hCNetSDK.NET_DVR_SetSDKInitCfg(3, ptrByteArray1.getPointer());
-//
-//            System.arraycopy(strPath2.getBytes(), 0, ptrByteArray2.byValue, 0, strPath2.length());
-//            ptrByteArray2.write();
-//            hCNetSDK.NET_DVR_SetSDKInitCfg(4, ptrByteArray2.getPointer());
-//
-//            String strPathCom = System.getProperty("user.dir") + "/lib";
-//            HCNetSDK.NET_DVR_LOCAL_SDK_PATH struComPath = new HCNetSDK.NET_DVR_LOCAL_SDK_PATH();
-//            System.arraycopy(strPathCom.getBytes(), 0, struComPath.sPath, 0, strPathCom.length());
-//            struComPath.write();
-//            hCNetSDK.NET_DVR_SetSDKInitCfg(2, struComPath.getPointer());
-//        }
-//
-//        /**初始化*/
-//        hCNetSDK.NET_DVR_Init();
-//        /**加载日志*/
-//        hCNetSDK.NET_DVR_SetLogToFile(3, "../sdklog", false);
 //        //设置报警回调函数
 //        if (fMSFCallBack_V31 == null) {
 //            fMSFCallBack_V31 = new FMSGCallBack_V31();

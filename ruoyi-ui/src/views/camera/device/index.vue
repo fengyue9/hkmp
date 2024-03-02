@@ -66,7 +66,7 @@
     </el-row>
 
     <el-table v-loading="loading" :data="deviceList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column type="selection" align="center"/>
       <el-table-column label="设备id" align="center" prop="deviceId"/>
       <el-table-column label="设备名称" align="center" prop="deviceName"/>
       <el-table-column label="ip地址" align="center" prop="deviceIp"/>
@@ -83,6 +83,13 @@
       <el-table-column label="密码" align="center" prop="devicePassword"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-edit"
+            @click="handleJump(scope.row)"
+          >打开配置页面
+          </el-button>
           <el-button
             size="mini"
             type="text"
@@ -126,16 +133,6 @@
         <el-form-item label="序列号" prop="deviceSerialNumber">
           <el-input v-model="form.deviceSerialNumber" placeholder="请输入设备序列号"/>
         </el-form-item>
-        <!--        <el-form-item label="状态" prop="deviceStatus">-->
-        <!--          <el-radio-group v-model="form.deviceStatus">-->
-        <!--            <el-radio-->
-        <!--              v-for="dict in dict.type.sys_normal_disable"-->
-        <!--              :key="dict.value"-->
-        <!--              :label="dict.value"-->
-        <!--            >{{ dict.label }}-->
-        <!--            </el-radio>-->
-        <!--          </el-radio-group>-->
-        <!--        </el-form-item>-->
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>
         </el-form-item>
@@ -312,6 +309,11 @@ export default {
         this.$modal.msgSuccess('删除成功')
       }).catch(() => {
       })
+    },
+    /** 跳转配置页面按钮操作 */
+    handleJump(row) {
+      //打开新页面
+      window.open('http://' + row.deviceIp, '_blank');
     },
     /** 导出按钮操作 */
     handleExport() {

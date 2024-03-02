@@ -105,11 +105,9 @@ public class VideoRecordServiceImpl implements IVideoRecordService {
     @Override
     public void saveVideo(MultipartFile file, String deviceId, Date startTime, Date endTime) throws Exception {
         String filename = file.getOriginalFilename();
-        // 转换为 MP4 格式
-        //        File fileMp4 = convertToMP4(file);
+
         LOGGER.info("webm转成mp4成功");
         try {
-            //            minioConfig.putObject(fileMp4, filename);
             minioConfig.putObject(file);
         } catch (Exception e) {
             LOGGER.error("视频保存到 MinIO 失败");

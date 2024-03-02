@@ -42,3 +42,4 @@ export function delDevice(deviceId) {
     method: 'delete'
   })
 }
+

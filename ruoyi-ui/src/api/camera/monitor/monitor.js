@@ -25,3 +25,10 @@ export function saveImage(imageFile, deviceId) {
   });
 }
 
+//首页获取系统资源
+export function getSystemResourceUsage() {
+  return request({
+    url: '/camera/monitor/getSystemResourceUsage',
+    method: 'get'
+  })
+}

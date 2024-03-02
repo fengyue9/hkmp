@@ -39,11 +39,31 @@
               value-format="yyyy-MM-dd HH:mm:ss"
               placeholder="请选择结束回放时间">
             </el-date-picker>
-
-
-            <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
-              查看录制记录
-            </el-button>
+            <div class="button-row" style="padding-top: 10px;">
+              <el-button type="warning" style="margin-right: 10px;" @click="endPlayback">停止回放</el-button>
+              <el-button type="success" @click="startPlayback()">开始回放</el-button>
+              <div style="padding-top: 10px;">
+              </div>
+              <el-button size="medium" style="margin-right: 10px;" class="demonstration" @click="captureImage"> 抓图
+              </el-button>
+              <el-button class="demonstration" @click="toggleRecording">
+                {{ isRecording ? '结束录制' : '开始录制' }}
+              </el-button>
+              <!-- 录制状态提示 -->
+              <el-alert
+                :title="alertTitle"
+                type="success"
+                :closable="false"
+                :center="true"
+                v-if="isRecording"
+              >
+              </el-alert>
+              <div style="padding-top: 10px;">
+              </div>
+              <el-button @click="queryVideoRecord" type="primary">
+                查看录制记录
+              </el-button>
+            </div>
 
             <el-drawer
               title="录制记录列表"
@@ -54,40 +74,29 @@
                 <el-table :data="videoRecordList">
                   <el-table-column property="deviceId" label="设备id" width="200"></el-table-column>
                   <el-table-column property="deviceName" label="设备名称" width="300"></el-table-column>
-                  <el-table-column property="beginRecordTime" label="开始录制时间" width="400"></el-table-column>
-                  <el-table-column property="endRecordTime" label="结束录制时间" width="400"></el-table-column>
+                  <el-table-column property="startTime" label="开始录制时间" width="400"></el-table-column>
+                  <el-table-column property="endTime" label="结束录制时间" width="400"></el-table-column>
                   <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
                     <template slot-scope="scope">
-                      <el-button
-                        size="mini"
-                        type="text"
-                        icon="el-icon-edit"
-                        @click="handleUpdate(scope.row)"
-                      >播放
-                      </el-button>
-                      <el-button
-                        size="mini"
-                        type="text"
-                        icon="el-icon-delete"
-                        @click="handleDelete(scope.row)"
-                      >下载
-                      </el-button>
+<!--                      <el-button-->
+<!--                        size="mini"-->
+<!--                        type="text"-->
+<!--                        icon="el-icon-edit"-->
+<!--                        @click="handleUpdate(scope.row)"-->
+<!--                      >播放-->
+<!--                      </el-button>-->
+<!--                      <el-button-->
+<!--                        size="mini"-->
+<!--                        type="text"-->
+<!--                        icon="el-icon-delete"-->
+<!--                        @click="handleDelete(scope.row)"-->
+<!--                      >下载-->
+<!--                      </el-button>-->
                     </template>
                   </el-table-column>
                 </el-table>
               </div>
             </el-drawer>
-            <!--          调整焦点按钮-->
-            <div class="button-row" style="padding-top: 10px;">
-              <el-button style="margin-right: 20px" size="large" type="primary"
-                         class="primary el-icon-circle-plus-outline"
-                         @click="remoteControlByCode(15)">焦点前调
-              </el-button>
-              <el-button style="margin-right: 20px" size="large" type="primary" class="primary el-icon-remove-outline"
-                         @click="remoteControlByCode(16)">焦点后调
-              </el-button>
-            </div>
-
 
           </div>
 
@@ -104,40 +113,13 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-row style="height: 80px">
-      <el-card>
-        <div class="block"
-             style="display: flex; align-items: center; justify-content: flex-end; padding: 15px 20px;">
-          <div class="bottom_left">
-            <el-button type="warning" style="margin-right: 10px;" @click="endPlayback">停止回放</el-button>
-            <el-button type="success" @click="startPlayback()">开始回放</el-button>
-          </div>
-          <div style="flex: 1;"></div>
-          <div class="volume-control" style="display: flex; align-items: center;">
-            <el-button size="medium" class="demonstration" @click="captureImage">抓图</el-button>
-            <el-button class="demonstration" @click="toggleRecording">
-              {{ isRecording ? '结束录制' : '开始录制' }}
-            </el-button>
-            <!-- 录制状态提示 -->
-            <el-alert
-              :title="alertTitle"
-              type="success"
-              :closable="false"
-              :center="true"
-              v-if="isRecording"
-            >
-            </el-alert>
-          </div>
-        </div>
-      </el-card>
-    </el-row>
-
   </div>
 </template>
 <script>
 import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from '../monitor/webrtcstreamer';
 import {playback} from "@/api/camera/playback/playback";
+import {listRecord} from "@/api/system/record";
 
 export default {
   data() {
@@ -173,6 +155,17 @@ export default {
     this.queryDeviceList();
   },
   methods: {
+    //查询录制记录列表
+    queryVideoRecord() {
+      this.drawer = true;
+      const queryParams = {
+
+      };
+      listRecord(queryParams).then(response => {
+        this.videoRecordList = response.rows;
+      });
+    },
+    // 开始回放
     // 当用户选择设备时触发
     handleDeviceSelection(selectedDeviceName) {
       // 根据设备名称从设备列表中找到对应的设备对象
@@ -223,12 +216,7 @@ export default {
         let endTimeHK = this.formatDateToUTCString(endTime);
         url = url.concat(' & endtime=' + endTimeHK);
       }
-      const data = {
-        url: url
-      }
-      // playback(data).then(response => {
-      //   console.log(response);
-      // })
+      console.log('********URL：' + url);
       this.$message({
         message: '开始回放！',
         type: 'success',

@@ -101,6 +101,11 @@
         </trim>
         where device_id = #{deviceId}
     </update>
+    <update id="updateDeviceStatus">
+        update device
+        set device_status = #{number,jdbcType=VARCHAR}
+        where device_id = #{deviceId,jdbcType=VARCHAR}
+    </update>
 
     <delete id="deleteDeviceByDeviceId" parameterType="Long">
         delete
