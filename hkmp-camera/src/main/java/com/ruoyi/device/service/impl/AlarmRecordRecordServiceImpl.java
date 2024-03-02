@@ -1,5 +1,4 @@
-package com.ruoyi.device.alarm;
-
+package com.ruoyi.device.service.impl;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,29 +6,99 @@ import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+import com.ruoyi.common.core.redis.RedisCache;
+import com.ruoyi.common.utils.uuid.UUID;
 import com.ruoyi.device.CommonMethod.CommonUtil;
-import com.ruoyi.device.mapper.VideoRecordMapper;
+import com.ruoyi.device.domain.AlarmRecord;
+import com.ruoyi.device.domain.Device;
+import com.ruoyi.device.mapper.AlarmRecordMapper;
+import com.ruoyi.device.mapper.DeviceMapper;
 import com.ruoyi.device.sdk.HCNetSDK;
+import com.ruoyi.device.service.IAlarmRecordService;
+import com.ruoyi.device.utils.LoginUtils;
 import com.sun.jna.Pointer;
-
+import com.sun.jna.ptr.IntByReference;
 /**
- * 报警数据解析类
+ * 报警Service业务层
  *
- * @author Fy
- * @date 2024/02/29
+ * @author hongrongjian
+ * @date 2023/12/10
  */
-@Component
-public class AlarmDataParse {
+@Service
+public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlarmRecordRecordServiceImpl.class);
+    public static final String DEVICE_ALARM_MAP_KEY = "DEVICE_ALARM_MAP_KEY";
+    // 创建一个 ReentrantLock 对象
+    private static final Lock lock = new ReentrantLock();
+
+    // 定义一个标志，表示报警是否已经处理过
+    private static boolean alarmHandled = false;
     @Resource
-    private VideoRecordMapper videoRecordMapper;
+    private HCNetSDK hcNetSDK;
+    @Resource
+    private DeviceMapper deviceMapper;
+    @Resource
+    private RedisCache redisCache;
+    @Resource
+    private HCNetSDK.FMSGCallBack_V31 fMSFCallBack;
+    @Resource
+    private AlarmRecordMapper alarmRecordMapper;
+    private Map<String, Integer> map = new HashMap<>();
+    /**
+     * 建立布防上传通道
+     *
+     * @param
+     * @return int lAlarmHandle 句柄
+     */
+    @Override
+    public int setupAlarmChan(Device device) {
+        int userId = LoginUtils.login(device);
+        //注册回调函数
+        hcNetSDK.NET_DVR_SetDVRMessageCallBack_V50(0, fMSFCallBack, null);
+        //构造参数
+        HCNetSDK.NET_DVR_SETUPALARM_PARAM alarmParam = new HCNetSDK.NET_DVR_SETUPALARM_PARAM();
+        //移动侦测、视频丢失、遮挡、IO信号量等报警信息以普通方式上传（报警类型：COMM_ALARM_V30，报警信息结构体：NET_DVR_ALARMINFO_V30），
+        alarmParam.byRetAlarmTypeV40 = 0;
+        //返回布防通道句柄
+        return hcNetSDK.NET_DVR_SetupAlarmChan_V41(userId, alarmParam);
+    }
+    /**
+     * 撤销布防
+     *
+     *
+     */
+    @Override
+    public void closeAlarmChan() {
+        Map<String, Integer> cacheMap = redisCache.getCacheMap(DEVICE_ALARM_MAP_KEY);
+        Integer alarmChan = cacheMap.get("6");
+        hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmChan);
+    }
+    @Override
+    public void test() {
+        //布防
+        Device device = deviceMapper.selectDeviceByDeviceId(6L);
+        System.out.println(device);
+        int alarmChan = setupAlarmChan(device);
+        System.out.println("布防成功，返回值为：" + alarmChan);
+        map.put(String.valueOf(device.getDeviceId()), alarmChan);
+        redisCache.setCacheMap(DEVICE_ALARM_MAP_KEY, map);
+
+    }
 
     /**
-     * 报警数据处理
+     * 报警回调函数处理
      *
      * @param lCommand
      * @param pAlarmer
@@ -37,8 +106,106 @@ public class AlarmDataParse {
      * @param dwBufLen
      * @param pUser
      */
-    public static void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo,
-            int dwBufLen, Pointer pUser) {
+    @Override
+    public void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
+            Pointer pUser) {
+        // 尝试获取锁
+        if (lock.tryLock()) {
+            try {
+                if (!alarmHandled) {
+                    // 将标志设为ture，其他线程会无法进入
+                    alarmHandled = true;
+                    Thread.sleep(2000);
+                    // 执行处理报警的代码
+                    handleAlarm(lCommand, pAlarmer, pAlarmInfo, dwBufLen, pUser);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } finally {
+                // 将标志设为false，表示报警已处理
+                alarmHandled = false;
+                // 释放锁
+                lock.unlock();
+            }
+        }
+    }
+    /**
+     * 查询报警记录
+     *
+     * @param deviceId 报警记录主键
+     * @return 报警记录
+     */
+    @Override
+    public AlarmRecord selectAlarmRecordById(String alarmRecordId) {
+        return alarmRecordMapper.selectAlarmRecordById(alarmRecordId);
+    }
+
+    /**
+     * 查询报警记录列表
+     *
+     * @param alarmRecord 报警记录
+     * @return 报警记录
+     */
+    @Override
+    public List<AlarmRecord> selectAlarmRecordList(AlarmRecord alarmRecord) {
+        return alarmRecordMapper.selectAlarmRecordList(alarmRecord);
+    }
+
+    /**
+     * 新增报警记录
+     *
+     * @param alarmRecord 报警记录
+     * @return 结果
+     */
+    @Override
+    public int insertAlarmRecord(AlarmRecord alarmRecord) {
+        return alarmRecordMapper.insertAlarmRecord(alarmRecord);
+    }
+
+    /**
+     * 修改报警记录
+     *
+     * @param alarmRecord 报警记录
+     * @return 结果
+     */
+    @Override
+    public int updateAlarmRecord(AlarmRecord alarmRecord) {
+        return alarmRecordMapper.updateAlarmRecord(alarmRecord);
+    }
+
+    /**
+     * 批量删除报警记录
+     *
+     * @param deviceIds 需要删除的报警记录主键
+     * @return 结果
+     */
+    @Override
+    public int deleteAlarmRecordByDeviceIds(Long[] deviceIds) {
+        return alarmRecordMapper.deleteAlarmRecordByDeviceIds(deviceIds);
+    }
+
+    /**
+     * 删除报警记录信息
+     *
+     * @param deviceId 报警记录主键
+     * @return 结果
+     */
+    @Override
+    public int deleteAlarmRecordByDeviceId(Long deviceId) {
+        return alarmRecordMapper.deleteAlarmRecordByDeviceId(deviceId);
+    }
+
+    /**
+     * 处理报警
+     *
+     * @param lCommand
+     * @param pAlarmer
+     * @param pAlarmInfo
+     * @param dwBufLen
+     * @param pUser
+     */
+    private void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
+            Pointer pUser) {
         System.out.println("报警事件类型： lCommand:" + Integer.toHexString(lCommand));
         String sTime;
         String MonitoringSiteID;
@@ -60,9 +227,6 @@ public class AlarmDataParse {
                 } catch (UnsupportedEncodingException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
                 }
                 /**
                  * 报警图片保存，车牌，车辆图片
@@ -1037,6 +1201,33 @@ public class AlarmDataParse {
                 pAlarmInfo_V30.write(0, pAlarmInfo.getByteArray(0, struAlarmInfo.size()), 0, struAlarmInfo.size());
                 struAlarmInfo.read();
                 System.out.println("报警类型：" + struAlarmInfo.dwAlarmType);  // 3-移动侦测
+                //获取设备序列号
+                String serialNumber = new String(pAlarmer.sSerialNumber).trim();
+                Device device = deviceMapper.getDeviceBySerialNumber(serialNumber);
+                //登录
+                int userId = LoginUtils.login(device);
+                HCNetSDK.NET_DVR_JPEGPARA jpegpara = new HCNetSDK.NET_DVR_JPEGPARA();
+                //图片质量系数：0-最好，1-较好，2-一般
+                jpegpara.wPicQuality = 0;
+                //图片尺寸：使用当前码流分辨率
+                jpegpara.wPicSize = 0xff;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+                String formattedDate = sdf.format(new Date());
+                String fileName = "img.jpeg";
+                boolean b = hcNetSDK.NET_DVR_CaptureJPEGPicture(userId, 1, jpegpara, fileName.getBytes());
+                int lastError = hcNetSDK.NET_DVR_GetLastError();
+                IntByReference intByReference = new IntByReference();
+                String s = hcNetSDK.NET_DVR_GetErrorMsg(intByReference);
+
+                //新增报警记录
+                AlarmRecord record = new AlarmRecord();
+                record.setAlarmRecordId(UUID.randomUUID().toString());
+                record.setAlarmTime(new Date());
+                record.setDeviceId(device.getDeviceId());
+                record.setAlarmType("移动侦测");
+                alarmRecordMapper.insertAlarmRecord(record);
+                //TODO 后续处理
+                LoginUtils.logout(userId);
                 break;
             case HCNetSDK.COMM_ALARM_V40: //移动侦测、视频丢失、遮挡、IO信号量等报警信息，报警数据为可变长
                 HCNetSDK.NET_DVR_ALARMINFO_V40 struAlarmInfoV40 = new HCNetSDK.NET_DVR_ALARMINFO_V40();
@@ -1540,4 +1731,8 @@ public class AlarmDataParse {
                 break;
         }
     }
+
 }
+
+
+

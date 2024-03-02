@@ -50,6 +50,9 @@
         <include refid="selectDeviceVo"/>
         where device_id = #{deviceId}
     </select>
+    <select id="getDeviceBySerialNumber" resultType="com.ruoyi.device.domain.Device" resultMap="DeviceResult">
+        select * from device where device_serial_number = #{serialNumber}
+    </select>
 
     <insert id="insertDevice" parameterType="Device" useGeneratedKeys="true" keyProperty="deviceId">
         insert into device

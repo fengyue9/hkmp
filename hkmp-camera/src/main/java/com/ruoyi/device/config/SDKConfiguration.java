@@ -1,9 +1,7 @@
 package com.ruoyi.device.config;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Timer;
 
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -13,8 +11,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.device.CommonMethod.osSelect;
+import com.ruoyi.device.mapper.DeviceMapper;
 import com.ruoyi.device.sdk.HCNetSDK;
 import com.ruoyi.device.sdk.PlayCtrl;
+import com.ruoyi.device.service.IAlarmRecordService;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 /**
@@ -27,7 +27,6 @@ import com.sun.jna.Pointer;
 public class SDKConfiguration {
     public static HCNetSDK hCNetSDK;
     public static PlayCtrl playControl;
-    public static FExceptionCallBack_Imp fExceptionCallBack;
     static FMSGCallBack_V31 fMSFCallBack_V31 = null;
 
     public static int lListenHandle = -1;//报警监听句柄
@@ -42,12 +41,13 @@ public class SDKConfiguration {
     public static FileOutputStream fileOutputStream = null;
     public static int fileLength = 0;
     public int iErr = 0;
-    public Timer Playbacktimer;//回放用定时器
-    int m_lLoadHandle;
-    @Resource
-    private HCNetSDK.FMSGCallBack fMSFCallBack;
+
     @Resource
     private RedisCache redisCache;
+    @Resource
+    private IAlarmRecordService alarmService;
+    @Resource
+    private DeviceMapper deviceMapper;
 
     /**
      *
@@ -159,19 +159,10 @@ public class SDKConfiguration {
         //2.SDK初始化，一个程序只需要调用一次
         boolean initSuc = hCNetSDK.NET_DVR_Init();
         System.out.println("SDK初始化完成");
-        //3.设置异常消息回调
-        //        if (fExceptionCallBack == null) {
-        //            fExceptionCallBack = new FExceptionCallBack_Imp();
-        //        }
-        //        Pointer pUser = null;
-        //        if (!hCNetSDK.NET_DVR_SetExceptionCallBack_V30(0, 0, fExceptionCallBack, pUser)) {
-        //            return null;
-        //        }
         //设置报警异常信息回调
         if (fMSFCallBack_V31 == null) {
             fMSFCallBack_V31 = new FMSGCallBack_V31();
-            Pointer pUser = null;
-            if (!hCNetSDK.NET_DVR_SetDVRMessageCallBack_V31(fMSFCallBack_V31, pUser)) {
+            if (!hCNetSDK.NET_DVR_SetDVRMessageCallBack_V31(fMSFCallBack_V31, null)) {
                 System.out.println("设置回调函数失败!");
             } else {
                 System.out.println("设置回调函数成功!");
@@ -189,12 +180,6 @@ public class SDKConfiguration {
         Pointer pStrNET_DVR_LOCAL_GENERAL_CFG = struNET_DVR_LOCAL_GENERAL_CFG.getPointer();
         hCNetSDK.NET_DVR_SetSDKLocalCfg(17, pStrNET_DVR_LOCAL_GENERAL_CFG);
         hCNetSDK.NET_DVR_SetLogToFile(3, "./sdkLog", false);
-
-        //开启监听
-        InetAddress localhost = InetAddress.getLocalHost();
-        String ip = localhost.getHostAddress();
-        short port = 8000;
-        startListen(ip, port);
         return hCNetSDK;
     }
     /**
@@ -207,8 +192,6 @@ public class SDKConfiguration {
      */
     @PreDestroy
     public void cleanup() {
-        //停止监听
-        stopListen();
         if (hCNetSDK != null) {
             //SDK反初始化，释放资源，只需要退出时调用一次
             hCNetSDK.NET_DVR_Cleanup();
@@ -217,35 +200,7 @@ public class SDKConfiguration {
 
     }
 
-    public static class FExceptionCallBack_Imp implements HCNetSDK.FExceptionCallBack {
-        public void invoke(int dwType, int lUserID, int lHandle, Pointer pUser) {
-            System.out.println("异常事件类型:" + dwType);
-        }
-    }
-    /**
-     * 开始监听
-     *
-     * @param ip
-     * @param port
-     */
-    public void startListen(String ip, short port) {
-        lListenHandle = hCNetSDK.NET_DVR_StartListen_V30(ip, port, fMSFCallBack, null);
-        if (lListenHandle == -1) {
-            System.out.println("监听失败,错误码为：" + hCNetSDK.NET_DVR_GetLastError());
-        } else {
-            System.out.println("监听成功");
-        }
-    }
-    /**
-     * 停止监听
-     *
-     */
-    public void stopListen() {
-        if (lListenHandle > -1) {
-            if (!hCNetSDK.NET_DVR_StopListen_V30(lListenHandle)) {
-                System.out.println("监听失败,错误码为：" + hCNetSDK.NET_DVR_GetLastError());
-            }
-        }
-    }
+
+
 
 }
