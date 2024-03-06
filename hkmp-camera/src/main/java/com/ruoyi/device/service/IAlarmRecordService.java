@@ -21,8 +21,7 @@ public interface IAlarmRecordService {
      */
     int setupAlarmChan(Device device);
 
-    void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
-            Pointer pUser);
+    void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen, Pointer pUser);
 
     void closeAlarmChan();
 

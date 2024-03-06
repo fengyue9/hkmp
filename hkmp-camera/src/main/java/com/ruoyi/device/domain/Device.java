@@ -18,6 +18,9 @@ public class Device extends BaseEntity {
     //记录在线用户Map  key为设备id，value为userId
     public static Map<Long, Integer> userMap = new HashMap<>(10);
 
+    //记录设备布防状态 key为设备id，value为是否布防，1:未布防，0:已布防
+    public static Map<Long, Integer> alarmMap = new HashMap<>(10);
+
     /** 设备id */
     @Excel(name = "设备id")
     private Long deviceId;
@@ -39,8 +42,11 @@ public class Device extends BaseEntity {
     private String deviceSerialNumber;
 
     /** 状态 0:在线 1:离线 */
-    @Excel(name = "状态")
+    @Excel(name = "状态 0:在线 1:离线")
     private String deviceStatus;
+    /** 报警状态 0:已布防 1:未布防 */
+    @Excel(name = "报警状态 0:已布防 1:未布防")
+    private String alarmStatus;
 
     /** 用户名 */
     @Excel(name = "用户名")
@@ -49,6 +55,12 @@ public class Device extends BaseEntity {
     /** 密码 */
     @Excel(name = "密码")
     private String devicePassword;
+    public String getAlarmStatus() {
+        return alarmStatus;
+    }
+    public void setAlarmStatus(String alarmStatus) {
+        this.alarmStatus = alarmStatus;
+    }
     public Long getDeviceId() {
         return deviceId;
     }

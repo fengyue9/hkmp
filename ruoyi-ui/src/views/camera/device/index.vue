@@ -81,14 +81,27 @@
       <el-table-column label="备注" align="center" prop="remark"/>
       <el-table-column label="用户名" align="center" prop="deviceUsername"/>
       <el-table-column label="密码" align="center" prop="devicePassword"/>
+      <el-table-column label="报警状态" align="center" prop="deviceStatus">
+        <template slot-scope="scope">
+          <el-tag v-if="scope.row.deviceStatus === '0'" type="success">已布防</el-tag>
+          <el-tag v-if="scope.row.deviceStatus === '1'" type="danger">未布防</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
             type="text"
-            icon="el-icon-edit"
+            icon="el-icon-bell"
             @click="handleJump(scope.row)"
-          >打开配置页面
+          >{{ scope.row.deviceStatus === '0' ? '撤防' : '布防' }}
+          </el-button>
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-setting"
+            @click="handleJump(scope.row)"
+          >详细配置
           </el-button>
           <el-button
             size="mini"
@@ -157,7 +170,6 @@ import Vue from 'vue'
 
 export default {
   name: 'Device',
-  dicts: ['sys_normal_disable'],
   data() {
     return {
       // 遮罩层
@@ -216,7 +228,7 @@ export default {
   methods: {
     /** 查询设备信息管理列表 */
     getList() {
-      this.loading = true
+      // this.loading = true
       listDevice(this.queryParams).then(response => {
         this.deviceList = response.rows
         this.total = response.total

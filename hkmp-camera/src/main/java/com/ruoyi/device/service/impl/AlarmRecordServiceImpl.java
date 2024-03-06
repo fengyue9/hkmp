@@ -60,7 +60,6 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
     @Resource
     private MinioConfig minioConfig;
 
-    private static boolean alarmStatus = false;
     /**
      * 建立布防上传通道
      *

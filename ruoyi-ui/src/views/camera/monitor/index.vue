@@ -521,7 +521,6 @@ export default {
       this.endTime = moment().format('YYYY-MM-DD HH:mm:ss');
       this.endTimeMillisecond = new Date();
       this.duration = this.endTimeMillisecond - this.startTimeMillisecond // 计算录制时长，以毫秒为单位
-      console.log('durations@@@   ' + this.duration);
       // 结束录制逻辑
       this.$message({
         message: '结束录制!',
@@ -548,7 +547,6 @@ export default {
       const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
       // 创建一个新的 Blob 对象，将视频数据与时长信息写入其中
       const blobWithDuration = new Blob([blob, `\nDuration: ${this.duration} ms`], {type: 'video/webm'});
-     console.log('blobWithDuration@@@   ' + blobWithDuration);
       const url = window.URL.createObjectURL(blobWithDuration);
       const a = document.createElement('a');
       a.href = url;

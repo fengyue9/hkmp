@@ -78,20 +78,20 @@
                   <el-table-column property="endTime" label="结束录制时间" width="400"></el-table-column>
                   <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
                     <template slot-scope="scope">
-<!--                      <el-button-->
-<!--                        size="mini"-->
-<!--                        type="text"-->
-<!--                        icon="el-icon-edit"-->
-<!--                        @click="handleUpdate(scope.row)"-->
-<!--                      >播放-->
-<!--                      </el-button>-->
-<!--                      <el-button-->
-<!--                        size="mini"-->
-<!--                        type="text"-->
-<!--                        icon="el-icon-delete"-->
-<!--                        @click="handleDelete(scope.row)"-->
-<!--                      >下载-->
-<!--                      </el-button>-->
+                      <!--                      <el-button-->
+                      <!--                        size="mini"-->
+                      <!--                        type="text"-->
+                      <!--                        icon="el-icon-edit"-->
+                      <!--                        @click="handleUpdate(scope.row)"-->
+                      <!--                      >播放-->
+                      <!--                      </el-button>-->
+                      <!--                      <el-button-->
+                      <!--                        size="mini"-->
+                      <!--                        type="text"-->
+                      <!--                        icon="el-icon-delete"-->
+                      <!--                        @click="handleDelete(scope.row)"-->
+                      <!--                      >下载-->
+                      <!--                      </el-button>-->
                     </template>
                   </el-table-column>
                 </el-table>
@@ -119,7 +119,9 @@
 import {listDevice} from '@/api/camera/device'
 import WebRtcStreamer from '../monitor/webrtcstreamer';
 import {playback} from "@/api/camera/playback/playback";
-import {listRecord} from "@/api/system/record";
+import {listRecord, saveVideo} from "@/api/system/record";
+import {saveImage} from "@/api/camera/monitor/monitor";
+import moment from "moment/moment";
 
 export default {
   data() {
@@ -158,9 +160,7 @@ export default {
     //查询录制记录列表
     queryVideoRecord() {
       this.drawer = true;
-      const queryParams = {
-
-      };
+      const queryParams = {};
       listRecord(queryParams).then(response => {
         this.videoRecordList = response.rows;
       });
@@ -239,8 +239,6 @@ export default {
     },
     //初始化WebRtcStreamer
     initWebRtcStreamer(url) {
-      console.log(11111);
-      console.log(url);
       // 获取 video 元素的引用
       const videoElement = this.$refs.video;
       // 初始化 WebRtcStreamer
@@ -310,7 +308,7 @@ export default {
         this.sendImageData(file, this.selectedItem.deviceId);
       } else {
         this.$message({
-          message: '请先选择设备！',
+          message: '请先开始回放！',
           type: 'warn',
           center: true
         });
@@ -356,6 +354,8 @@ export default {
     },
     //开始录制
     startRecording() {
+      this.startTime = moment().format('YYYY-MM-DD HH:mm:ss');
+      this.startTimeMillisecond = new Date();
       // 开始录制逻辑
       if (!this.isStartPlayback) {
         this.$message({
@@ -374,7 +374,6 @@ export default {
       const video = this.$refs.video;
       this.recordedChunks = [];
       const stream = video.captureStream();
-      console.log('捕获的视频流:', stream);
       this.mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm'});
       const videoTracks = stream.getVideoTracks();
       if (videoTracks.length > 0) {
@@ -386,6 +385,9 @@ export default {
     },
     //结束录制
     stopRecording() {
+      this.endTime = moment().format('YYYY-MM-DD HH:mm:ss');
+      this.endTimeMillisecond = new Date();
+      this.duration = this.endTimeMillisecond - this.startTimeMillisecond // 计算录制时长，以毫秒为单位
       // 结束录制逻辑
       this.$message({
         message: '结束录制!',
@@ -394,11 +396,21 @@ export default {
       });
       this.isRecording = false;
       this.mediaRecorder.stop();
-      this.saveRecording();
       this.alertTitle = '视频录制中'; // 修改录制状态提示标题
+      this.$confirm('录制已结束，您想要直接下载视频还是保存视频到服务器？', '结束录制', {
+        confirmButtonText: '直接下载',
+        cancelButtonText: '保存到服务器',
+        type: 'warning'
+      }).then(() => {
+        //选择下载视频
+        this.downloadRecording();
+      }).catch(() => {
+        //选择保存视频到服务器
+        this.saveVideo();
+      });
     },
-    //保存录像
-    saveRecording() {
+    //下载录像
+    downloadRecording() {
       const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -407,7 +419,25 @@ export default {
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
-    }
+    },
+    //保存录像
+    saveVideo() {
+      const blob = new Blob(this.recordedChunks, {type: 'video/webm'});
+      const blobWithDuration = new Blob([blob, `\nDuration: ${this.duration} ms`], {type: 'video/webm'});
+      //构造请求表单数据
+      const formData = new FormData();
+      formData.append('file', blobWithDuration, 'recording_' + moment().format("YYYY.MM.DD-HH.mm.ss") + '.webm');
+      formData.append('deviceId', this.selectedItem.deviceId);
+      formData.append('startTime', this.startTime);
+      formData.append('endTime', this.endTime);
+      saveVideo(formData).then(response => {
+        this.$message({
+          message: '视频保存成功！',
+          type: 'success',
+          center: true
+        });
+      })
+    },
   },
   beforeDestroy() {
     // 在组件销毁前断开连接

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import com.ruoyi.device.service.IAsyncService;
  */
 @Service
 public class AsyncServiceImpl implements IAsyncService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncServiceImpl.class);
+
     @Resource
     private DeviceMapper deviceMapper;
 
@@ -32,12 +36,18 @@ public class AsyncServiceImpl implements IAsyncService {
             String deviceId = String.valueOf(device.getDeviceId());
             if (isCameraOnline(device.getDeviceIp())) {
                 //在线
-                System.out.println("=====设备id：" + deviceId + "在线！=====");
-                deviceMapper.updateDeviceStatus(deviceId, "0");
+                //仅当状态不对时才更新
+                if (!device.getDeviceStatus().equals("0")) {
+                    deviceMapper.updateDeviceStatus(deviceId, "0");
+                    LOGGER.info(" 设备id：" + deviceId + "在线！");
+                }
             } else {
                 //离线
-                System.out.println("=====设备id：" + deviceId + "离线！=====");
-                deviceMapper.updateDeviceStatus(deviceId, "1");
+                //仅当状态不对时才更新
+                if (!device.getDeviceStatus().equals("1")) {
+                    deviceMapper.updateDeviceStatus(deviceId, "1");
+                    LOGGER.info(" 设备id：" + deviceId + "离线！");
+                }
             }
         }
     }
