@@ -1,7 +1,7 @@
 <template>
   <div class="alarm-center">
     <el-row>
-      <el-col :xs="24" :sm="8" class="device-list">
+      <el-col :xs="24" :sm="5" class="device-list">
         <el-card>
           <h3 slot="header">设备列表</h3>
           <el-input v-model="searchKeyword" placeholder="请输入设备名称搜索" clearable
@@ -18,7 +18,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="16" class="alarm-records">
+      <el-col :xs="24" :sm="19" class="alarm-records">
         <el-card>
           <h3 slot="header">报警记录</h3>
           <div style="height: 765px;">
@@ -150,7 +150,7 @@
       </el-col>
     </el-row>
     <!--    报警处理对话框-->
-    <el-dialog :visible.sync="dialogVisible" width="50%">
+    <el-dialog :visible.sync="dialogVisible" width="70%">
       <img :src="selectedRecord.image" alt="报警抓图" style="width: 100%">
       <video :src="selectedRecord.video" controls autoplay style="width: 100%"></video>
       <span>处理描述：</span>

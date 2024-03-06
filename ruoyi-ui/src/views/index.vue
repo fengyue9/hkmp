@@ -1,10 +1,10 @@
 <template>
   <div class="app-container home">
-    <d-title :style="{textAlign: 'center'}">
+    <div :style="{textAlign: 'center'}">
       <h1 style="font-size: 36px; color: #333; margin-bottom: 10px;">基于Spring和Vue的实时监控报警系统</h1>
       <p style="font-size: 18px; color: #666;">
         摄像头实时预览、云台操作、抓图、录像、回放、下载、报警、设备管理、系统监控等</p>
-    </d-title>
+    </div>
     <el-row>
       <el-card>
         <h2><b>系统资源仪表盘</b></h2>
@@ -13,10 +13,10 @@
           <div class="chart" ref="cpuChart" style="height: 300px;"></div>
           <div class="chart" ref="memoryChart" style="height: 300px;"></div>
           <div class="chart" ref="diskChart" style="height: 300px;"></div>
-
         </div>
       </el-card>
     </el-row>
+    <!--    天气预报部分-->
     <div class="weather-container">
       <el-row>
         <el-col>
@@ -152,6 +152,9 @@ export default {
         const cpuUsageFixed = (response.cpuUsage * 100).toFixed(3);
         // 将小数转换为百分比并保留小数点后三位
         const memeryUsageFixed = response.memoryUsage.toFixed(3); // 将小数转换为百分比并保留小数点后三位
+        if (cpuUsageFixed > 100 && memeryUsageFixed > 100) {
+          return;
+        }
         // 更新磁盘使用情况数据
         this.diskData = [
           {name: '已使用空间', value: response.usedSpacePercentage},
@@ -222,15 +225,8 @@ export default {
   margin-right: 20px;
 }
 
-
 .circle text {
   font-family: Arial, sans-serif;
-}
-
-
-.title-container {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .title {
@@ -239,10 +235,6 @@ export default {
   margin-bottom: 10px;
 }
 
-.subtitle {
-  font-size: 18px;
-  color: #666;
-}
 
 </style>
 

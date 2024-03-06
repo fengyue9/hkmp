@@ -32,15 +32,11 @@ public class AsyncServiceImpl implements IAsyncService {
             String deviceId = String.valueOf(device.getDeviceId());
             if (isCameraOnline(device.getDeviceIp())) {
                 //在线
-                System.out.println("======================");
-                System.out.println("设备id：" + deviceId + "在线！");
-                System.out.println("======================");
+                System.out.println("=====设备id：" + deviceId + "在线！=====");
                 deviceMapper.updateDeviceStatus(deviceId, "0");
             } else {
                 //离线
-                System.out.println("======================");
-                System.out.println("设备id：" + deviceId + "离线！");
-                System.out.println("======================");
+                System.out.println("=====设备id：" + deviceId + "离线！=====");
                 deviceMapper.updateDeviceStatus(deviceId, "1");
             }
         }

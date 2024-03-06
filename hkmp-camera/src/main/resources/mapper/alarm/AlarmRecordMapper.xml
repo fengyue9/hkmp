@@ -40,6 +40,12 @@
         <include refid="selectAlarmRecordVo"/>
         where alarm_record_id = #{alarmRecordId}
     </select>
+    <select id="countCurrentAlarmRecord" resultType="java.lang.Integer">
+        select count(*)
+        from alarm_record ar
+        where ar.device_id = #{deviceId,jdbcType=INTEGER}
+        AND TIMESTAMPDIFF(SECOND, ar.alarm_time, CURRENT_TIMESTAMP) &lt;= 10;
+    </select>
 
     <insert id="insertAlarmRecord" parameterType="AlarmRecord">
         insert into alarm_record
@@ -55,6 +61,12 @@
             <if test="alarmTime != null">#{alarmTime},</if>
             <if test="alarmType != null">#{alarmType},</if>
         </trim>
+    </insert>
+    <insert id="insertAlarmFile">
+        insert into alarm_file
+            (alarm_file_key, alarm_record_id, record_time)
+        values (#{alarmFileKey,jdbcType=VARCHAR}, #{alarmRecordId,jdbcType=VARCHAR}, #{recordTime,jdbcType=TIMESTAMP})
+
     </insert>
 
     <update id="updateAlarmRecord" parameterType="AlarmRecord">

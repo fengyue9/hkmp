@@ -1,16 +1,18 @@
 package com.ruoyi.device.service.impl;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.Resource;
 
@@ -21,6 +23,8 @@ import org.springframework.stereotype.Service;
 import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.common.utils.uuid.UUID;
 import com.ruoyi.device.CommonMethod.CommonUtil;
+import com.ruoyi.device.config.MinioConfig;
+import com.ruoyi.device.domain.AlarmFile;
 import com.ruoyi.device.domain.AlarmRecord;
 import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.mapper.AlarmRecordMapper;
@@ -28,8 +32,8 @@ import com.ruoyi.device.mapper.DeviceMapper;
 import com.ruoyi.device.sdk.HCNetSDK;
 import com.ruoyi.device.service.IAlarmRecordService;
 import com.ruoyi.device.utils.LoginUtils;
+import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.IntByReference;
 /**
  * 报警Service业务层
  *
@@ -37,14 +41,9 @@ import com.sun.jna.ptr.IntByReference;
  * @date 2023/12/10
  */
 @Service
-public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AlarmRecordRecordServiceImpl.class);
+public class AlarmRecordServiceImpl implements IAlarmRecordService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlarmRecordServiceImpl.class);
     public static final String DEVICE_ALARM_MAP_KEY = "DEVICE_ALARM_MAP_KEY";
-    // 创建一个 ReentrantLock 对象
-    private static final Lock lock = new ReentrantLock();
-
-    // 定义一个标志，表示报警是否已经处理过
-    private static boolean alarmHandled = false;
     @Resource
     private HCNetSDK hcNetSDK;
     @Resource
@@ -56,6 +55,12 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
     @Resource
     private AlarmRecordMapper alarmRecordMapper;
     private Map<String, Integer> map = new HashMap<>();
+    @Resource
+    private HCNetSDK.FRealDataCallBack_V30 fRealDataCallBack_V30;
+    @Resource
+    private MinioConfig minioConfig;
+
+    private static boolean alarmStatus = false;
     /**
      * 建立布防上传通道
      *
@@ -64,7 +69,13 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
      */
     @Override
     public int setupAlarmChan(Device device) {
-        int userId = LoginUtils.login(device);
+        int userId;
+        userId = LoginUtils.getUserIdFromOnlineUserMap(device.getDeviceId());
+        if (userId == -1) {
+            //说明未登录
+            userId = LoginUtils.login(device);
+            Device.userMap.put(device.getDeviceId(), userId);
+        }
         //注册回调函数
         hcNetSDK.NET_DVR_SetDVRMessageCallBack_V50(0, fMSFCallBack, null);
         //构造参数
@@ -84,6 +95,7 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
         Map<String, Integer> cacheMap = redisCache.getCacheMap(DEVICE_ALARM_MAP_KEY);
         Integer alarmChan = cacheMap.get("6");
         hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmChan);
+        LoginUtils.logout(6);
     }
     @Override
     public void test() {
@@ -98,42 +110,10 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
     }
 
     /**
-     * 报警回调函数处理
-     *
-     * @param lCommand
-     * @param pAlarmer
-     * @param pAlarmInfo
-     * @param dwBufLen
-     * @param pUser
-     */
-    @Override
-    public void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
-            Pointer pUser) {
-        // 尝试获取锁
-        if (lock.tryLock()) {
-            try {
-                if (!alarmHandled) {
-                    // 将标志设为ture，其他线程会无法进入
-                    alarmHandled = true;
-                    Thread.sleep(2000);
-                    // 执行处理报警的代码
-                    handleAlarm(lCommand, pAlarmer, pAlarmInfo, dwBufLen, pUser);
-                }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            } finally {
-                // 将标志设为false，表示报警已处理
-                alarmHandled = false;
-                // 释放锁
-                lock.unlock();
-            }
-        }
-    }
-    /**
      * 查询报警记录
      *
-     * @param deviceId 报警记录主键
      * @return 报警记录
+     @param alarmRecordId
      */
     @Override
     public AlarmRecord selectAlarmRecordById(String alarmRecordId) {
@@ -204,7 +184,8 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
      * @param dwBufLen
      * @param pUser
      */
-    private void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
+    @Override
+    public void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
             Pointer pUser) {
         System.out.println("报警事件类型： lCommand:" + Integer.toHexString(lCommand));
         String sTime;
@@ -1204,30 +1185,81 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
                 //获取设备序列号
                 String serialNumber = new String(pAlarmer.sSerialNumber).trim();
                 Device device = deviceMapper.getDeviceBySerialNumber(serialNumber);
+                //检查该设备近10s是否有报警记录
+                int alarmNum = alarmRecordMapper.countCurrentAlarmRecord(device.getDeviceId());
+                if (alarmNum > 0) {
+                    //已有报警记录，退出
+                    return;
+                }
+                //没有报警记录，进行报警处理
                 //登录
-                int userId = LoginUtils.login(device);
+                int userId = LoginUtils.getUserIdFromOnlineUserMap(device.getDeviceId());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+                String currentTime = sdf.format(new Date());
+                String imgName = "img_" + currentTime + ".jpeg";
+                String videoName = "video_" + currentTime + ".mp4";
+                //                String videoName = "video_" + currentTime + ".mp4";
                 HCNetSDK.NET_DVR_JPEGPARA jpegpara = new HCNetSDK.NET_DVR_JPEGPARA();
                 //图片质量系数：0-最好，1-较好，2-一般
                 jpegpara.wPicQuality = 0;
                 //图片尺寸：使用当前码流分辨率
                 jpegpara.wPicSize = 0xff;
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-                String formattedDate = sdf.format(new Date());
-                String fileName = "img.jpeg";
-                boolean b = hcNetSDK.NET_DVR_CaptureJPEGPicture(userId, 1, jpegpara, fileName.getBytes());
-                int lastError = hcNetSDK.NET_DVR_GetLastError();
-                IntByReference intByReference = new IntByReference();
-                String s = hcNetSDK.NET_DVR_GetErrorMsg(intByReference);
-
+                //抓图
+                hcNetSDK.NET_DVR_CaptureJPEGPicture(userId, 1, jpegpara, imgName.getBytes());
+                //开启预览
+                HCNetSDK.NET_DVR_PREVIEWINFO previewinfo = new HCNetSDK.NET_DVR_PREVIEWINFO();
+                //通道号
+                previewinfo.lChannel = 1;
+                //主码流
+                previewinfo.dwStreamType = 0;
+                ////连接方式：0- TCP方式，1- UDP方式，2- 多播方式，3- RTP方式，4- RTP/RTSP
+                // 5- RTP/HTTP，6- HRUDP（可靠传输） ，7- RTSP/HTTPS，8- NPQ
+                previewinfo.dwLinkMode = 0;
+                // 0- 非阻塞取流，1- 阻塞取流  如果是轮询取流使用非阻塞
+                previewinfo.bBlocked = 1;
+                //应用层取流协议：0- 私有协议，1- RTSP协议。
+                previewinfo.byProtoType = 0;
+                int lRealHandle = hcNetSDK.NET_DVR_RealPlay_V40(userId, previewinfo, fRealDataCallBack_V30, null);
+                //开始录制
+                hcNetSDK.NET_DVR_SaveRealData_V30(new NativeLong(lRealHandle), 2, videoName);
+                System.out.println("成功开始录制");
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                //停止录制
+                hcNetSDK.NET_DVR_StopSaveRealData(lRealHandle);
+                //退出预览
+                hcNetSDK.NET_DVR_StopRealPlay(lRealHandle);
+                //读取图片文件和视频文件，上传到minio
+                try {
+                    minioConfig.putObject(new File(imgName), imgName);
+                    minioConfig.putObject(new File(videoName), videoName);
+                } catch (Exception e) {
+                    LOGGER.error("报警文件上传到minio上失败");
+                }
+                //删除本地临时文件
+                Path imgPath = Paths.get(imgName);
+                Path videoPath = Paths.get(videoName);
+                try {
+                    Files.delete(imgPath);
+                    Files.delete(videoPath);
+                } catch (IOException e) {
+                    LOGGER.error("删除本地临时文件时出现异常" + e.getMessage());
+                }
+                String alarmRecordId = UUID.randomUUID().toString();
+                //新增图片报警文件记录
+                insertAlarmFileRecord(imgName, alarmRecordId);
+                insertAlarmFileRecord(videoName, alarmRecordId);
                 //新增报警记录
                 AlarmRecord record = new AlarmRecord();
-                record.setAlarmRecordId(UUID.randomUUID().toString());
+                record.setAlarmRecordId(alarmRecordId);
                 record.setAlarmTime(new Date());
                 record.setDeviceId(device.getDeviceId());
                 record.setAlarmType("移动侦测");
                 alarmRecordMapper.insertAlarmRecord(record);
-                //TODO 后续处理
-                LoginUtils.logout(userId);
+                LOGGER.info("本次报警处理完毕");
                 break;
             case HCNetSDK.COMM_ALARM_V40: //移动侦测、视频丢失、遮挡、IO信号量等报警信息，报警数据为可变长
                 HCNetSDK.NET_DVR_ALARMINFO_V40 struAlarmInfoV40 = new HCNetSDK.NET_DVR_ALARMINFO_V40();
@@ -1729,6 +1761,16 @@ public class AlarmRecordRecordServiceImpl implements IAlarmRecordService {
             default:
                 System.out.println("报警类型" + Integer.toHexString(lCommand));
                 break;
+        }
+    }
+    private void insertAlarmFileRecord(String imgKey, String alarmRecordId) {
+        AlarmFile alarmFile = new AlarmFile();
+        alarmFile.setAlarmFileKey(imgKey);
+        alarmFile.setAlarmRecordId(alarmRecordId);
+        alarmFile.setRecordTime(new Date());
+        int insertNum = alarmRecordMapper.insertAlarmFile(alarmFile);
+        if (insertNum != 1) {
+            throw new RuntimeException("新增报警文件记录失败");
         }
     }
 

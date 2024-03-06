@@ -1,5 +1,8 @@
 package com.ruoyi.device.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
@@ -11,6 +14,9 @@ import com.ruoyi.common.core.domain.BaseEntity;
  */
 public class Device extends BaseEntity {
     private static final long serialVersionUID = 1L;
+
+    //记录在线用户Map  key为设备id，value为userId
+    public static Map<Long, Integer> userMap = new HashMap<>(10);
 
     /** 设备id */
     @Excel(name = "设备id")

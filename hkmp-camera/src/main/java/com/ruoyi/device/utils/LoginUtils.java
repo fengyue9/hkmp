@@ -36,13 +36,13 @@ public class LoginUtils {
         m_strLoginInfo.write();
         //返回用户句柄
         int userId = hCNetSDK.NET_DVR_Login_V40(m_strLoginInfo, m_strDeviceInfo);
-//        HCNetSDK.NET_DVR_DEVICEINFO_V30 struDeviceV30 = m_strDeviceInfo.struDeviceV30;
-//        System.out.println("模拟通道的起始通道号 struDeviceV30.byStartDChan = " + struDeviceV30.byStartDChan);
-//        System.out.println("设备模拟通道个数 struDeviceV30.byChanNum = " + struDeviceV30.byChanNum);
-//        System.out.println("数据通道起始通道号struDeviceV30.byStartDChan = " + struDeviceV30.byStartDChan);
-//        System.out.println("设备类型 struDeviceV30.byDVRType = " + struDeviceV30.byDVRType);
-//        System.out.println("设备类型 struDeviceV30.wDevType = " + struDeviceV30.wDevType);
-//        System.out.println("struDeviceV30.byIPChanNum = " + struDeviceV30.byIPChanNum);
+        //        HCNetSDK.NET_DVR_DEVICEINFO_V30 struDeviceV30 = m_strDeviceInfo.struDeviceV30;
+        //        System.out.println("模拟通道的起始通道号 struDeviceV30.byStartDChan = " + struDeviceV30.byStartDChan);
+        //        System.out.println("设备模拟通道个数 struDeviceV30.byChanNum = " + struDeviceV30.byChanNum);
+        //        System.out.println("数据通道起始通道号struDeviceV30.byStartDChan = " + struDeviceV30.byStartDChan);
+        //        System.out.println("设备类型 struDeviceV30.byDVRType = " + struDeviceV30.byDVRType);
+        //        System.out.println("设备类型 struDeviceV30.wDevType = " + struDeviceV30.wDevType);
+        //        System.out.println("struDeviceV30.byIPChanNum = " + struDeviceV30.byIPChanNum);
         return userId;
     }
     /**
@@ -53,6 +53,20 @@ public class LoginUtils {
     public static void logout(int userId) {
         if (!hCNetSDK.NET_DVR_Logout_V30(userId)) {
             throw new IllegalStateException("登出失败,用户句柄为:" + userId);
+        }
+    }
+
+    /**
+     * 查询某个设备的在线用户id
+     *
+     * @param deviceId
+     * @return int
+     */
+    public static int getUserIdFromOnlineUserMap(Long deviceId) {
+        if (Device.userMap == null || Device.userMap.isEmpty()) {
+            return -1;
+        } else {
+            return Device.userMap.get(deviceId);
         }
     }
 }

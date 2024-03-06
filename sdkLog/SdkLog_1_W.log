@@ -1,4 +1,4 @@
-[2024-03-04 21:42:55.871][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1949368320]
-[2024-03-04 21:42:55.871][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
-[2024-03-04 21:42:55.871][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
-[2024-03-04 21:42:55.871][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-03-06 20:07:39.958][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1949368320]
+[2024-03-06 20:07:39.959][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
+[2024-03-06 20:07:39.959][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
+[2024-03-06 20:07:39.959][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.

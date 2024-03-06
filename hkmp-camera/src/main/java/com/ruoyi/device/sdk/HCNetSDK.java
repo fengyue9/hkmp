@@ -7,6 +7,7 @@ import java.util.List;
 import com.sun.jna.Callback;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
+import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.Union;
@@ -1325,6 +1326,7 @@ public interface HCNetSDK extends Library {
     boolean NET_DVR_SetDVRMessCallBack_NEW(FMessCallBack_NEW fMessCallBack_NEW);
 
     boolean NET_DVR_SetDVRMessageCallBack(FMessageCallBack fMessageCallBack, int dwUser);
+
     /****************************ATM(end)***************************/
 
     boolean NET_DVR_SetDVRMessageCallBack_V30(FMSGCallBack fMessageCallBack, Pointer pUser);
@@ -1406,6 +1408,8 @@ public interface HCNetSDK extends Library {
 
     boolean NET_DVR_SaveRealData(int lRealHandle, String sFileName);
 
+    boolean NET_DVR_SaveRealData_V30(NativeLong lRealHandle, int STREAM_TYPE, String sFileName);
+
     boolean NET_DVR_StopSaveRealData(int lRealHandle);
     //end 2007-12-13 modified by zxy
 
@@ -1449,6 +1453,7 @@ public interface HCNetSDK extends Library {
             short wInput);
 
     boolean NET_DVR_PTZTrack(int lRealHandle, int dwPTZTrackCmd);
+
     /************************************多路解码器(end)***************************************/
 
     boolean NET_DVR_PTZTrack_Other(int lUserID, int lChannel, int dwPTZTrackCmd);

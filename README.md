@@ -237,7 +237,7 @@ ffmpeg -i recording_1.webm -vcodec copy -acodec copy new_recording_1.webm
 
 
 
-报警监听开启端口需要设备配置 如下，选择34端口后
+**×** 报警监听开启端口需要设备配置 如下，选择34端口后
 
 ![image-20240302172132047](C:\Users\Fy\AppData\Roaming\Typora\typora-user-images\image-20240302172132047.png)
 
@@ -302,3 +302,16 @@ LoginUtils.logout
 
 
 新增报警记录
+
+
+
+为什么拿不到MP4文件数据？ 因为布防时登录了一次，报警后为了预览又登录了一次
+
+现在需要改成用map维护这个在线用户id列表 √ 在Device类中有一个静态的map 
+
+
+
+
+
+**测试一下在非布防状态下能不能正常录像**
+

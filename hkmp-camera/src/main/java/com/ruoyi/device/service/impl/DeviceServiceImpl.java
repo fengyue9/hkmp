@@ -6,15 +6,19 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.mapper.DeviceMapper;
+import com.ruoyi.device.sdk.HCNetSDK;
+import com.ruoyi.device.service.IAlarmRecordService;
 import com.ruoyi.device.service.IAsyncService;
 import com.ruoyi.device.service.IDeviceService;
 import com.ruoyi.framework.websocket.WebSocketUsers;
+import com.sun.jna.Pointer;
 
 /**
  * 设备信息管理Service业务层处理
@@ -26,16 +30,21 @@ import com.ruoyi.framework.websocket.WebSocketUsers;
 public class DeviceServiceImpl implements IDeviceService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DeviceServiceImpl.class);
     public static final String DEVICE_ONLINE_LIST_KEY = "DEVICE_ONLINE_LIST_KEY";
+
+    public static boolean alarmStatus = false;
     @Resource
     private DeviceMapper deviceMapper;
     @Resource
     private IAsyncService asyncService;
+    @Resource
+    private IAlarmRecordService alarmRecordService;
 
     /**
      * 更新设备在线状态 每3s执行一次
      *
      */
     @Scheduled(cron = "0/3 * * * * ?")
+    @Override
     public void updateDeviceStatus() {
         //异步检查设备是否在线
         asyncService.checkDeviceOnline();
@@ -109,6 +118,26 @@ public class DeviceServiceImpl implements IDeviceService {
     @Override
     public int deleteDeviceByDeviceId(Long deviceId) {
         return deviceMapper.deleteDeviceByDeviceId(deviceId);
+    }
+    /**
+     * 报警回调函数处理
+     *
+     * @param lCommand
+     * @param pAlarmer
+     * @param pAlarmInfo
+     * @param dwBufLen
+     * @param pUser
+     */
+    @Override
+    @Async
+    public void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
+            Pointer pUser) {
+        if (!alarmStatus) {
+            alarmStatus = true;
+            // 执行处理报警的代码
+            alarmRecordService.handleAlarm(lCommand, pAlarmer, pAlarmInfo, dwBufLen, pUser);
+            alarmStatus = false;
+        }
     }
 
 }

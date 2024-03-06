@@ -3,6 +3,8 @@ package com.ruoyi.device.service;
 import java.util.List;
 
 import com.ruoyi.device.domain.Device;
+import com.ruoyi.device.sdk.HCNetSDK;
+import com.sun.jna.Pointer;
 
 /**
  * 设备信息管理Service接口
@@ -18,6 +20,8 @@ public interface IDeviceService {
      * @return 设备信息管理
      */
     Device selectDeviceByDeviceId(Long deviceId);
+
+    void updateDeviceStatus();
 
     /**
      * 查询设备信息管理列表
@@ -58,4 +62,7 @@ public interface IDeviceService {
      * @return 结果
      */
     int deleteDeviceByDeviceId(Long deviceId);
+
+    void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
+            Pointer pUser);
 }

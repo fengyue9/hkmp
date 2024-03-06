@@ -1,6 +1,7 @@
 package com.ruoyi.device.mapper;
 import java.util.List;
 
+import com.ruoyi.device.domain.AlarmFile;
 import com.ruoyi.device.domain.AlarmRecord;
 /**
  * 报警记录Mapper接口
@@ -53,4 +54,8 @@ public interface AlarmRecordMapper {
     public int deleteAlarmRecordByDeviceIds(Long[] deviceIds);
 
     AlarmRecord selectAlarmRecordById(String alarmRecordId);
+
+    int insertAlarmFile(AlarmFile alarmFile);
+
+    int countCurrentAlarmRecord(Long deviceId);
 }
