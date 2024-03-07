@@ -61,7 +61,9 @@ public interface DeviceMapper {
      */
     int deleteDeviceByDeviceIds(Long[] deviceIds);
 
-    int updateDeviceStatus(@Param("deviceId") String deviceId, @Param("number")String number);
+    int updateDeviceStatus(@Param("deviceId") Long deviceId, @Param("number") String number);
 
     Device getDeviceBySerialNumber(String serialNumber);
+
+    int updateAlarmStatus(@Param("deviceId") Long deviceId, @Param("alarmedStatus") String alarmedStatus);
 }

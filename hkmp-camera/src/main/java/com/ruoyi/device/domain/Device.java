@@ -15,11 +15,14 @@ import com.ruoyi.common.core.domain.BaseEntity;
 public class Device extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    //记录在线用户Map  key为设备id，value为userId
+    //记录在线用户Map  key为设备id，value为用户句柄
     public static Map<Long, Integer> userMap = new HashMap<>(10);
 
-    //记录设备布防状态 key为设备id，value为是否布防，1:未布防，0:已布防
+    //记录设备布防状态 key为设备id，value为布防句柄
     public static Map<Long, Integer> alarmMap = new HashMap<>(10);
+
+    // 用于记录手动布防的设备 key为设备id value为是否手动布防,true:手动布防 false:自动布防
+    public static Map<String, Boolean> manualAlarmMap = new HashMap<>();
 
     /** 设备id */
     @Excel(name = "设备id")
@@ -55,6 +58,15 @@ public class Device extends BaseEntity {
     /** 密码 */
     @Excel(name = "密码")
     private String devicePassword;
+
+    /**手动布防状态 0:手动布防 1:自动布防  */
+    private String manualAlarmStatus;
+    public String getManualAlarmStatus() {
+        return manualAlarmStatus;
+    }
+    public void setManualAlarmStatus(String manualAlarmStatus) {
+        this.manualAlarmStatus = manualAlarmStatus;
+    }
     public String getAlarmStatus() {
         return alarmStatus;
     }

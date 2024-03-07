@@ -83,8 +83,8 @@
       <el-table-column label="密码" align="center" prop="devicePassword"/>
       <el-table-column label="报警状态" align="center" prop="deviceStatus">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.deviceStatus === '0'" type="success">已布防</el-tag>
-          <el-tag v-if="scope.row.deviceStatus === '1'" type="danger">未布防</el-tag>
+          <el-tag v-if="scope.row.alarmStatus === '0'" type="success">已布防</el-tag>
+          <el-tag v-if="scope.row.alarmStatus === '1'" type="danger">未布防</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -94,7 +94,7 @@
             type="text"
             icon="el-icon-bell"
             @click="handleJump(scope.row)"
-          >{{ scope.row.deviceStatus === '0' ? '撤防' : '布防' }}
+          >{{ scope.row.alarmStatus === '0' ? '撤防' : '布防' }}
           </el-button>
           <el-button
             size="mini"
@@ -249,13 +249,12 @@ export default {
         devicePort: null,
         deviceSerialNumber: null,
         deviceStatus: null,
-        createBy: null,
         createTime: null,
-        updateBy: null,
         updateTime: null,
         remark: null,
         deviceUsername: null,
-        devicePassword: null
+        devicePassword: null,
+        alarmStatus: null,
       }
       this.resetForm('form')
     },

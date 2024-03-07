@@ -7,5 +7,5 @@ package com.ruoyi.device.service;
  */
 public interface IAsyncService {
 
-    void checkDeviceOnline();
+    void checkDeviceOnlineAndAlarmed();
 }

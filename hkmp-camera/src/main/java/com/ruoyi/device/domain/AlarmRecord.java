@@ -45,6 +45,23 @@ public class AlarmRecord extends BaseEntity {
     @Excel(name = "处理时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date handleTime;
+    /** 报警抓图关键字 */
+    private String screenshotKey;
+
+    /** 报警抓图URL */
+    private String screenshotURL;
+    public String getScreenshotURL() {
+        return screenshotURL;
+    }
+    public void setScreenshotURL(String screenshotURL) {
+        this.screenshotURL = screenshotURL;
+    }
+    public String getScreenshotKey() {
+        return screenshotKey;
+    }
+    public void setScreenshotKey(String screenshotKey) {
+        this.screenshotKey = screenshotKey;
+    }
     public String getAlarmRecordId() {
         return alarmRecordId;
     }

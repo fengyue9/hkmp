@@ -1,6 +1,8 @@
 package com.ruoyi.device.service;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.ruoyi.device.domain.AlarmRecord;
 import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.sdk.HCNetSDK;
@@ -14,18 +16,16 @@ import com.sun.jna.Pointer;
 public interface IAlarmRecordService {
 
     /**
-     * 建立布防上传通道, 返回lAlarmHandle句柄
+     * 建立布防上传通道
      *
      * @return int
      @param device
      */
-    int setupAlarmChan(Device device);
+    void setupAlarmChan(Device device);
 
     void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen, Pointer pUser);
 
     void closeAlarmChan();
-
-    void test();
 
     /**
      * 查询报警记录
@@ -75,4 +75,7 @@ public interface IAlarmRecordService {
      */
     public int deleteAlarmRecordByDeviceId(Long deviceId);
 
+    void downloadVideo(String alarmRecordId, HttpServletResponse response);
+
+    void handleAlarm(AlarmRecord alarmRecord);
 }

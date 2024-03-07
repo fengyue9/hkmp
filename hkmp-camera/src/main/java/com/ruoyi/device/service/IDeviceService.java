@@ -65,4 +65,6 @@ public interface IDeviceService {
 
     void alarmDataHandle(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
             Pointer pUser);
+
+    void setUpAlarm(Device device);
 }

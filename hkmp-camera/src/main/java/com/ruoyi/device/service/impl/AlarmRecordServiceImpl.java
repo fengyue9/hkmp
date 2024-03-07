@@ -13,8 +13,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,22 +69,27 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
      * @return int lAlarmHandle 句柄
      */
     @Override
-    public int setupAlarmChan(Device device) {
-        int userId;
-        userId = LoginUtils.getUserIdFromOnlineUserMap(device.getDeviceId());
-        if (userId == -1) {
+    public void setupAlarmChan(Device device) {
+        Integer userId = Device.userMap.get(device.getDeviceId());
+        if (userId == null) {
             //说明未登录
             userId = LoginUtils.login(device);
             Device.userMap.put(device.getDeviceId(), userId);
         }
-        //注册回调函数
-        hcNetSDK.NET_DVR_SetDVRMessageCallBack_V50(0, fMSFCallBack, null);
-        //构造参数
-        HCNetSDK.NET_DVR_SETUPALARM_PARAM alarmParam = new HCNetSDK.NET_DVR_SETUPALARM_PARAM();
-        //移动侦测、视频丢失、遮挡、IO信号量等报警信息以普通方式上传（报警类型：COMM_ALARM_V30，报警信息结构体：NET_DVR_ALARMINFO_V30），
-        alarmParam.byRetAlarmTypeV40 = 0;
-        //返回布防通道句柄
-        return hcNetSDK.NET_DVR_SetupAlarmChan_V41(userId, alarmParam);
+        //检查是否布防
+        Integer alarmIdFromMap = Device.alarmMap.get(device.getDeviceId());
+        if (alarmIdFromMap == null) {
+            //未布防
+            //注册回调函数
+            hcNetSDK.NET_DVR_SetDVRMessageCallBack_V50(0, fMSFCallBack, null);
+            //构造参数
+            HCNetSDK.NET_DVR_SETUPALARM_PARAM alarmParam = new HCNetSDK.NET_DVR_SETUPALARM_PARAM();
+            //移动侦测、视频丢失、遮挡、IO信号量等报警信息以普通方式上传（报警类型：COMM_ALARM_V30，报警信息结构体：NET_DVR_ALARMINFO_V30），
+            alarmParam.byRetAlarmTypeV40 = 0;
+            //sdk布防
+            int alarmId = hcNetSDK.NET_DVR_SetupAlarmChan_V41(userId, alarmParam);
+            Device.alarmMap.put(device.getDeviceId(), alarmId);
+        }
     }
     /**
      * 撤销布防
@@ -91,21 +98,13 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
      */
     @Override
     public void closeAlarmChan() {
-        Map<String, Integer> cacheMap = redisCache.getCacheMap(DEVICE_ALARM_MAP_KEY);
-        Integer alarmChan = cacheMap.get("6");
-        hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmChan);
-        LoginUtils.logout(6);
-    }
-    @Override
-    public void test() {
-        //布防
-        Device device = deviceMapper.selectDeviceByDeviceId(6L);
-        System.out.println(device);
-        int alarmChan = setupAlarmChan(device);
-        System.out.println("布防成功，返回值为：" + alarmChan);
-        map.put(String.valueOf(device.getDeviceId()), alarmChan);
-        redisCache.setCacheMap(DEVICE_ALARM_MAP_KEY, map);
-
+        Set<Long> keySet = Device.alarmMap.keySet();
+        for (Long deviceId : keySet) {
+            Integer alarmId = Device.alarmMap.get(deviceId);
+            if (alarmId != null) {
+                hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmId);
+            }
+        }
     }
 
     /**
@@ -127,7 +126,18 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
      */
     @Override
     public List<AlarmRecord> selectAlarmRecordList(AlarmRecord alarmRecord) {
-        return alarmRecordMapper.selectAlarmRecordList(alarmRecord);
+        List<AlarmRecord> alarmRecordList = alarmRecordMapper.selectAlarmRecordList(alarmRecord);
+        for (AlarmRecord record : alarmRecordList) {
+            String screenshotKey = record.getScreenshotKey();
+            String objectUrl = "";
+            try {
+                objectUrl = minioConfig.getObjectUrl("hkmp", screenshotKey);
+            } catch (Exception e) {
+                LOGGER.error("从minio下载出现异常:" + e.getMessage());
+            }
+            record.setScreenshotURL(objectUrl);
+        }
+        return alarmRecordList;
     }
 
     /**
@@ -172,6 +182,32 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
     @Override
     public int deleteAlarmRecordByDeviceId(Long deviceId) {
         return alarmRecordMapper.deleteAlarmRecordByDeviceId(deviceId);
+    }
+    /**
+     * 下载报警视频
+     *
+     *
+     @param alarmRecordId
+     @param response
+     */
+    @Override
+    public void downloadVideo(String alarmRecordId, HttpServletResponse response) {
+        String videoKey = alarmRecordMapper.selectVideoKeyById(alarmRecordId);
+        minioConfig.download(videoKey, response);
+    }
+    /**
+     * 处理报警
+     *
+     * @param alarmRecord
+     */
+    @Override
+    public void handleAlarm(AlarmRecord alarmRecord) {
+        String alarmDesc = alarmRecord.getAlarmDesc();
+        if (alarmDesc == null || alarmDesc.isEmpty()) {
+            throw new IllegalStateException("处理描述不能为空");
+        }
+        alarmRecord.setHandleTime(new Date());
+        alarmRecordMapper.handleAlarm(alarmRecord);
     }
 
     /**
@@ -1197,7 +1233,6 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
                 String currentTime = sdf.format(new Date());
                 String imgName = "img_" + currentTime + ".jpeg";
                 String videoName = "video_" + currentTime + ".mp4";
-                //                String videoName = "video_" + currentTime + ".mp4";
                 HCNetSDK.NET_DVR_JPEGPARA jpegpara = new HCNetSDK.NET_DVR_JPEGPARA();
                 //图片质量系数：0-最好，1-较好，2-一般
                 jpegpara.wPicQuality = 0;

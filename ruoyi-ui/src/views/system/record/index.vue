@@ -97,35 +97,6 @@
       :limit.sync="queryParams.pageSize"
       @pagination="getList"
     />
-
-    <!-- 添加或修改回放对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="回放视频关键字" prop="recordingKey">
-          <el-input v-model="form.recordingKey" placeholder="请输入回放视频关键字"/>
-        </el-form-item>
-        <el-form-item label="开始回放时间" prop="startTime">
-          <el-date-picker clearable
-                          v-model="form.startTime"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择开始回放时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="结束回放时间" prop="endTime">
-          <el-date-picker clearable
-                          v-model="form.endTime"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择结束回放时间">
-          </el-date-picker>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
-    </el-dialog>
     <!--视频播放对话框-->
     <el-dialog
       title="视频播放"

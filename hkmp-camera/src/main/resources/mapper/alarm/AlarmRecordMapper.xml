@@ -12,6 +12,7 @@
         <result property="alarmStatus" column="alarm_status"/>
         <result property="alarmDesc" column="alarm_desc"/>
         <result property="handleTime" column="handle_time"/>
+        <result property="screenshotKey" column="alarm_file_key"/>
     </resultMap>
 
     <sql id="selectAlarmRecordVo">
@@ -20,14 +21,24 @@
     </sql>
 
     <select id="selectAlarmRecordList" parameterType="AlarmRecord" resultMap="AlarmRecordResult">
-        <include refid="selectAlarmRecordVo"/>
+        select r.device_id,
+        r.alarm_time,
+        r.alarm_type,
+        r.alarm_record_id,
+        r.alarm_desc,
+        r.alarm_status,
+        r.handle_time,
+        f.alarm_file_key
+        from alarm_record r
+        left join alarm_file f on r.alarm_record_id = f.alarm_record_id
         <where>
             <if test="alarmTime != null ">
-                and alarm_time BETWEEN #{alarmTime,jdbcType=DATE} AND
+                and r.alarm_time BETWEEN #{alarmTime,jdbcType=DATE} AND
                 DATE_ADD(#{alarmTime,jdbcType=DATE}, INTERVAL 1 DAY)
             </if>
-            <if test="alarmType != null  and alarmType != ''">and alarm_type = #{alarmType,jdbcType=VARCHAR}</if>
-            <if test="deviceId != null  and deviceId != ''">and device_id = #{deviceId,jdbcType=VARCHAR}</if>
+            <if test="alarmType != null  and alarmType != ''">and r.alarm_type = #{alarmType,jdbcType=VARCHAR}</if>
+            <if test="deviceId != null  and deviceId != ''">and r.device_id = #{deviceId,jdbcType=VARCHAR}</if>
+            and f.alarm_file_key like 'img%'
         </where>
         order by alarm_time DESC
     </select>
@@ -44,7 +55,13 @@
         select count(*)
         from alarm_record ar
         where ar.device_id = #{deviceId,jdbcType=INTEGER}
-        AND TIMESTAMPDIFF(SECOND, ar.alarm_time, CURRENT_TIMESTAMP) &lt;= 10;
+          AND TIMESTAMPDIFF(SECOND, ar.alarm_time, CURRENT_TIMESTAMP) &lt;= 10;
+    </select>
+    <select id="selectVideoKeyById" resultType="java.lang.String">
+        select f.alarm_file_key
+            from alarm_file f
+        where f.alarm_record_id = #{alarmRecordId,jdbcType=VARCHAR}
+        and f.alarm_file_key like 'video%'
     </select>
 
     <insert id="insertAlarmRecord" parameterType="AlarmRecord">
@@ -76,6 +93,13 @@
             <if test="alarmType != null">alarm_type = #{alarmType},</if>
         </trim>
         where device_id = #{deviceId}
+    </update>
+    <update id="handleAlarm">
+        update alarm_record
+        set alarm_status = '1',
+            alarm_desc   = #{alarmDesc,jdbcType=VARCHAR},
+            handle_time  = #{handleTime,jdbcType=TIMESTAMP}
+        where alarm_record_id = #{alarmRecordId,jdbcType=VARCHAR}
     </update>
 
     <delete id="deleteAlarmRecordByDeviceId" parameterType="Long">

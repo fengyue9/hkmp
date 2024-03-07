@@ -58,4 +58,8 @@ public interface AlarmRecordMapper {
     int insertAlarmFile(AlarmFile alarmFile);
 
     int countCurrentAlarmRecord(Long deviceId);
+
+    String selectVideoKeyById(String alarmRecordId);
+
+    void handleAlarm(AlarmRecord alarmRecord);
 }

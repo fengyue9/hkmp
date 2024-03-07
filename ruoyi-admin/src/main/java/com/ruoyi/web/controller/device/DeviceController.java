@@ -2,9 +2,9 @@ package com.ruoyi.web.controller.device;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +33,8 @@ import com.ruoyi.device.service.IDeviceService;
 @RestController
 @RequestMapping("/camera/device")
 public class DeviceController extends BaseController {
-    @Autowired
+    @Resource
     private IDeviceService deviceService;
-
-
 
     /**
      * 查询设备信息管理列表
@@ -98,5 +96,16 @@ public class DeviceController extends BaseController {
     @DeleteMapping("/{deviceIds}")
     public AjaxResult remove(@PathVariable Long[] deviceIds) {
         return toAjax(deviceService.deleteDeviceByDeviceIds(deviceIds));
+    }
+
+    @PostMapping("/setUpAlarm")
+    public AjaxResult setUpAlarm(@RequestBody Device device) {
+        deviceService.setUpAlarm(device);
+        return AjaxResult.success();
+    }
+    @PostMapping("/closeAlarm")
+    public AjaxResult closeAlarm(@RequestBody Device device) {
+        deviceService.setUpAlarm(device);
+        return AjaxResult.success();
     }
 }

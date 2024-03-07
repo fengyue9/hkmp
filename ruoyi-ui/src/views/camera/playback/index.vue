@@ -76,24 +76,6 @@
                   <el-table-column property="deviceName" label="设备名称" width="300"></el-table-column>
                   <el-table-column property="startTime" label="开始录制时间" width="400"></el-table-column>
                   <el-table-column property="endTime" label="结束录制时间" width="400"></el-table-column>
-                  <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-                    <template slot-scope="scope">
-                      <!--                      <el-button-->
-                      <!--                        size="mini"-->
-                      <!--                        type="text"-->
-                      <!--                        icon="el-icon-edit"-->
-                      <!--                        @click="handleUpdate(scope.row)"-->
-                      <!--                      >播放-->
-                      <!--                      </el-button>-->
-                      <!--                      <el-button-->
-                      <!--                        size="mini"-->
-                      <!--                        type="text"-->
-                      <!--                        icon="el-icon-delete"-->
-                      <!--                        @click="handleDelete(scope.row)"-->
-                      <!--                      >下载-->
-                      <!--                      </el-button>-->
-                    </template>
-                  </el-table-column>
                 </el-table>
               </div>
             </el-drawer>

@@ -89,4 +89,31 @@ public class AlarmRecordController extends BaseController {
     public AjaxResult remove(@PathVariable Long[] deviceIds) {
         return toAjax(alarmRecordService.deleteAlarmRecordByDeviceIds(deviceIds));
     }
+
+    /**
+     * 下载报警详情
+     *
+     *
+     @param alarmRecordId
+     @param response
+     */
+    @GetMapping(value = "/download/{alarmRecordId}")
+    public void downloadVideo(@PathVariable String alarmRecordId, HttpServletResponse response) {
+        alarmRecordService.downloadVideo(alarmRecordId, response);
+    }
+
+    /**
+     * 处理报警
+     *
+     *
+     @param alarmRecord
+     */
+    @PostMapping(value = "/handle")
+    public void handleAlarm(@RequestBody AlarmRecord alarmRecord) {
+        String alarmDesc = alarmRecord.getAlarmDesc();
+        if (alarmDesc == null || alarmDesc.isEmpty()) {
+            throw new IllegalStateException("处理描述不能为空");
+        }
+        alarmRecordService.handleAlarm(alarmRecord);
+    }
 }

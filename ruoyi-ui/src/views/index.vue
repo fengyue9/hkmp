@@ -1,13 +1,18 @@
 <template>
   <div class="app-container home">
-    <div :style="{textAlign: 'center'}">
-      <h1 style="font-size: 36px; color: #333; margin-bottom: 10px;">基于Spring和Vue的实时监控报警系统</h1>
-      <p style="font-size: 18px; color: #666;">
-        摄像头实时预览、云台操作、抓图、录像、回放、下载、报警、设备管理、系统监控等</p>
-    </div>
     <el-row>
       <el-card>
-        <h2><b>系统资源仪表盘</b></h2>
+        <div :style="{textAlign: 'center'}">
+          <h1 style="font-size: 36px; color: #333; margin-bottom: 10px;">基于Spring和Vue的实时监控报警系统</h1>
+          <p style="font-size: 18px; color: #666;">
+            摄像头实时预览、云台操作、抓图、录像、回放、下载、报警、设备管理、系统监控等</p>
+        </div>
+      </el-card>
+    </el-row>
+    <el-row>
+      <el-card>
+        <div :style="{textAlign: 'center'}"><h2 style="font-size: 30px; color: #333; margin-bottom: 20px;">
+          系统资源仪表盘</h2></div>
         <!-- 实时监控图表 -->
         <div class="charts-container">
           <div class="chart" ref="cpuChart" style="height: 300px;"></div>
@@ -22,10 +27,13 @@
         <el-col>
           <el-card class="weather-card" v-loading="loading">
             <template #header>
-              <div class="weather-header">
-                <span class="title">天气预报</span>
-                <el-button type="text" @click="handleWeather" icon="el-icon-refresh-right">刷新</el-button>
+              <div :style="{textAlign: 'center'}">
+                <div class="weather-header">
+                  <span style="font-size: 30px; color: #333; margin-bottom: 20px;">天气预报</span>
+                  <el-button type="text" @click="handleWeather" icon="el-icon-refresh-right">刷新</el-button>
+                </div>
               </div>
+
             </template>
             <div v-if="city">
               <el-row :gutter="20">

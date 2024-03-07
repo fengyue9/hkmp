@@ -18,6 +18,8 @@
         <result property="remark" column="remark"/>
         <result property="deviceUsername" column="device_username"/>
         <result property="devicePassword" column="device_password"/>
+        <result property="alarmStatus" column="alarm_status"/>
+        <result property="manualAlarmStatus" column="manual_alarm_status"/>
     </resultMap>
 
     <sql id="selectDeviceVo">
@@ -27,13 +29,13 @@
                device_port,
                device_serial_number,
                device_status,
-               create_by,
                create_time,
-               update_by,
                update_time,
                remark,
                device_username,
-               device_password
+               device_password,
+               alarm_status,
+               manual_alarm_status
         from device
     </sql>
 
@@ -107,7 +109,12 @@
     <update id="updateDeviceStatus">
         update device
         set device_status = #{number,jdbcType=VARCHAR}
-        where device_id = #{deviceId,jdbcType=VARCHAR}
+        where device_id = #{deviceId,jdbcType=INTEGER}
+    </update>
+    <update id="updateAlarmStatus">
+        update device
+        set alarm_status = #{alarmedStatus,jdbcType=VARCHAR}
+        where device_id = #{deviceId,jdbcType=INTEGER}
     </update>
 
     <delete id="deleteDeviceByDeviceId" parameterType="Long">

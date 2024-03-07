@@ -29,8 +29,6 @@ import com.sun.jna.Pointer;
 @Service
 public class DeviceServiceImpl implements IDeviceService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DeviceServiceImpl.class);
-    public static final String DEVICE_ONLINE_LIST_KEY = "DEVICE_ONLINE_LIST_KEY";
-
     public static boolean alarmStatus = false;
     @Resource
     private DeviceMapper deviceMapper;
@@ -46,8 +44,8 @@ public class DeviceServiceImpl implements IDeviceService {
     @Scheduled(cron = "0/3 * * * * ?")
     @Override
     public void updateDeviceStatus() {
-        //异步检查设备是否在线
-        asyncService.checkDeviceOnline();
+        //检查设备在线状态以及布防状态
+        asyncService.checkDeviceOnlineAndAlarmed();
         //给前端发送消息
         WebSocketUsers.sendMessageToUsersByText("updateDeviceStatus");
     }
@@ -138,6 +136,18 @@ public class DeviceServiceImpl implements IDeviceService {
             alarmRecordService.handleAlarm(lCommand, pAlarmer, pAlarmInfo, dwBufLen, pUser);
             alarmStatus = false;
         }
+    }
+    @Override
+    public void setUpAlarm(Device device) {
+        Integer alarmId = Device.alarmMap.get(device.getDeviceId());
+        if (alarmId == null) {
+            //更新为手动布防
+
+            //开始布防
+
+        }
+
+        //布防
     }
 
 }

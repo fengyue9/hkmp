@@ -1,4 +1,116 @@
-[2024-03-06 22:02:37.229][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1949368320]
-[2024-03-06 22:02:37.229][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
-[2024-03-06 22:02:37.229][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
-[2024-03-06 22:02:37.229][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-03-07 23:24:42.058][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1949368320]
+[2024-03-07 23:24:42.058][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
+[2024-03-07 23:24:42.058][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
+[2024-03-07 23:24:42.058][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-03-07 23:25:04.482][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:25:04.482][INF] dwTotalNum[2048]
+[2024-03-07 23:25:04.497][INF] Private connect 192.168.1.64:8000 sock=8236 this=0x285bd884 cmd=0x10000 port=49237
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv4 No.0 [0xc0a8010a:192.168.1.10]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv4 No.1 [0xc0a8e101:192.168.225.1]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv4 No.2 [0xc0a8b601:192.168.182.1]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv4 No.3 [0xc0a80106:192.168.1.6]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.0 [fe80:0000:0000:0000:ceba:20b2:906a:26f0]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.1 [fe80:0000:0000:0000:2b12:338f:38ad:5a83]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.2 [fe80:0000:0000:0000:d225:bab8:ae3c:eebe]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.3 [fe80:0000:0000:0000:fcdb:b36f:a0af:e105]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.4 [fe80:0000:0000:0000:02d1:31d0:ac68:358b]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.5 [2409:8a34:0162:c9e0:fc32:e4b4:1f7a:fdcf]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.6 [2409:8a34:0162:c9e0:ecce:17de:33c7:e668]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.7 [fe80:0000:0000:0000:98cc:6638:f182:027f]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.8 [fe80:0000:0000:0000:2163:8f7e:d854:af7a]
+[2024-03-07 23:25:04.519][INF] GetLocalIP IPv6 No.9 [fe80:0000:0000:0000:ef4c:3d07:a0d3:e166]
+[2024-03-07 23:25:04.519][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:25:04.519][ERR] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Failed, Path[D:/毕设/源码/hkmp/lib/libeay32.dll] syserror[126]
+[2024-03-07 23:25:04.519][ERR] Load BASE_DLL_LIBEAY failed[syserr: 126]
+[2024-03-07 23:25:04.520][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libcrypto-1_1-x64.dll], hHandleRet[1081933824]
+[2024-03-07 23:25:04.520][DBG] Load [libcrypto-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libcrypto-1_1-x64.dll]
+[2024-03-07 23:25:04.521][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libssl-1_1-x64.dll], hHandleRet[1388314624]
+[2024-03-07 23:25:04.521][DBG] Load [libssl-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libssl-1_1-x64.dll]
+[2024-03-07 23:25:04.521][INF] SSLTRANSAPI::IsAllAPILoaded, SSL_library_init Unload
+[2024-03-07 23:25:04.521][INF] OpenSSL, Not All Function Loaded!
+[2024-03-07 23:25:04.521][INF] SSLTRANSAPI::PrintVersion, OpenSSL version info [OpenSSL 1.1.1l  24 Aug 2021]
+[2024-03-07 23:25:04.521][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[6], m_fnTLSServerMethod
+[2024-03-07 23:25:04.705][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCAlarm.dll] SUCC
+[2024-03-07 23:25:04.705][INF] AbilityAnalyze---Init-- start
+[2024-03-07 23:25:04.714][INF] The COM:HCAlarm ver is 6.1.9.4, 2022_04_12.
+[2024-03-07 23:25:04.730][INF] Private connect 192.168.1.64:8000 sock=8268 this=0x285bd884 cmd=0x111020 port=49238
+[2024-03-07 23:27:01.132][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:01.141][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCPreview.dll] SUCC
+[2024-03-07 23:27:01.141][INF] The COM:Preview ver is 6.1.9.4, 2022_04_12.
+[2024-03-07 23:27:01.160][INF] Private connect 192.168.1.64:8000 sock=11176 this=0x285bdff0 cmd=0x30009 port=49754
+[2024-03-07 23:27:01.225][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[0], cTempPath[D:/毕设/源码/hkmp/lib/]
+[2024-03-07 23:27:01.225][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[804519936], enumDllType[0], Path[PlayCtrl.dll], syserror[0]
+[2024-03-07 23:27:02.008][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
+[2024-03-07 23:27:02.011][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
+[2024-03-07 23:27:02.014][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[885784576], enumDllType[2], Path[SystemTransform.dll], syserror[0]
+[2024-03-07 23:27:02.014][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
+[2024-03-07 23:27:02.033][INF] Private connect 192.168.1.64:8000 sock=15720 this=0x285bdff0 cmd=0x30000 port=49755
+[2024-03-07 23:27:02.041][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2024-03-07 23:27:02.041][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2024-03-07 23:27:02.042][ERR] GetOverlayFontPath Failed
+[2024-03-07 23:27:02.046][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[3222cd84] success
+[2024-03-07 23:27:02.046][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
+[2024-03-07 23:27:02.135][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:03.133][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:04.137][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:05.137][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:06.148][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:07.147][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-07 23:27:12.095][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
+[2024-03-07 23:27:12.125][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
+[2024-03-07 23:27:45.349][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:45.363][INF] Private connect 192.168.1.64:8000 sock=15292 this=0x285bdff0 cmd=0x10000 port=50235
+[2024-03-07 23:27:45.363][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:45.441][INF] Private connect 192.168.1.64:8000 sock=15200 this=0x285bdff0 cmd=0x30200 port=50236
+[2024-03-07 23:27:46.574][INF] Private connect 192.168.1.64:8000 sock=15268 this=0x285bdff0 cmd=0x30200 port=50238
+[2024-03-07 23:27:46.579][INF] COM_Logout[1][1]
+[2024-03-07 23:27:46.579][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:46.606][INF] Private connect 192.168.1.64:8000 sock=15268 this=0x285bdff0 cmd=0x10100 port=50239
+[2024-03-07 23:27:47.144][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:47.162][INF] Private connect 192.168.1.64:8000 sock=15532 this=0x285bdff0 cmd=0x10000 port=50241
+[2024-03-07 23:27:47.162][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:47.255][INF] Private connect 192.168.1.64:8000 sock=15532 this=0x285bdff0 cmd=0x30200 port=50242
+[2024-03-07 23:27:48.270][INF] Private connect 192.168.1.64:8000 sock=15196 this=0x285bdff0 cmd=0x30200 port=50245
+[2024-03-07 23:27:48.275][INF] COM_Logout[1][1]
+[2024-03-07 23:27:48.275][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:48.299][INF] Private connect 192.168.1.64:8000 sock=15196 this=0x285bdff0 cmd=0x10100 port=50246
+[2024-03-07 23:27:48.734][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:48.748][INF] Private connect 192.168.1.64:8000 sock=10088 this=0x285bdff0 cmd=0x10000 port=50253
+[2024-03-07 23:27:48.748][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:48.840][INF] Private connect 192.168.1.64:8000 sock=10088 this=0x285bdff0 cmd=0x30200 port=50254
+[2024-03-07 23:27:49.871][INF] Private connect 192.168.1.64:8000 sock=15228 this=0x285bdff0 cmd=0x30200 port=50256
+[2024-03-07 23:27:49.875][INF] COM_Logout[1][1]
+[2024-03-07 23:27:49.875][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:49.902][INF] Private connect 192.168.1.64:8000 sock=15228 this=0x285bdff0 cmd=0x10100 port=50257
+[2024-03-07 23:27:50.279][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:50.305][INF] Private connect 192.168.1.64:8000 sock=10088 this=0x285bdff0 cmd=0x10000 port=50259
+[2024-03-07 23:27:50.305][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:50.374][INF] Private connect 192.168.1.64:8000 sock=10088 this=0x285bdff0 cmd=0x30200 port=50260
+[2024-03-07 23:27:51.397][INF] Private connect 192.168.1.64:8000 sock=13864 this=0x285bdff0 cmd=0x30200 port=50272
+[2024-03-07 23:27:51.406][INF] COM_Logout[1][1]
+[2024-03-07 23:27:51.406][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:51.429][INF] Private connect 192.168.1.64:8000 sock=13864 this=0x285bdff0 cmd=0x10100 port=50273
+[2024-03-07 23:27:53.728][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:53.750][INF] Private connect 192.168.1.64:8000 sock=15176 this=0x285bdff0 cmd=0x10000 port=50284
+[2024-03-07 23:27:53.750][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:53.843][INF] Private connect 192.168.1.64:8000 sock=15176 this=0x285bdff0 cmd=0x30200 port=50285
+[2024-03-07 23:27:54.874][INF] Private connect 192.168.1.64:8000 sock=15472 this=0x285bdff0 cmd=0x30200 port=50288
+[2024-03-07 23:27:54.879][INF] COM_Logout[1][1]
+[2024-03-07 23:27:54.879][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:54.904][INF] Private connect 192.168.1.64:8000 sock=15472 this=0x285bdff0 cmd=0x10100 port=50289
+[2024-03-07 23:27:55.769][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:55.792][INF] Private connect 192.168.1.64:8000 sock=15704 this=0x285bdff0 cmd=0x10000 port=50295
+[2024-03-07 23:27:55.792][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:55.885][INF] Private connect 192.168.1.64:8000 sock=15704 this=0x285bdff0 cmd=0x30200 port=50296
+[2024-03-07 23:27:56.914][INF] Private connect 192.168.1.64:8000 sock=15236 this=0x285bdff0 cmd=0x30200 port=50300
+[2024-03-07 23:27:56.920][INF] COM_Logout[1][1]
+[2024-03-07 23:27:56.920][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:56.945][INF] Private connect 192.168.1.64:8000 sock=15236 this=0x285bdff0 cmd=0x10100 port=50301
+[2024-03-07 23:27:57.467][INF] Login dev 192.168.1.64:8000.
+[2024-03-07 23:27:57.490][INF] Private connect 192.168.1.64:8000 sock=15212 this=0x285bdff0 cmd=0x10000 port=50307
+[2024-03-07 23:27:57.490][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-07 23:27:57.569][INF] Private connect 192.168.1.64:8000 sock=15212 this=0x285bdff0 cmd=0x30200 port=50308
+[2024-03-07 23:27:58.597][INF] Private connect 192.168.1.64:8000 sock=15292 this=0x285bdff0 cmd=0x30200 port=50312
+[2024-03-07 23:27:58.607][INF] COM_Logout[1][1]
+[2024-03-07 23:27:58.607][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-07 23:27:58.627][INF] Private connect 192.168.1.64:8000 sock=15292 this=0x285bdff0 cmd=0x10100 port=50313

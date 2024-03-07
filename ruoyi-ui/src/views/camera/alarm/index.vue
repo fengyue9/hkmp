@@ -51,81 +51,103 @@
               </el-col>
               <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
             </el-row>
+            <el-row>
+              <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55" align="center"/>
+                <el-table-column label="报警抓图" align="center" prop="screenshotURL" width="300">
+                  <template slot-scope="scope">
+                    <image-preview :src="scope.row.screenshotURL" :width="70" :height="70"/>
+                  </template>
+                </el-table-column>
+                <el-table-column label="报警类型" align="center" prop="alarmType">
+                  <template slot-scope="scope">
+                    <el-tag>{{ scope.row.alarmType }}</el-tag>
+                  </template>
+                </el-table-column>
+                <el-table-column label="报警时间" align="center" prop="alarmTime" width="180">
+                  <template slot-scope="scope">
+                    <span>{{ scope.row.alarmTime }}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column label="状态" align="center" prop="deviceId">
+                  <template slot-scope="scope">
+                    <el-tag v-if="scope.row.alarmStatus === '0'" type="danger">未处理</el-tag>
+                    <el-tag v-if="scope.row.alarmStatus === '1'" type="success">已处理</el-tag>
+                  </template>
+                </el-table-column>
+                <el-table-column label="处理描述" align="center" prop="alarmDesc"/>
+                <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+                  <template slot-scope="scope">
+                    <el-button
+                      size="mini"
+                      type="text"
+                      icon="el-icon-edit"
+                      @click="handle(scope.row)"
+                    >处理
+                    </el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
 
-            <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
-              <el-table-column type="selection" width="55" align="center"/>
-              <el-table-column label="设备id" align="center" prop="deviceId"/>
-              <el-table-column label="报警时间" align="center" prop="alarmTime" width="180">
-                <template slot-scope="scope">
-                  <span>{{ scope.row.alarmTime }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column label="报警类型" align="center" prop="alarmType">
-                <template slot-scope="scope">
-                  <el-tag>{{ scope.row.alarmType }}</el-tag>
-
-                </template>
-              </el-table-column>
-              <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-                <template slot-scope="scope">
-                  <el-button
-                    size="mini"
-                    type="text"
-                    icon="el-icon-edit"
-                    @click="handle(scope.row)"
-                  >处理
-                  </el-button>
-
-                </template>
-              </el-table-column>
-            </el-table>
-
-            <pagination
-              v-show="total>0"
-              :total="total"
-              :page.sync="queryParams.pageNum"
-              :limit.sync="queryParams.pageSize"
-              @pagination="getList"
-            />
-
-            <!-- 添加或修改报警记录对话框 -->
-            <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-              <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-                <el-form-item label="报警时间" prop="alarmTime">
-                  <el-date-picker clearable
-                                  v-model="form.alarmTime"
-                                  type="date"
-                                  value-format="yyyy-MM-dd HH:mm:ss"
-                                  placeholder="请选择报警时间">
-                  </el-date-picker>
-                </el-form-item>
-              </el-form>
-              <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="submitForm">确 定</el-button>
-                <el-button @click="cancel">取 消</el-button>
-              </div>
-            </el-dialog>
+              <pagination
+                v-show="total>0"
+                :total="total"
+                :page.sync="queryParams.pageNum"
+                :limit.sync="queryParams.pageSize"
+                @pagination="getList"
+              />
+            </el-row>
           </div>
-
         </el-card>
       </el-col>
     </el-row>
     <!--    报警处理对话框-->
-    <el-dialog :visible.sync="dialogVisible" width="70%">
-      <img :src="selectedRecord.image" alt="报警抓图" style="width: 100%">
-      <video :src="selectedRecord.video" controls autoplay style="width: 100%"></video>
-      <span>处理描述：</span>
-      <el-row style="padding-top: 10px">
-        <el-input type="textarea" v-model="form.desc"></el-input>
-        <el-button type="primary" style="padding-top: 20px" @click="submitForm">确认处理</el-button>
-      </el-row>
+    <el-dialog :visible.sync="dialogVisible"
+               width="60%"
+               :show-close=false
+               :close-on-click-modal=false
+               :closeOnClickModal=false
+               :close="handleClose">
+      <el-container>
+        <el-header height="50%" style="text-align:center;background-color:#fff;font-size: 30px">报警事件详情</el-header>
+        <el-container>
+          <el-container>
+            <el-main style="background-color:#fff;padding-bottom: 20px;">
+              <video ref="video" controls autoplay style="width: 100%;height: 60%;"></video>
+              <el-row style="padding-top: 10px;">
+                <el-card style="height: 200px;">
+                  <div style="text-align: center;font-size: 20px; ">处理描述</div>
+                  <el-input :autosize="{ minRows: 5, maxRows: 5}" style="padding-top: 10px;padding-bottom: 10px;"
+                            type="textarea" v-model="handleAlarmDesc"></el-input>
+                </el-card>
+              </el-row>
+              <el-row>
+                <div style="text-align: center;padding-top: 10px;">
+                  <span slot="footer">
+                    <el-button type="primary" @click="handleClose">返回</el-button>
+                  </span>
+                  <el-button style="margin-left: 10px;" type="primary" @click="handleAlarm">确认处理
+                  </el-button>
+                </div>
+              </el-row>
+            </el-main>
+          </el-container>
+        </el-container>
+      </el-container>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import {listDevice} from "@/api/camera/device";
-import {listRecord, getRecord, delRecord, addRecord, updateRecord} from "@/api/camera/alarm/alarm_record";
+import {
+  listRecord,
+  getRecord,
+  delRecord,
+  addRecord,
+  updateRecord,
+  downloadVideo, handleAlarm
+} from "@/api/camera/alarm/alarm_record";
 
 export default {
   data() {
@@ -162,7 +184,7 @@ export default {
       // 查询参数
       queryParams: {
         pageNum: 1,
-        pageSize: 10,
+        pageSize: 6,
         alarmTime: null,
         alarmType: null,
         deviceId: null,
@@ -171,6 +193,12 @@ export default {
       form: {},
       // 表单校验
       rules: {},
+      //报警处理描述
+      handleAlarmDesc: null,
+      //点击处理的报警记录id
+      selectedAlarmRecordId: null,
+      //视频播放的URL
+      videoUrl: '',
     }
   },
   created() {
@@ -190,19 +218,6 @@ export default {
       // 调用接口加载该设备的报警记录
       this.queryParams.deviceId = deviceId;
       this.getList();
-      // 示例：this.$http.get(`/api/alarm/records?deviceId=${deviceId}`).then(response => {
-      //   this.alarmRecords = response.data;
-      // }).catch(error => {
-      //   console.error('Failed to load alarm records:', error);
-      // });
-    },
-    handleSearch() {
-      // 处理搜索逻辑，根据日期和类型搜索相应的数据
-      // 示例：this.$http.get(`/api/alarm/records?date=${this.searchDate}&type=${this.searchType}`).then(response => {
-      //   this.alarmRecords = response.data;
-      // }).catch(error => {
-      //   console.error('Failed to load data:', error);
-      // });
     },
     handleView(record) {
       // 查看报警详情，展示抓图和视频
@@ -264,30 +279,48 @@ export default {
       this.open = true;
       this.title = "添加报警记录";
     },
-    /** 修改按钮操作 */
+    //处理按钮点击事件
     handle(row) {
-      this.reset();
       this.dialogVisible = true;
-    },
-    /** 提交按钮 */
-    submitForm() {
-      this.$refs["form"].validate(valid => {
-        if (valid) {
-          if (this.form.deviceId != null) {
-            updateRecord(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            });
-          } else {
-            addRecord(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
-          }
-        }
+      this.selectedAlarmRecordId = row.alarmRecordId;
+      //播放视频
+      const alarmRecordId = row.alarmRecordId;
+      downloadVideo(alarmRecordId).then(response => {
+        //生成视频的URL
+        const videoUrl = URL.createObjectURL(response);
+        this.videoUrl = videoUrl;
+        this.$refs.video.src = videoUrl;
+        this.$refs.video.play();
+        //默认播放速度为1x
+        this.$refs.video.playbackRate = 1;
+      }).catch(error => {
+        console.error('播放视频失败:', error);
       });
+    },
+    //报警处理点击事件
+    handleAlarm() {
+      //构造参数
+      const data = {
+        alarmRecordId: this.selectedAlarmRecordId,
+        alarmDesc: this.handleAlarmDesc
+      }
+      //发送处理报警请求
+      handleAlarm(data).then(response => {
+        this.$message({
+          message: '报警处理成功!',
+          type: 'success',
+          center: true
+        });
+      });
+    },
+    handleClose() {
+      // 停止视频播放
+      this.$refs.video.pause();
+      // 释放视频 URL 对应的资源
+      URL.revokeObjectURL(this.videoUrl);
+      this.dialogVisible = false;
+      this.handleAlarmDesc = null;
+      this.getList();
     },
     /** 删除按钮操作 */
     handleDelete(row) {
@@ -330,284 +363,19 @@ export default {
   margin-bottom: 20px; /* 左侧设备列表下边距 */
 }
 
-.search-container {
-  margin-bottom: 20px; /* 右侧搜索框下边距 */
-}
-
 .device-menu-item {
   font-size: 16px;
 }
+
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
+}
 </style>
-
-
-<!---------------------------------------------------------------------------------------------------->
-<!--<template>-->
-<!--  <div class="app-container">-->
-<!--    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">-->
-<!--      <el-form-item label="报警时间" prop="alarmTime">-->
-<!--        <el-date-picker clearable-->
-<!--                        v-model="queryParams.alarmTime"-->
-<!--                        type="date"-->
-<!--                        value-format="yyyy-MM-dd"-->
-<!--                        placeholder="请选择报警时间">-->
-<!--        </el-date-picker>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>-->
-<!--        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
-
-<!--    <el-row :gutter="10" class="mb8">-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="primary"-->
-<!--          plain-->
-<!--          icon="el-icon-plus"-->
-<!--          size="mini"-->
-<!--          @click="handleAdd"-->
-<!--          v-hasPermi="['device:record:add']"-->
-<!--        >新增-->
-<!--        </el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="success"-->
-<!--          plain-->
-<!--          icon="el-icon-edit"-->
-<!--          size="mini"-->
-<!--          :disabled="single"-->
-<!--          @click="handleUpdate"-->
-<!--          v-hasPermi="['device:record:edit']"-->
-<!--        >修改-->
-<!--        </el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="danger"-->
-<!--          plain-->
-<!--          icon="el-icon-delete"-->
-<!--          size="mini"-->
-<!--          :disabled="multiple"-->
-<!--          @click="handleDelete"-->
-<!--          v-hasPermi="['device:record:remove']"-->
-<!--        >删除-->
-<!--        </el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="warning"-->
-<!--          plain-->
-<!--          icon="el-icon-download"-->
-<!--          size="mini"-->
-<!--          @click="handleExport"-->
-<!--          v-hasPermi="['device:record:export']"-->
-<!--        >导出-->
-<!--        </el-button>-->
-<!--      </el-col>-->
-<!--      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>-->
-<!--    </el-row>-->
-
-<!--    <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">-->
-<!--      <el-table-column type="selection" width="55" align="center"/>-->
-<!--      <el-table-column label="设备id" align="center" prop="deviceId"/>-->
-<!--      <el-table-column label="报警时间" align="center" prop="alarmTime" width="180">-->
-<!--        <template slot-scope="scope">-->
-<!--          <span>{{ scope.row.alarmTime }}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="报警类型" align="center" prop="alarmType">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-tag>{{ scope.row.alarmType }}</el-tag>-->
-
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-edit"-->
-<!--            @click="handleUpdate(scope.row)"-->
-<!--            v-hasPermi="['device:record:edit']"-->
-<!--          >修改-->
-<!--          </el-button>-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-delete"-->
-<!--            @click="handleDelete(scope.row)"-->
-<!--            v-hasPermi="['device:record:remove']"-->
-<!--          >删除-->
-<!--          </el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--    </el-table>-->
-
-<!--    <pagination-->
-<!--      v-show="total>0"-->
-<!--      :total="total"-->
-<!--      :page.sync="queryParams.pageNum"-->
-<!--      :limit.sync="queryParams.pageSize"-->
-<!--      @pagination="getList"-->
-<!--    />-->
-
-<!--    &lt;!&ndash; 添加或修改报警记录对话框 &ndash;&gt;-->
-<!--    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>-->
-<!--      <el-form ref="form" :model="form" :rules="rules" label-width="80px">-->
-<!--        <el-form-item label="报警时间" prop="alarmTime">-->
-<!--          <el-date-picker clearable-->
-<!--                          v-model="form.alarmTime"-->
-<!--                          type="date"-->
-<!--                          value-format="yyyy-MM-dd HH:mm:ss"-->
-<!--                          placeholder="请选择报警时间">-->
-<!--          </el-date-picker>-->
-<!--        </el-form-item>-->
-<!--      </el-form>-->
-<!--      <div slot="footer" class="dialog-footer">-->
-<!--        <el-button type="primary" @click="submitForm">确 定</el-button>-->
-<!--        <el-button @click="cancel">取 消</el-button>-->
-<!--      </div>-->
-<!--    </el-dialog>-->
-<!--  </div>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--import {listRecord, getRecord, delRecord, addRecord, updateRecord} from "@/api/camera/alarm/alarm_record";-->
-
-<!--export default {-->
-<!--  name: "Record",-->
-<!--  data() {-->
-<!--    return {-->
-<!--      // 遮罩层-->
-<!--      loading: true,-->
-<!--      // 选中数组-->
-<!--      ids: [],-->
-<!--      // 非单个禁用-->
-<!--      single: true,-->
-<!--      // 非多个禁用-->
-<!--      multiple: true,-->
-<!--      // 显示搜索条件-->
-<!--      showSearch: true,-->
-<!--      // 总条数-->
-<!--      total: 0,-->
-<!--      // 报警记录表格数据-->
-<!--      recordList: [],-->
-<!--      // 弹出层标题-->
-<!--      title: "",-->
-<!--      // 是否显示弹出层-->
-<!--      open: false,-->
-<!--      // 查询参数-->
-<!--      queryParams: {-->
-<!--        pageNum: 1,-->
-<!--        pageSize: 10,-->
-<!--        alarmTime: null,-->
-<!--        alarmType: null-->
-<!--      },-->
-<!--      // 表单参数-->
-<!--      form: {},-->
-<!--      // 表单校验-->
-<!--      rules: {}-->
-<!--    };-->
-<!--  },-->
-<!--  created() {-->
-<!--    this.getList();-->
-<!--  },-->
-<!--  methods: {-->
-<!--    /** 查询报警记录列表 */-->
-<!--    getList() {-->
-<!--      this.loading = true;-->
-<!--      listRecord(this.queryParams).then(response => {-->
-<!--        this.recordList = response.rows;-->
-<!--        this.total = response.total;-->
-<!--        this.loading = false;-->
-<!--      });-->
-<!--    },-->
-<!--    // 取消按钮-->
-<!--    cancel() {-->
-<!--      this.open = false;-->
-<!--      this.reset();-->
-<!--    },-->
-<!--    // 表单重置-->
-<!--    reset() {-->
-<!--      this.form = {-->
-<!--        deviceId: null,-->
-<!--        alarmTime: null,-->
-<!--        alarmType: null-->
-<!--      };-->
-<!--      this.resetForm("form");-->
-<!--    },-->
-<!--    /** 搜索按钮操作 */-->
-<!--    handleQuery() {-->
-<!--      this.queryParams.pageNum = 1;-->
-<!--      this.getList();-->
-<!--    },-->
-<!--    /** 重置按钮操作 */-->
-<!--    resetQuery() {-->
-<!--      this.resetForm("queryForm");-->
-<!--      this.handleQuery();-->
-<!--    },-->
-<!--    // 多选框选中数据-->
-<!--    handleSelectionChange(selection) {-->
-<!--      this.ids = selection.map(item => item.deviceId)-->
-<!--      this.single = selection.length !== 1-->
-<!--      this.multiple = !selection.length-->
-<!--    },-->
-<!--    /** 新增按钮操作 */-->
-<!--    handleAdd() {-->
-<!--      this.reset();-->
-<!--      this.open = true;-->
-<!--      this.title = "添加报警记录";-->
-<!--    },-->
-<!--    /** 修改按钮操作 */-->
-<!--    handleUpdate(row) {-->
-<!--      this.reset();-->
-<!--      const deviceId = row.deviceId || this.ids-->
-<!--      getRecord(deviceId).then(response => {-->
-<!--        this.form = response.data;-->
-<!--        this.open = true;-->
-<!--        this.title = "修改报警记录";-->
-<!--      });-->
-<!--    },-->
-<!--    /** 提交按钮 */-->
-<!--    submitForm() {-->
-<!--      this.$refs["form"].validate(valid => {-->
-<!--        if (valid) {-->
-<!--          if (this.form.deviceId != null) {-->
-<!--            updateRecord(this.form).then(response => {-->
-<!--              this.$modal.msgSuccess("修改成功");-->
-<!--              this.open = false;-->
-<!--              this.getList();-->
-<!--            });-->
-<!--          } else {-->
-<!--            addRecord(this.form).then(response => {-->
-<!--              this.$modal.msgSuccess("新增成功");-->
-<!--              this.open = false;-->
-<!--              this.getList();-->
-<!--            });-->
-<!--          }-->
-<!--        }-->
-<!--      });-->
-<!--    },-->
-<!--    /** 删除按钮操作 */-->
-<!--    handleDelete(row) {-->
-<!--      const deviceIds = row.deviceId || this.ids;-->
-<!--      this.$modal.confirm('是否确认删除报警记录编号为"' + deviceIds + '"的数据项？').then(function () {-->
-<!--        return delRecord(deviceIds);-->
-<!--      }).then(() => {-->
-<!--        this.getList();-->
-<!--        this.$modal.msgSuccess("删除成功");-->
-<!--      }).catch(() => {-->
-<!--      });-->
-<!--    },-->
-<!--    /** 导出按钮操作 */-->
-<!--    handleExport() {-->
-<!--      this.download('device/record/export', {-->
-<!--        ...this.queryParams-->
-<!--      }, `record_${new Date().getTime()}.xlsx`)-->
-<!--    }-->
-<!--  }-->
-<!--};-->
-<!--</script>-->
 
 

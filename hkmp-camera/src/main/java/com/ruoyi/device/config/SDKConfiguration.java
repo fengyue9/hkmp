@@ -2,6 +2,7 @@ package com.ruoyi.device.config;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -11,10 +12,12 @@ import org.springframework.context.annotation.Configuration;
 
 import com.ruoyi.common.core.redis.RedisCache;
 import com.ruoyi.device.CommonMethod.osSelect;
+import com.ruoyi.device.domain.Device;
 import com.ruoyi.device.mapper.DeviceMapper;
 import com.ruoyi.device.sdk.HCNetSDK;
 import com.ruoyi.device.sdk.PlayCtrl;
 import com.ruoyi.device.service.IAlarmRecordService;
+import com.ruoyi.device.utils.LoginUtils;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 /**
@@ -192,6 +195,13 @@ public class SDKConfiguration {
      */
     @PreDestroy
     public void cleanup() {
+        List<Device> deviceList = deviceMapper.selectDeviceList(new Device());
+        //退出登录
+        for (Device device : deviceList) {
+            LoginUtils.logout(Device.userMap.get(device.getDeviceId()));
+        }
+        //撤防
+        alarmService.closeAlarmChan();
         if (hCNetSDK != null) {
             //SDK反初始化，释放资源，只需要退出时调用一次
             hCNetSDK.NET_DVR_Cleanup();
@@ -199,8 +209,5 @@ public class SDKConfiguration {
         }
 
     }
-
-
-
 
 }

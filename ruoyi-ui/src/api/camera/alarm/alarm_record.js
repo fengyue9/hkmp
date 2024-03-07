@@ -42,3 +42,22 @@ export function delRecord(deviceId) {
     method: 'delete'
   })
 }
+
+//下载视频
+export function downloadVideo(alarmRecordId) {
+  return request({
+    url: '/device/record/download/' + alarmRecordId,
+    method: 'get',
+    responseType: 'blob'
+  })
+}
+
+//处理报警
+export function handleAlarm(data) {
+  return request({
+    url: '/device/record/handle',
+    method: 'post',
+    data: data
+  })
+}
+
