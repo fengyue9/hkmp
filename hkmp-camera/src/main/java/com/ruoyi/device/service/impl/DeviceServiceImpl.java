@@ -20,6 +20,8 @@ import com.ruoyi.device.service.IDeviceService;
 import com.ruoyi.framework.websocket.WebSocketUsers;
 import com.sun.jna.Pointer;
 
+import static com.ruoyi.device.service.impl.AsyncServiceImpl.*;
+
 /**
  * 设备信息管理Service业务层处理
  *
@@ -137,17 +139,57 @@ public class DeviceServiceImpl implements IDeviceService {
             alarmStatus = false;
         }
     }
+    /**
+     * 布防
+     *
+     * @param device
+     */
     @Override
-    public void setUpAlarm(Device device) {
-        Integer alarmId = Device.alarmMap.get(device.getDeviceId());
-        if (alarmId == null) {
-            //更新为手动布防
-
+    public boolean setUpAlarmManually(Device device) {
+        Long deviceId = device.getDeviceId();
+        Integer alarmId = Device.alarmMap.get(deviceId);
+        //先更新为手动布防状态
+        deviceMapper.updateManualAlarmStatus(deviceId, MANUAL_ALARM);
+        if (alarmId == null && device.getAlarmStatus().equals(NOT_ALARMED_STATUS)) {
+            //说明目前是未布防状态
+            if (alarmRecordService.setupAlarmChan(device)) {
+                //布防成功
+                deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
+                return true;
+            } else {
+                //布防失败
+                return false;
+            }
             //开始布防
-
         }
-
-        //布防
+        //说明已经是布防状态,直接返回true
+        return true;
+    }
+    /**
+     * 撤防
+     *
+     * @param device
+     */
+    @Override
+    public boolean closeAlarmManually(Device device) {
+        Long deviceId = device.getDeviceId();
+        Integer alarmId = Device.alarmMap.get(deviceId);
+        //先更新为手动布防状态
+        deviceMapper.updateManualAlarmStatus(deviceId, MANUAL_ALARM);
+        if (alarmId != null) {
+            //需要撤防
+            if (alarmRecordService.closeAlarmChan(device)) {
+                //撤防成功
+                deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
+                Device.alarmMap.remove(deviceId);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            //已经撤防
+            return true;
+        }
     }
 
 }

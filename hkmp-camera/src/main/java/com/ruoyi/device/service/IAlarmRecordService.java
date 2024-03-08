@@ -21,11 +21,13 @@ public interface IAlarmRecordService {
      * @return int
      @param device
      */
-    void setupAlarmChan(Device device);
+    boolean setupAlarmChan(Device device);
+
+    boolean closeAlarmChan(Device device);
 
     void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen, Pointer pUser);
 
-    void closeAlarmChan();
+    void closeAlarmChans();
 
     /**
      * 查询报警记录

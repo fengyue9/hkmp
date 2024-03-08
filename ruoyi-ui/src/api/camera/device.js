@@ -43,3 +43,20 @@ export function delDevice(deviceId) {
   })
 }
 
+// 布防
+export function setUpAlarm(data) {
+  return request({
+    url: '/camera/device/setUpAlarm',
+    method: 'post',
+    data: data
+  })
+}
+
+//撤防
+export function closeAlarm(data) {
+  return request({
+    url: '/camera/device/closeAlarm',
+    method: 'post',
+    data: data
+  })
+}

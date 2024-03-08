@@ -66,4 +66,6 @@ public interface DeviceMapper {
     Device getDeviceBySerialNumber(String serialNumber);
 
     int updateAlarmStatus(@Param("deviceId") Long deviceId, @Param("alarmedStatus") String alarmedStatus);
+
+    int updateManualAlarmStatus(@Param("deviceId") Long deviceId, @Param("manualAlarmStatus") String autoAlarm);
 }

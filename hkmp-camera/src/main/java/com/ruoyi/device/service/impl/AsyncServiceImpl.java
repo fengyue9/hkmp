@@ -45,36 +45,121 @@ public class AsyncServiceImpl implements IAsyncService {
     @Override
     @Async
     public void checkDeviceOnlineAndAlarmed() {
-        //查询出所有启用设备信息
+        // 查询出所有启用设备信息
         List<Device> deviceList = deviceMapper.selectDeviceList(new Device());
-        //循环ping
+
         for (Device device : deviceList) {
-            Long deviceId = device.getDeviceId();
             String alarmStatus = device.getAlarmStatus();
             String manualAlarmStatus = device.getManualAlarmStatus();
-            //判断设备是否在线
-            if (!isCameraOnline(device.getDeviceIp())) {
-                //离线
-                deviceMapper.updateDeviceStatus(deviceId, OFFLINE_STATUS);
-                deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
-            } else {
-                //在线
-                deviceMapper.updateDeviceStatus(deviceId, ONLINE_STATUS);
-                if (manualAlarmStatus.equals(MANUAL_ALARM)) {
-                    // 如果手动布防状态
-                    if (alarmStatus.equals(NOT_ALARMED_STATUS)) {
-                        //未布防
-                        continue;
-                    } else {
-                        //已布防
-                        alarmRecordService.setupAlarmChan(device);
-                        deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
-                    }
+            boolean isOnline = isCameraOnline(device.getDeviceIp());
+
+            try {
+                if (!isOnline) {
+                    handleOfflineDevice(device);
                 } else {
-                    //自动布防
-                    alarmRecordService.setupAlarmChan(device);
-                    deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
+                    handleOnlineDevice(device, alarmStatus, manualAlarmStatus);
                 }
+            } catch (Exception e) {
+                // 处理异常情况，记录日志或者进行其他处理
+                LOGGER.error("处理设备时发生异常：" + e.getMessage());
+            }
+        }
+        //        //查询出所有启用设备信息
+        //        List<Device> deviceList = deviceMapper.selectDeviceList(new Device());
+        //        //循环ping
+        //        for (Device device : deviceList) {
+        //            Long deviceId = device.getDeviceId();
+        //            String alarmStatus = device.getAlarmStatus();
+        //            String manualAlarmStatus = device.getManualAlarmStatus();
+        //            //判断设备是否在线
+        //            if (!isCameraOnline(device.getDeviceIp())) {
+        //                //离线
+        //                deviceMapper.updateDeviceStatus(deviceId, OFFLINE_STATUS);
+        //                //设置成未布防
+        //                deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
+        //                //设置成自动布防，下次连接后会自动布防
+        //                deviceMapper.updateManualAlarmStatus(deviceId, AUTO_ALARM);
+        //            } else {
+        //                //在线
+        //                deviceMapper.updateDeviceStatus(deviceId, ONLINE_STATUS);
+        //                if (manualAlarmStatus.equals(MANUAL_ALARM)) {
+        //                    // 如果手动布防状态
+        //                    if (alarmStatus.equals(NOT_ALARMED_STATUS)) {
+        //                        //未布防
+        //                        continue;
+        //                    } else {
+        //                        //需要布防
+        //                        if (alarmRecordService.setupAlarmChan(device)) {
+        //                            //布防成功
+        //                            deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
+        //                        } else {
+        //                            //布防失败
+        //                            deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
+        //                        }
+        //                    }
+        //                } else {
+        //                    //自动布防
+        //                    if (alarmRecordService.setupAlarmChan(device)) {
+        //                        //布防成功
+        //                        deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
+        //                    } else {
+        //                        //布防失败
+        //                        deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
+        //                    }
+        //                }
+        //            }
+        //        }
+    }
+    /**
+     * 处理离线设备
+     *
+     * @param device
+     */
+    private void handleOfflineDevice(Device device) {
+        Long deviceId = device.getDeviceId();
+        if (device.getAlarmStatus().equals(ALARMED_STATUS)) {
+            //需要撤防
+            if (alarmRecordService.closeAlarmChan(device)) {
+                //撤防成功
+                deviceMapper.updateAlarmStatus(deviceId, NOT_ALARMED_STATUS);
+            }
+        }
+        deviceMapper.updateManualAlarmStatus(deviceId, AUTO_ALARM);
+        deviceMapper.updateDeviceStatus(deviceId, OFFLINE_STATUS);
+    }
+
+    /**
+     * 处理在线设备
+     * @param device
+     * @param alarmStatus
+     * @param manualAlarmStatus
+     *
+     *
+     * @author Fy
+     * @date 2024/03/08
+     */
+    private void handleOnlineDevice(Device device, String alarmStatus, String manualAlarmStatus) {
+        Long deviceId = device.getDeviceId();
+        deviceMapper.updateDeviceStatus(deviceId, ONLINE_STATUS);
+
+        if (manualAlarmStatus.equals(MANUAL_ALARM)) {
+            if (alarmStatus.equals(ALARMED_STATUS)) {
+                //检查是否真的布防
+                Integer alarmId = Device.alarmMap.get(deviceId);
+                if (alarmId != null) {
+                    //已经布防
+                    return;
+                } else {
+                    //目前没有布防,需要布防
+                    alarmRecordService.setupAlarmChan(device);
+                }
+            }
+            // 如果手动布防状态且未布防，则不执行布防操作
+        }
+        //自动布防 && 未布防
+        if (manualAlarmStatus.equals(AUTO_ALARM) && alarmStatus.equals(NOT_ALARMED_STATUS)) {
+            if (alarmRecordService.setupAlarmChan(device)) {
+                deviceMapper.updateAlarmStatus(deviceId, ALARMED_STATUS);
             }
         }
     }

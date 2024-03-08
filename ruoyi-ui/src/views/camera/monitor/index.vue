@@ -112,7 +112,7 @@
           <div style="flex: 1;"></div>
           <div class="volume-control" style="display: flex; align-items: center;">
             <el-button size="medium" class="demonstration" @click="captureImage">抓图</el-button>
-            <el-button class="demonstration" @click="toggleAnnotationMode">绘制</el-button>
+<!--            <el-button class="demonstration" @click="toggleAnnotationMode">绘制</el-button>-->
             <el-button class="demonstration" @click="toggleRecording">
               {{ isRecording ? '结束录制' : '开始录制' }}
             </el-button>

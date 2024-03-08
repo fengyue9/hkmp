@@ -36,6 +36,8 @@ import com.ruoyi.device.service.IAlarmRecordService;
 import com.ruoyi.device.utils.LoginUtils;
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
+
+import static com.ruoyi.device.service.impl.AsyncServiceImpl.*;
 /**
  * 报警Service业务层
  *
@@ -69,7 +71,7 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
      * @return int lAlarmHandle 句柄
      */
     @Override
-    public void setupAlarmChan(Device device) {
+    public boolean setupAlarmChan(Device device) {
         Integer userId = Device.userMap.get(device.getDeviceId());
         if (userId == null) {
             //说明未登录
@@ -88,8 +90,26 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
             alarmParam.byRetAlarmTypeV40 = 0;
             //sdk布防
             int alarmId = hcNetSDK.NET_DVR_SetupAlarmChan_V41(userId, alarmParam);
-            Device.alarmMap.put(device.getDeviceId(), alarmId);
+            if (alarmId != -1) {
+                Device.alarmMap.put(device.getDeviceId(), alarmId);
+                return true;
+            }
+            return false;
         }
+        //存在alarmId说明已经布防
+        return true;
+    }
+    @Override
+    public boolean closeAlarmChan(Device device) {
+        Integer alarmIdFromMap = Device.alarmMap.get(device.getDeviceId());
+        if (alarmIdFromMap == null) {
+            //已经撤防
+        } else {
+            hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmIdFromMap);
+            //撤防成功
+            Device.alarmMap.remove(device.getDeviceId());
+        }
+        return true;
     }
     /**
      * 撤销布防
@@ -97,12 +117,13 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
      *
      */
     @Override
-    public void closeAlarmChan() {
+    public void closeAlarmChans() {
         Set<Long> keySet = Device.alarmMap.keySet();
         for (Long deviceId : keySet) {
             Integer alarmId = Device.alarmMap.get(deviceId);
             if (alarmId != null) {
                 hcNetSDK.NET_DVR_CloseAlarmChan_V30(alarmId);
+                Device.alarmMap.remove(deviceId);
             }
         }
     }
@@ -222,7 +243,6 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
     @Override
     public void handleAlarm(int lCommand, HCNetSDK.NET_DVR_ALARMER pAlarmer, Pointer pAlarmInfo, int dwBufLen,
             Pointer pUser) {
-        System.out.println("报警事件类型： lCommand:" + Integer.toHexString(lCommand));
         String sTime;
         String MonitoringSiteID;
         //lCommand是传的报警类型
@@ -1216,10 +1236,13 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
                 Pointer pAlarmInfo_V30 = struAlarmInfo.getPointer();
                 pAlarmInfo_V30.write(0, pAlarmInfo.getByteArray(0, struAlarmInfo.size()), 0, struAlarmInfo.size());
                 struAlarmInfo.read();
-                System.out.println("报警类型：" + struAlarmInfo.dwAlarmType);  // 3-移动侦测
                 //获取设备序列号
                 String serialNumber = new String(pAlarmer.sSerialNumber).trim();
                 Device device = deviceMapper.getDeviceBySerialNumber(serialNumber);
+                if (device.getAlarmStatus().equals(NOT_ALARMED_STATUS)) {
+                    //如果为未布防状态，舍弃
+                    return;
+                }
                 //检查该设备近10s是否有报警记录
                 int alarmNum = alarmRecordMapper.countCurrentAlarmRecord(device.getDeviceId());
                 if (alarmNum > 0) {
@@ -1256,7 +1279,6 @@ public class AlarmRecordServiceImpl implements IAlarmRecordService {
                 int lRealHandle = hcNetSDK.NET_DVR_RealPlay_V40(userId, previewinfo, fRealDataCallBack_V30, null);
                 //开始录制
                 hcNetSDK.NET_DVR_SaveRealData_V30(new NativeLong(lRealHandle), 2, videoName);
-                System.out.println("成功开始录制");
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {

@@ -98,14 +98,35 @@ public class DeviceController extends BaseController {
         return toAjax(deviceService.deleteDeviceByDeviceIds(deviceIds));
     }
 
+    /**
+     * 手动布防
+     *
+     * @param device
+     * @return {@link AjaxResult}
+     */
     @PostMapping("/setUpAlarm")
     public AjaxResult setUpAlarm(@RequestBody Device device) {
-        deviceService.setUpAlarm(device);
-        return AjaxResult.success();
+        if (device.getDeviceStatus().equals("1")) {
+            //离线
+            return AjaxResult.error("设备离线，无法布防");
+        }
+        if (deviceService.setUpAlarmManually(device)) {
+            return AjaxResult.success();
+        }
+        return AjaxResult.error();
     }
+    /**
+     * 手动撤防
+     *
+     * @param device
+     * @return {@link AjaxResult}
+     */
     @PostMapping("/closeAlarm")
     public AjaxResult closeAlarm(@RequestBody Device device) {
-        deviceService.setUpAlarm(device);
-        return AjaxResult.success();
+        if (deviceService.closeAlarmManually(device)) {
+            return AjaxResult.success();
+        }
+        return AjaxResult.error();
     }
+
 }

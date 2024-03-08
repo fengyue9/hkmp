@@ -201,7 +201,7 @@ public class SDKConfiguration {
             LoginUtils.logout(Device.userMap.get(device.getDeviceId()));
         }
         //撤防
-        alarmService.closeAlarmChan();
+        alarmService.closeAlarmChans();
         if (hCNetSDK != null) {
             //SDK反初始化，释放资源，只需要退出时调用一次
             hCNetSDK.NET_DVR_Cleanup();

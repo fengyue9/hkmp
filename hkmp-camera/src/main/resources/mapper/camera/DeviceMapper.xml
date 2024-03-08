@@ -116,6 +116,11 @@
         set alarm_status = #{alarmedStatus,jdbcType=VARCHAR}
         where device_id = #{deviceId,jdbcType=INTEGER}
     </update>
+    <update id="updateManualAlarmStatus">
+        update device
+        set manual_alarm_status = #{manualAlarmStatus,jdbcType=VARCHAR}
+        where device_id = #{deviceId,jdbcType=INTEGER}
+    </update>
 
     <delete id="deleteDeviceByDeviceId" parameterType="Long">
         delete

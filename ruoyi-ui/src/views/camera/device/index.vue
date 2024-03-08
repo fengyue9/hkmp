@@ -93,7 +93,7 @@
             size="mini"
             type="text"
             icon="el-icon-bell"
-            @click="handleJump(scope.row)"
+            @click="handleAlarm(scope.row)"
           >{{ scope.row.alarmStatus === '0' ? '撤防' : '布防' }}
           </el-button>
           <el-button
@@ -165,7 +165,7 @@
 </template>
 
 <script>
-import {listDevice, getDevice, delDevice, addDevice, updateDevice} from '@/api/camera/device'
+import {listDevice, getDevice, delDevice, addDevice, updateDevice, closeAlarm, setUpAlarm} from '@/api/camera/device'
 import Vue from 'vue'
 
 export default {
@@ -230,9 +230,9 @@ export default {
     getList() {
       // this.loading = true
       listDevice(this.queryParams).then(response => {
-        this.deviceList = response.rows
-        this.total = response.total
-        this.loading = false
+        this.deviceList = response.rows;
+        this.total = response.total;
+        this.loading = false;
       })
     },
     // 取消按钮
@@ -321,10 +321,40 @@ export default {
       }).catch(() => {
       })
     },
+    //处理撤防或者布防
+    handleAlarm(row) {
+      //如果当前报警状态为未布防
+      if (row.alarmStatus === '1') {
+        //调用布防
+        setUpAlarm(row).then(response => {
+          this.$message({
+            message: '操作成功',
+            type: 'success',
+            center: true
+          });
+        }).catch(error => {
+          console.log(error.message);
+        });
+        this.getList();
+      } else {
+        //当前状态为已布防
+        //调用撤防
+        closeAlarm(row).then(response => {
+          this.$message({
+            message: '操作成功',
+            type: 'success',
+            center: true
+          });
+        }).catch(error => {
+          console.log(error.message);
+        });
+        this.getList();
+      }
+    },
     /** 跳转配置页面按钮操作 */
     handleJump(row) {
       //打开新页面
-      window.open('http://' + row.deviceIp, '_blank');
+      window.open("http://" + row.deviceIp, '_blank');
     },
     /** 导出按钮操作 */
     handleExport() {

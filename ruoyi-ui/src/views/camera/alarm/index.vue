@@ -52,7 +52,7 @@
               <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
             </el-row>
             <el-row>
-              <el-table v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
+              <el-table max-height="600" v-loading="loading" :data="recordList" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55" align="center"/>
                 <el-table-column label="报警抓图" align="center" prop="screenshotURL" width="300">
                   <template slot-scope="scope">
