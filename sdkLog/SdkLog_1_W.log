@@ -1,1325 +1,216 @@
-[2024-03-08 19:48:47.249][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1949368320]
-[2024-03-08 19:48:47.249][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
-[2024-03-08 19:48:47.249][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
-[2024-03-08 19:48:47.249][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
-[2024-03-08 19:49:15.455][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 19:49:15.455][INF] dwTotalNum[2048]
-[2024-03-08 19:49:15.467][INF] Private connect 192.168.1.64:8000 sock=8260 this=0x3b4b30c4 cmd=0x10000 port=63443
-[2024-03-08 19:49:15.467][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 19:49:15.467][ERR] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Failed, Path[D:/毕设/源码/hkmp/lib/libeay32.dll] syserror[126]
-[2024-03-08 19:49:15.467][ERR] Load BASE_DLL_LIBEAY failed[syserr: 126]
-[2024-03-08 19:49:15.467][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libcrypto-1_1-x64.dll], hHandleRet[1081933824]
-[2024-03-08 19:49:15.467][DBG] Load [libcrypto-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libcrypto-1_1-x64.dll]
-[2024-03-08 19:49:15.469][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libssl-1_1-x64.dll], hHandleRet[1388314624]
-[2024-03-08 19:49:15.469][DBG] Load [libssl-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libssl-1_1-x64.dll]
-[2024-03-08 19:49:15.469][INF] SSLTRANSAPI::IsAllAPILoaded, SSL_library_init Unload
-[2024-03-08 19:49:15.469][INF] OpenSSL, Not All Function Loaded!
-[2024-03-08 19:49:15.469][INF] SSLTRANSAPI::PrintVersion, OpenSSL version info [OpenSSL 1.1.1l  24 Aug 2021]
-[2024-03-08 19:49:15.469][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[6], m_fnTLSServerMethod
-[2024-03-08 19:49:15.991][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCAlarm.dll] SUCC
-[2024-03-08 19:49:15.991][INF] AbilityAnalyze---Init-- start
-[2024-03-08 19:49:16.000][INF] The COM:HCAlarm ver is 6.1.9.4, 2022_04_12.
-[2024-03-08 19:49:16.024][INF] Private connect 192.168.1.64:8000 sock=8024 this=0x3b4b30c4 cmd=0x111020 port=63445
-[2024-03-08 19:49:16.101][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:16.109][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCPreview.dll] SUCC
-[2024-03-08 19:49:16.109][INF] The COM:Preview ver is 6.1.9.4, 2022_04_12.
-[2024-03-08 19:49:16.124][INF] Private connect 192.168.1.64:8000 sock=8356 this=0x3b4b3830 cmd=0x30009 port=63446
-[2024-03-08 19:49:16.224][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[0], cTempPath[D:/毕设/源码/hkmp/lib/]
-[2024-03-08 19:49:16.224][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[956891136], enumDllType[0], Path[PlayCtrl.dll], syserror[0]
-[2024-03-08 19:49:17.033][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:49:17.035][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:49:17.039][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1038221312], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:49:17.039][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:49:17.051][INF] Private connect 192.168.1.64:8000 sock=8552 this=0x3b4b3830 cmd=0x30000 port=63448
-[2024-03-08 19:49:17.059][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:49:17.059][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:49:17.059][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:49:17.069][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:49:17.069][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:49:20.504][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:21.500][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:22.504][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:23.506][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:24.508][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:25.503][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:26.501][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:27.109][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:49:27.142][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:49:27.508][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:28.508][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:29.500][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:30.510][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:31.512][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:32.511][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:44.248][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:45.244][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:46.244][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:47.244][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:47.495][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
-[2024-03-08 19:49:47.495][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
-[2024-03-08 19:49:47.495][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
-[2024-03-08 19:49:48.248][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:49.647][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:50.646][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:51.646][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:52.649][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:53.649][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:57.649][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:58.645][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:49:59.646][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:00.646][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:00.888][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 19:50:00.911][INF] Private connect 192.168.1.64:8000 sock=12760 this=0x3b4b3830 cmd=0x10000 port=63685
-[2024-03-08 19:50:00.911][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 19:50:00.990][INF] Private connect 192.168.1.64:8000 sock=5268 this=0x3b4b3830 cmd=0x111020 port=63686
-[2024-03-08 19:50:01.647][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:01.647][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:01.673][INF] Private connect 192.168.1.64:8000 sock=13268 this=0x3b4b3f9c cmd=0x30009 port=63687
-[2024-03-08 19:50:01.762][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:50:01.762][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:50:01.764][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1048707072], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:50:01.764][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:50:01.782][INF] Private connect 192.168.1.64:8000 sock=13280 this=0x3b4b3f9c cmd=0x30000 port=63688
-[2024-03-08 19:50:01.790][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:50:01.790][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:50:01.790][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:50:01.799][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:50:01.799][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:50:02.649][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:02.649][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:03.649][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:03.649][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:04.652][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:04.652][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:05.672][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:05.672][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:06.672][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:06.905][INF] Private connect 192.168.1.64:8000 sock=9024 this=0x3b4b3830 cmd=0x111020 port=63699
-[2024-03-08 19:50:07.672][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:07.672][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:08.673][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:08.673][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:09.673][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:09.673][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:11.534][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:11.536][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:11.845][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:50:11.877][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:50:12.535][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:12.535][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:13.535][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:13.535][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:14.536][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:14.536][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:15.546][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:15.546][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:16.538][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:16.538][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:19.431][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:19.431][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:20.432][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:20.432][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:21.432][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:21.432][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:22.436][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:22.436][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:23.434][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:23.434][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:50:46.224][INF] [0] CArmingSession::TimeoutCallBack Create ReConnectThread SUCC
-[2024-03-08 19:50:46.224][INF] [1] CArmingSession::TimeoutCallBack Create ReConnectThread SUCC
-[2024-03-08 19:50:46.225][DBG] Alarm chan [1] reconnect thread start!
-[2024-03-08 19:50:46.225][DBG] Alarm chan [0] reconnect thread start!
-[2024-03-08 19:50:46.225][DBG] Alarm chan [1] LinkToDVR!
-[2024-03-08 19:50:46.225][DBG] Alarm chan [0] LinkToDVR!
-[2024-03-08 19:50:49.737][ERR] Private connect 192.168.1.64:8000 sock=8024 this=0x3b4b3830 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 19:50:49.737][ERR] Private connect 192.168.1.64:8000 sock=13664 this=0x3b4b30c4 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 19:50:49.737][ERR] [0] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
-[2024-03-08 19:50:49.737][ERR] ReConnect Alarm chan [0] LinkToDVR failed![err:7]
-[2024-03-08 19:50:49.737][ERR] [1] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
-[2024-03-08 19:50:49.737][ERR] ReConnect Alarm chan [1] LinkToDVR failed![err:7]
-[2024-03-08 19:50:54.742][DBG] Alarm chan [1] LinkToDVR!
-[2024-03-08 19:50:54.742][DBG] Alarm chan [0] LinkToDVR!
-[2024-03-08 19:50:58.251][ERR] Private connect 192.168.1.64:8000 sock=6284 this=0x3b4b30c4 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 19:50:58.251][ERR] Private connect 192.168.1.64:8000 sock=13712 this=0x3b4b3830 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 19:50:58.251][ERR] [1] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
-[2024-03-08 19:50:58.251][ERR] ReConnect Alarm chan [1] LinkToDVR failed![err:7]
-[2024-03-08 19:50:58.251][ERR] [0] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
-[2024-03-08 19:50:58.251][ERR] ReConnect Alarm chan [0] LinkToDVR failed![err:7]
-[2024-03-08 19:51:03.255][DBG] Alarm chan [1] LinkToDVR!
-[2024-03-08 19:51:03.255][DBG] Alarm chan [0] LinkToDVR!
-[2024-03-08 19:51:03.256][INF] Private connect 192.168.1.64:8000 sock=13756 this=0x3b4b30c4 cmd=0x111020 port=64100
-[2024-03-08 19:51:03.256][INF] Private connect 192.168.1.64:8000 sock=9256 this=0x3b4b3830 cmd=0x111020 port=64099
-[2024-03-08 19:51:03.265][DBG] Alarm chan [0] ReConnect Success!
-[2024-03-08 19:51:03.265][DBG] Alarm chan [0] reconnect thread Exit!
-[2024-03-08 19:51:03.273][DBG] Alarm chan [1] ReConnect Success!
-[2024-03-08 19:51:03.273][DBG] Alarm chan [1] reconnect thread Exit!
-[2024-03-08 19:51:05.934][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:05.934][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:05.956][INF] Private connect 192.168.1.64:8000 sock=13780 this=0x3b4b3f9c cmd=0x30009 port=64101
-[2024-03-08 19:51:06.035][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:51:06.036][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:51:06.037][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1048707072], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:51:06.037][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:51:06.050][INF] Private connect 192.168.1.64:8000 sock=9608 this=0x3b4b3f9c cmd=0x30000 port=64103
-[2024-03-08 19:51:06.057][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:51:06.057][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:51:06.058][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:51:06.067][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:51:06.067][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:51:06.930][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:06.930][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:07.931][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:07.931][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:08.931][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:08.931][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:09.932][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:09.932][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:10.932][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:10.932][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:16.116][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:51:16.147][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:51:18.763][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:18.763][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:19.765][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:19.765][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:20.763][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:20.763][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:21.764][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:21.764][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:22.765][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:22.765][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:55.679][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:55.679][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:55.710][INF] Private connect 192.168.1.64:8000 sock=14108 this=0x3b4b3f9c cmd=0x30009 port=64356
-[2024-03-08 19:51:55.820][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:51:55.821][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:51:55.821][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1054670848], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:51:55.821][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:51:55.836][INF] Private connect 192.168.1.64:8000 sock=10088 this=0x3b4b3f9c cmd=0x30000 port=64357
-[2024-03-08 19:51:55.836][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:51:55.836][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:51:55.836][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:51:55.851][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:51:55.851][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:51:56.679][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:56.679][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:57.674][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:57.674][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:58.689][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:58.689][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:59.686][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:51:59.686][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:00.933][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:00.933][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:01.936][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:01.936][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:02.934][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:02.934][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:03.937][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:03.937][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:04.934][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:04.934][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:05.889][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:52:05.920][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:52:05.936][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:05.936][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:11.337][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:11.337][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:12.322][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:12.322][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:13.334][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:13.334][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:14.337][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:14.337][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:15.331][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:52:15.331][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:41.311][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:41.311][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:41.333][INF] Private connect 192.168.1.64:8000 sock=11020 this=0x3b4b3f9c cmd=0x30009 port=64671
-[2024-03-08 19:53:41.435][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:53:41.436][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:53:41.438][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1054015488], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:53:41.438][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:53:41.449][INF] Private connect 192.168.1.64:8000 sock=14216 this=0x3b4b3f9c cmd=0x30000 port=64672
-[2024-03-08 19:53:41.458][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:53:41.458][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:53:41.458][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:53:41.474][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:53:41.474][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:53:42.312][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:42.312][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:43.313][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:43.313][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:44.314][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:44.314][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:45.315][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:45.315][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:53:51.514][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:53:51.544][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:54:03.967][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:03.967][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:03.991][INF] Private connect 192.168.1.64:8000 sock=8460 this=0x3b4b3f9c cmd=0x30009 port=64724
-[2024-03-08 19:54:04.085][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:54:04.085][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:54:04.091][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1054539776], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:54:04.091][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:54:04.101][INF] Private connect 192.168.1.64:8000 sock=14420 this=0x3b4b3f9c cmd=0x30000 port=64726
-[2024-03-08 19:54:04.108][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:54:04.108][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:54:04.108][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:54:04.117][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:54:04.117][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:54:04.967][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:04.967][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:05.967][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:05.967][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:06.968][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:06.969][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:07.959][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:07.959][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:14.166][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:54:14.199][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:54:26.358][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:26.358][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:26.366][INF] Private connect 192.168.1.64:8000 sock=11304 this=0x3b4b3f9c cmd=0x30009 port=64769
-[2024-03-08 19:54:26.483][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:54:26.483][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:54:26.491][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1054015488], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:54:26.491][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:54:26.508][INF] Private connect 192.168.1.64:8000 sock=14408 this=0x3b4b3f9c cmd=0x30000 port=64770
-[2024-03-08 19:54:26.508][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:54:26.508][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:54:26.508][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:54:26.526][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:54:26.526][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:54:27.359][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:27.359][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:28.360][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:28.360][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:29.361][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:29.361][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:30.361][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:30.361][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:36.559][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:54:36.592][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:54:51.909][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:51.909][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:51.917][INF] Private connect 192.168.1.64:8000 sock=14384 this=0x3b4b3f9c cmd=0x30009 port=64832
-[2024-03-08 19:54:52.097][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:54:52.097][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:54:52.101][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:54:52.101][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:54:52.110][INF] Private connect 192.168.1.64:8000 sock=10172 this=0x3b4b3f9c cmd=0x30000 port=64836
-[2024-03-08 19:54:52.117][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:54:52.117][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:54:52.117][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:54:52.128][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:54:52.128][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:54:52.909][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:52.909][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:53.915][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:53.915][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:54.916][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:54.916][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:55.902][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:55.902][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:56.916][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:56.916][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:57.917][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:57.917][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:58.921][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:58.921][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:59.920][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:54:59.920][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:02.183][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:55:02.215][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:55:34.411][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:34.411][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:34.417][INF] Private connect 192.168.1.64:8000 sock=14176 this=0x3b4b3f9c cmd=0x30009 port=64974
-[2024-03-08 19:55:34.532][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:55:34.532][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:55:34.535][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:55:34.535][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:55:34.549][INF] Private connect 192.168.1.64:8000 sock=14664 this=0x3b4b3f9c cmd=0x30000 port=64975
-[2024-03-08 19:55:34.559][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:55:34.559][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:55:34.566][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:55:34.571][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:55:34.571][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:55:35.411][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:35.411][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:36.411][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:36.411][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:37.411][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:37.411][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:38.410][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:38.410][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:39.410][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:39.410][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:40.411][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:40.411][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:41.416][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:41.416][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:42.414][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:42.414][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:43.415][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:43.415][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:44.415][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:44.415][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:44.613][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:55:44.660][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:55:57.937][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:57.937][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:57.953][INF] Private connect 192.168.1.64:8000 sock=14764 this=0x3b4b3f9c cmd=0x30009 port=65040
-[2024-03-08 19:55:57.968][INF] Private connect 192.168.1.64:8000 sock=11740 this=0x3b4b4708 cmd=0x30009 port=65041
-[2024-03-08 19:55:58.051][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:55:58.051][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:55:58.051][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1071579136], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:55:58.051][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:55:58.065][INF] Private connect 192.168.1.64:8000 sock=14784 this=0x3b4b3f9c cmd=0x30000 port=65042
-[2024-03-08 19:55:58.069][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:55:58.069][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:55:58.069][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:55:58.069][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:55:58.069][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:55:58.156][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:55:58.159][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 3
-[2024-03-08 19:55:58.179][INF] Private connect 192.168.1.64:8000 sock=14752 this=0x3b4b4708 cmd=0x30000 port=65043
-[2024-03-08 19:55:58.180][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:55:58.180][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:55:58.180][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:55:58.180][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a98] success
-[2024-03-08 19:55:58.180][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 4
-[2024-03-08 19:55:58.933][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:58.933][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:59.939][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:55:59.939][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:00.933][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:00.933][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:01.938][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:01.938][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:08.134][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 3
-[2024-03-08 19:56:08.145][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 2
-[2024-03-08 19:56:08.229][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:56:08.250][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:56:19.765][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:19.765][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:19.782][INF] Private connect 192.168.1.64:8000 sock=14348 this=0x3b4b3f9c cmd=0x30009 port=65100
-[2024-03-08 19:56:19.896][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:56:19.896][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:56:19.899][INF] Private connect 192.168.1.64:8000 sock=8456 this=0x3b4b3f9c cmd=0x30000 port=65101
-[2024-03-08 19:56:19.899][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:56:19.899][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:56:19.910][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:56:19.911][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:56:19.911][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:56:19.919][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:56:19.919][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:56:20.771][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:20.771][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:21.769][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:21.769][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:22.769][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:22.769][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:23.770][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:23.770][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:28.224][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:28.224][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:29.226][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:29.226][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:29.965][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:56:29.996][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:56:30.224][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:30.224][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:31.224][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:31.224][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:32.226][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:32.226][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:33.226][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:33.226][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:34.244][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:34.244][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:39.813][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:39.813][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:40.813][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:40.813][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:41.799][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:41.799][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:41.817][INF] Private connect 192.168.1.64:8000 sock=14364 this=0x3b4b3f9c cmd=0x30009 port=65211
-[2024-03-08 19:56:41.830][INF] Private connect 192.168.1.64:8000 sock=14820 this=0x3b4b4708 cmd=0x30009 port=65210
-[2024-03-08 19:56:41.897][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:56:41.897][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:56:41.897][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:56:41.897][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:56:41.913][INF] Private connect 192.168.1.64:8000 sock=14316 this=0x3b4b3f9c cmd=0x30000 port=65221
-[2024-03-08 19:56:41.930][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:56:41.930][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:56:41.930][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:56:41.944][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:56:41.944][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:56:41.977][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:56:41.978][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 3
-[2024-03-08 19:56:41.989][INF] Private connect 192.168.1.64:8000 sock=10500 this=0x3b4b4708 cmd=0x30000 port=65222
-[2024-03-08 19:56:42.302][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:56:42.302][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:56:42.303][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:56:42.304][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a98] success
-[2024-03-08 19:56:42.304][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 4
-[2024-03-08 19:56:42.814][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:42.814][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:43.814][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:43.814][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:51.976][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 3
-[2024-03-08 19:56:51.988][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 2
-[2024-03-08 19:56:52.342][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:56:52.364][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:56:55.385][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:55.385][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:56.385][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:56.385][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:57.386][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:57.386][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:58.387][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:58.387][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:59.386][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:56:59.386][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:00.456][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:00.456][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:01.448][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:01.448][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:02.455][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:02.455][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:03.444][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:03.444][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:03.475][INF] Private connect 192.168.1.64:8000 sock=12672 this=0x3b4b3f9c cmd=0x30009 port=65319
-[2024-03-08 19:57:03.601][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:57:03.601][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:57:03.618][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1071382528], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:57:03.618][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:57:03.633][INF] Private connect 192.168.1.64:8000 sock=14968 this=0x3b4b3f9c cmd=0x30000 port=65320
-[2024-03-08 19:57:03.648][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:57:03.648][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:57:03.648][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:57:03.680][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:57:03.680][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:57:04.456][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:04.456][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:07.146][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:07.146][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:08.147][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:08.147][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:09.147][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:09.147][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:10.147][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:10.147][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:11.148][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:11.148][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:12.149][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:12.155][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:13.151][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:13.153][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:13.696][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:57:13.718][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:57:14.150][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:14.150][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:15.151][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:15.151][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:20.706][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:20.706][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:21.708][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:21.708][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:22.706][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:22.706][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:23.709][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:23.709][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:24.711][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:24.711][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:25.710][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:25.710][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:25.717][INF] Private connect 192.168.1.64:8000 sock=6928 this=0x3b4b4708 cmd=0x30009 port=65416
-[2024-03-08 19:57:25.736][INF] Private connect 192.168.1.64:8000 sock=14680 this=0x3b4b3f9c cmd=0x30009 port=65415
-[2024-03-08 19:57:25.826][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:57:25.826][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:57:25.826][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:57:25.826][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:57:25.842][INF] Private connect 192.168.1.64:8000 sock=14480 this=0x3b4b4708 cmd=0x30000 port=65418
-[2024-03-08 19:57:25.843][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:57:25.843][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:57:25.843][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:57:25.859][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:57:25.859][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:57:25.919][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:57:25.919][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 3
-[2024-03-08 19:57:25.933][INF] Private connect 192.168.1.64:8000 sock=12488 this=0x3b4b3f9c cmd=0x30000 port=65419
-[2024-03-08 19:57:25.953][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:57:25.953][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:57:25.953][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:57:25.954][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a98] success
-[2024-03-08 19:57:25.954][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 4
-[2024-03-08 19:57:27.037][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:27.037][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:28.029][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:28.029][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:29.038][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:29.038][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:30.038][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:30.038][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:31.039][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:31.039][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:32.039][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:32.039][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:35.909][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 3
-[2024-03-08 19:57:35.925][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 2
-[2024-03-08 19:57:35.987][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:57:36.008][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 19:57:39.669][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:39.669][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:40.668][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:40.668][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:41.669][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:41.669][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:42.669][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:42.669][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:43.670][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:43.670][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:44.667][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:44.667][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:45.668][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:45.668][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:46.663][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:46.663][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:47.673][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:47.673][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:47.692][INF] Private connect 192.168.1.64:8000 sock=15104 this=0x3b4b3f9c cmd=0x30009 port=65509
-[2024-03-08 19:57:47.803][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 19:57:47.803][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 19:57:47.803][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 19:57:47.803][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 19:57:47.818][INF] Private connect 192.168.1.64:8000 sock=6928 this=0x3b4b3f9c cmd=0x30000 port=65510
-[2024-03-08 19:57:47.825][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 19:57:47.825][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 19:57:47.825][ERR] GetOverlayFontPath Failed
-[2024-03-08 19:57:47.831][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 19:57:47.831][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 19:57:49.347][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:49.348][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:50.348][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:50.348][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:51.348][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:51.348][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:52.349][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:52.349][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:53.349][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:53.349][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 19:57:57.873][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 19:57:57.901][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:00:23.087][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:23.087][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:23.118][INF] Private connect 192.168.1.64:8000 sock=13236 this=0x3b4b3f9c cmd=0x30009 port=49374
-[2024-03-08 20:00:23.213][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:00:23.213][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:00:23.215][INF] Private connect 192.168.1.64:8000 sock=10556 this=0x3b4b3f9c cmd=0x30000 port=49376
-[2024-03-08 20:00:23.216][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:00:23.216][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:00:23.221][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:00:23.221][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:00:23.222][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:00:23.231][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:00:23.231][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:00:24.085][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:24.085][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:25.087][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:25.087][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:26.087][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:26.087][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:27.087][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:27.087][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:28.180][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:28.180][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:29.182][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:29.182][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:30.182][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:30.182][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:31.182][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:31.182][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:32.183][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:32.183][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:33.290][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:00:33.311][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:00:33.907][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:33.907][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:34.906][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:34.906][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:35.906][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:35.906][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:36.908][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:36.908][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:37.909][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:37.909][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:52.691][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:52.691][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:52.717][INF] Private connect 192.168.1.64:8000 sock=14432 this=0x3b4b3f9c cmd=0x30009 port=49765
-[2024-03-08 20:00:52.817][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:00:52.818][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:00:52.820][INF] Private connect 192.168.1.64:8000 sock=3132 this=0x3b4b3f9c cmd=0x30000 port=49766
-[2024-03-08 20:00:52.820][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:00:52.820][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:00:52.827][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:00:52.827][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:00:52.827][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:00:52.836][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:00:52.836][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:00:53.696][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:53.696][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:54.695][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:54.695][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:55.695][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:55.695][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:56.697][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:00:56.697][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:01.181][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:01.181][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:02.183][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:02.183][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:02.888][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:01:02.911][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:01:03.189][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:03.189][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:04.189][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:04.189][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:05.189][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:05.189][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:14.855][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:14.855][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:14.877][INF] Private connect 192.168.1.64:8000 sock=10680 this=0x3b4b4708 cmd=0x30009 port=49895
-[2024-03-08 20:01:14.877][INF] Private connect 192.168.1.64:8000 sock=14716 this=0x3b4b3f9c cmd=0x30009 port=49894
-[2024-03-08 20:01:14.994][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:01:14.995][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:01:14.998][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:01:14.998][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:01:15.011][INF] Private connect 192.168.1.64:8000 sock=14544 this=0x3b4b4708 cmd=0x30000 port=49899
-[2024-03-08 20:01:15.020][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:01:15.020][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:01:15.020][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:01:15.037][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:01:15.037][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:01:15.090][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:01:15.091][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 3
-[2024-03-08 20:01:15.103][INF] Private connect 192.168.1.64:8000 sock=10464 this=0x3b4b3f9c cmd=0x30000 port=49901
-[2024-03-08 20:01:15.108][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:01:15.108][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:01:15.108][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:01:15.109][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a98] success
-[2024-03-08 20:01:15.109][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 4
-[2024-03-08 20:01:15.858][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:15.858][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:16.859][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:16.859][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:17.859][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:17.859][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:18.861][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:18.863][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:25.068][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 3
-[2024-03-08 20:01:25.085][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 2
-[2024-03-08 20:01:25.156][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:01:25.179][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:01:58.269][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:58.269][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:58.288][INF] Private connect 192.168.1.64:8000 sock=13820 this=0x3b4b3f9c cmd=0x30009 port=50115
-[2024-03-08 20:01:58.403][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:01:58.404][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:01:58.405][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1070596096], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:01:58.405][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:01:58.422][INF] Private connect 192.168.1.64:8000 sock=15196 this=0x3b4b3f9c cmd=0x30000 port=50116
-[2024-03-08 20:01:58.444][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:01:58.445][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:01:58.445][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:01:58.455][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:01:58.455][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:01:59.270][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:01:59.270][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:00.303][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:00.303][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:01.269][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:01.270][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:02.271][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:02.271][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:02:08.005][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:08.017][INF] Private connect 192.168.1.64:8000 sock=14452 this=0x3b4b4708 cmd=0x10000 port=50137
-[2024-03-08 20:02:08.017][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:08.098][INF] Private connect 192.168.1.64:8000 sock=15104 this=0x3b4b4708 cmd=0x30200 port=50138
-[2024-03-08 20:02:08.479][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:02:08.503][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:02:09.118][INF] Private connect 192.168.1.64:8000 sock=11172 this=0x3b4b3f9c cmd=0x30200 port=50142
-[2024-03-08 20:02:09.123][INF] COM_Logout[2][1]
-[2024-03-08 20:02:09.123][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:09.142][INF] Private connect 192.168.1.64:8000 sock=11172 this=0x3b4b3f9c cmd=0x10100 port=50143
-[2024-03-08 20:02:10.241][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:10.265][INF] Private connect 192.168.1.64:8000 sock=11100 this=0x3b4b3f9c cmd=0x10000 port=50148
-[2024-03-08 20:02:10.265][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:10.325][INF] Private connect 192.168.1.64:8000 sock=11100 this=0x3b4b3f9c cmd=0x30200 port=50149
-[2024-03-08 20:02:11.358][INF] Private connect 192.168.1.64:8000 sock=3132 this=0x3b4b3f9c cmd=0x30200 port=50152
-[2024-03-08 20:02:11.363][INF] COM_Logout[3][1]
-[2024-03-08 20:02:11.363][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:11.376][INF] Private connect 192.168.1.64:8000 sock=3132 this=0x3b4b3f9c cmd=0x10100 port=50153
-[2024-03-08 20:02:12.144][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:12.159][INF] Private connect 192.168.1.64:8000 sock=11092 this=0x3b4b3f9c cmd=0x10000 port=50159
-[2024-03-08 20:02:12.159][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:12.242][INF] Private connect 192.168.1.64:8000 sock=11092 this=0x3b4b3f9c cmd=0x30200 port=50160
-[2024-03-08 20:02:13.276][INF] Private connect 192.168.1.64:8000 sock=11172 this=0x3b4b3f9c cmd=0x30200 port=50164
-[2024-03-08 20:02:13.281][INF] COM_Logout[2][1]
-[2024-03-08 20:02:13.282][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:13.303][INF] Private connect 192.168.1.64:8000 sock=11172 this=0x3b4b3f9c cmd=0x10100 port=50165
-[2024-03-08 20:02:14.007][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:14.023][INF] Private connect 192.168.1.64:8000 sock=8660 this=0x3b4b3f9c cmd=0x10000 port=50167
-[2024-03-08 20:02:14.023][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:14.103][INF] Private connect 192.168.1.64:8000 sock=10596 this=0x3b4b3f9c cmd=0x30200 port=50168
-[2024-03-08 20:02:15.134][INF] Private connect 192.168.1.64:8000 sock=11092 this=0x3b4b3f9c cmd=0x30200 port=50173
-[2024-03-08 20:02:15.139][INF] COM_Logout[3][1]
-[2024-03-08 20:02:15.139][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:15.158][INF] Private connect 192.168.1.64:8000 sock=11092 this=0x3b4b3f9c cmd=0x10100 port=50174
-[2024-03-08 20:02:16.510][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:16.523][INF] Private connect 192.168.1.64:8000 sock=15292 this=0x3b4b3f9c cmd=0x10000 port=50185
-[2024-03-08 20:02:16.523][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:16.601][INF] Private connect 192.168.1.64:8000 sock=15292 this=0x3b4b3f9c cmd=0x30200 port=50186
-[2024-03-08 20:02:17.623][INF] Private connect 192.168.1.64:8000 sock=11252 this=0x3b4b3f9c cmd=0x30200 port=50188
-[2024-03-08 20:02:17.627][INF] COM_Logout[2][1]
-[2024-03-08 20:02:17.627][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:17.655][INF] Private connect 192.168.1.64:8000 sock=11252 this=0x3b4b3f9c cmd=0x10100 port=50189
-[2024-03-08 20:02:19.548][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:19.563][INF] Private connect 192.168.1.64:8000 sock=8660 this=0x3b4b3f9c cmd=0x10000 port=50195
-[2024-03-08 20:02:19.563][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:19.627][INF] Private connect 192.168.1.64:8000 sock=8660 this=0x3b4b3f9c cmd=0x30200 port=50196
-[2024-03-08 20:02:20.659][INF] Private connect 192.168.1.64:8000 sock=13852 this=0x3b4b3f9c cmd=0x30200 port=50198
-[2024-03-08 20:02:20.665][INF] COM_Logout[3][1]
-[2024-03-08 20:02:20.665][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:20.683][INF] Private connect 192.168.1.64:8000 sock=13852 this=0x3b4b3f9c cmd=0x10100 port=50199
-[2024-03-08 20:02:22.221][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:22.236][INF] Private connect 192.168.1.64:8000 sock=10596 this=0x3b4b3f9c cmd=0x10000 port=50209
-[2024-03-08 20:02:22.236][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:22.330][INF] Private connect 192.168.1.64:8000 sock=14100 this=0x3b4b3f9c cmd=0x30200 port=50210
-[2024-03-08 20:02:23.264][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:23.267][INF] Private connect 192.168.1.64:8000 sock=13852 this=0x3b4b3f9c cmd=0x10000 port=50213
-[2024-03-08 20:02:23.267][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:23.345][INF] Private connect 192.168.1.64:8000 sock=11096 this=0x3b4b4708 cmd=0x30200 port=50214
-[2024-03-08 20:02:23.350][INF] COM_Logout[2][1]
-[2024-03-08 20:02:23.350][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:23.359][INF] Private connect 192.168.1.64:8000 sock=13852 this=0x3b4b3f9c cmd=0x30200 port=50215
-[2024-03-08 20:02:23.364][INF] Private connect 192.168.1.64:8000 sock=11096 this=0x3b4b4708 cmd=0x10100 port=50216
-[2024-03-08 20:02:24.382][INF] Private connect 192.168.1.64:8000 sock=15288 this=0x3b4b3f9c cmd=0x30200 port=50220
-[2024-03-08 20:02:24.387][INF] COM_Logout[3][1]
-[2024-03-08 20:02:24.387][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:24.407][INF] Private connect 192.168.1.64:8000 sock=15288 this=0x3b4b3f9c cmd=0x10100 port=50221
-[2024-03-08 20:02:25.994][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:26.006][INF] Private connect 192.168.1.64:8000 sock=10096 this=0x3b4b3f9c cmd=0x10000 port=50228
-[2024-03-08 20:02:26.006][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:26.085][INF] Private connect 192.168.1.64:8000 sock=10096 this=0x3b4b3f9c cmd=0x30200 port=50229
-[2024-03-08 20:02:27.096][INF] Private connect 192.168.1.64:8000 sock=11100 this=0x3b4b3f9c cmd=0x30200 port=50235
-[2024-03-08 20:02:27.106][INF] COM_Logout[2][1]
-[2024-03-08 20:02:27.106][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:27.109][INF] Private connect 192.168.1.64:8000 sock=11100 this=0x3b4b3f9c cmd=0x10100 port=50236
-[2024-03-08 20:02:27.377][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:27.379][INF] Private connect 192.168.1.64:8000 sock=14508 this=0x3b4b3f9c cmd=0x10000 port=50239
-[2024-03-08 20:02:27.379][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:27.469][INF] Private connect 192.168.1.64:8000 sock=14508 this=0x3b4b3f9c cmd=0x30200 port=50240
-[2024-03-08 20:02:28.489][INF] Private connect 192.168.1.64:8000 sock=15232 this=0x3b4b3f9c cmd=0x30200 port=50241
-[2024-03-08 20:02:28.495][INF] COM_Logout[3][1]
-[2024-03-08 20:02:28.495][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:28.530][INF] Private connect 192.168.1.64:8000 sock=14740 this=0x3b4b3f9c cmd=0x10100 port=50242
-[2024-03-08 20:02:29.091][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:29.109][INF] Private connect 192.168.1.64:8000 sock=14800 this=0x3b4b3f9c cmd=0x10000 port=50247
-[2024-03-08 20:02:29.109][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:29.188][INF] Private connect 192.168.1.64:8000 sock=14800 this=0x3b4b3f9c cmd=0x30200 port=50248
-[2024-03-08 20:02:30.210][INF] Private connect 192.168.1.64:8000 sock=14740 this=0x3b4b3f9c cmd=0x30200 port=50251
-[2024-03-08 20:02:30.216][INF] COM_Logout[2][1]
-[2024-03-08 20:02:30.216][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:30.218][INF] Private connect 192.168.1.64:8000 sock=10096 this=0x3b4b3f9c cmd=0x10100 port=50252
-[2024-03-08 20:02:36.230][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:36.244][INF] Private connect 192.168.1.64:8000 sock=10704 this=0x3b4b3f9c cmd=0x10000 port=50267
-[2024-03-08 20:02:36.244][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:36.321][INF] Private connect 192.168.1.64:8000 sock=10704 this=0x3b4b3f9c cmd=0x30200 port=50270
-[2024-03-08 20:02:37.340][INF] Private connect 192.168.1.64:8000 sock=6812 this=0x3b4b3f9c cmd=0x30200 port=50274
-[2024-03-08 20:02:37.345][INF] COM_Logout[3][1]
-[2024-03-08 20:02:37.345][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:02:37.362][INF] Private connect 192.168.1.64:8000 sock=6812 this=0x3b4b3f9c cmd=0x10100 port=50275
-[2024-03-08 20:02:37.871][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:02:37.873][INF] Private connect 192.168.1.64:8000 sock=10456 this=0x3b4b3f9c cmd=0x10000 port=50277
-[2024-03-08 20:02:37.873][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:02:37.935][INF] Private connect 192.168.1.64:8000 sock=10456 this=0x3b4b3f9c cmd=0x30200 port=50278
-[2024-03-08 20:02:38.986][INF] Private connect 192.168.1.64:8000 sock=10252 this=0x3b4b3f9c cmd=0x30200 port=50279
-[2024-03-08 20:02:38.990][INF] COM_Logout[2][1]
-[2024-03-08 20:02:38.990][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:02:39.004][INF] Private connect 192.168.1.64:8000 sock=10252 this=0x3b4b3f9c cmd=0x10100 port=50280
-[2024-03-08 20:11:14.449][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:14.450][INF] Private connect 192.168.1.64:8000 sock=15468 this=0x3b4b3f9c cmd=0x10000 port=51579
-[2024-03-08 20:11:14.450][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:14.531][INF] Private connect 192.168.1.64:8000 sock=15468 this=0x3b4b3f9c cmd=0x30200 port=51580
-[2024-03-08 20:11:15.565][INF] Private connect 192.168.1.64:8000 sock=10704 this=0x3b4b3f9c cmd=0x30200 port=51590
-[2024-03-08 20:11:15.569][INF] COM_Logout[3][1]
-[2024-03-08 20:11:15.569][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:15.588][INF] Private connect 192.168.1.64:8000 sock=10704 this=0x3b4b3f9c cmd=0x10100 port=51591
-[2024-03-08 20:11:16.740][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:16.742][INF] Private connect 192.168.1.64:8000 sock=4552 this=0x3b4b3f9c cmd=0x10000 port=51604
-[2024-03-08 20:11:16.742][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:16.841][INF] Private connect 192.168.1.64:8000 sock=4552 this=0x3b4b3f9c cmd=0x30200 port=51605
-[2024-03-08 20:11:17.857][INF] Private connect 192.168.1.64:8000 sock=11020 this=0x3b4b3f9c cmd=0x30200 port=51610
-[2024-03-08 20:11:17.866][INF] COM_Logout[2][1]
-[2024-03-08 20:11:17.867][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:17.878][INF] Private connect 192.168.1.64:8000 sock=15480 this=0x3b4b3f9c cmd=0x10100 port=51611
-[2024-03-08 20:11:18.894][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:18.906][INF] Private connect 192.168.1.64:8000 sock=10448 this=0x3b4b3f9c cmd=0x10000 port=51618
-[2024-03-08 20:11:18.906][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:18.986][INF] Private connect 192.168.1.64:8000 sock=10448 this=0x3b4b3f9c cmd=0x30200 port=51619
-[2024-03-08 20:11:20.017][INF] Private connect 192.168.1.64:8000 sock=15268 this=0x3b4b3f9c cmd=0x30200 port=51624
-[2024-03-08 20:11:20.026][INF] COM_Logout[3][1]
-[2024-03-08 20:11:20.027][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:20.046][INF] Private connect 192.168.1.64:8000 sock=15268 this=0x3b4b3f9c cmd=0x10100 port=51625
-[2024-03-08 20:11:20.592][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:20.609][INF] Private connect 192.168.1.64:8000 sock=10468 this=0x3b4b3f9c cmd=0x10000 port=51632
-[2024-03-08 20:11:20.609][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:20.688][INF] Private connect 192.168.1.64:8000 sock=10468 this=0x3b4b3f9c cmd=0x30200 port=51633
-[2024-03-08 20:11:21.696][INF] Private connect 192.168.1.64:8000 sock=15040 this=0x3b4b3f9c cmd=0x30200 port=51637
-[2024-03-08 20:11:21.705][INF] COM_Logout[2][1]
-[2024-03-08 20:11:21.705][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:21.721][INF] Private connect 192.168.1.64:8000 sock=15040 this=0x3b4b3f9c cmd=0x10100 port=51638
-[2024-03-08 20:11:22.153][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:22.170][INF] Private connect 192.168.1.64:8000 sock=11084 this=0x3b4b3f9c cmd=0x10000 port=51644
-[2024-03-08 20:11:22.170][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:22.240][INF] Private connect 192.168.1.64:8000 sock=11084 this=0x3b4b3f9c cmd=0x30200 port=51645
-[2024-03-08 20:11:23.266][INF] Private connect 192.168.1.64:8000 sock=15524 this=0x3b4b3f9c cmd=0x30200 port=51648
-[2024-03-08 20:11:23.270][INF] COM_Logout[3][1]
-[2024-03-08 20:11:23.271][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:23.286][INF] Private connect 192.168.1.64:8000 sock=15524 this=0x3b4b3f9c cmd=0x10100 port=51650
-[2024-03-08 20:11:23.385][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:23.387][INF] Private connect 192.168.1.64:8000 sock=15092 this=0x3b4b3f9c cmd=0x10000 port=51652
-[2024-03-08 20:11:23.387][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:23.435][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:23.435][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:23.461][INF] Private connect 192.168.1.64:8000 sock=11008 this=0x3b4b4708 cmd=0x30009 port=51653
-[2024-03-08 20:11:23.471][INF] Private connect 192.168.1.64:8000 sock=15092 this=0x3b4b3f9c cmd=0x30200 port=51654
-[2024-03-08 20:11:23.553][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:11:23.554][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:11:23.556][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1087766528], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:11:23.556][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:11:23.567][INF] Private connect 192.168.1.64:8000 sock=14368 this=0x3b4b3f9c cmd=0x30000 port=51656
-[2024-03-08 20:11:23.825][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:11:23.825][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:11:23.827][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:11:23.837][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:11:23.837][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:11:24.434][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:24.434][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:24.493][INF] Private connect 192.168.1.64:8000 sock=5912 this=0x3b4b4708 cmd=0x30200 port=51661
-[2024-03-08 20:11:24.498][INF] COM_Logout[2][1]
-[2024-03-08 20:11:24.504][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:24.516][INF] Private connect 192.168.1.64:8000 sock=8888 this=0x3b4b4708 cmd=0x10100 port=51662
-[2024-03-08 20:11:25.156][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:25.169][INF] Private connect 192.168.1.64:8000 sock=6812 this=0x3b4b4708 cmd=0x10000 port=51674
-[2024-03-08 20:11:25.169][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:25.248][INF] Private connect 192.168.1.64:8000 sock=6812 this=0x3b4b4708 cmd=0x30200 port=51676
-[2024-03-08 20:11:25.438][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:25.438][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:26.265][INF] Private connect 192.168.1.64:8000 sock=11152 this=0x3b4b4708 cmd=0x30200 port=51677
-[2024-03-08 20:11:26.271][INF] COM_Logout[3][1]
-[2024-03-08 20:11:26.271][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:26.275][INF] Private connect 192.168.1.64:8000 sock=11152 this=0x3b4b4708 cmd=0x10100 port=51678
-[2024-03-08 20:11:26.436][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:26.436][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:26.580][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:26.582][INF] Private connect 192.168.1.64:8000 sock=15388 this=0x3b4b4708 cmd=0x10000 port=51682
-[2024-03-08 20:11:26.582][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:26.657][INF] Private connect 192.168.1.64:8000 sock=15388 this=0x3b4b4708 cmd=0x30200 port=51684
-[2024-03-08 20:11:27.437][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:27.437][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:27.680][INF] Private connect 192.168.1.64:8000 sock=14880 this=0x3b4b4708 cmd=0x30200 port=51688
-[2024-03-08 20:11:27.684][INF] COM_Logout[2][1]
-[2024-03-08 20:11:27.684][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:27.685][INF] Private connect 192.168.1.64:8000 sock=14880 this=0x3b4b4708 cmd=0x10100 port=51690
-[2024-03-08 20:11:28.442][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:28.442][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:29.438][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:29.439][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:30.439][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:30.439][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:31.439][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:31.440][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:11:33.892][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:11:33.916][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:11:40.645][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:40.669][INF] Private connect 192.168.1.64:8000 sock=10556 this=0x3b4b3f9c cmd=0x10000 port=51725
-[2024-03-08 20:11:40.669][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:40.730][INF] Private connect 192.168.1.64:8000 sock=10556 this=0x3b4b3f9c cmd=0x30200 port=51726
-[2024-03-08 20:11:41.767][INF] Private connect 192.168.1.64:8000 sock=14292 this=0x3b4b3f9c cmd=0x30200 port=51729
-[2024-03-08 20:11:41.770][INF] COM_Logout[3][1]
-[2024-03-08 20:11:41.770][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:41.783][INF] Private connect 192.168.1.64:8000 sock=14292 this=0x3b4b3f9c cmd=0x10100 port=51730
-[2024-03-08 20:11:43.549][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:43.567][INF] Private connect 192.168.1.64:8000 sock=14972 this=0x3b4b3f9c cmd=0x10000 port=51738
-[2024-03-08 20:11:43.567][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:43.634][INF] Private connect 192.168.1.64:8000 sock=14972 this=0x3b4b3f9c cmd=0x30200 port=51739
-[2024-03-08 20:11:44.663][INF] Private connect 192.168.1.64:8000 sock=8892 this=0x3b4b3f9c cmd=0x30200 port=51742
-[2024-03-08 20:11:44.671][INF] COM_Logout[2][1]
-[2024-03-08 20:11:44.671][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:44.695][INF] Private connect 192.168.1.64:8000 sock=8892 this=0x3b4b3f9c cmd=0x10100 port=51744
-[2024-03-08 20:11:45.194][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:45.219][INF] Private connect 192.168.1.64:8000 sock=8840 this=0x3b4b3f9c cmd=0x10000 port=51752
-[2024-03-08 20:11:45.219][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:45.292][INF] Private connect 192.168.1.64:8000 sock=8840 this=0x3b4b3f9c cmd=0x30200 port=51753
-[2024-03-08 20:11:46.322][INF] Private connect 192.168.1.64:8000 sock=15128 this=0x3b4b3f9c cmd=0x30200 port=51758
-[2024-03-08 20:11:46.327][INF] COM_Logout[3][1]
-[2024-03-08 20:11:46.327][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:46.343][INF] Private connect 192.168.1.64:8000 sock=15128 this=0x3b4b3f9c cmd=0x10100 port=51759
-[2024-03-08 20:11:48.851][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:48.853][INF] Private connect 192.168.1.64:8000 sock=10404 this=0x3b4b3f9c cmd=0x10000 port=51769
-[2024-03-08 20:11:48.853][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:48.919][INF] Private connect 192.168.1.64:8000 sock=10404 this=0x3b4b3f9c cmd=0x30200 port=51770
-[2024-03-08 20:11:49.939][INF] Private connect 192.168.1.64:8000 sock=14432 this=0x3b4b3f9c cmd=0x30200 port=51774
-[2024-03-08 20:11:49.952][INF] COM_Logout[2][1]
-[2024-03-08 20:11:49.952][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:11:49.958][INF] Private connect 192.168.1.64:8000 sock=14432 this=0x3b4b3f9c cmd=0x10100 port=51775
-[2024-03-08 20:11:52.452][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:11:52.454][INF] Private connect 192.168.1.64:8000 sock=11008 this=0x3b4b3f9c cmd=0x10000 port=51783
-[2024-03-08 20:11:52.454][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:11:52.535][INF] Private connect 192.168.1.64:8000 sock=11008 this=0x3b4b3f9c cmd=0x30200 port=51784
-[2024-03-08 20:11:53.567][INF] Private connect 192.168.1.64:8000 sock=14568 this=0x3b4b3f9c cmd=0x30200 port=51785
-[2024-03-08 20:11:53.572][INF] COM_Logout[3][1]
-[2024-03-08 20:11:53.572][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:11:53.574][INF] Private connect 192.168.1.64:8000 sock=14568 this=0x3b4b3f9c cmd=0x10100 port=51786
-[2024-03-08 20:15:51.892][INF] Login dev 192.168.12.1:8000.
-[2024-03-08 20:15:54.888][INF] Login dev 192.168.12.1:8000.
-[2024-03-08 20:15:55.401][ERR] Private connect 192.168.12.1:8000 sock=10944 this=0x3b4b3f9c cmd=0x10000 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 20:15:55.401][ERR] [192.168.12.1:8000]LogonDevice Link_CreateLink fail[7].
-[2024-03-08 20:15:55.401][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[2]
-[2024-03-08 20:15:58.400][ERR] Private connect 192.168.12.1:8000 sock=10876 this=0x3b4b4708 cmd=0x10000 sys_err=10060, timeout= 3500 port=0
-[2024-03-08 20:15:58.400][ERR] [192.168.12.1:8000]LogonDevice Link_CreateLink fail[7].
-[2024-03-08 20:15:58.400][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[3]
-[2024-03-08 20:17:52.768][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:17:52.784][INF] Private connect 192.168.1.64:8000 sock=10876 this=0x3b4b3f9c cmd=0x10000 port=52914
-[2024-03-08 20:17:52.784][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:17:52.866][INF] Private connect 192.168.1.64:8000 sock=10876 this=0x3b4b3f9c cmd=0x30200 port=52915
-[2024-03-08 20:17:53.891][INF] Private connect 192.168.1.64:8000 sock=10316 this=0x3b4b3f9c cmd=0x30200 port=52917
-[2024-03-08 20:17:53.897][INF] COM_Logout[2][1]
-[2024-03-08 20:17:53.897][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:17:53.909][INF] Private connect 192.168.1.64:8000 sock=10316 this=0x3b4b3f9c cmd=0x10100 port=52918
-[2024-03-08 20:17:53.995][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:17:54.010][INF] Private connect 192.168.1.64:8000 sock=14248 this=0x3b4b3f9c cmd=0x10000 port=52920
-[2024-03-08 20:17:54.010][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:17:54.092][INF] Private connect 192.168.1.64:8000 sock=14248 this=0x3b4b3f9c cmd=0x30200 port=52922
-[2024-03-08 20:17:55.128][INF] Private connect 192.168.1.64:8000 sock=10712 this=0x3b4b3f9c cmd=0x30200 port=52925
-[2024-03-08 20:17:55.133][INF] COM_Logout[3][1]
-[2024-03-08 20:17:55.133][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:17:55.158][INF] Private connect 192.168.1.64:8000 sock=10712 this=0x3b4b3f9c cmd=0x10100 port=52926
-[2024-03-08 20:17:55.815][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:17:55.816][INF] Private connect 192.168.1.64:8000 sock=10316 this=0x3b4b3f9c cmd=0x10000 port=52934
-[2024-03-08 20:17:55.816][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:17:55.914][INF] Private connect 192.168.1.64:8000 sock=10316 this=0x3b4b3f9c cmd=0x30200 port=52935
-[2024-03-08 20:17:56.950][INF] Private connect 192.168.1.64:8000 sock=10636 this=0x3b4b3f9c cmd=0x30200 port=52937
-[2024-03-08 20:17:56.954][INF] COM_Logout[2][1]
-[2024-03-08 20:17:56.954][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:17:56.974][INF] Private connect 192.168.1.64:8000 sock=10636 this=0x3b4b3f9c cmd=0x10100 port=52938
-[2024-03-08 20:17:57.033][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:57.033][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:57.040][INF] Private connect 192.168.1.64:8000 sock=8704 this=0x3b4b3f9c cmd=0x30009 port=52940
-[2024-03-08 20:17:57.145][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:17:57.145][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:17:57.148][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1087766528], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:17:57.148][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:17:57.162][INF] Private connect 192.168.1.64:8000 sock=14980 this=0x3b4b3f9c cmd=0x30000 port=52941
-[2024-03-08 20:17:57.391][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:17:57.392][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:17:57.392][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:17:57.404][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:17:57.404][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:17:57.618][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:17:57.620][INF] Private connect 192.168.1.64:8000 sock=14448 this=0x3b4b4708 cmd=0x10000 port=52946
-[2024-03-08 20:17:57.620][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:17:57.709][INF] Private connect 192.168.1.64:8000 sock=14448 this=0x3b4b4708 cmd=0x30200 port=52947
-[2024-03-08 20:17:58.032][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:58.032][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:58.721][INF] Private connect 192.168.1.64:8000 sock=9280 this=0x3b4b4708 cmd=0x30200 port=52950
-[2024-03-08 20:17:58.729][INF] COM_Logout[3][1]
-[2024-03-08 20:17:58.729][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:17:58.750][INF] Private connect 192.168.1.64:8000 sock=9280 this=0x3b4b4708 cmd=0x10100 port=52951
-[2024-03-08 20:17:59.035][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:59.035][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:17:59.187][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:17:59.189][INF] Private connect 192.168.1.64:8000 sock=10688 this=0x3b4b4708 cmd=0x10000 port=52953
-[2024-03-08 20:17:59.189][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:17:59.282][INF] Private connect 192.168.1.64:8000 sock=10688 this=0x3b4b4708 cmd=0x30200 port=52954
-[2024-03-08 20:18:00.035][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:00.035][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:00.314][INF] Private connect 192.168.1.64:8000 sock=9280 this=0x3b4b4708 cmd=0x30200 port=52956
-[2024-03-08 20:18:00.319][INF] COM_Logout[2][1]
-[2024-03-08 20:18:00.319][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:18:00.335][INF] Private connect 192.168.1.64:8000 sock=9280 this=0x3b4b4708 cmd=0x10100 port=52959
-[2024-03-08 20:18:00.635][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:18:00.638][INF] Private connect 192.168.1.64:8000 sock=15104 this=0x3b4b4708 cmd=0x10000 port=52964
-[2024-03-08 20:18:00.638][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:18:00.730][INF] Private connect 192.168.1.64:8000 sock=15104 this=0x3b4b4708 cmd=0x30200 port=52965
-[2024-03-08 20:18:01.038][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:01.038][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:01.754][INF] Private connect 192.168.1.64:8000 sock=13196 this=0x3b4b4708 cmd=0x30200 port=52968
-[2024-03-08 20:18:01.759][INF] COM_Logout[3][1]
-[2024-03-08 20:18:01.759][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:18:01.774][INF] Private connect 192.168.1.64:8000 sock=13196 this=0x3b4b4708 cmd=0x10100 port=52969
-[2024-03-08 20:18:02.041][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:02.041][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:18:02.200][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:18:02.223][INF] Private connect 192.168.1.64:8000 sock=11212 this=0x3b4b4708 cmd=0x10000 port=52975
-[2024-03-08 20:18:02.223][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:18:02.299][INF] Private connect 192.168.1.64:8000 sock=11212 this=0x3b4b4708 cmd=0x30200 port=52976
-[2024-03-08 20:18:03.321][INF] Private connect 192.168.1.64:8000 sock=3132 this=0x3b4b4708 cmd=0x30200 port=52979
-[2024-03-08 20:18:03.329][INF] COM_Logout[2][1]
-[2024-03-08 20:18:03.329][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:18:03.331][INF] Private connect 192.168.1.64:8000 sock=3132 this=0x3b4b4708 cmd=0x10100 port=52980
-[2024-03-08 20:18:07.410][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:18:07.450][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:18:20.117][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:18:20.135][INF] Private connect 192.168.1.64:8000 sock=10568 this=0x3b4b3f9c cmd=0x10000 port=53013
-[2024-03-08 20:18:20.135][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:18:20.198][INF] Private connect 192.168.1.64:8000 sock=14544 this=0x3b4b3f9c cmd=0x30200 port=53014
-[2024-03-08 20:18:21.211][INF] Private connect 192.168.1.64:8000 sock=14192 this=0x3b4b3f9c cmd=0x30200 port=53018
-[2024-03-08 20:18:21.218][INF] COM_Logout[3][1]
-[2024-03-08 20:18:21.218][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:18:21.234][INF] Private connect 192.168.1.64:8000 sock=14192 this=0x3b4b3f9c cmd=0x10100 port=53019
-[2024-03-08 20:18:26.737][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:18:26.751][INF] Private connect 192.168.1.64:8000 sock=13196 this=0x3b4b3f9c cmd=0x10000 port=53032
-[2024-03-08 20:18:26.751][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:18:26.829][INF] Private connect 192.168.1.64:8000 sock=13196 this=0x3b4b3f9c cmd=0x30200 port=53033
-[2024-03-08 20:18:27.838][INF] Private connect 192.168.1.64:8000 sock=15464 this=0x3b4b3f9c cmd=0x30200 port=53037
-[2024-03-08 20:18:27.843][INF] COM_Logout[2][1]
-[2024-03-08 20:18:27.844][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:18:27.851][INF] Private connect 192.168.1.64:8000 sock=15464 this=0x3b4b3f9c cmd=0x10100 port=53038
-[2024-03-08 20:18:29.178][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:18:29.196][INF] Private connect 192.168.1.64:8000 sock=10932 this=0x3b4b3f9c cmd=0x10000 port=53043
-[2024-03-08 20:18:29.196][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:18:29.276][INF] Private connect 192.168.1.64:8000 sock=10932 this=0x3b4b3f9c cmd=0x30200 port=53044
-[2024-03-08 20:18:30.307][INF] Private connect 192.168.1.64:8000 sock=15264 this=0x3b4b3f9c cmd=0x30200 port=53047
-[2024-03-08 20:18:30.311][INF] COM_Logout[3][1]
-[2024-03-08 20:18:30.311][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:18:30.313][INF] Private connect 192.168.1.64:8000 sock=15264 this=0x3b4b3f9c cmd=0x10100 port=53048
-[2024-03-08 20:27:33.737][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:33.751][INF] Private connect 192.168.1.64:8000 sock=10588 this=0x3b4b3f9c cmd=0x10000 port=54406
-[2024-03-08 20:27:33.752][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:33.844][INF] Private connect 192.168.1.64:8000 sock=14248 this=0x3b4b3f9c cmd=0x30200 port=54407
-[2024-03-08 20:27:34.880][INF] Private connect 192.168.1.64:8000 sock=16184 this=0x3b4b3f9c cmd=0x30200 port=54409
-[2024-03-08 20:27:34.884][INF] COM_Logout[2][1]
-[2024-03-08 20:27:34.885][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:27:34.887][INF] Private connect 192.168.1.64:8000 sock=14332 this=0x3b4b3f9c cmd=0x10100 port=54410
-[2024-03-08 20:27:35.499][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:35.500][INF] Private connect 192.168.1.64:8000 sock=5300 this=0x3b4b3f9c cmd=0x10000 port=54415
-[2024-03-08 20:27:35.500][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:35.565][INF] Private connect 192.168.1.64:8000 sock=5300 this=0x3b4b3f9c cmd=0x30200 port=54416
-[2024-03-08 20:27:36.585][INF] Private connect 192.168.1.64:8000 sock=14448 this=0x3b4b3f9c cmd=0x30200 port=54420
-[2024-03-08 20:27:36.590][INF] COM_Logout[3][1]
-[2024-03-08 20:27:36.591][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:27:36.596][INF] Private connect 192.168.1.64:8000 sock=14448 this=0x3b4b3f9c cmd=0x10100 port=54421
-[2024-03-08 20:27:36.753][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:36.753][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:36.760][INF] Private connect 192.168.1.64:8000 sock=5300 this=0x3b4b3f9c cmd=0x30009 port=54424
-[2024-03-08 20:27:36.771][INF] Private connect 192.168.1.64:8000 sock=14592 this=0x3b4b4708 cmd=0x30009 port=54425
-[2024-03-08 20:27:36.877][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:27:36.878][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:27:36.882][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1087766528], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:27:36.882][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:27:36.896][INF] Private connect 192.168.1.64:8000 sock=10688 this=0x3b4b3f9c cmd=0x30000 port=54426
-[2024-03-08 20:27:36.953][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:27:36.954][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:27:36.973][INF] Private connect 192.168.1.64:8000 sock=16056 this=0x3b4b4708 cmd=0x30000 port=54427
-[2024-03-08 20:27:37.185][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:27:37.186][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:27:37.186][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:27:37.188][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:27:37.188][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:27:37.189][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:27:37.201][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a98] success
-[2024-03-08 20:27:37.201][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 3
-[2024-03-08 20:27:37.201][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:27:37.201][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 4
-[2024-03-08 20:27:37.307][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:37.330][INF] Private connect 192.168.1.64:8000 sock=16120 this=0x3b4b4e74 cmd=0x10000 port=54432
-[2024-03-08 20:27:37.330][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:37.423][INF] Private connect 192.168.1.64:8000 sock=16120 this=0x3b4b4e74 cmd=0x30200 port=54433
-[2024-03-08 20:27:37.756][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:37.756][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:38.466][INF] Private connect 192.168.1.64:8000 sock=12900 this=0x3b4b4e74 cmd=0x30200 port=54435
-[2024-03-08 20:27:38.470][INF] COM_Logout[2][1]
-[2024-03-08 20:27:38.470][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:27:38.488][INF] Private connect 192.168.1.64:8000 sock=12900 this=0x3b4b4e74 cmd=0x10100 port=54436
-[2024-03-08 20:27:38.677][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:38.689][INF] Private connect 192.168.1.64:8000 sock=15820 this=0x3b4b4e74 cmd=0x10000 port=54438
-[2024-03-08 20:27:38.689][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:38.753][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:38.753][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:38.789][INF] Private connect 192.168.1.64:8000 sock=15820 this=0x3b4b4e74 cmd=0x30200 port=54439
-[2024-03-08 20:27:39.755][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:39.755][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:39.825][INF] Private connect 192.168.1.64:8000 sock=10476 this=0x3b4b4e74 cmd=0x30200 port=54444
-[2024-03-08 20:27:39.830][INF] COM_Logout[3][1]
-[2024-03-08 20:27:39.830][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:27:39.848][INF] Private connect 192.168.1.64:8000 sock=10476 this=0x3b4b4e74 cmd=0x10100 port=54445
-[2024-03-08 20:27:40.681][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:40.697][INF] Private connect 192.168.1.64:8000 sock=10308 this=0x3b4b4e74 cmd=0x10000 port=54450
-[2024-03-08 20:27:40.697][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:40.762][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:40.762][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:40.763][INF] Private connect 192.168.1.64:8000 sock=10308 this=0x3b4b4e74 cmd=0x30200 port=54451
-[2024-03-08 20:27:41.762][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:41.762][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:41.771][INF] Private connect 192.168.1.64:8000 sock=15972 this=0x3b4b4e74 cmd=0x30200 port=54454
-[2024-03-08 20:27:41.785][INF] COM_Logout[2][1]
-[2024-03-08 20:27:41.785][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:27:41.787][INF] Private connect 192.168.1.64:8000 sock=15880 this=0x3b4b4e74 cmd=0x10100 port=54455
-[2024-03-08 20:27:42.586][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:42.588][INF] Private connect 192.168.1.64:8000 sock=15780 this=0x3b4b4e74 cmd=0x10000 port=54462
-[2024-03-08 20:27:42.588][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:42.670][INF] Private connect 192.168.1.64:8000 sock=15780 this=0x3b4b4e74 cmd=0x30200 port=54463
-[2024-03-08 20:27:42.763][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:42.763][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:43.709][INF] Private connect 192.168.1.64:8000 sock=14768 this=0x3b4b4e74 cmd=0x30200 port=54464
-[2024-03-08 20:27:43.714][INF] COM_Logout[3][1]
-[2024-03-08 20:27:43.714][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:27:43.730][INF] Private connect 192.168.1.64:8000 sock=14768 this=0x3b4b4e74 cmd=0x10100 port=54465
-[2024-03-08 20:27:43.767][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:43.767][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:27:44.437][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:44.454][INF] Private connect 192.168.1.64:8000 sock=8816 this=0x3b4b4e74 cmd=0x10000 port=54470
-[2024-03-08 20:27:44.454][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:44.531][INF] Private connect 192.168.1.64:8000 sock=8816 this=0x3b4b4e74 cmd=0x30200 port=54471
-[2024-03-08 20:27:45.472][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:45.488][INF] Private connect 192.168.1.64:8000 sock=16136 this=0x3b4b4e74 cmd=0x10000 port=54477
-[2024-03-08 20:27:45.488][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:45.569][INF] Private connect 192.168.1.64:8000 sock=10776 this=0x3b4b55e0 cmd=0x30200 port=54478
-[2024-03-08 20:27:45.569][INF] Private connect 192.168.1.64:8000 sock=16136 this=0x3b4b4e74 cmd=0x30200 port=54479
-[2024-03-08 20:27:45.579][INF] COM_Logout[2][1]
-[2024-03-08 20:27:45.580][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:27:45.590][INF] Private connect 192.168.1.64:8000 sock=10776 this=0x3b4b55e0 cmd=0x10100 port=54480
-[2024-03-08 20:27:46.610][INF] Private connect 192.168.1.64:8000 sock=15208 this=0x3b4b4e74 cmd=0x30200 port=54484
-[2024-03-08 20:27:46.618][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:27:46.622][INF] COM_Logout[3][1]
-[2024-03-08 20:27:46.622][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:27:46.628][INF] Private connect 192.168.1.64:8000 sock=16192 this=0x3b4b55e0 cmd=0x10000 port=54486
-[2024-03-08 20:27:46.628][INF] Private connect 192.168.1.64:8000 sock=15208 this=0x3b4b4e74 cmd=0x10100 port=54487
-[2024-03-08 20:27:46.628][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:27:46.706][INF] Private connect 192.168.1.64:8000 sock=10644 this=0x3b4b4e74 cmd=0x30200 port=54489
-[2024-03-08 20:27:47.234][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 3
-[2024-03-08 20:27:47.234][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 2
-[2024-03-08 20:27:47.249][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:27:47.266][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:27:47.731][INF] Private connect 192.168.1.64:8000 sock=14980 this=0x3b4b3f9c cmd=0x30200 port=54493
-[2024-03-08 20:27:47.742][INF] COM_Logout[2][1]
-[2024-03-08 20:27:47.742][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:27:47.745][INF] Private connect 192.168.1.64:8000 sock=16052 this=0x3b4b3f9c cmd=0x10100 port=54494
-[2024-03-08 20:36:37.894][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:37.896][INF] Private connect 192.168.1.64:8000 sock=16076 this=0x3b4b3f9c cmd=0x10000 port=55694
-[2024-03-08 20:36:37.896][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:37.975][INF] Private connect 192.168.1.64:8000 sock=16076 this=0x3b4b3f9c cmd=0x30200 port=55695
-[2024-03-08 20:36:39.005][INF] Private connect 192.168.1.64:8000 sock=16204 this=0x3b4b3f9c cmd=0x30200 port=55697
-[2024-03-08 20:36:39.009][INF] COM_Logout[3][1]
-[2024-03-08 20:36:39.009][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:39.029][INF] Private connect 192.168.1.64:8000 sock=16204 this=0x3b4b3f9c cmd=0x10100 port=55698
-[2024-03-08 20:36:40.095][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:40.097][INF] Private connect 192.168.1.64:8000 sock=16272 this=0x3b4b3f9c cmd=0x10000 port=55707
-[2024-03-08 20:36:40.097][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:40.194][INF] Private connect 192.168.1.64:8000 sock=16272 this=0x3b4b3f9c cmd=0x30200 port=55709
-[2024-03-08 20:36:41.223][INF] Private connect 192.168.1.64:8000 sock=14712 this=0x3b4b3f9c cmd=0x30200 port=55710
-[2024-03-08 20:36:41.229][INF] COM_Logout[2][1]
-[2024-03-08 20:36:41.229][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:36:41.251][INF] Private connect 192.168.1.64:8000 sock=14712 this=0x3b4b3f9c cmd=0x10100 port=55711
-[2024-03-08 20:36:41.405][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:41.405][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:41.406][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:41.408][INF] Private connect 192.168.1.64:8000 sock=16096 this=0x3b4b3f9c cmd=0x10000 port=55713
-[2024-03-08 20:36:41.408][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:41.415][INF] Private connect 192.168.1.64:8000 sock=14864 this=0x3b4b4708 cmd=0x30009 port=55714
-[2024-03-08 20:36:41.492][INF] Private connect 192.168.1.64:8000 sock=16096 this=0x3b4b3f9c cmd=0x30200 port=55716
-[2024-03-08 20:36:41.551][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
-[2024-03-08 20:36:41.551][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
-[2024-03-08 20:36:41.554][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[1087766528], enumDllType[2], Path[SystemTransform.dll], syserror[0]
-[2024-03-08 20:36:41.554][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
-[2024-03-08 20:36:41.564][INF] Private connect 192.168.1.64:8000 sock=15528 this=0x3b4b3f9c cmd=0x30000 port=55717
-[2024-03-08 20:36:41.849][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
-[2024-03-08 20:36:41.849][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
-[2024-03-08 20:36:41.849][ERR] GetOverlayFontPath Failed
-[2024-03-08 20:36:41.858][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[36700a44] success
-[2024-03-08 20:36:41.858][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
-[2024-03-08 20:36:42.404][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:42.404][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:42.531][INF] Private connect 192.168.1.64:8000 sock=15140 this=0x3b4b4708 cmd=0x30200 port=55721
-[2024-03-08 20:36:42.538][INF] COM_Logout[3][1]
-[2024-03-08 20:36:42.538][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:42.551][INF] Private connect 192.168.1.64:8000 sock=15140 this=0x3b4b4708 cmd=0x10100 port=55722
-[2024-03-08 20:36:43.274][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:43.286][INF] Private connect 192.168.1.64:8000 sock=15844 this=0x3b4b4708 cmd=0x10000 port=55727
-[2024-03-08 20:36:43.286][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:43.351][INF] Private connect 192.168.1.64:8000 sock=15844 this=0x3b4b4708 cmd=0x30200 port=55728
-[2024-03-08 20:36:43.405][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:43.405][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:44.364][INF] Private connect 192.168.1.64:8000 sock=10252 this=0x3b4b4708 cmd=0x30200 port=55730
-[2024-03-08 20:36:44.368][INF] COM_Logout[2][1]
-[2024-03-08 20:36:44.369][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:36:44.390][INF] Private connect 192.168.1.64:8000 sock=10252 this=0x3b4b4708 cmd=0x10100 port=55731
-[2024-03-08 20:36:44.402][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:44.402][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:44.429][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:44.431][INF] Private connect 192.168.1.64:8000 sock=11064 this=0x3b4b4708 cmd=0x10000 port=55733
-[2024-03-08 20:36:44.431][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:44.497][INF] Private connect 192.168.1.64:8000 sock=11064 this=0x3b4b4708 cmd=0x30200 port=55734
-[2024-03-08 20:36:45.403][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:45.403][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:45.518][INF] Private connect 192.168.1.64:8000 sock=9868 this=0x3b4b4708 cmd=0x30200 port=55741
-[2024-03-08 20:36:45.524][INF] COM_Logout[3][1]
-[2024-03-08 20:36:45.524][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:45.550][INF] Private connect 192.168.1.64:8000 sock=9868 this=0x3b4b4708 cmd=0x10100 port=55742
-[2024-03-08 20:36:46.219][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:46.246][INF] Private connect 192.168.1.64:8000 sock=10172 this=0x3b4b4708 cmd=0x10000 port=55747
-[2024-03-08 20:36:46.246][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:46.316][INF] Private connect 192.168.1.64:8000 sock=10172 this=0x3b4b4708 cmd=0x30200 port=55748
-[2024-03-08 20:36:46.404][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:46.404][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
-[2024-03-08 20:36:47.331][INF] Private connect 192.168.1.64:8000 sock=16272 this=0x3b4b4708 cmd=0x30200 port=55757
-[2024-03-08 20:36:47.337][INF] COM_Logout[2][1]
-[2024-03-08 20:36:47.337][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:36:47.351][INF] Private connect 192.168.1.64:8000 sock=16272 this=0x3b4b4708 cmd=0x10100 port=55758
-[2024-03-08 20:36:47.516][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:47.519][INF] Private connect 192.168.1.64:8000 sock=16296 this=0x3b4b4708 cmd=0x10000 port=55760
-[2024-03-08 20:36:47.519][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:47.594][INF] Private connect 192.168.1.64:8000 sock=10532 this=0x3b4b4708 cmd=0x30200 port=55761
-[2024-03-08 20:36:48.630][INF] Private connect 192.168.1.64:8000 sock=15692 this=0x3b4b4708 cmd=0x30200 port=55766
-[2024-03-08 20:36:48.634][INF] COM_Logout[3][1]
-[2024-03-08 20:36:48.635][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:48.658][INF] Private connect 192.168.1.64:8000 sock=15692 this=0x3b4b4708 cmd=0x10100 port=55767
-[2024-03-08 20:36:49.576][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:49.592][INF] Private connect 192.168.1.64:8000 sock=15772 this=0x3b4b4708 cmd=0x10000 port=55775
-[2024-03-08 20:36:49.592][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:49.655][INF] Private connect 192.168.1.64:8000 sock=15772 this=0x3b4b4708 cmd=0x30200 port=55776
-[2024-03-08 20:36:50.690][INF] Private connect 192.168.1.64:8000 sock=14452 this=0x3b4b4708 cmd=0x30200 port=55784
-[2024-03-08 20:36:50.695][INF] COM_Logout[2][1]
-[2024-03-08 20:36:50.695][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:36:50.697][INF] Private connect 192.168.1.64:8000 sock=14452 this=0x3b4b4708 cmd=0x10100 port=55785
-[2024-03-08 20:36:51.889][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
-[2024-03-08 20:36:51.932][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
-[2024-03-08 20:36:52.844][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:52.869][INF] Private connect 192.168.1.64:8000 sock=11064 this=0x3b4b3f9c cmd=0x10000 port=55794
-[2024-03-08 20:36:52.869][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:52.953][INF] Private connect 192.168.1.64:8000 sock=11064 this=0x3b4b3f9c cmd=0x30200 port=55795
-[2024-03-08 20:36:53.991][INF] Private connect 192.168.1.64:8000 sock=11068 this=0x3b4b3f9c cmd=0x30200 port=55797
-[2024-03-08 20:36:53.995][INF] COM_Logout[3][1]
-[2024-03-08 20:36:53.995][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:54.006][INF] Private connect 192.168.1.64:8000 sock=11068 this=0x3b4b3f9c cmd=0x10100 port=55798
-[2024-03-08 20:36:54.683][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:54.711][INF] Private connect 192.168.1.64:8000 sock=9868 this=0x3b4b3f9c cmd=0x10000 port=55805
-[2024-03-08 20:36:54.711][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:54.777][INF] Private connect 192.168.1.64:8000 sock=9868 this=0x3b4b3f9c cmd=0x30200 port=55806
-[2024-03-08 20:36:55.815][INF] Private connect 192.168.1.64:8000 sock=15484 this=0x3b4b3f9c cmd=0x30200 port=55811
-[2024-03-08 20:36:55.820][INF] COM_Logout[2][1]
-[2024-03-08 20:36:55.820][DBG] CUserMgr::UnRegisterHeartProxy[2]
-[2024-03-08 20:36:55.835][INF] Private connect 192.168.1.64:8000 sock=15484 this=0x3b4b3f9c cmd=0x10100 port=55812
-[2024-03-08 20:36:56.267][INF] Login dev 192.168.1.64:8000.
-[2024-03-08 20:36:56.280][INF] Private connect 192.168.1.64:8000 sock=14688 this=0x3b4b3f9c cmd=0x10000 port=55814
-[2024-03-08 20:36:56.280][INF] LogonDev1 in[192.168.1.64:8000]
-[2024-03-08 20:36:56.342][INF] Private connect 192.168.1.64:8000 sock=14688 this=0x3b4b3f9c cmd=0x30200 port=55815
-[2024-03-08 20:36:57.380][INF] Private connect 192.168.1.64:8000 sock=6024 this=0x3b4b3f9c cmd=0x30200 port=55819
-[2024-03-08 20:36:57.390][INF] COM_Logout[3][1]
-[2024-03-08 20:36:57.390][DBG] CUserMgr::UnRegisterHeartProxy[3]
-[2024-03-08 20:36:57.410][INF] Private connect 192.168.1.64:8000 sock=16048 this=0x3b4b3f9c cmd=0x10100 port=55820
+[2024-03-09 11:36:47.083][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/zlib1.dll], hHandleRet[1635647488]
+[2024-03-09 11:36:47.083][INF] The COM:HCCoreBase ver is 6.1.4.15, 2020_03_05. Async:1.
+[2024-03-09 11:36:47.083][INF] The COM:Core ver is 6.1.9.4, 2022_04_12. Async:1.
+[2024-03-09 11:36:47.083][INF] This HCNetSDK ver is 6.1.9.4 Ver 2022_04_12.
+[2024-03-09 11:37:15.844][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 11:37:15.844][INF] dwTotalNum[2048]
+[2024-03-09 11:37:15.861][INF] Private connect 192.168.1.64:8000 sock=8848 this=0x80eb8174 cmd=0x10000 port=63762
+[2024-03-09 11:37:15.861][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 11:37:15.861][ERR] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Failed, Path[D:/毕设/源码/hkmp/lib/libeay32.dll] syserror[126]
+[2024-03-09 11:37:15.861][ERR] Load BASE_DLL_LIBEAY failed[syserr: 126]
+[2024-03-09 11:37:15.865][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libcrypto-1_1-x64.dll], hHandleRet[943390720]
+[2024-03-09 11:37:15.865][DBG] Load [libcrypto-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libcrypto-1_1-x64.dll]
+[2024-03-09 11:37:15.870][DBG] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[D:/毕设/源码/hkmp/lib/libssl-1_1-x64.dll], hHandleRet[614072320]
+[2024-03-09 11:37:15.870][DBG] Load [libssl-1_1-x64.dll] SUCC, Real Path[D:\毕设\源码\hkmp\lib\libssl-1_1-x64.dll]
+[2024-03-09 11:37:15.871][INF] SSLTRANSAPI::IsAllAPILoaded, SSL_library_init Unload
+[2024-03-09 11:37:15.871][INF] OpenSSL, Not All Function Loaded!
+[2024-03-09 11:37:15.871][INF] SSLTRANSAPI::PrintVersion, OpenSSL version info [OpenSSL 1.1.1l  24 Aug 2021]
+[2024-03-09 11:37:15.871][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[6], m_fnTLSServerMethod
+[2024-03-09 11:37:16.383][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCAlarm.dll] SUCC
+[2024-03-09 11:37:16.384][INF] AbilityAnalyze---Init-- start
+[2024-03-09 11:37:16.401][INF] The COM:HCAlarm ver is 6.1.9.4, 2022_04_12.
+[2024-03-09 11:37:16.421][INF] Private connect 192.168.1.64:8000 sock=8888 this=0x80eb8174 cmd=0x111020 port=63768
+[2024-03-09 11:41:59.616][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:41:59.628][DBG] CComBase::Load, Load szDllPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/HCPreview.dll] SUCC
+[2024-03-09 11:41:59.629][INF] The COM:Preview ver is 6.1.9.4, 2022_04_12.
+[2024-03-09 11:41:59.651][INF] Private connect 192.168.1.64:8000 sock=12188 this=0x80eb88e0 cmd=0x30009 port=64931
+[2024-03-09 11:41:59.735][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[0], cTempPath[D:/毕设/源码/hkmp/lib/]
+[2024-03-09 11:41:59.735][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[-21430272], enumDllType[0], Path[PlayCtrl.dll], syserror[0]
+[2024-03-09 11:42:00.217][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
+[2024-03-09 11:42:00.220][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
+[2024-03-09 11:42:00.225][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[-2081751040], enumDllType[2], Path[SystemTransform.dll], syserror[0]
+[2024-03-09 11:42:00.225][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
+[2024-03-09 11:42:00.242][INF] Private connect 192.168.1.64:8000 sock=16524 this=0x80eb88e0 cmd=0x30000 port=64934
+[2024-03-09 11:42:00.249][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2024-03-09 11:42:00.251][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2024-03-09 11:42:00.252][ERR] GetOverlayFontPath Failed
+[2024-03-09 11:42:00.265][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[f7cc50c4] success
+[2024-03-09 11:42:00.265][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
+[2024-03-09 11:42:00.613][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:01.615][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:02.614][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:03.614][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:04.615][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:05.616][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:06.618][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 11:42:10.296][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
+[2024-03-09 11:42:10.328][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
+[2024-03-09 11:58:53.653][INF] [0] CArmingSession::TimeoutCallBack Create ReConnectThread SUCC
+[2024-03-09 11:58:53.653][DBG] Alarm chan [0] reconnect thread start!
+[2024-03-09 11:58:53.653][DBG] Alarm chan [0] LinkToDVR!
+[2024-03-09 11:58:57.155][ERR] Private connect 192.168.1.64:8000 sock=16520 this=0x80eb8174 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
+[2024-03-09 11:58:57.155][ERR] [0] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
+[2024-03-09 11:58:57.155][ERR] ReConnect Alarm chan [0] LinkToDVR failed![err:7]
+[2024-03-09 11:58:57.155][DBG] Alarm chan [0] reconnect thread Exit!
+[2024-03-09 11:59:15.855][INF] Private connect 192.168.1.64:8000 sock=16160 this=0x80eb8174 cmd=0x111020 port=49902
+[2024-03-09 12:02:30.800][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:30.802][INF] Private connect 192.168.1.64:8000 sock=12224 this=0x80eb88e0 cmd=0x10000 port=50651
+[2024-03-09 12:02:30.802][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:30.895][INF] Private connect 192.168.1.64:8000 sock=12224 this=0x80eb88e0 cmd=0x30200 port=50652
+[2024-03-09 12:02:31.922][INF] Private connect 192.168.1.64:8000 sock=16136 this=0x80eb88e0 cmd=0x30200 port=50654
+[2024-03-09 12:02:31.928][INF] COM_Logout[1][1]
+[2024-03-09 12:02:31.928][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:31.954][INF] Private connect 192.168.1.64:8000 sock=16136 this=0x80eb88e0 cmd=0x10100 port=50655
+[2024-03-09 12:02:32.278][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:32.297][INF] Private connect 192.168.1.64:8000 sock=16132 this=0x80eb88e0 cmd=0x10000 port=50657
+[2024-03-09 12:02:32.297][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:32.390][INF] Private connect 192.168.1.64:8000 sock=16132 this=0x80eb88e0 cmd=0x30200 port=50658
+[2024-03-09 12:02:33.426][INF] Private connect 192.168.1.64:8000 sock=12684 this=0x80eb88e0 cmd=0x30200 port=50662
+[2024-03-09 12:02:33.430][INF] COM_Logout[1][1]
+[2024-03-09 12:02:33.430][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:33.457][INF] Private connect 192.168.1.64:8000 sock=12684 this=0x80eb88e0 cmd=0x10100 port=50663
+[2024-03-09 12:02:34.339][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:34.362][INF] Private connect 192.168.1.64:8000 sock=12704 this=0x80eb88e0 cmd=0x10000 port=50671
+[2024-03-09 12:02:34.362][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:34.430][INF] Private connect 192.168.1.64:8000 sock=16248 this=0x80eb88e0 cmd=0x30200 port=50672
+[2024-03-09 12:02:35.457][INF] Private connect 192.168.1.64:8000 sock=16224 this=0x80eb88e0 cmd=0x30200 port=50674
+[2024-03-09 12:02:35.461][INF] COM_Logout[1][1]
+[2024-03-09 12:02:35.461][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:35.473][INF] Private connect 192.168.1.64:8000 sock=16224 this=0x80eb88e0 cmd=0x10100 port=50675
+[2024-03-09 12:02:35.662][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:35.676][INF] Private connect 192.168.1.64:8000 sock=16148 this=0x80eb88e0 cmd=0x10000 port=50677
+[2024-03-09 12:02:35.676][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:35.770][INF] Private connect 192.168.1.64:8000 sock=16248 this=0x80eb88e0 cmd=0x30200 port=50678
+[2024-03-09 12:02:36.799][INF] Private connect 192.168.1.64:8000 sock=16248 this=0x80eb88e0 cmd=0x30200 port=50682
+[2024-03-09 12:02:36.804][INF] COM_Logout[1][1]
+[2024-03-09 12:02:36.804][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:36.831][INF] Private connect 192.168.1.64:8000 sock=16248 this=0x80eb88e0 cmd=0x10100 port=50683
+[2024-03-09 12:02:37.351][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:37.376][INF] Private connect 192.168.1.64:8000 sock=10080 this=0x80eb88e0 cmd=0x10000 port=50688
+[2024-03-09 12:02:37.376][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:37.454][INF] Private connect 192.168.1.64:8000 sock=10080 this=0x80eb88e0 cmd=0x30200 port=50689
+[2024-03-09 12:02:38.483][INF] Private connect 192.168.1.64:8000 sock=12648 this=0x80eb88e0 cmd=0x30200 port=50691
+[2024-03-09 12:02:38.488][INF] COM_Logout[1][1]
+[2024-03-09 12:02:38.488][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:38.490][INF] Private connect 192.168.1.64:8000 sock=12648 this=0x80eb88e0 cmd=0x10100 port=50692
+[2024-03-09 12:02:38.566][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:02:38.583][INF] Private connect 192.168.1.64:8000 sock=16092 this=0x80eb88e0 cmd=0x30009 port=50693
+[2024-03-09 12:02:38.686][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
+[2024-03-09 12:02:38.687][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
+[2024-03-09 12:02:38.688][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[-2081947648], enumDllType[2], Path[SystemTransform.dll], syserror[0]
+[2024-03-09 12:02:38.688][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
+[2024-03-09 12:02:38.706][INF] Private connect 192.168.1.64:8000 sock=12676 this=0x80eb88e0 cmd=0x30000 port=50694
+[2024-03-09 12:02:38.931][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2024-03-09 12:02:38.931][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2024-03-09 12:02:38.931][ERR] GetOverlayFontPath Failed
+[2024-03-09 12:02:38.940][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[f7cc50c4] success
+[2024-03-09 12:02:38.940][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
+[2024-03-09 12:02:39.289][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:39.300][INF] Private connect 192.168.1.64:8000 sock=12248 this=0x80eb904c cmd=0x10000 port=50701
+[2024-03-09 12:02:39.300][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:39.382][INF] Private connect 192.168.1.64:8000 sock=12248 this=0x80eb904c cmd=0x30200 port=50704
+[2024-03-09 12:02:39.565][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:02:40.399][INF] Private connect 192.168.1.64:8000 sock=16080 this=0x80eb904c cmd=0x30200 port=50706
+[2024-03-09 12:02:40.404][INF] COM_Logout[1][1]
+[2024-03-09 12:02:40.404][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:40.417][INF] Private connect 192.168.1.64:8000 sock=16080 this=0x80eb904c cmd=0x10100 port=50707
+[2024-03-09 12:02:40.564][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:02:40.812][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:40.824][INF] Private connect 192.168.1.64:8000 sock=11704 this=0x80eb904c cmd=0x10000 port=50709
+[2024-03-09 12:02:40.824][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:40.901][INF] Private connect 192.168.1.64:8000 sock=11704 this=0x80eb904c cmd=0x30200 port=50710
+[2024-03-09 12:02:41.566][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:02:41.918][INF] Private connect 192.168.1.64:8000 sock=16084 this=0x80eb904c cmd=0x30200 port=50711
+[2024-03-09 12:02:41.924][INF] COM_Logout[1][1]
+[2024-03-09 12:02:41.924][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:41.937][INF] Private connect 192.168.1.64:8000 sock=16084 this=0x80eb904c cmd=0x10100 port=50712
+[2024-03-09 12:02:42.568][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:02:42.587][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:42.599][INF] Private connect 192.168.1.64:8000 sock=16172 this=0x80eb904c cmd=0x10000 port=50720
+[2024-03-09 12:02:42.599][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:42.669][INF] Private connect 192.168.1.64:8000 sock=16172 this=0x80eb904c cmd=0x30200 port=50721
+[2024-03-09 12:02:43.687][INF] Private connect 192.168.1.64:8000 sock=16096 this=0x80eb904c cmd=0x30200 port=50723
+[2024-03-09 12:02:43.691][INF] COM_Logout[1][1]
+[2024-03-09 12:02:43.691][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:43.703][INF] Private connect 192.168.1.64:8000 sock=16096 this=0x80eb904c cmd=0x10100 port=50724
+[2024-03-09 12:02:48.948][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
+[2024-03-09 12:02:48.970][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
+[2024-03-09 12:02:56.095][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:56.119][INF] Private connect 192.168.1.64:8000 sock=12776 this=0x80eb88e0 cmd=0x10000 port=50749
+[2024-03-09 12:02:56.119][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:56.213][INF] Private connect 192.168.1.64:8000 sock=12776 this=0x80eb88e0 cmd=0x30200 port=50750
+[2024-03-09 12:02:57.244][INF] Private connect 192.168.1.64:8000 sock=12224 this=0x80eb88e0 cmd=0x30200 port=50752
+[2024-03-09 12:02:57.251][INF] COM_Logout[1][1]
+[2024-03-09 12:02:57.251][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:02:57.276][INF] Private connect 192.168.1.64:8000 sock=12224 this=0x80eb88e0 cmd=0x10100 port=50753
+[2024-03-09 12:02:59.305][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:02:59.308][INF] Private connect 192.168.1.64:8000 sock=10080 this=0x80eb88e0 cmd=0x10000 port=50763
+[2024-03-09 12:02:59.308][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:02:59.393][INF] Private connect 192.168.1.64:8000 sock=10080 this=0x80eb88e0 cmd=0x30200 port=50764
+[2024-03-09 12:03:00.424][INF] Private connect 192.168.1.64:8000 sock=12696 this=0x80eb88e0 cmd=0x30200 port=50767
+[2024-03-09 12:03:00.428][INF] COM_Logout[1][1]
+[2024-03-09 12:03:00.428][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:03:00.430][INF] Private connect 192.168.1.64:8000 sock=12696 this=0x80eb88e0 cmd=0x10100 port=50768
+[2024-03-09 12:03:01.498][INF] Login dev 192.168.1.64:8000.
+[2024-03-09 12:03:01.523][INF] Private connect 192.168.1.64:8000 sock=16116 this=0x80eb88e0 cmd=0x10000 port=50773
+[2024-03-09 12:03:01.523][INF] LogonDev1 in[192.168.1.64:8000]
+[2024-03-09 12:03:01.616][INF] Private connect 192.168.1.64:8000 sock=16116 this=0x80eb88e0 cmd=0x30200 port=50774
+[2024-03-09 12:03:02.644][INF] Private connect 192.168.1.64:8000 sock=16224 this=0x80eb88e0 cmd=0x30200 port=50776
+[2024-03-09 12:03:02.649][INF] COM_Logout[1][1]
+[2024-03-09 12:03:02.649][DBG] CUserMgr::UnRegisterHeartProxy[1]
+[2024-03-09 12:03:02.676][INF] Private connect 192.168.1.64:8000 sock=16224 this=0x80eb88e0 cmd=0x10100 port=50777
+[2024-03-09 12:09:57.554][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:09:57.571][INF] Private connect 192.168.1.64:8000 sock=12748 this=0x80eb88e0 cmd=0x30009 port=51685
+[2024-03-09 12:09:57.698][DBG] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
+[2024-03-09 12:09:57.699][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
+[2024-03-09 12:09:57.701][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[-2084634624], enumDllType[2], Path[SystemTransform.dll], syserror[0]
+[2024-03-09 12:09:57.701][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
+[2024-03-09 12:09:57.712][INF] Private connect 192.168.1.64:8000 sock=16228 this=0x80eb88e0 cmd=0x30000 port=51686
+[2024-03-09 12:09:57.721][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2024-03-09 12:09:57.721][INF] ID-IP-CHAN[0-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2024-03-09 12:09:57.722][ERR] GetOverlayFontPath Failed
+[2024-03-09 12:09:57.727][INF] ID-IP-CHAN[0-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[f7cc50c4] success
+[2024-03-09 12:09:57.727][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
+[2024-03-09 12:09:58.545][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:09:59.546][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:10:00.547][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:10:01.557][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:10:02.558][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:10:03.558][INF] Alarm[1] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:10:07.776][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
+[2024-03-09 12:10:07.797][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
+[2024-03-09 12:12:18.739][INF] Private connect 192.168.1.64:8000 sock=12932 this=0x80eb8174 cmd=0x111020 port=52050
+[2024-03-09 12:12:26.190][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:26.201][INF] Private connect 192.168.1.64:8000 sock=16044 this=0x80eb88e0 cmd=0x30009 port=52067
+[2024-03-09 12:12:26.324][DBG] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::CreatePlayer] create player success, version is[v7.4.0.2b]
+[2024-03-09 12:12:26.324][INF] CCoreGlobalCtrl::LoadDSo, enumDllType[2], cTempPath[D:/毕设/源码/hkmp/lib/HCNetSDKCom/]
+[2024-03-09 12:12:26.327][DBG] CCoreGlobalCtrl::LoadDSo, HPR_LoadDSo, hHandleRet[-2084634624], enumDllType[2], Path[SystemTransform.dll], syserror[0]
+[2024-03-09 12:12:26.327][INF] CStreamConvert::LoadConvertLib Load Succ, m_iInitCount = 1
+[2024-03-09 12:12:26.346][INF] Private connect 192.168.1.64:8000 sock=15884 this=0x80eb88e0 cmd=0x30000 port=52068
+[2024-03-09 12:12:26.351][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2024-03-09 12:12:26.351][INF] ID-IP-CHAN[1-192.168.1.64-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2024-03-09 12:12:26.351][ERR] GetOverlayFontPath Failed
+[2024-03-09 12:12:26.357][INF] ID-IP-CHAN[1-192.168.1.64-1] [CPreviewPlayer::OpenPlayer] open player[f7cc50c4] success
+[2024-03-09 12:12:26.357][INF] CStreamConvert::LoadConvertLib Lib Already Load, m_iInitCount = 2
+[2024-03-09 12:12:27.186][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:28.187][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:29.188][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:30.189][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:31.190][INF] Alarm[0] IP[192.168.1.64] data_len[108] alarm_len[108] status[104]
+[2024-03-09 12:12:36.393][INF] CStreamConvert::UnloadConvertLib, m_iInitCount = 1
+[2024-03-09 12:12:36.414][DBG] CStreamConvert::UnloadConvertLib, m_iInitCount = 0
+[2024-03-09 12:12:57.863][INF] Private connect 192.168.1.64:8000 sock=16132 this=0x80eb8174 cmd=0x111020 port=52147
+[2024-03-09 12:13:07.900][INF] [1] CArmingSession::TimeoutCallBack Create ReConnectThread SUCC
+[2024-03-09 12:13:07.900][DBG] Alarm chan [1] reconnect thread start!
+[2024-03-09 12:13:07.900][DBG] Alarm chan [1] LinkToDVR!
+[2024-03-09 12:13:11.401][ERR] Private connect 192.168.1.64:8000 sock=15904 this=0x80eb8174 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
+[2024-03-09 12:13:11.401][ERR] [1] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
+[2024-03-09 12:13:11.401][ERR] ReConnect Alarm chan [1] LinkToDVR failed![err:7]
+[2024-03-09 12:13:16.412][DBG] Alarm chan [1] LinkToDVR!
+[2024-03-09 12:13:19.918][ERR] Private connect 192.168.1.64:8000 sock=12928 this=0x80eb8174 cmd=0x111020 sys_err=10060, timeout= 3500 port=0
+[2024-03-09 12:13:19.918][ERR] [1] CArmingSession::LinkToDVR, CreateLink Failed, Cmd[1118240], Reconnect ID[-1]
+[2024-03-09 12:13:19.918][ERR] ReConnect Alarm chan [1] LinkToDVR failed![err:7]
+[2024-03-09 12:13:24.933][DBG] Alarm chan [1] LinkToDVR!
+[2024-03-09 12:13:24.949][INF] Private connect 192.168.1.64:8000 sock=15724 this=0x80eb8174 cmd=0x111020 port=52261
+[2024-03-09 12:13:24.955][DBG] Alarm chan [1] ReConnect Success!
+[2024-03-09 12:13:24.955][DBG] Alarm chan [1] reconnect thread Exit!

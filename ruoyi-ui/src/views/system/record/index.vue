@@ -199,8 +199,8 @@ export default {
       this.form = {
         deviceId: null,
         recordingKey: null,
-        startTime: null,
-        endTime: null
+        startTime: '',
+        endTime: ''
       };
       this.resetForm("form");
     },

@@ -8,7 +8,7 @@
           <div class="camera-container">
             <!--          选择设备栏 -->
             <span class="span_info">设备列表 ：</span>
-            <el-select v-model="selectedItem.deviceName" placeholder="请选择在线设备"
+            <el-select v-model="selectedItem.deviceName" placeholder="请选择设备"
                        @change="handleDeviceSelection"
                        style="padding-top:10px;padding-bottom:10px" size="small"
             >
@@ -161,7 +161,7 @@ export default {
     },
     queryDeviceList() {
       listDevice(this.queryParams).then(response => {
-        this.devices = response.rows.filter(device => device.deviceStatus === "0");
+        this.devices = response.rows;
       })
     },
     //将时间格式化成海康威视支持的时间字符串
